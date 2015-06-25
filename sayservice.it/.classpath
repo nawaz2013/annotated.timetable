@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src/main/java"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="src/lib/commons-csv-1.0-20130914.112107-238.jar"/>
+	<classpathentry kind="lib" path="src/lib/core-1.47.1.jar"/>
+	<classpathentry kind="lib" path="src/lib/guava-18.0.jar"/>
+	<classpathentry kind="lib" path="src/lib/jackson-core-asl-1.7.1.jar"/>
+	<classpathentry kind="lib" path="src/lib/jackson-mapper-asl-1.7.1.jar"/>
+	<classpathentry kind="lib" path="src/lib/mongo-java-driver-2.13.0.jar"/>
+	<classpathentry kind="lib" path="src/lib/spring-core-4.1.5.RELEASE.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
