@@ -17,7 +17,6 @@ import org.codehaus.jackson.map.DeserializationConfig.Feature;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.util.StringUtils;
 
-
 import com.google.common.base.Charsets;
 import com.google.common.collect.Iterables;
 import com.google.common.io.Files;
@@ -129,7 +128,7 @@ public class AnnotatedTTGenerator {
 			for (int j = 0; j < maxNumberOfCols; j++) {
 				line = line + output[i][j] + ";";
 			}
-//			System.out.println(line);
+			//			System.out.println(line);
 			converted.add(line);
 		}
 
@@ -212,10 +211,10 @@ public class AnnotatedTTGenerator {
 			List<String[]> stopTimes = tripStopsTimesMap.get(tripId);
 
 			if (stopTimes.get(0)[1].contains(startTime) && stopTimes.get(stopTimes.size() - 1)[1].contains(endTime)) {
-//				/** first version(trip matching algorithm. **/
-//				if (!matchingTripId.contains(tripId)) {
-//					matchingTripId.add(tripId);
-//				}
+				//				/** first version(trip matching algorithm. **/
+				//				if (!matchingTripId.contains(tripId)) {
+				//					matchingTripId.add(tripId);
+				//				}
 				/** second version (trip matching algorithm). **/
 				if (matchTrips(matrix, currentCol, tripStartIndex, tripEndIndex, stopTimes)) {
 					if (!matchingTripId.contains(tripId)) {
