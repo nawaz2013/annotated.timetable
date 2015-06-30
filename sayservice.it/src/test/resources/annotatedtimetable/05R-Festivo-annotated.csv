@@ -1,9 +1,9 @@
-Descr.breve:;5
-Descr.lunga:;Oltrecastello-Povo-S.Vito-P.Aquila-P.Dante
-Validità:;ORARIO Trento Estate 2015   Valido dal 10/06/2015 al 09/09/2015
-Orario:;ORARIO FESTIVO
+Descr.breve:;;5
+Descr.lunga:;;Oltrecastello-Povo-S.Vito-P.Aquila-P.Dante
+Validità:;;ORARIO Trento Estate 2015   Valido dal 10/06/2015 al 09/09/2015
+Orario:;;ORARIO FESTIVO
 Frequenza:
-Linea:;;;;;;;;;;;;;;;;
+Linea:;;;;;;;;;;;;;;;;;
 stops;stop_id;0002684132015061020150909 * italic entry found.;0002684142015061020150909 * italic entry found.;0002684152015061020150909 * italic entry found.;0002684162015061020150909 * italic entry found.;0002684172015061020150909 * italic entry found.;0002684182015061020150909 * italic entry found.;0002684192015061020150909 * italic entry found.;0002684202015061020150909 * italic entry found.;0002684212015061020150909 * italic entry found.;0002684222015061020150909 * italic entry found.;0002684232015061020150909 * italic entry found.;0002684242015061020150909 * italic entry found.;0002684252015061020150909 * italic entry found.;0002684262015061020150909 * italic entry found.;0002684272015061020150909 * italic entry found.;0002684312015061020150909 * italic entry found.;
 BORINO;-07.39;-08.39;-09.39;-10.39;-11.39;-12.39;-13.39;-14.39;-15.39;-16.39;-17.39;-18.39;-19.39;-20.39;-21.49;-23.24;
 OLTRECASTELLO;161_12;07.42;08.42;09.42;10.42;11.42;12.42;13.42;14.42;15.42;16.42;17.42;18.42;19.42;20.42;21.52;23.27;

@@ -97,7 +97,7 @@ public class AnnotatedTTGenerator {
 
 		/** write heading in output. **/
 		for (int i = 0; i < numOfHeaders; i++) {
-			converted.add(lines.get(i));
+			converted.add(lines.get(i).replaceFirst(";", ";;"));
 		}
 
 		/** create local copy of table as string[][] matrix. **/
@@ -161,6 +161,7 @@ public class AnnotatedTTGenerator {
 
 		String annotation = "";
 		boolean italics = false;
+		boolean mergedRoute = false;
 
 		// validate trip with GTFS.
 		int tripStartIndex = -1;
@@ -194,111 +195,127 @@ public class AnnotatedTTGenerator {
 		if (matrix[5][currentCol] != null && matrix[5][currentCol].contains("Linea")) {
 			String pdfRouteId = matrix[5][currentCol].substring(matrix[5][currentCol].indexOf('a') + 1);
 			routeId = getGTFSRouteIdFromRouteShortName(pdfRouteId);
+			mergedRoute = true;
+		} else if (matrix[5][currentCol] != null && isInteger(matrix[5][currentCol])) {
+			String pdfRouteId = matrix[5][currentCol];
+			routeId = getGTFSRouteIdFromRouteShortName(pdfRouteId);
+			mergedRoute = true;
 		}
 
 		System.out.println("checking column: " + matrix[startRow][currentCol] + " - routeId " + routeId + "["
 				+ startTime + "-" + endTime + "]");
 
-		List<String> tripsForRoute = routeTripsMap.get(routeId);
+		if (routeId != null && !routeId.isEmpty()) {
 
-		if (tripsForRoute.isEmpty()) {
-			annotation = "no route found";
-			return annotation;
-		}
+			List<String> tripsForRoute = routeTripsMap.get(routeId);
 
-		List<String> matchingTripId = new ArrayList<String>();
-		for (String tripId : tripsForRoute) {
-			List<String[]> stopTimes = tripStopsTimesMap.get(tripId);
-
-			if (stopTimes.get(0)[1].contains(startTime) && stopTimes.get(stopTimes.size() - 1)[1].contains(endTime)) {
-				//				/** first version(trip matching algorithm. **/
-				//				if (!matchingTripId.contains(tripId)) {
-				//					matchingTripId.add(tripId);
-				//				}
-				/** second version (trip matching algorithm). **/
-				if (matchTrips(matrix, currentCol, tripStartIndex, tripEndIndex, stopTimes)) {
-					if (!matchingTripId.contains(tripId)) {
-						matchingTripId.add(tripId);
-					}
-					break;
-				}
-
-			}
-		}
-
-		// fill stops.
-		if (matchingTripId != null && !matchingTripId.isEmpty()) {
-
-			if (matchingTripId.size() == 1) {
-				annotation = matchingTripId.get(0);
-			} else {
-				System.err.println("anamoly- mutliple trips detected");
-				for (String tripId : matchingTripId) {
-					annotation = annotation + "-" + tripId;
-
-				}
+			if (tripsForRoute.isEmpty()) {
+				annotation = "no route found";
+				return annotation;
 			}
 
-			List<String[]> stoptimeseq = tripStopsTimesMap.get(matchingTripId.get(0));
-			boolean[] sequenceTraversed = new boolean[stoptimeseq.size()];
-			for (int i = startRow; i < matrix.length; i++) {
+			List<String> matchingTripId = new ArrayList<String>();
+			for (String tripId : tripsForRoute) {
+				List<String[]> stopTimes = tripStopsTimesMap.get(tripId);
 
-				if (matrix[i][currentCol] == null || matrix[i][currentCol].isEmpty()
-						|| matrix[i][currentCol].contains("|")) {
-					continue;
-				}
-				if (matrix[i][currentCol].contains("-")) {
-					italics = true;
-					continue;
-				}
-				String timeToCheck = matrix[i][currentCol].replace(".", ":");
-				for (int s = 0; s < stoptimeseq.size(); s++) {
-					if (stoptimeseq.get(s)[1].contains(timeToCheck) && !sequenceTraversed[s]) {
-						if (output[i - numOfHeaders + 1][0].indexOf(";") == -1) {
-							output[i - numOfHeaders + 1][0] = output[i - numOfHeaders + 1][0] + ";"
-									+ stoptimeseq.get(s)[3] + "_" + agencyId;
-							sequenceTraversed[s] = true;
+				if (stopTimes.get(0)[1].contains(startTime) && stopTimes.get(stopTimes.size() - 1)[1].contains(endTime)) {
+					
+					if (mergedRoute) {
+						/** first version(trip matching algorithm. **/
+						if (!matchingTripId.contains(tripId)) {
+							matchingTripId.add(tripId);
 							break;
-						} else {
-							String stopName = output[i - numOfHeaders + 1][0].substring(0,
-									output[i - numOfHeaders + 1][0].indexOf(";"));
-							String stopId = "";
-							if (output[i - numOfHeaders + 1][0].contains("~")) {
-								stopId = output[i - numOfHeaders + 1][0].substring(output[i - numOfHeaders + 1][0]
-										.indexOf(";") + 2);
-							} else {
-								stopId = output[i - numOfHeaders + 1][0].substring(output[i - numOfHeaders + 1][0]
-										.indexOf(";") + 1);
+						}	
+					} else {
+						/** second version (trip matching algorithm). **/
+						if (matchTrips(matrix, currentCol, tripStartIndex, tripEndIndex, stopTimes)) {
+							if (!matchingTripId.contains(tripId)) {
+								matchingTripId.add(tripId);
 							}
-							if (!stopId.equalsIgnoreCase(stoptimeseq.get(s)[3] + "_" + agencyId)) {
-								System.err.println("anamoly detected for stop id: " + "(" + stopId + ","
-										+ stoptimeseq.get(s)[3] + "_" + agencyId + ")");
-								if (stopId.indexOf(",") != -1) {
-									String[] stops = stopId.split(",");
-									for (String stp : stops) {
-										if (!anamolyStopIdMap.contains(stp)) {
-											anamolyStopIdMap.add(stp);
-											output[i - numOfHeaders + 1][0] = stopName + ";~" + stopId + ","
-													+ stoptimeseq.get(s)[3] + "_" + agencyId;
-										}
-									}
-								} else {
-									output[i - numOfHeaders + 1][0] = stopName + ";~" + stoptimeseq.get(s)[3] + "_"
-											+ agencyId + "," + stopId;
-									anamolyStopIdMap.add(stoptimeseq.get(s)[3] + "_" + agencyId);
-									anamolyStopIdMap.add(stopId);
-								}
-
-							}
-							sequenceTraversed[s] = true;
 							break;
 						}
 					}
+
 				}
 			}
+
+			// fill stops.
+			if (matchingTripId != null && !matchingTripId.isEmpty()) {
+
+				if (matchingTripId.size() == 1) {
+					annotation = matchingTripId.get(0);
+				} else {
+					System.err.println("anamoly- mutliple trips detected");
+					for (String tripId : matchingTripId) {
+						annotation = annotation + "-" + tripId;
+
+					}
+				}
+
+				List<String[]> stoptimeseq = tripStopsTimesMap.get(matchingTripId.get(0));
+				boolean[] sequenceTraversed = new boolean[stoptimeseq.size()];
+				for (int i = startRow; i < matrix.length; i++) {
+
+					if (matrix[i][currentCol] == null || matrix[i][currentCol].isEmpty()
+							|| matrix[i][currentCol].contains("|")) {
+						continue;
+					}
+					if (matrix[i][currentCol].contains("-")) {
+						italics = true;
+						continue;
+					}
+					String timeToCheck = matrix[i][currentCol].replace(".", ":");
+					for (int s = 0; s < stoptimeseq.size(); s++) {
+						if (stoptimeseq.get(s)[1].contains(timeToCheck) && !sequenceTraversed[s]) {
+							if (output[i - numOfHeaders + 1][0].indexOf(";") == -1) {
+								output[i - numOfHeaders + 1][0] = output[i - numOfHeaders + 1][0] + ";"
+										+ stoptimeseq.get(s)[3] + "_" + agencyId;
+								sequenceTraversed[s] = true;
+								break;
+							} else {
+								String stopName = output[i - numOfHeaders + 1][0].substring(0, output[i - numOfHeaders
+										+ 1][0].indexOf(";"));
+								String stopId = "";
+								if (output[i - numOfHeaders + 1][0].contains("~")) {
+									stopId = output[i - numOfHeaders + 1][0].substring(output[i - numOfHeaders + 1][0]
+											.indexOf(";") + 2);
+								} else {
+									stopId = output[i - numOfHeaders + 1][0].substring(output[i - numOfHeaders + 1][0]
+											.indexOf(";") + 1);
+								}
+								if (!stopId.equalsIgnoreCase(stoptimeseq.get(s)[3] + "_" + agencyId)) {
+									System.err.println("anamoly detected for stop id: " + "(" + stopId + ","
+											+ stoptimeseq.get(s)[3] + "_" + agencyId + ")");
+									if (stopId.indexOf(",") != -1) {
+										String[] stops = stopId.split(",");
+										for (String stp : stops) {
+											if (!anamolyStopIdMap.contains(stp)) {
+												anamolyStopIdMap.add(stp);
+												output[i - numOfHeaders + 1][0] = stopName + ";~" + stopId + ","
+														+ stoptimeseq.get(s)[3] + "_" + agencyId;
+											}
+										}
+									} else {
+										output[i - numOfHeaders + 1][0] = stopName + ";~" + stoptimeseq.get(s)[3] + "_"
+												+ agencyId + "," + stopId;
+										anamolyStopIdMap.add(stoptimeseq.get(s)[3] + "_" + agencyId);
+										anamolyStopIdMap.add(stopId);
+									}
+
+								}
+								sequenceTraversed[s] = true;
+								break;
+							}
+						}
+					}
+				}
+			} else {
+				System.err.println("\n\n\n\n\n----- no trip found ----" + matrix[startRow][currentCol]);
+				annotation = "no trip found";
+			}
 		} else {
-			System.err.println("\n\n\n\n\n----- no trip found ----" + matrix[startRow][currentCol]);
-			annotation = "no trip found";
+			System.err.println("\n\n\n\n\n----- no route found ----" + matrix[startRow][currentCol]);
+			annotation = "no route found";
 		}
 
 		// notes(if any).
@@ -307,6 +324,21 @@ public class AnnotatedTTGenerator {
 		}
 
 		return annotation;
+	}
+
+	/**
+	 * Utility method for checking integer
+	 * @param s
+	 * @return
+	 */
+	public static boolean isInteger(String s) {
+		try {
+			Integer.parseInt(s);
+		} catch (NumberFormatException e) {
+			return false;
+		}
+		// only got here if we didn't return false
+		return true;
 	}
 
 	private boolean matchTrips(String[][] matrix, int currentCol, int tripStartIndex, int tripEndIndex,
@@ -463,14 +495,14 @@ public class AnnotatedTTGenerator {
 	public static void main(String[] args) throws Exception {
 		AnnotatedTTGenerator timeTableGenerator = new AnnotatedTTGenerator();
 
-		timeTableGenerator.processFiles("src/test/resources/annotatedtimetable", "12",
-				"src/test/resources/annotatedtimetable/05A-Feriale.csv");
-		timeTableGenerator.processFiles("src/test/resources/annotatedtimetable", "12",
-				"src/test/resources/annotatedtimetable/05A-Festivo.csv");
+				timeTableGenerator.processFiles("src/test/resources/annotatedtimetable", "12",
+						"src/test/resources/annotatedtimetable/05A-Feriale.csv");
+				timeTableGenerator.processFiles("src/test/resources/annotatedtimetable", "12",
+						"src/test/resources/annotatedtimetable/05A-Festivo.csv");
 		timeTableGenerator.processFiles("src/test/resources/annotatedtimetable", "12",
 				"src/test/resources/annotatedtimetable/05R-Feriale.csv");
-		timeTableGenerator.processFiles("src/test/resources/annotatedtimetable", "12",
-				"src/test/resources/annotatedtimetable/05R-Festivo.csv");
+				timeTableGenerator.processFiles("src/test/resources/annotatedtimetable", "12",
+						"src/test/resources/annotatedtimetable/05R-Festivo.csv");
 
 	}
 }
