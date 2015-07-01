@@ -24,7 +24,6 @@ route_id,agency_id,route_short_name,route_long_name,route_type,route_color,route
 517,12,4,04 Rosmini Isera Nogaredo Villa Lagarina,3,,
 519,12,3,03 Pedersano Nogaredo Rosmini Lenzima,3,,
 521,12,1,01 Nomi Bettini Ospedale Lizzana Marco,3,,
-523,12,6,06 Nomi Calliano Volano Rosmini Mori,3,,
 531,12,Fu,Funivia Trento Sardagna,5,,
 533,12,C,Rsa "S.Bartolomeo" Rsa "Angeli Custodi",3,000000,FFFFFF
 535,12,5/,P.Dante P.Fiera Università Mesiano Povo,3,,

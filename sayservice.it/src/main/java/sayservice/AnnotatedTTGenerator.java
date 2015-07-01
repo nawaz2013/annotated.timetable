@@ -7,18 +7,23 @@ import java.net.UnknownHostException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
+import org.bson.BasicBSONObject;
 import org.codehaus.jackson.map.DeserializationConfig.Feature;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.util.StringUtils;
 
 import com.google.common.base.Charsets;
 import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
 import com.google.common.io.Files;
 import com.google.gdata.util.io.base.UnicodeReader;
 import com.mongodb.BasicDBObject;
@@ -28,6 +33,7 @@ import com.mongodb.DBCursor;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
 import com.mongodb.QueryBuilder;
+import com.sun.xml.internal.bind.v2.schemagen.xmlschema.NoFixedFacet;
 
 public class AnnotatedTTGenerator {
 
@@ -35,6 +41,9 @@ public class AnnotatedTTGenerator {
 	private String pathToGTFS = "src/test/resources/annotatedtimetable/gtfs/google_transit_urbano/";
 
 	private static final String UTF8_BOM = "\uFEFF";
+	private static final String ITALIC_ENTRY = "italic";
+	private static final String ROUTE_ERROR = "route not found";
+	private static final String TRIP_ERROR = "trip not found";
 	private static int numOfHeaders = 6;
 	private static final SimpleDateFormat TIME_FORMAT = new SimpleDateFormat("HH:mm");
 	private MongoClient mongoClient = null;
@@ -48,6 +57,11 @@ public class AnnotatedTTGenerator {
 
 	private HashMap<String, List<String[]>> tripStopsTimesMap = new HashMap<String, List<String[]>>();
 	private HashMap<String, List<String>> routeTripsMap = new HashMap<String, List<String>>();
+	private HashMap<String, String> stopsMap = new HashMap<String, String>();
+	private HashMap<Integer, List<String>> columnTripIdMap = new HashMap<Integer, List<String>>();
+	private HashMap<Integer, List<String>> columnHeaderNotes = new HashMap<Integer, List<String>>();
+	private HashMap<Integer, List<String>> columnItalicStopNames = new HashMap<Integer, List<String>>();
+	private HashMap<String, String> stopIdsMap = new HashMap<String, String>();
 
 	private List<String[]> routes;
 
@@ -97,7 +111,7 @@ public class AnnotatedTTGenerator {
 
 		/** write heading in output. **/
 		for (int i = 0; i < numOfHeaders; i++) {
-			converted.add(lines.get(i));
+			converted.add(lines.get(i).replaceFirst(";", ";;"));
 		}
 
 		/** create local copy of table as string[][] matrix. **/
@@ -106,7 +120,7 @@ public class AnnotatedTTGenerator {
 			String[] colValues = table[i][0].split(";");
 			for (int j = 0; j < colValues.length; j++) {
 				matrix[i][j] = colValues[j];
-				//				System.out.println(matrix[i][j]);
+				// System.out.println(matrix[i][j]);
 			}
 		}
 
@@ -128,7 +142,7 @@ public class AnnotatedTTGenerator {
 			for (int j = 0; j < maxNumberOfCols; j++) {
 				line = line + output[i][j] + ";";
 			}
-			//			System.out.println(line);
+			// System.out.println(line);
 			converted.add(line);
 		}
 
@@ -137,30 +151,317 @@ public class AnnotatedTTGenerator {
 
 	private String[][] processMatrix(String[][] matrix, String[][] output, int noOfOutputCols) {
 
+		/** version 1.
 		for (int i = numOfHeaders; i < matrix.length; i++) {
 			for (int j = 1; j < noOfOutputCols; j++) {
 				output[i - numOfHeaders + 1][j] = matrix[i][j];
 			}
-			//			System.out.println(Arrays.toString(output[i]));
-		}
+			//	System.out.println(Arrays.toString(output[i]));
+		}**/
 
 		// stops column.
 		output[0][0] = "stops;stop_id";
+		// create list of stops taking in to consideration GTFS data.
+		List<String> stops = processStops(matrix, numOfHeaders, noOfOutputCols - 1);
+
+		for (int j = 1; j < noOfOutputCols - 1; j++) {
+			if (columnTripIdMap.containsKey(j)) {
+				List<String[]> stoptimeseq = tripStopsTimesMap.get(columnTripIdMap.get(j).get(0));
+				for (int gtfsSeq = 0; gtfsSeq < stoptimeseq.size(); gtfsSeq++) {
+					
+					String time = stoptimeseq.get(gtfsSeq)[1];
+					String id = stoptimeseq.get(gtfsSeq)[3];
+					String stopListName = stopsMap.get(id).toLowerCase();
+					output[stops.indexOf(stopListName) + 1][j] = stoptimeseq.get(gtfsSeq)[1].substring(0, time.lastIndexOf(":")); 
+
+				}
+
+			}
+			
+			// fill in italic entries.
+			for(String italicEntry: columnItalicStopNames.get(j)) {
+				String name = italicEntry.substring(0, italicEntry.indexOf("$"));
+				String time = italicEntry.substring(italicEntry.indexOf("$") + 1);
+				output[stops.indexOf(name) + 1][j] = time;
+			}
+		}
+
+		/** version 1.
 		for (int i = numOfHeaders; i < matrix.length; i++) {
 			output[i - numOfHeaders + 1][0] = processStopsColumns(matrix[i][0]);
 		}
 
 		for (int j = 1; j < noOfOutputCols - 1; j++) {
 			output[0][j] = mapTOGTFS(matrix, output, numOfHeaders, j);
+		}**/
+
+		for (int i = 0; i < stops.size(); i++) {
+			if (stopIdsMap.containsKey(stops.get(i))) {
+				output[i + 1][0] = stops.get(i) + ";" + stopIdsMap.get(stops.get(i));
+			} else {
+				output[i + 1][0] = stops.get(i) + ";";
+			}
+		}
+
+		for (int col = 1; col < noOfOutputCols - 1; col++) {
+			output[0][col] = fillHeaderAnnotation(stops, col);
 		}
 
 		return output;
+	}
+
+	private String fillHeaderAnnotation(List<String> stops, int col) {
+
+		List<String> tripIds = columnTripIdMap.get(col);
+		String annotation = "";
+
+		if (tripIds.size() == 1) {
+			// exact
+			annotation = tripIds.get(0);
+
+		} else if (tripIds.size() > 1) {
+			// multiple trips.
+			for (String tripId : tripIds) {
+				annotation = annotation + tripId + ",";
+			}
+
+		}
+
+		// additional notes.
+		for (String note : columnHeaderNotes.get(col)) {
+			annotation = annotation + note;
+		}
+
+		// TODO Auto-generated method stub
+		return annotation;
+	}
+
+	private List<String> processStops(String[][] matrix, int startRow, int noOfCols) {
+
+		// merged list of stops.
+		List<String> stopList = new ArrayList<String>();
+		// pdf list of stops.
+		List<String> pdfStopList = new ArrayList<String>();
+		List<Integer> anamolies = null;
+		
+		for (int i = 0; i < (matrix.length - numOfHeaders); i++) {
+			pdfStopList.add(matrix[i + numOfHeaders][0]);
+		}
+
+		// add all pdf stop first to final list.
+		stopList.addAll(pdfStopList);
+
+		Map<String, List<Integer>> anamolyMap = new HashMap<String, List<Integer>>();
+
+		for (int currentCol = 1; currentCol < noOfCols; currentCol++) {
+
+			boolean italics = false;
+			boolean mergedRoute = false;
+
+			// additional notes for column map.
+			List<String> columnNotes = new ArrayList<String>();
+			columnHeaderNotes.put(currentCol, columnNotes);
+			
+			// column italic stopNames.
+			List<String> italicStopEntry = new ArrayList<String>();
+			columnItalicStopNames.put(currentCol, italicStopEntry);
+
+			int tripStartIndex = -1;
+			for (int i = startRow; i < matrix.length; i++) {
+				if (matrix[i][currentCol] != null && !matrix[i][currentCol].isEmpty()) {
+					if (matrix[i][currentCol].contains("-")) {
+						italics = true;
+						columnNotes.add(ITALIC_ENTRY);
+						String stopName = matrix[i][0].replaceAll("\\s+", " ").toLowerCase();
+						String time = matrix[i][currentCol];
+						if (!italicStopEntry.contains(stopName + "$" + time)) {
+							italicStopEntry.add(stopName + "$" + time);
+						}
+						continue;
+					}
+					tripStartIndex = i;
+					break;
+				}
+			}
+			int tripEndIndex = -1;
+			for (int i = matrix.length - 1; i >= startRow; i--) {
+				if (matrix[i][currentCol] != null && !matrix[i][currentCol].isEmpty()) {
+					if (matrix[i][currentCol].contains("-")) {
+						italics = true;
+						if (!columnNotes.contains(ITALIC_ENTRY)) {
+							columnNotes.add(ITALIC_ENTRY);
+						}
+						String stopName = matrix[i][0].replaceAll("\\s+", " ").toLowerCase();
+						String time = matrix[i][currentCol];
+						if (!italicStopEntry.contains(stopName + "$" + time)) {
+							italicStopEntry.add(stopName + "$" + time);
+						}
+						continue;
+					}
+					tripEndIndex = i;
+					break;
+				}
+			}
+
+			String startTime = matrix[tripStartIndex][currentCol].replace(".", ":");
+			String endTime = matrix[tripEndIndex][currentCol].replace(".", ":");
+
+			routeId = getGTFSRouteIdFromRouteShortName(routeShortName);
+
+			if (matrix[5][currentCol] != null && matrix[5][currentCol].contains("Linea")) {
+				String pdfRouteId = matrix[5][currentCol].substring(matrix[5][currentCol].indexOf('a') + 1);
+				routeId = getGTFSRouteIdFromRouteShortName(pdfRouteId);
+				mergedRoute = true;
+			} else if (matrix[5][currentCol] != null && isInteger(matrix[5][currentCol])) {
+				String pdfRouteId = matrix[5][currentCol];
+				routeId = getGTFSRouteIdFromRouteShortName(pdfRouteId);
+				mergedRoute = true;
+			}
+
+			System.out.println("checking column: " + matrix[startRow][currentCol] + " - routeId " + routeId + "["
+					+ startTime + "-" + endTime + "]");
+
+			if (routeId != null && !routeId.isEmpty()) {
+
+				List<String> tripsForRoute = routeTripsMap.get(routeId);
+
+				if (tripsForRoute.isEmpty()) {
+					System.err.println("no route found");
+					columnNotes.add(ROUTE_ERROR);
+				}
+
+				List<String> matchingTripId = new ArrayList<String>();
+				for (String tripId : tripsForRoute) {
+					List<String[]> stopTimes = tripStopsTimesMap.get(tripId);
+
+					if (stopTimes.get(0)[1].contains(startTime)
+							&& stopTimes.get(stopTimes.size() - 1)[1].contains(endTime)) {
+
+						if (mergedRoute) {
+							/** first version(trip matching algorithm. **/
+							if (!matchingTripId.contains(tripId)) {
+								matchingTripId.add(tripId);
+								break;
+							}
+						} else {
+							/** second version (trip matching algorithm). **/
+							if (matchTrips(matrix, currentCol, tripStartIndex, tripEndIndex, stopTimes)) {
+								if (!matchingTripId.contains(tripId)) {
+									matchingTripId.add(tripId);
+								}
+								break;
+							}
+						}
+
+					}
+				}
+
+				// prepare stops list.
+				if (matchingTripId != null && !matchingTripId.isEmpty()) {
+
+					columnTripIdMap.put(currentCol, matchingTripId);
+
+					List<String[]> stoptimeseq = tripStopsTimesMap.get(matchingTripId.get(0));
+					for (int gtfsSeq = 0; gtfsSeq < stoptimeseq.size(); gtfsSeq++) {
+
+						boolean found = false;
+						String gtfsStopName = stopsMap.get(stoptimeseq.get(gtfsSeq)[3]).replaceAll("\"", "")
+								.toLowerCase();
+
+						for (int i = 0; i < pdfStopList.size(); i++) {
+							// pdf sequence = i + numOfHeaders;
+							String pdfStopName = pdfStopList.get(i).replaceAll("\\s+", " ").toLowerCase();
+							pdfStopName = pdfStopName.replaceAll("\"", "");
+							String pdfTime = "";
+							if (matrix[i + numOfHeaders][currentCol] != null
+									&& !(matrix[i + numOfHeaders][currentCol].isEmpty())) {
+								pdfTime = matrix[i + numOfHeaders][currentCol].replace(".", ":") + ":00";
+							}
+							stopIdsMap.put(stopsMap.get(stoptimeseq.get(gtfsSeq)[3]).toLowerCase(),
+									stoptimeseq.get(gtfsSeq)[3]);
+							if (pdfStopName.equalsIgnoreCase(gtfsStopName)
+									&& stoptimeseq.get(gtfsSeq)[1].equalsIgnoreCase(pdfTime)
+									&& stopList.indexOf(stopsMap.get(stoptimeseq.get(gtfsSeq)[3])) == -1) {
+								stopList.set(i, stopsMap.get(stoptimeseq.get(gtfsSeq)[3]));
+								found = true;
+								// System.out.println( i + " - " + stopsMap.get(stoptimeseq.get(gtfsSeq)[3]) + " - " + stoptimeseq.get(gtfsSeq)[3] );
+								break;
+							}
+						}
+
+						if (!found && stopList.indexOf(stopsMap.get(stoptimeseq.get(gtfsSeq)[3])) == -1) {
+							anamolies = anamolyMap.get(matchingTripId.get(0));
+							if (anamolies == null) {
+								anamolies = new ArrayList<Integer>();
+								anamolyMap.put(matchingTripId.get(0), anamolies);
+							}
+							anamolies.add(gtfsSeq);
+							//	System.err.println( "anamoly - " +  stopsMap.get(stoptimeseq.get(gtfsSeq)[3]) + " - " + stoptimeseq.get(gtfsSeq)[3] );
+						}
+					}
+
+				} else {
+					System.err.println("\n\n\n\n\n----- no trip found ----" + matrix[startRow][currentCol]);
+					columnNotes.add(TRIP_ERROR);
+
+				}
+
+			}
+
+		}
+
+		// adding anamolies.
+		for (String tripId : anamolyMap.keySet()) {
+
+			List<Integer> anamoliesList = anamolyMap.get(tripId);
+			List<String[]> stoptimeseq = tripStopsTimesMap.get(tripId);
+
+			for (int anamoly : anamoliesList) {
+
+				String stopNameBefore = null;
+				for (int a = anamoly - 1; a > -1; a--) {
+					stopNameBefore = stopsMap.get(stoptimeseq.get(a)[3]);
+					if (stopNameBefore != null && !stopNameBefore.isEmpty()) {
+						break;
+					}
+				}
+				// add anomaly stop in correct position.
+				if (stopList.indexOf(stopNameBefore) != -1) {
+					int insertIndex = stopList.indexOf(stopNameBefore) + 1;
+					String stopName = stopsMap.get(stoptimeseq.get(anamoly)[3]);
+					if (stopList.indexOf(stopName) == -1) {
+						stopList.add(insertIndex, stopsMap.get(stoptimeseq.get(anamoly)[3]));
+						stopIdsMap.put(stopsMap.get(stoptimeseq.get(anamoly)[3]).toLowerCase(),
+								stoptimeseq.get(anamoly)[3]);
+					}
+				}
+			}
+
+		}
+
+		List<String> stopsFinal = new ArrayList<String>();
+
+		// remove duplicate stops.
+		for (String stop : stopList) {
+			if (stopIdsMap.containsKey(stop)) {
+				stopsFinal.add(stop.toLowerCase());
+			} else {
+				String pdfStopName = stop.replaceAll("\\s+", " ");
+				System.err.println("refactoring stopName: " + pdfStopName + " " + stopsMap.containsValue(pdfStopName));
+				if (!stopsFinal.contains(stop.toLowerCase()))
+					stopsFinal.add(pdfStopName.toLowerCase());
+			}
+		}
+
+		//		return stopList;
+		return stopsFinal;
 	}
 
 	private String mapTOGTFS(String[][] matrix, String[][] output, int startRow, int currentCol) {
 
 		String annotation = "";
 		boolean italics = false;
+		boolean mergedRoute = false;
 
 		// validate trip with GTFS.
 		int tripStartIndex = -1;
@@ -194,111 +495,127 @@ public class AnnotatedTTGenerator {
 		if (matrix[5][currentCol] != null && matrix[5][currentCol].contains("Linea")) {
 			String pdfRouteId = matrix[5][currentCol].substring(matrix[5][currentCol].indexOf('a') + 1);
 			routeId = getGTFSRouteIdFromRouteShortName(pdfRouteId);
+			mergedRoute = true;
+		} else if (matrix[5][currentCol] != null && isInteger(matrix[5][currentCol])) {
+			String pdfRouteId = matrix[5][currentCol];
+			routeId = getGTFSRouteIdFromRouteShortName(pdfRouteId);
+			mergedRoute = true;
 		}
 
 		System.out.println("checking column: " + matrix[startRow][currentCol] + " - routeId " + routeId + "["
 				+ startTime + "-" + endTime + "]");
 
-		List<String> tripsForRoute = routeTripsMap.get(routeId);
+		if (routeId != null && !routeId.isEmpty()) {
 
-		if (tripsForRoute.isEmpty()) {
-			annotation = "no route found";
-			return annotation;
-		}
+			List<String> tripsForRoute = routeTripsMap.get(routeId);
 
-		List<String> matchingTripId = new ArrayList<String>();
-		for (String tripId : tripsForRoute) {
-			List<String[]> stopTimes = tripStopsTimesMap.get(tripId);
-
-			if (stopTimes.get(0)[1].contains(startTime) && stopTimes.get(stopTimes.size() - 1)[1].contains(endTime)) {
-				//				/** first version(trip matching algorithm. **/
-				//				if (!matchingTripId.contains(tripId)) {
-				//					matchingTripId.add(tripId);
-				//				}
-				/** second version (trip matching algorithm). **/
-				if (matchTrips(matrix, currentCol, tripStartIndex, tripEndIndex, stopTimes)) {
-					if (!matchingTripId.contains(tripId)) {
-						matchingTripId.add(tripId);
-					}
-					break;
-				}
-
-			}
-		}
-
-		// fill stops.
-		if (matchingTripId != null && !matchingTripId.isEmpty()) {
-
-			if (matchingTripId.size() == 1) {
-				annotation = matchingTripId.get(0);
-			} else {
-				System.err.println("anamoly- mutliple trips detected");
-				for (String tripId : matchingTripId) {
-					annotation = annotation + "-" + tripId;
-
-				}
+			if (tripsForRoute.isEmpty()) {
+				annotation = "no route found";
+				return annotation;
 			}
 
-			List<String[]> stoptimeseq = tripStopsTimesMap.get(matchingTripId.get(0));
-			boolean[] sequenceTraversed = new boolean[stoptimeseq.size()];
-			for (int i = startRow; i < matrix.length; i++) {
+			List<String> matchingTripId = new ArrayList<String>();
+			for (String tripId : tripsForRoute) {
+				List<String[]> stopTimes = tripStopsTimesMap.get(tripId);
 
-				if (matrix[i][currentCol] == null || matrix[i][currentCol].isEmpty()
-						|| matrix[i][currentCol].contains("|")) {
-					continue;
-				}
-				if (matrix[i][currentCol].contains("-")) {
-					italics = true;
-					continue;
-				}
-				String timeToCheck = matrix[i][currentCol].replace(".", ":");
-				for (int s = 0; s < stoptimeseq.size(); s++) {
-					if (stoptimeseq.get(s)[1].contains(timeToCheck) && !sequenceTraversed[s]) {
-						if (output[i - numOfHeaders + 1][0].indexOf(";") == -1) {
-							output[i - numOfHeaders + 1][0] = output[i - numOfHeaders + 1][0] + ";"
-									+ stoptimeseq.get(s)[3] + "_" + agencyId;
-							sequenceTraversed[s] = true;
+				if (stopTimes.get(0)[1].contains(startTime) && stopTimes.get(stopTimes.size() - 1)[1].contains(endTime)) {
+
+					if (mergedRoute) {
+						/** first version(trip matching algorithm. **/
+						if (!matchingTripId.contains(tripId)) {
+							matchingTripId.add(tripId);
 							break;
-						} else {
-							String stopName = output[i - numOfHeaders + 1][0].substring(0,
-									output[i - numOfHeaders + 1][0].indexOf(";"));
-							String stopId = "";
-							if (output[i - numOfHeaders + 1][0].contains("~")) {
-								stopId = output[i - numOfHeaders + 1][0].substring(output[i - numOfHeaders + 1][0]
-										.indexOf(";") + 2);
-							} else {
-								stopId = output[i - numOfHeaders + 1][0].substring(output[i - numOfHeaders + 1][0]
-										.indexOf(";") + 1);
+						}
+					} else {
+						/** second version (trip matching algorithm). **/
+						if (matchTrips(matrix, currentCol, tripStartIndex, tripEndIndex, stopTimes)) {
+							if (!matchingTripId.contains(tripId)) {
+								matchingTripId.add(tripId);
 							}
-							if (!stopId.equalsIgnoreCase(stoptimeseq.get(s)[3] + "_" + agencyId)) {
-								System.err.println("anamoly detected for stop id: " + "(" + stopId + ","
-										+ stoptimeseq.get(s)[3] + "_" + agencyId + ")");
-								if (stopId.indexOf(",") != -1) {
-									String[] stops = stopId.split(",");
-									for (String stp : stops) {
-										if (!anamolyStopIdMap.contains(stp)) {
-											anamolyStopIdMap.add(stp);
-											output[i - numOfHeaders + 1][0] = stopName + ";~" + stopId + ","
-													+ stoptimeseq.get(s)[3] + "_" + agencyId;
-										}
-									}
-								} else {
-									output[i - numOfHeaders + 1][0] = stopName + ";~" + stoptimeseq.get(s)[3] + "_"
-											+ agencyId + "," + stopId;
-									anamolyStopIdMap.add(stoptimeseq.get(s)[3] + "_" + agencyId);
-									anamolyStopIdMap.add(stopId);
-								}
-
-							}
-							sequenceTraversed[s] = true;
 							break;
 						}
 					}
+
 				}
 			}
+
+			// fill stops.
+			if (matchingTripId != null && !matchingTripId.isEmpty()) {
+
+				if (matchingTripId.size() == 1) {
+					annotation = matchingTripId.get(0);
+				} else {
+					System.err.println("anamoly- mutliple trips detected");
+					for (String tripId : matchingTripId) {
+						annotation = annotation + "-" + tripId;
+
+					}
+				}
+
+				List<String[]> stoptimeseq = tripStopsTimesMap.get(matchingTripId.get(0));
+				boolean[] sequenceTraversed = new boolean[stoptimeseq.size()];
+				for (int i = startRow; i < matrix.length; i++) {
+
+					if (matrix[i][currentCol] == null || matrix[i][currentCol].isEmpty()
+							|| matrix[i][currentCol].contains("|")) {
+						continue;
+					}
+					if (matrix[i][currentCol].contains("-")) {
+						italics = true;
+						continue;
+					}
+					String timeToCheck = matrix[i][currentCol].replace(".", ":");
+					for (int s = 0; s < stoptimeseq.size(); s++) {
+						if (stoptimeseq.get(s)[1].contains(timeToCheck) && !sequenceTraversed[s]) {
+							if (output[i - numOfHeaders + 1][0].indexOf(";") == -1) {
+								output[i - numOfHeaders + 1][0] = output[i - numOfHeaders + 1][0] + ";"
+										+ stoptimeseq.get(s)[3] + "_" + agencyId;
+								sequenceTraversed[s] = true;
+								break;
+							} else {
+								String stopName = output[i - numOfHeaders + 1][0].substring(0, output[i - numOfHeaders
+										+ 1][0].indexOf(";"));
+								String stopId = "";
+								if (output[i - numOfHeaders + 1][0].contains("~")) {
+									stopId = output[i - numOfHeaders + 1][0].substring(output[i - numOfHeaders + 1][0]
+											.indexOf(";") + 2);
+								} else {
+									stopId = output[i - numOfHeaders + 1][0].substring(output[i - numOfHeaders + 1][0]
+											.indexOf(";") + 1);
+								}
+								if (!stopId.equalsIgnoreCase(stoptimeseq.get(s)[3] + "_" + agencyId)) {
+									System.err.println("anamoly detected for stop id: " + "(" + stopId + ","
+											+ stoptimeseq.get(s)[3] + "_" + agencyId + ")");
+									if (stopId.indexOf(",") != -1) {
+										String[] stops = stopId.split(",");
+										for (String stp : stops) {
+											if (!anamolyStopIdMap.contains(stp)) {
+												anamolyStopIdMap.add(stp);
+												output[i - numOfHeaders + 1][0] = stopName + ";~" + stopId + ","
+														+ stoptimeseq.get(s)[3] + "_" + agencyId;
+											}
+										}
+									} else {
+										output[i - numOfHeaders + 1][0] = stopName + ";~" + stoptimeseq.get(s)[3] + "_"
+												+ agencyId + "," + stopId;
+										anamolyStopIdMap.add(stoptimeseq.get(s)[3] + "_" + agencyId);
+										anamolyStopIdMap.add(stopId);
+									}
+
+								}
+								sequenceTraversed[s] = true;
+								break;
+							}
+						}
+					}
+				}
+			} else {
+				System.err.println("\n\n\n\n\n----- no trip found ----" + matrix[startRow][currentCol]);
+				annotation = "no trip found";
+			}
 		} else {
-			System.err.println("\n\n\n\n\n----- no trip found ----" + matrix[startRow][currentCol]);
-			annotation = "no trip found";
+			System.err.println("\n\n\n\n\n----- no route found ----" + matrix[startRow][currentCol]);
+			annotation = "no route found";
 		}
 
 		// notes(if any).
@@ -307,6 +624,21 @@ public class AnnotatedTTGenerator {
 		}
 
 		return annotation;
+	}
+
+	/**
+	 * Utility method for checking integer
+	 * @param s
+	 * @return
+	 */
+	public static boolean isInteger(String s) {
+		try {
+			Integer.parseInt(s);
+		} catch (NumberFormatException e) {
+			return false;
+		}
+		// only got here if we didn't return false
+		return true;
 	}
 
 	private boolean matchTrips(String[][] matrix, int currentCol, int tripStartIndex, int tripEndIndex,
@@ -372,7 +704,7 @@ public class AnnotatedTTGenerator {
 		String tripFile = pathToGTFS + "trips.txt";
 		String stopFile = pathToGTFS + "stops.txt";
 		String stoptimesTFile = pathToGTFS + "stop_times.txt";
-		HashMap<String, String> stopsMap = new HashMap<String, String>();
+		//		HashMap<String, String> stopsMap = new HashMap<String, String>();
 
 		List<String[]> linesTrip = readFileGetLines(tripFile);
 		List<String[]> linesST = readFileGetLines(stoptimesTFile);
