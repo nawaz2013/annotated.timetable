@@ -93,8 +93,18 @@ public class AnnotatedTTGenerator {
 			File outputDirFile = new File(outputDir);
 			File annotatedCSV = new File(outputDirFile, outputName + "-annotated.csv");
 			Files.asCharSink(annotatedCSV, Charsets.UTF_8).writeLines(annotated);
+			
+			destroy();
 		}
 
+	}
+
+	private void destroy() {
+		anamolyStopIdMap.clear();
+		anomalyStopIds.clear();
+		columnHeaderNotes.clear();
+		columnItalicStopNames.clear();
+		columnTripIdMap.clear();
 	}
 
 	private List<String> convertLines(List<String> lines) throws Exception {
@@ -132,7 +142,7 @@ public class AnnotatedTTGenerator {
 		init(agencyId);
 
 		// annotation process.
-		int noOfOutputRows = (lines.size() * 3 / 2 - numOfHeaders + 1);
+		int noOfOutputRows = (lines.size() * 2 - numOfHeaders + 1);
 		int noOfOutputCols = maxNumberOfCols + 1;
 		String[][] output = new String[noOfOutputRows][noOfOutputCols];
 
@@ -245,16 +255,18 @@ public class AnnotatedTTGenerator {
 		List<String> tripIds = columnTripIdMap.get(col);
 		String annotation = "";
 
-		if (tripIds.size() == 1) {
-			// exact
-			annotation = tripIds.get(0);
+		if (tripIds != null) {
+			if (tripIds.size() == 1) {
+				// exact
+				annotation = tripIds.get(0);
 
-		} else if (tripIds.size() > 1) {
-			// multiple trips.
-			for (String tripId : tripIds) {
-				annotation = annotation + tripId + ",";
+			} else if (tripIds.size() > 1) {
+				// multiple trips.
+				for (String tripId : tripIds) {
+					annotation = annotation + tripId + ",";
+				}
+
 			}
-
 		}
 
 		// additional notes.
@@ -825,15 +837,27 @@ public class AnnotatedTTGenerator {
 
 	public static void main(String[] args) throws Exception {
 		AnnotatedTTGenerator timeTableGenerator = new AnnotatedTTGenerator();
-
-		timeTableGenerator.processFiles("src/test/resources/annotatedtimetable", "12",
-				"src/test/resources/annotatedtimetable/05A-Feriale.csv");
-		timeTableGenerator.processFiles("src/test/resources/annotatedtimetable", "12",
-				"src/test/resources/annotatedtimetable/05A-Festivo.csv");
-		timeTableGenerator.processFiles("src/test/resources/annotatedtimetable", "12",
-				"src/test/resources/annotatedtimetable/05R-Feriale.csv");
-		timeTableGenerator.processFiles("src/test/resources/annotatedtimetable", "12",
-				"src/test/resources/annotatedtimetable/05R-Festivo.csv");
+        File folder = new File("src/test/resources/annotatedtimetable");
+		
+		for (final File fileEntry : folder.listFiles()) {
+	        if (fileEntry.isDirectory() | fileEntry.getName().contains(".json")) {
+	            continue;
+	        } else {
+	            System.out.println("Annotation in process for ->  " + fileEntry.getName());
+	            timeTableGenerator.processFiles("src/test/resources/annotatedtimetable/output", "12",
+	    				"src/test/resources/annotatedtimetable/" + fileEntry.getName());
+	        }
+	    }
+		
+//		timeTableGenerator.processFiles("src/test/resources/annotatedtimetable/output", "12",
+//				"src/test/resources/annotatedtimetable/03A-Feriale.csv");
+//		timeTableGenerator.processFiles("src/test/resources/annotatedtimetable/output", "12",
+//				"src/test/resources/annotatedtimetable/05A-Festivo.csv");
+//		timeTableGenerator.processFiles("src/test/resources/annotatedtimetable/output", "12",
+//				"src/test/resources/annotatedtimetable/05R-Feriale.csv");
+//		timeTableGenerator.processFiles("src/test/resources/annotatedtimetable/output", "12",
+//				"src/test/resources/annotatedtimetable/05R-Festivo.csv");
 
 	}
+	
 }
