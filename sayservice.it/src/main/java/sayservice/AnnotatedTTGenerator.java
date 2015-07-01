@@ -44,8 +44,10 @@ public class AnnotatedTTGenerator {
 	private static final String ITALIC_ENTRY = "italic";
 	private static final String ROUTE_ERROR = "route not found";
 	private static final String TRIP_ERROR = "trip not found";
+	private static final String GTFS_RS_NAME = "GTFS_RS_Name";
 	private static int numOfHeaders = 6;
 	private static final SimpleDateFormat TIME_FORMAT = new SimpleDateFormat("HH:mm");
+
 	private MongoClient mongoClient = null;
 	private DB database = null;
 	private DBCollection collection = null;
@@ -62,6 +64,7 @@ public class AnnotatedTTGenerator {
 	private HashMap<Integer, List<String>> columnHeaderNotes = new HashMap<Integer, List<String>>();
 	private HashMap<Integer, List<String>> columnItalicStopNames = new HashMap<Integer, List<String>>();
 	private HashMap<String, String> stopIdsMap = new HashMap<String, String>();
+	private HashMap<Integer, String> columnGTFSRSName = new HashMap<Integer, String>();
 
 	private List<String[]> routes;
 
@@ -105,6 +108,7 @@ public class AnnotatedTTGenerator {
 		columnHeaderNotes.clear();
 		columnItalicStopNames.clear();
 		columnTripIdMap.clear();
+		columnGTFSRSName.clear();
 	}
 
 	private List<String> convertLines(List<String> lines) throws Exception {
@@ -271,7 +275,7 @@ public class AnnotatedTTGenerator {
 
 		// additional notes.
 		for (String note : columnHeaderNotes.get(col)) {
-			annotation = annotation + note;
+			annotation = annotation + "$" + note;
 		}
 
 		// TODO Auto-generated method stub
@@ -313,7 +317,9 @@ public class AnnotatedTTGenerator {
 				if (matrix[i][currentCol] != null && !matrix[i][currentCol].isEmpty()) {
 					if (matrix[i][currentCol].contains("-")) {
 						italics = true;
-						columnNotes.add(ITALIC_ENTRY);
+						if (!columnNotes.contains(ITALIC_ENTRY)) {
+							columnNotes.add(ITALIC_ENTRY);	
+						}
 						String stopName = matrix[i][0].replaceAll("\\s+", " ").toLowerCase();
 						String time = matrix[i][currentCol];
 						if (!italicStopEntry.contains(stopName + "$" + time)) {
@@ -352,7 +358,14 @@ public class AnnotatedTTGenerator {
 
 			if (matrix[5][currentCol] != null && matrix[5][currentCol].contains("Linea")) {
 				String pdfRouteId = matrix[5][currentCol].substring(matrix[5][currentCol].indexOf('a') + 1);
+				// check if xx/ routeId exist, else look for xx routeId.
 				routeId = getGTFSRouteIdFromRouteShortName(pdfRouteId);
+				if (routeId.isEmpty()) {
+					routeId = getGTFSRouteIdFromRouteShortName(pdfRouteId.substring(0, pdfRouteId.indexOf("/")));
+					if (routeId != null && !routeId.isEmpty()) {
+						columnGTFSRSName.put(currentCol, pdfRouteId.substring(0, pdfRouteId.indexOf("/")));
+					}
+				}
 				mergedRoute = true;
 			} else if (matrix[5][currentCol] != null && isInteger(matrix[5][currentCol])) {
 				String pdfRouteId = matrix[5][currentCol];
@@ -402,6 +415,10 @@ public class AnnotatedTTGenerator {
 				if (matchingTripId != null && !matchingTripId.isEmpty()) {
 
 					columnTripIdMap.put(currentCol, matchingTripId);
+					
+					if (mergedRoute && columnGTFSRSName.containsKey(currentCol)) {
+						columnNotes.add(GTFS_RS_NAME + "=" + columnGTFSRSName.get(currentCol).trim());
+					}
 
 					List<String[]> stoptimeseq = tripStopsTimesMap.get(matchingTripId.get(0));
 					for (int gtfsSeq = 0; gtfsSeq < stoptimeseq.size(); gtfsSeq++) {
@@ -850,7 +867,7 @@ public class AnnotatedTTGenerator {
 	    }
 		
 //		timeTableGenerator.processFiles("src/test/resources/annotatedtimetable/output", "12",
-//				"src/test/resources/annotatedtimetable/03A-Feriale.csv");
+//				"src/test/resources/annotatedtimetable/05A-Feriale.csv");
 //		timeTableGenerator.processFiles("src/test/resources/annotatedtimetable/output", "12",
 //				"src/test/resources/annotatedtimetable/05A-Festivo.csv");
 //		timeTableGenerator.processFiles("src/test/resources/annotatedtimetable/output", "12",

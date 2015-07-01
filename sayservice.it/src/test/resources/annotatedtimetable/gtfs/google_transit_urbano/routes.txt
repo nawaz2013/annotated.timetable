@@ -14,16 +14,6 @@ route_id,agency_id,route_short_name,route_long_name,route_type,route_color,route
 478,12,15,Piazza Dante Interporto Spini Di Gardolo,3,72E006,FFFFFF
 484,12,16,Centochiavi Martignano Cognola Povo,3,3564B1,FFFFFF
 486,12,A,Brione S.Giorgio Lizzana Ossario,3,,
-490,12,2,Costa Corso Rosmini S.Giorgio,3,,
-504,12,N2,Costa Corso Rosmini,3,,
-506,12,N1,Mori Marco Corso Rosmini,3,,
-507,12,N3,P.Le Orsi Volano Castellano,3,,
-510,12,N5,C.So Bettini Isera Nomi,3,,
-511,12,N6,Nomi Besenello V.Cesari,3,,
-512,12,7,Noriglio Rosmini Campana Dei Caduti,3,,
-517,12,4,04 Rosmini Isera Nogaredo Villa Lagarina,3,,
-519,12,3,03 Pedersano Nogaredo Rosmini Lenzima,3,,
-521,12,1,01 Nomi Bettini Ospedale Lizzana Marco,3,,
 531,12,Fu,Funivia Trento Sardagna,5,,
 533,12,C,Rsa "S.Bartolomeo" Rsa "Angeli Custodi",3,000000,FFFFFF
 535,12,5/,P.Dante P.Fiera Università Mesiano Povo,3,,
