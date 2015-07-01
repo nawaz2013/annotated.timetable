@@ -67,6 +67,8 @@ public class AnnotatedTTGenerator {
 
 	private List<String> anamolyStopIdMap = new ArrayList<String>();
 
+	private List<String> anomalyStopIds = new ArrayList<String>();
+
 	public AnnotatedTTGenerator() {
 		try {
 			mongoClient = new MongoClient(new MongoClientURI("mongodb://localhost:27017"));
@@ -168,18 +170,19 @@ public class AnnotatedTTGenerator {
 			if (columnTripIdMap.containsKey(j)) {
 				List<String[]> stoptimeseq = tripStopsTimesMap.get(columnTripIdMap.get(j).get(0));
 				for (int gtfsSeq = 0; gtfsSeq < stoptimeseq.size(); gtfsSeq++) {
-					
+
 					String time = stoptimeseq.get(gtfsSeq)[1];
 					String id = stoptimeseq.get(gtfsSeq)[3];
 					String stopListName = stopsMap.get(id).toLowerCase();
-					output[stops.indexOf(stopListName) + 1][j] = stoptimeseq.get(gtfsSeq)[1].substring(0, time.lastIndexOf(":")); 
+					output[stops.indexOf(stopListName) + 1][j] = stoptimeseq.get(gtfsSeq)[1].substring(0,
+							time.lastIndexOf(":"));
 
 				}
 
 			}
-			
+
 			// fill in italic entries.
-			for(String italicEntry: columnItalicStopNames.get(j)) {
+			for (String italicEntry : columnItalicStopNames.get(j)) {
 				String name = italicEntry.substring(0, italicEntry.indexOf("$"));
 				String time = italicEntry.substring(italicEntry.indexOf("$") + 1);
 				output[stops.indexOf(name) + 1][j] = time;
@@ -196,15 +199,21 @@ public class AnnotatedTTGenerator {
 		}**/
 
 		for (int i = 0; i < stops.size(); i++) {
-			
+
 			if (stopIdsMap.containsKey(stops.get(i))) {
 				String stopId = stopIdsMap.get(stops.get(i));
 				if (stopsMap.containsKey(stopId)) {
-					output[i + 1][0] = stopsMap.get(stopId) + ";" + stopId;	
+					output[i + 1][0] = stopsMap.get(stopId) + ";" + stopId;
+					if (anomalyStopIds.contains(stopId)) {
+						output[i + 1][0] = "*" + output[i + 1][0];
+					}
 				} else {
 					output[i + 1][0] = stops.get(i) + ";" + stopId;
+					if (anomalyStopIds.contains(stopId)) {
+						output[i + 1][0] = "*" + output[i + 1][0];
+					}
 				}
-				
+
 			} else {
 				output[i + 1][0] = stops.get(i) + ";";
 			}
@@ -215,7 +224,7 @@ public class AnnotatedTTGenerator {
 		}
 
 		output = clean(output);
-		
+
 		return output;
 	}
 
@@ -264,7 +273,7 @@ public class AnnotatedTTGenerator {
 		// pdf list of stops.
 		List<String> pdfStopList = new ArrayList<String>();
 		List<Integer> anamolies = null;
-		
+
 		for (int i = 0; i < (matrix.length - numOfHeaders); i++) {
 			pdfStopList.add(matrix[i + numOfHeaders][0]);
 		}
@@ -282,7 +291,7 @@ public class AnnotatedTTGenerator {
 			// additional notes for column map.
 			List<String> columnNotes = new ArrayList<String>();
 			columnHeaderNotes.put(currentCol, columnNotes);
-			
+
 			// column italic stopNames.
 			List<String> italicStopEntry = new ArrayList<String>();
 			columnItalicStopNames.put(currentCol, italicStopEntry);
@@ -454,6 +463,7 @@ public class AnnotatedTTGenerator {
 						stopList.add(insertIndex, stopsMap.get(stoptimeseq.get(anamoly)[3]));
 						stopIdsMap.put(stopsMap.get(stoptimeseq.get(anamoly)[3]).toLowerCase(),
 								stoptimeseq.get(anamoly)[3]);
+						anomalyStopIds .add(stoptimeseq.get(anamoly)[3]);
 					}
 				}
 			}
