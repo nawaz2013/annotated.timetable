@@ -196,8 +196,15 @@ public class AnnotatedTTGenerator {
 		}**/
 
 		for (int i = 0; i < stops.size(); i++) {
+			
 			if (stopIdsMap.containsKey(stops.get(i))) {
-				output[i + 1][0] = stops.get(i) + ";" + stopIdsMap.get(stops.get(i));
+				String stopId = stopIdsMap.get(stops.get(i));
+				if (stopsMap.containsKey(stopId)) {
+					output[i + 1][0] = stopsMap.get(stopId) + ";" + stopId;	
+				} else {
+					output[i + 1][0] = stops.get(i) + ";" + stopId;
+				}
+				
 			} else {
 				output[i + 1][0] = stops.get(i) + ";";
 			}
@@ -207,7 +214,21 @@ public class AnnotatedTTGenerator {
 			output[0][col] = fillHeaderAnnotation(stops, col);
 		}
 
+		output = clean(output);
+		
 		return output;
+	}
+
+	public static String[][] clean(String[][] array) {
+		for (int i = 0; i < array.length; i++) {
+			String[] inner = array[i];
+			for (int j = 0; j < inner.length - 1; j++) {
+				if (inner[j] == null) {
+					inner[j] = "";
+				}
+			}
+		}
+		return array;
 	}
 
 	private String fillHeaderAnnotation(List<String> stops, int col) {
