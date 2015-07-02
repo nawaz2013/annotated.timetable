@@ -187,14 +187,29 @@ public class AnnotatedTTGenerator {
 		for (int j = 1; j < noOfOutputCols - 1; j++) {
 			if (columnTripIdMap.containsKey(j)) {
 				List<String[]> stoptimeseq = tripStopsTimesMap.get(columnTripIdMap.get(j).get(0));
+				boolean traversed[] = new boolean[stops.size()];
 				for (int gtfsSeq = 0; gtfsSeq < stoptimeseq.size(); gtfsSeq++) {
 
 					String time = stoptimeseq.get(gtfsSeq)[1];
 					String id = stoptimeseq.get(gtfsSeq)[3];
 					String stopListName = stopsMap.get(id).toLowerCase();
-					output[stops.indexOf(stopListName) + 1][j] = stoptimeseq.get(gtfsSeq)[1].substring(0,
-							time.lastIndexOf(":"));
-
+					/** logic for handling cyclic trips for e.g. A_C festivo.**/
+					int foundIndex = -1;
+					for (int i = 0; i < stops.size(); i++) {
+						if (stops.get(i).equals(stopListName) && !traversed[i]) {
+							foundIndex = i;
+							break;
+						}
+					}
+					if (foundIndex > -1) {
+						output[foundIndex + 1][j] = stoptimeseq.get(gtfsSeq)[1].substring(0,
+								time.lastIndexOf(":"));	
+						traversed[foundIndex] = true;
+					}
+					
+					/** else simply following code works. **/
+					/*output[stops.indexOf(stopListName) + 1][j] = stoptimeseq.get(gtfsSeq)[1].substring(0,
+							time.lastIndexOf(":"));*/
 				}
 
 			}
@@ -720,8 +735,11 @@ public class AnnotatedTTGenerator {
 			/** to make sure if sequence time checked once. **/
 			boolean[] tripSequence = new boolean[stopTimes.size()];
 
+			/** very important (pdf seems to contain time mapped to departure time in stoptimes.txt.)
+			 *  stopTimes.get(s)[2] departure time.
+			 *  stopTimes.get(s)[1] arrival time.**/
 			for (int s = 0; s < stopTimes.size(); s++) {
-				if (stopTimes.get(s)[1].contains(timeToCheck) && !tripSequence[s]) {
+				if (stopTimes.get(s)[2].contains(timeToCheck) && !tripSequence[s]) {
 					found = true;
 					tripSequence[s] = true;
 					break;
@@ -729,6 +747,8 @@ public class AnnotatedTTGenerator {
 
 			}
 			if (!found) {
+				System.err.println("probably misaligned GTFS time, compare tripId: " + stopTimes.get(0)[0]
+						+ " times with PDF");
 				return false;
 			}
 		}
@@ -869,7 +889,7 @@ public class AnnotatedTTGenerator {
 			}
 		}
 
-//		timeTableGenerator.processFiles(pathToOutput, "12", pathToInput + "05A-Feriale.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "12", pathToInput + "11A-Feriale.csv");
 //		timeTableGenerator.processFiles(pathToOutput, "12", pathToInput + "05A-Festivo.csv");
 //		timeTableGenerator.processFiles(pathToOutput, "12", pathToInput + "05R-Feriale.csv");
 //		timeTableGenerator.processFiles(pathToOutput, "12", pathToInput + "05R-Festivo.csv");
