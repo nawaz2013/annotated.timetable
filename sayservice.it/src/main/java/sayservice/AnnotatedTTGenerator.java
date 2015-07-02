@@ -38,7 +38,11 @@ import com.sun.xml.internal.bind.v2.schemagen.xmlschema.NoFixedFacet;
 public class AnnotatedTTGenerator {
 
 	// input GTFS.
-	private String pathToGTFS = "src/test/resources/annotatedtimetable/gtfs/google_transit_urbano/";
+	private static final String pathToGTFS = "src/test/resources/gtfs/12/";
+	// output folder.
+	private static final String pathToOutput = "src/test/resources/annotatedtimetable/";
+	// input folder.
+	private static final String pathToInput = "src/test/resources/inputtimetable/12/";
 
 	private static final String UTF8_BOM = "\uFEFF";
 	private static final String ITALIC_ENTRY = "italic";
@@ -96,7 +100,7 @@ public class AnnotatedTTGenerator {
 			File outputDirFile = new File(outputDir);
 			File annotatedCSV = new File(outputDirFile, outputName + "-annotated.csv");
 			Files.asCharSink(annotatedCSV, Charsets.UTF_8).writeLines(annotated);
-			
+
 			destroy();
 		}
 
@@ -318,7 +322,7 @@ public class AnnotatedTTGenerator {
 					if (matrix[i][currentCol].contains("-")) {
 						italics = true;
 						if (!columnNotes.contains(ITALIC_ENTRY)) {
-							columnNotes.add(ITALIC_ENTRY);	
+							columnNotes.add(ITALIC_ENTRY);
 						}
 						String stopName = matrix[i][0].replaceAll("\\s+", " ").toLowerCase();
 						String time = matrix[i][currentCol];
@@ -415,7 +419,7 @@ public class AnnotatedTTGenerator {
 				if (matchingTripId != null && !matchingTripId.isEmpty()) {
 
 					columnTripIdMap.put(currentCol, matchingTripId);
-					
+
 					if (mergedRoute && columnGTFSRSName.containsKey(currentCol)) {
 						columnNotes.add(GTFS_RS_NAME + "=" + columnGTFSRSName.get(currentCol).trim());
 					}
@@ -492,7 +496,7 @@ public class AnnotatedTTGenerator {
 						stopList.add(insertIndex, stopsMap.get(stoptimeseq.get(anamoly)[3]));
 						stopIdsMap.put(stopsMap.get(stoptimeseq.get(anamoly)[3]).toLowerCase(),
 								stoptimeseq.get(anamoly)[3]);
-						anomalyStopIds .add(stoptimeseq.get(anamoly)[3]);
+						anomalyStopIds.add(stoptimeseq.get(anamoly)[3]);
 					}
 				}
 			}
@@ -854,27 +858,22 @@ public class AnnotatedTTGenerator {
 
 	public static void main(String[] args) throws Exception {
 		AnnotatedTTGenerator timeTableGenerator = new AnnotatedTTGenerator();
-        File folder = new File("src/test/resources/annotatedtimetable");
-		
+		File folder = new File(pathToInput);
+
 		for (final File fileEntry : folder.listFiles()) {
-	        if (fileEntry.isDirectory() | fileEntry.getName().contains(".json")) {
-	            continue;
-	        } else {
-	            System.out.println("Annotation in process for ->  " + fileEntry.getName());
-	            timeTableGenerator.processFiles("src/test/resources/annotatedtimetable/output", "12",
-	    				"src/test/resources/annotatedtimetable/" + fileEntry.getName());
-	        }
-	    }
-		
-//		timeTableGenerator.processFiles("src/test/resources/annotatedtimetable/output", "12",
-//				"src/test/resources/annotatedtimetable/05A-Feriale.csv");
-//		timeTableGenerator.processFiles("src/test/resources/annotatedtimetable/output", "12",
-//				"src/test/resources/annotatedtimetable/05A-Festivo.csv");
-//		timeTableGenerator.processFiles("src/test/resources/annotatedtimetable/output", "12",
-//				"src/test/resources/annotatedtimetable/05R-Feriale.csv");
-//		timeTableGenerator.processFiles("src/test/resources/annotatedtimetable/output", "12",
-//				"src/test/resources/annotatedtimetable/05R-Festivo.csv");
+			if (fileEntry.isDirectory() | fileEntry.getName().contains(".json")) {
+				continue;
+			} else {
+				System.out.println("Annotation in process for ->  " + fileEntry.getName());
+				timeTableGenerator.processFiles(pathToOutput, "12", pathToInput + fileEntry.getName());
+			}
+		}
+
+//		timeTableGenerator.processFiles(pathToOutput, "12", pathToInput + "05A-Feriale.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "12", pathToInput + "05A-Festivo.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "12", pathToInput + "05R-Feriale.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "12", pathToInput + "05R-Festivo.csv");
 
 	}
-	
+
 }
