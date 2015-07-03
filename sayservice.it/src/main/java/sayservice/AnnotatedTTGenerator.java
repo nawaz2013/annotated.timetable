@@ -33,19 +33,21 @@ public class AnnotatedTTGenerator {
 
 	// statistics details.
 	private static boolean stats = true;
-	
+	// deep search mode.
+	private static boolean deepMode = false;
+
 	// input GTFS.
 	private static final String pathToGTFS = "src/test/resources/gtfs/12/";
-//	private static final String pathToGTFS = "src/test/resources/gtfs/16/";
-//	private static final String pathToGTFS = "src/test/resources/gtfs/17/";
+	//	private static final String pathToGTFS = "src/test/resources/gtfs/16/";
+	//	private static final String pathToGTFS = "src/test/resources/gtfs/17/";
 	// output folder.
 	private static final String pathToOutput = "src/test/resources/annotatedtimetable/12/";
-//	private static final String pathToOutput = "src/test/resources/annotatedtimetable/16";
-//	private static final String pathToOutput = "src/test/resources/annotatedtimetable/17";
+	//	private static final String pathToOutput = "src/test/resources/annotatedtimetable/16/";
+	//	private static final String pathToOutput = "src/test/resources/annotatedtimetable/17/";
 	// input folder.
 	private static final String pathToInput = "src/test/resources/inputtimetable/12/";
-//	private static final String pathToInput = "src/test/resources/inputtimetable/16/";
-//	private static final String pathToInput = "src/test/resources/inputtimetable/17/";
+	//	private static final String pathToInput = "src/test/resources/inputtimetable/16/";
+	//	private static final String pathToInput = "src/test/resources/inputtimetable/17/";
 
 	private static final String UTF8_BOM = "\uFEFF";
 	private static final String ITALIC_ENTRY = "italic";
@@ -78,19 +80,24 @@ public class AnnotatedTTGenerator {
 	private List<String> anamolyStopIdMap = new ArrayList<String>();
 
 	private List<String> anomalyStopIds = new ArrayList<String>();
-	
+
 	// stats variables.
-	private static double successMatch = 0;
 	private static double failedMatch = 0;
+	private static double successMatch = 0;
 	private static Map<String, String> fileColumnMismatchMap = new HashMap<String, String>();
+	private static List<String> agencyRoutesList = new ArrayList<String>();
+	private static List<String> matchedTripIds = new ArrayList<String>();
+	private static List<String> gtfsTripIds = new ArrayList<String>();
+
 	String mismatchColIds = "";
 
-	public AnnotatedTTGenerator() {
+	public AnnotatedTTGenerator() throws IOException {
 		try {
 			mongoClient = new MongoClient(new MongoClientURI("mongodb://localhost:27017"));
 			database = mongoClient.getDB("smart-planner-15x");
 			collection = database.getCollection("stops");
 			mapper.configure(Feature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+			init(agencyId);
 
 		} catch (UnknownHostException e) {
 			// TODO Auto-generated catch block
@@ -111,7 +118,7 @@ public class AnnotatedTTGenerator {
 			}
 			File annotatedCSV = new File(outputDirFile, outputName + "-annotated.csv");
 			Files.asCharSink(annotatedCSV, Charsets.UTF_8).writeLines(annotated);
-			
+
 			fileColumnMismatchMap.put(outputName + "-annotated.csv", mismatchColIds);
 			destroy();
 		}
@@ -119,7 +126,7 @@ public class AnnotatedTTGenerator {
 	}
 
 	private void destroy() {
-	
+
 		anamolyStopIdMap.clear();
 		anomalyStopIds.clear();
 		columnHeaderNotes.clear();
@@ -127,7 +134,7 @@ public class AnnotatedTTGenerator {
 		columnTripIdMap.clear();
 		columnGTFSRSName.clear();
 		mismatchColIds = "";
-		
+
 	}
 
 	private List<String> convertLines(List<String> lines) throws Exception {
@@ -160,8 +167,8 @@ public class AnnotatedTTGenerator {
 			} else {
 				tableString = table[i][0];
 			}
-			
-//			String[] colValues = table[i][0].split(";");
+
+			//			String[] colValues = table[i][0].split(";");
 			String[] colValues = tableString.split(";");
 			for (int j = 0; j < colValues.length; j++) {
 				matrix[i][j] = colValues[j];
@@ -172,7 +179,7 @@ public class AnnotatedTTGenerator {
 		// extract GTFS information and structures.
 		routeShortName = matrix[0][1];
 		agencyId = "12"; // ?? to be put inside csv matrix[0][2].
-		init(agencyId);
+//		init(agencyId);
 
 		// annotation process.
 		int noOfOutputCols = maxNumberOfCols + 1;
@@ -203,12 +210,12 @@ public class AnnotatedTTGenerator {
 
 		// create list of stops taking in to consideration GTFS data.
 		List<String> stops = processStops(matrix, numOfHeaders, noOfOutputCols - 1);
-		
+
 		int noOfOutputRows = (stops.size() + 1);
 		String[][] output = new String[noOfOutputRows][noOfOutputCols];
 		// stops column.
 		output[0][0] = "stops;stop_id";
-				
+
 		for (int j = 1; j < noOfOutputCols - 1; j++) {
 			if (columnTripIdMap.containsKey(j)) {
 				List<String[]> stoptimeseq = tripStopsTimesMap.get(columnTripIdMap.get(j).get(0));
@@ -227,11 +234,10 @@ public class AnnotatedTTGenerator {
 						}
 					}
 					if (foundIndex > -1) {
-						output[foundIndex + 1][j] = stoptimeseq.get(gtfsSeq)[1].substring(0,
-								time.lastIndexOf(":"));	
+						output[foundIndex + 1][j] = stoptimeseq.get(gtfsSeq)[1].substring(0, time.lastIndexOf(":"));
 						traversed[foundIndex] = true;
 					}
-					
+
 					/** else simply following code works. **/
 					/*output[stops.indexOf(stopListName) + 1][j] = stoptimeseq.get(gtfsSeq)[1].substring(0,
 							time.lastIndexOf(":"));*/
@@ -459,8 +465,11 @@ public class AnnotatedTTGenerator {
 
 				// prepare stops list.
 				if (matchingTripId != null && !matchingTripId.isEmpty()) {
-					
-					successMatch++;
+
+					if (!matchedTripIds.contains(matchingTripId.get(0))) {
+						matchedTripIds.add(matchingTripId.get(0));
+						successMatch++;
+					}
 
 					columnTripIdMap.put(currentCol, matchingTripId);
 
@@ -826,6 +835,12 @@ public class AnnotatedTTGenerator {
 		List<String[]> stops = readFileGetLines(stopFile);
 		routes = readFileGetLines(routeFile);
 
+		for (String[] words : routes) {
+			if (!agencyRoutesList.contains(words[0]) & !(words[0].equalsIgnoreCase("route_id"))) {
+				agencyRoutesList.add(words[0]);
+			}
+		}
+
 		for (int i = 0; i < stops.size(); i++) {
 			String stopId = stops.get(i)[0];
 			if (!stopsMap.containsKey(stops.get(i)[0])) {
@@ -844,12 +859,17 @@ public class AnnotatedTTGenerator {
 		}
 
 		for (int i = 0; i < linesTrip.size(); i++) {
-			List<String> list = routeTripsMap.get(linesTrip.get(i)[0]);
-			if (list == null) {
-				list = new ArrayList<String>();
-				routeTripsMap.put(linesTrip.get(i)[0], list);
+			if (agencyRoutesList.contains(linesTrip.get(i)[0])) {
+				List<String> list = routeTripsMap.get(linesTrip.get(i)[0]);
+				if (list == null) {
+					list = new ArrayList<String>();
+					routeTripsMap.put(linesTrip.get(i)[0], list);
+				}
+				list.add(linesTrip.get(i)[2]);
+				if (!gtfsTripIds.contains(linesTrip.get(i)[2])) {
+					gtfsTripIds.add(linesTrip.get(i)[2]);
+				}
 			}
-			list.add(linesTrip.get(i)[2]);
 		}
 
 	}
@@ -907,26 +927,182 @@ public class AnnotatedTTGenerator {
 		return routeId;
 	}
 
-	public static void main(String[] args) throws Exception {
-		AnnotatedTTGenerator timeTableGenerator = new AnnotatedTTGenerator();
-		File folder = new File(pathToInput);
-
-		for (final File fileEntry : folder.listFiles()) {
-			if (fileEntry.isDirectory() | fileEntry.getName().contains(".json")) {
-				continue;
-			} else {
-				System.out.println("Annotation in process for ->  " + fileEntry.getName());
-				timeTableGenerator.processFiles(pathToOutput, "12", pathToInput + fileEntry.getName());
+	private void deepFixMode() throws IOException {
+		List<String> annotated = new ArrayList<String>();
+		for (String fileName : fileColumnMismatchMap.keySet()) {
+			if (!fileColumnMismatchMap.get(fileName).equalsIgnoreCase("")) {
+				String fileInputName = fileName.substring(0, fileName.indexOf("-annotated"));
+				String columnsToFix = fileColumnMismatchMap.get(fileName);
+				File fileInput = new File(pathToInput + fileInputName + ".csv");
+				File generatedCSV = new File(pathToOutput + fileName);
+				List<String> lines = Files.asCharSource(fileInput, Charsets.UTF_8).readLines();
+				annotated.addAll(deepConvertLines(lines, columnsToFix, generatedCSV));
+				File annotatedCSV = new File(pathToOutput, fileName);
+				Files.asCharSink(annotatedCSV, Charsets.UTF_8).writeLines(annotated);
 			}
 		}
 
-//		timeTableGenerator.processFiles(pathToOutput, "12", pathToInput + "11A-Feriale.csv");
-//		timeTableGenerator.processFiles(pathToOutput, "12", pathToInput + "05A-Festivo.csv");
-//		timeTableGenerator.processFiles(pathToOutput, "12", pathToInput + "05R-Feriale.csv");
-//		timeTableGenerator.processFiles(pathToOutput, "12", pathToInput + "05R-Festivo.csv");
+	}
 
-		
-		if (stats ) {
+	private List<String> deepConvertLines(List<String> lines, String columnsToFix, File generatedCSV)
+			throws IOException {
+
+		List<String> converted = new ArrayList<String>();
+		/** read as table. **/
+		String[][] table = new String[lines.size()][];
+		int maxNumberOfCols = 0;
+		for (int i = 0; i < lines.size(); i++) {
+			table[i] = StringUtils.commaDelimitedListToStringArray(lines.get(i));
+			if (table[i][0].split(";").length > maxNumberOfCols) {
+				/** max number of possible columns. **/
+				maxNumberOfCols = table[i][0].split(";").length;
+			}
+		}
+
+		/** create local copy of table as string[][] matrix. **/
+		String[][] matrixInput = new String[lines.size()][maxNumberOfCols + 1];
+		for (int i = 0; i < lines.size(); i++) {
+			String tableString = "";
+			if (table[i].length > 1) {
+				for (int j = 0; j < table[i].length; j++) {
+					tableString = tableString + table[i][j];
+				}
+			} else {
+				tableString = table[i][0];
+			}
+			String[] colValues = tableString.split(";");
+			for (int j = 0; j < colValues.length; j++) {
+				matrixInput[i][j] = colValues[j];
+			}
+		}
+
+		List<String> stepOneOutputLines = Files.asCharSource(generatedCSV, Charsets.UTF_8).readLines();
+		/** read as table. **/
+		String[][] generatedTable = new String[stepOneOutputLines.size()][];
+		for (int i = 0; i < lines.size(); i++) {
+			generatedTable[i] = StringUtils.commaDelimitedListToStringArray(stepOneOutputLines.get(i));
+		}
+
+		/** create local copy of table as string[][] matrix. **/
+		String[][] stepOneOutputMatrix = new String[lines.size()][maxNumberOfCols + 1];
+		for (int i = 0; i < lines.size(); i++) {
+			String tableString = "";
+			if (generatedTable[i].length > 1) {
+				for (int j = 0; j < generatedTable[i].length; j++) {
+					tableString = tableString + generatedTable[i][j];
+				}
+			} else {
+				tableString = table[i][0];
+			}
+			String[] colValues = tableString.split(";");
+			for (int j = 0; j < colValues.length; j++) {
+				stepOneOutputMatrix[i][j] = colValues[j];
+			}
+		}
+
+		// fix columns.
+		String[] noOfcols = columnsToFix.split(",");
+		for (int c = 0; c < noOfcols.length; c++) {
+			if (noOfcols[c] != null && !noOfcols[c].isEmpty() && isInteger(noOfcols[c])) {
+				String annotation = processColumn(matrixInput, Integer.valueOf(noOfcols[c]), numOfHeaders);
+				if (annotation != null && !annotation.isEmpty()) {
+					stepOneOutputMatrix[numOfHeaders][c] = annotation;
+				}
+			}
+		}
+
+		return converted;
+
+	}
+
+	private String processColumn(String[][] matrix, int currentCol, int startRow) {
+
+		String annotation = "";
+		boolean italics = false;
+		// mapping to input csv (addition of stopId column)
+		int colInPdf = currentCol - 2;
+
+		System.out.println(matrix[numOfHeaders][colInPdf]);
+
+		routeId = getGTFSRouteIdFromRouteShortName(routeShortName);
+
+		if (matrix[5][colInPdf] != null && matrix[5][colInPdf].contains("Linea")) {
+			String pdfRouteId = matrix[5][currentCol].substring(matrix[5][colInPdf].indexOf('a') + 1);
+			routeId = getGTFSRouteIdFromRouteShortName(pdfRouteId);
+		} else if (matrix[5][currentCol] != null && isInteger(matrix[5][currentCol])) {
+			String pdfRouteId = matrix[5][currentCol];
+			routeId = getGTFSRouteIdFromRouteShortName(pdfRouteId);
+		}
+
+		// validate trip with GTFS.
+		boolean[] toBeCheckTimeIndex = new boolean[matrix.length];
+
+		for (int i = startRow; i < matrix.length; i++) {
+
+			if (matrix[i][colInPdf] != null && !matrix[i][currentCol].isEmpty()) {
+				if (matrix[i][colInPdf].contains("-")) {
+					italics = true;
+					continue;
+				}
+				toBeCheckTimeIndex[i] = true;
+				break;
+			}
+		}
+
+		if (routeId != null && !routeId.isEmpty()) {
+
+			List<String> tripsForRoute = routeTripsMap.get(routeId);
+
+			if (tripsForRoute.isEmpty()) {
+				annotation = "no route found";
+				return annotation;
+			}
+
+			List<String> matchingTripId = new ArrayList<String>();
+
+			boolean foundTrip = false;
+			for (String tripId : tripsForRoute) {
+				List<String[]> stopTimes = tripStopsTimesMap.get(tripId);
+
+				boolean foundPdfTime = false;
+				for (int t = 0; t < toBeCheckTimeIndex.length; t++) {
+					if (toBeCheckTimeIndex[t]) {
+						String timeToCheck = matrix[t][colInPdf].replace(".", ":");
+						System.out.println("check all trips for" + matrix[t][colInPdf]);
+						for (int s = 0; s < stopTimes.size(); s++) {
+							if (stopTimes.get(s)[2].contains(timeToCheck)) {
+								foundPdfTime = true;
+								break;
+							}
+						}
+						if (!foundPdfTime) {
+							break;
+						}
+					}
+				}
+
+				if (!foundTrip) {
+					System.err.println("\n\n\n\n\n----- no trip found ----" + matrix[startRow][currentCol]);
+					annotation = "no trip found";
+				}
+
+			}
+		} else {
+			System.err.println("\n\n\n\n\n----- no route found ----" + matrix[startRow][currentCol]);
+			annotation = "no route found";
+		}
+
+		// notes(if any).
+		if (italics) {
+			annotation = annotation + " * italic entry found.";
+		}
+
+		return annotation;
+	}
+
+	private void printStats() {
+		// TODO Auto-generated method stub
+		if (stats) {
 			System.out.println("\n\n\n\n");
 			System.out.println("---------- WARNINGS ----------");
 			for (String fileName : fileColumnMismatchMap.keySet()) {
@@ -940,13 +1116,57 @@ public class AnnotatedTTGenerator {
 			System.out.println("-----------------------------");
 			System.out.println("\n\n\n\n");
 			//stats.
-			System.out.println("%%%%%%%%%% STATS %%%%%%%%%%");
+			System.out.println("%%%%%%%%%% RUN STATS %%%%%%%%%%");
 			System.out.println("successful matches: " + successMatch);
 			System.out.println("failed matches: " + failedMatch);
-			System.out.println("success rate: " + (successMatch / (successMatch + failedMatch)) * 100);
-			System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%");
-
+			System.out.println("success rate: " +  (successMatch / (successMatch + failedMatch)) * 100);
+			System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
+			System.out.println("\n\n\n\n");
+			System.out.println("%%%%%%%%%% OVERALL STATS %%%%%%%%%%");
+			System.out.println("total number of GTFS trips for routes: " + gtfsTripIds.size());
+			System.out.println("total number of matched trips for routes: " + matchedTripIds.size());
+			System.out.println("coverage : " +  (Double.valueOf(matchedTripIds.size()) / Double.valueOf(gtfsTripIds.size())) * 100);
+			System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
+			System.out.println("\n\n\n\n");
+			gtfsTripIds.removeAll(matchedTripIds);
+			System.out.println("Trips Delta");
+			for (String tripId: gtfsTripIds) {
+				System.out.println(tripId);
+			}
+			
 		}
+	}
+
+	public static void main(String[] args) throws Exception {
+		AnnotatedTTGenerator timeTableGenerator = new AnnotatedTTGenerator();
+		File folder = new File(pathToInput);
+
+		for (final File fileEntry : folder.listFiles()) {
+			if (fileEntry.isDirectory() | fileEntry.getName().contains(".json")) {
+				continue;
+			} else {
+				System.out.println("Annotation in process for ->  " + fileEntry.getName());
+				timeTableGenerator.processFiles(pathToOutput, "12", pathToInput + fileEntry.getName());
+			}
+		}
+
+		//		timeTableGenerator.processFiles(pathToOutput, "12", pathToInput + "%20A_C-Feriale.csv");
+		//		timeTableGenerator.processFiles(pathToOutput, "12", pathToInput + "05A-Festivo.csv");
+		//		timeTableGenerator.processFiles(pathToOutput, "12", pathToInput + "05R-Feriale.csv");
+		//		timeTableGenerator.processFiles(pathToOutput, "12", pathToInput + "05R-Festivo.csv");
+
+		timeTableGenerator.printStats();
+
+		// hard fix mode.
+		if (deepMode) {
+
+			timeTableGenerator.deepFixMode();
+
+			timeTableGenerator.destroy();
+
+			timeTableGenerator.printStats();
+		}
+
 	}
 
 }

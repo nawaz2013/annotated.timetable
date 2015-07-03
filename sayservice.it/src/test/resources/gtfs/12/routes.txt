@@ -13,7 +13,6 @@ route_id,agency_id,route_short_name,route_long_name,route_type,route_color,route
 466,12,13,P.Dante Rosmini S.Rocco Povo Polo Soc.,3,BF6092,000000
 478,12,15,Piazza Dante Interporto Spini Di Gardolo,3,72E006,FFFFFF
 484,12,16,Centochiavi Martignano Cognola Povo,3,3564B1,FFFFFF
-531,12,Fu,Funivia Trento Sardagna,5,,
 533,12,C,Rsa "S.Bartolomeo" Rsa "Angeli Custodi",3,000000,FFFFFF
 535,12,5/,P.Dante P.Fiera Università Mesiano Povo,3,,
 536,12,1,Ospedale P.Dante Sopramonte,3,1D3F72,FFFFFF
