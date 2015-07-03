@@ -37,6 +37,9 @@ import com.sun.xml.internal.bind.v2.schemagen.xmlschema.NoFixedFacet;
 
 public class AnnotatedTTGenerator {
 
+	// statistics details.
+	private static boolean stats = true;
+	
 	// input GTFS.
 	private static final String pathToGTFS = "src/test/resources/gtfs/12/";
 	// output folder.
@@ -75,6 +78,12 @@ public class AnnotatedTTGenerator {
 	private List<String> anamolyStopIdMap = new ArrayList<String>();
 
 	private List<String> anomalyStopIds = new ArrayList<String>();
+	
+	// stats variables.
+	private static double successMatch = 0;
+	private static double failedMatch = 0;
+	private static Map<String, String> fileColumnMismatchMap = new HashMap<String, String>();
+	String mismatchColIds = "";
 
 	public AnnotatedTTGenerator() {
 		try {
@@ -93,26 +102,29 @@ public class AnnotatedTTGenerator {
 		List<String> annotated = new ArrayList<String>();
 		for (String filename : files) {
 			String outputName = filename.substring(filename.lastIndexOf("/") + 1, filename.lastIndexOf("."));
-
 			File file = new File(filename);
 			List<String> lines = Files.asCharSource(file, Charsets.UTF_8).readLines();
 			annotated.addAll(convertLines(lines));
 			File outputDirFile = new File(outputDir);
 			File annotatedCSV = new File(outputDirFile, outputName + "-annotated.csv");
 			Files.asCharSink(annotatedCSV, Charsets.UTF_8).writeLines(annotated);
-
+			
+			fileColumnMismatchMap.put(outputName + "-annotated.csv", mismatchColIds);
 			destroy();
 		}
 
 	}
 
 	private void destroy() {
+	
 		anamolyStopIdMap.clear();
 		anomalyStopIds.clear();
 		columnHeaderNotes.clear();
 		columnItalicStopNames.clear();
 		columnTripIdMap.clear();
 		columnGTFSRSName.clear();
+		mismatchColIds = "";
+		
 	}
 
 	private List<String> convertLines(List<String> lines) throws Exception {
@@ -402,6 +414,8 @@ public class AnnotatedTTGenerator {
 				if (tripsForRoute.isEmpty()) {
 					System.err.println("no route found");
 					columnNotes.add(ROUTE_ERROR);
+					failedMatch++;
+					mismatchColIds = mismatchColIds + (currentCol + 2) + ",";
 				}
 
 				List<String> matchingTripId = new ArrayList<String>();
@@ -432,6 +446,8 @@ public class AnnotatedTTGenerator {
 
 				// prepare stops list.
 				if (matchingTripId != null && !matchingTripId.isEmpty()) {
+					
+					successMatch++;
 
 					columnTripIdMap.put(currentCol, matchingTripId);
 
@@ -481,6 +497,8 @@ public class AnnotatedTTGenerator {
 				} else {
 					System.err.println("\n\n\n\n\n----- no trip found ----" + matrix[startRow][currentCol]);
 					columnNotes.add(TRIP_ERROR);
+					failedMatch++;
+					mismatchColIds = mismatchColIds + (currentCol + 2) + ",";
 
 				}
 
@@ -894,6 +912,28 @@ public class AnnotatedTTGenerator {
 //		timeTableGenerator.processFiles(pathToOutput, "12", pathToInput + "05R-Feriale.csv");
 //		timeTableGenerator.processFiles(pathToOutput, "12", pathToInput + "05R-Festivo.csv");
 
+		
+		if (stats ) {
+			System.out.println("\n\n\n\n");
+			System.out.println("---------- WARNINGS ----------");
+			for (String fileName : fileColumnMismatchMap.keySet()) {
+
+				if (!fileColumnMismatchMap.get(fileName).equalsIgnoreCase("")) {
+					System.out.println("check pdf " + fileName + " for columns " + fileColumnMismatchMap.get(fileName));
+				}
+
+			}
+
+			System.out.println("-----------------------------");
+			System.out.println("\n\n\n\n");
+			//stats.
+			System.out.println("%%%%%%%%%% STATS %%%%%%%%%%");
+			System.out.println("successful matches: " + successMatch);
+			System.out.println("failed matches: " + failedMatch);
+			System.out.println("success rate: " + (successMatch / (successMatch + failedMatch)) * 100);
+			System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%");
+
+		}
 	}
 
 }
