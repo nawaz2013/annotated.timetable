@@ -7,23 +7,18 @@ import java.net.UnknownHostException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
-import org.bson.BasicBSONObject;
 import org.codehaus.jackson.map.DeserializationConfig.Feature;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.util.StringUtils;
 
 import com.google.common.base.Charsets;
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 import com.google.common.io.Files;
 import com.google.gdata.util.io.base.UnicodeReader;
 import com.mongodb.BasicDBObject;
@@ -33,7 +28,6 @@ import com.mongodb.DBCursor;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
 import com.mongodb.QueryBuilder;
-import com.sun.xml.internal.bind.v2.schemagen.xmlschema.NoFixedFacet;
 
 public class AnnotatedTTGenerator {
 
@@ -42,10 +36,16 @@ public class AnnotatedTTGenerator {
 	
 	// input GTFS.
 	private static final String pathToGTFS = "src/test/resources/gtfs/12/";
+//	private static final String pathToGTFS = "src/test/resources/gtfs/16/";
+//	private static final String pathToGTFS = "src/test/resources/gtfs/17/";
 	// output folder.
-	private static final String pathToOutput = "src/test/resources/annotatedtimetable/";
+	private static final String pathToOutput = "src/test/resources/annotatedtimetable/12/";
+//	private static final String pathToOutput = "src/test/resources/annotatedtimetable/16";
+//	private static final String pathToOutput = "src/test/resources/annotatedtimetable/17";
 	// input folder.
 	private static final String pathToInput = "src/test/resources/inputtimetable/12/";
+//	private static final String pathToInput = "src/test/resources/inputtimetable/16/";
+//	private static final String pathToInput = "src/test/resources/inputtimetable/17/";
 
 	private static final String UTF8_BOM = "\uFEFF";
 	private static final String ITALIC_ENTRY = "italic";
@@ -106,6 +106,9 @@ public class AnnotatedTTGenerator {
 			List<String> lines = Files.asCharSource(file, Charsets.UTF_8).readLines();
 			annotated.addAll(convertLines(lines));
 			File outputDirFile = new File(outputDir);
+			if (!outputDirFile.exists()) {
+				outputDirFile.mkdir();
+			}
 			File annotatedCSV = new File(outputDirFile, outputName + "-annotated.csv");
 			Files.asCharSink(annotatedCSV, Charsets.UTF_8).writeLines(annotated);
 			
@@ -162,14 +165,11 @@ public class AnnotatedTTGenerator {
 		init(agencyId);
 
 		// annotation process.
-		int noOfOutputRows = (lines.size() * 2 - numOfHeaders + 1);
 		int noOfOutputCols = maxNumberOfCols + 1;
-		String[][] output = new String[noOfOutputRows][noOfOutputCols];
-
-		output = processMatrix(matrix, output, noOfOutputCols);
+		String[][] output = processMatrix(matrix, noOfOutputCols);
 
 		// simple print existing matrix.
-		for (int i = 0; i < noOfOutputRows; i++) {
+		for (int i = 0; i < output.length; i++) {
 			String line = "";
 			for (int j = 0; j < maxNumberOfCols; j++) {
 				line = line + output[i][j] + ";";
@@ -181,7 +181,7 @@ public class AnnotatedTTGenerator {
 		return converted;
 	}
 
-	private String[][] processMatrix(String[][] matrix, String[][] output, int noOfOutputCols) {
+	private String[][] processMatrix(String[][] matrix, int noOfOutputCols) {
 
 		/** version 1.
 		for (int i = numOfHeaders; i < matrix.length; i++) {
@@ -191,11 +191,14 @@ public class AnnotatedTTGenerator {
 			//	System.out.println(Arrays.toString(output[i]));
 		}**/
 
-		// stops column.
-		output[0][0] = "stops;stop_id";
 		// create list of stops taking in to consideration GTFS data.
 		List<String> stops = processStops(matrix, numOfHeaders, noOfOutputCols - 1);
-
+		
+		int noOfOutputRows = (stops.size() + 1);
+		String[][] output = new String[noOfOutputRows][noOfOutputCols];
+		// stops column.
+		output[0][0] = "stops;stop_id";
+				
 		for (int j = 1; j < noOfOutputCols - 1; j++) {
 			if (columnTripIdMap.containsKey(j)) {
 				List<String[]> stoptimeseq = tripStopsTimesMap.get(columnTripIdMap.get(j).get(0));
