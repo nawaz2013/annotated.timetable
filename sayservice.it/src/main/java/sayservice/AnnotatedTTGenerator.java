@@ -152,7 +152,17 @@ public class AnnotatedTTGenerator {
 		/** create local copy of table as string[][] matrix. **/
 		String[][] matrix = new String[lines.size()][maxNumberOfCols + 1];
 		for (int i = 0; i < lines.size(); i++) {
-			String[] colValues = table[i][0].split(";");
+			String tableString = "";
+			if (table[i].length > 1) {
+				for (int j = 0; j < table[i].length; j++) {
+					tableString = tableString + table[i][j];
+				}
+			} else {
+				tableString = table[i][0];
+			}
+			
+//			String[] colValues = table[i][0].split(";");
+			String[] colValues = tableString.split(";");
 			for (int j = 0; j < colValues.length; j++) {
 				matrix[i][j] = colValues[j];
 				// System.out.println(matrix[i][j]);
