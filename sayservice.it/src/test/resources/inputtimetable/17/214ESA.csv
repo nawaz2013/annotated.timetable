@@ -1,0 +1,32 @@
+Descr.breve:;"214"
+Descr.lunga:;"Riva - Molina - Bezzecca - Storo - Baitoni"
+Validità:;"Orario in vigore dal 27/06/2015 al 09/09/2015"
+Orario:;""
+Frequenza:;"Solo nei giorni feriali";"Solo al mercoledì  feriale";"Solo nei giorni festivi";"Solo nei giorni feriali";"Solo nei giorni feriali";"Solo nei giorni festivi";"Solo nei giorni feriali";"Solo nei giorni festivi";"Solo nei giorni feriali";"Solo nei giorni feriali";"Solo nei giorni festivi"
+Linea:;;"Servizio svolto da autonoleggiatore privato";;;;;;;;"Servizio svolto da autonoleggiatore privato";
+"RIVA DEL G. (Autostaz.) - Part.";8.10;8.10;8.30;11.00;12.40;12.40;16.20;16.20;17.40;18.45;18.45
+"Riva del G. Viale Martiri";8.12;8.12;8.32;11.02;12.42;12.42;16.22;16.22;17.42;18.47;18.47
+"Riva del G. V.le dei Tigli 21";8.16;8.16;8.36;11.06;12.46;12.46;16.26;16.26;17.46;18.51;18.51
+"Pregasina Bivio";8.26;8.26;8.46;11.16;12.56;12.56;16.36;16.36;17.56;19.01;19.01
+"PREGASINA - Arr.";|;8.30;|;|;|;|;|;|;|;|;|
+"Biacesa";8.28;;8.48;11.18;12.58;12.58;16.38;16.38;17.58;19.03;19.03
+"Pre'";8.31;;8.51;11.21;13.01;13.01;16.41;16.41;18.01;19.06;19.06
+"Barcesino";8.35;;8.55;11.25;13.05;13.05;16.45;16.45;18.05;19.10;19.10
+"Molina di Ledro";8.37;;8.57;11.27;13.07;13.07;16.47;16.47;18.07;19.12;19.12
+"Mezzolago";8.42;;9.02;11.32;13.12;13.12;16.52;16.52;18.12;19.17;19.17
+"PIEVE DI LEDRO";8.45;;9.05;11.35;13.15;13.15;16.55;16.55;18.15;19.20;19.20
+"BEZZECCA (Scuole)";8.48;;9.08;11.38;13.18;13.18;16.58;16.58;18.18;19.23;19.23
+"Locca";8.51;;9.11;11.41;13.21;13.21;17.01;17.01;18.21;19.26;19.26
+"Enguiso";8.53;;9.13;11.43;13.23;13.23;17.03;17.03;18.23;19.28;19.28
+"Lenzumo";8.56;;9.16;11.46;13.26;13.26;17.06;17.06;18.26;19.31;19.31
+"Tiarno di Sotto";9.07;;9.27;11.57;13.37;13.37;17.17;17.17;18.37;19.42;19.42
+"TIARNO DI SOPRA - Arr.";9.11;;9.31;12.01;13.41;13.41;17.21;17.21;18.41;19.46;19.46
+"TIARNO DI SOPRA - Part.";9.11;;9.31;;13.41;13.41;;;;19.46
+"Ampola - Arr.";9.14;;9.34;;13.44;13.44;;;;19.49
+"Tremalzo bivio";;;;;;;;;;19.51
+"STORO";;;;;;;;;;20.04
+"Casa Rossa (Bar Ristoro)";;;;;;;;;;20.07
+"Darzo";;;;;;;;;;20.11
+"LODRONE";;;;;;;;;;20.13
+"Ponte Caffaro bivio";;;;;;;;;;20.14
+"BAITONI - Arr.";;;;;;;;;;20.19

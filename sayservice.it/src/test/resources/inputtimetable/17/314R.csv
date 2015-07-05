@@ -1,0 +1,22 @@
+Descr.breve:;"314"
+Descr.lunga:;"Ometto - Obra di Vallarsa - Riva - Rovereto"
+Validità:;"Orario in vigore dal 27/06/2015 al 09/09/2015"
+Orario:;""
+Frequenza:;"Solo nei giorni feriali";;;"Feriale escluso sabato";;;"Solo nei giorni feriali";"Feriale escluso sabato"
+Linea:;;"La corsa si effettua solo nei giorni di martedì e venerdì feriali";"La corsa si effettua solo nei giorni di martedì e venerdì feriali / Servizio svolto da autonoleggiatore privato";;"La corsa si effettua solo nei giorni di martedì e venerdì feriali / Servizio svolto da autonoleggiatore privato";"La corsa si effettua solo nei giorni di martedì e venerdì feriali / Servizio svolto da autonoleggiatore privato";;
+"OMETTO - Part.";6.35;9.02;;;10.52;;13.35;18.12
+"OBRA DI VALLARSA";6.37;9.05;;;10.55;;13.37;18.13
+"Bruni";6.43;9.10;;;11.00;;13.43;18.19
+"Riva di Vallarsa";6.44;9.11;;;11.01;;13.44;18.20
+"Cumerlotti";6.46;9.12;;;11.02;;13.46;18.22
+"RAOSSI";|;9.23;9.25;;11.13;11.30;|;|
+"S.Anna di Vallarsa";|;9.15;9.33;;11.05;11.38;|;|
+"Aste";6.48;9.13;9.35;;11.03;11.40;13.48;18.24
+"Matassone";6.54;;9.41;;;11.46;13.54;18.29
+"Zanolli";6.55;;9.43;;;11.48;13.55;18.30
+"Foppiano";6.59;;9.47;;;11.52;13.59;18.33
+"Albaredo";7.01;;9.49;9.54;;11.54;14.01;18.35
+"Bivio Porte di Trambileno";7.09;;;10.02;;;14.09;18.43
+"ROVERETO (Staz.F.S.)";7.18;;;10.11;;;14.18;18.52
+"ROVERETO (Via Manzoni) - Arr.";7.20;;;10.13;;;14.20;|
+"ROVERETO (Via Savioli) - Arr.";;;;;;;;18.54

@@ -1,0 +1,19 @@
+Descr.breve:;"301"
+Descr.lunga:;"Rovereto - Calliano - Besenello - Trento"
+Validità:;"Orario in vigore dal 27/06/2015 al 09/09/2015"
+Orario:;""
+Frequenza:;"Feriale escluso sabato";"Solo nei giorni feriali";"Feriale escluso sabato";"Solo nei giorni feriali";"Feriale escluso sabato";"Solo nei giorni feriali";"Solo nei giorni festivi";"Solo nei giorni feriali";"Solo nei giorni feriali";"Solo nei giorni festivi";"Solo nei giorni feriali";"Solo nei giorni feriali";"Solo nei giorni feriali";"Solo nei giorni feriali";"Solo nei giorni festivi";"Solo nei giorni feriali";"Solo nei giorni feriali";"Solo nei giorni festivi";"Solo nei giorni feriali";"Solo nei giorni festivi";"Feriale escluso sabato";"Solo nei giorni feriali";"Solo nei giorni festivi";"Solo nei giorni feriali";"Solo nei giorni feriali";"Feriale escluso sabato";"Solo al sabato feriale";"Solo nei giorni festivi";"Solo nei giorni feriali"
+Linea:;;;;;;"L'autobus proviene da Riva del Garda - Arco";;"L'autobus proviene da Riva del Garda - Arco";;"L'autobus proviene da Avio";"L'autobus proviene da Riva del Garda - Arco";;;"L'autobus proviene da Riva del Garda - Arco";"L'autobus proviene da Riva del Garda - Arco";"L'autobus proviene da Riva del Garda - Arco";"L'autobus proviene da Avio";;"L'autobus proviene da Avio";"L'autobus proviene da Avio";;"L'autobus proviene da Riva del Garda - Arco";"L'autobus proviene da Riva del Garda - Arco";;"L'autobus proviene da Riva del Garda - Arco";"L'autobus proviene da Riva del Garda - Arco";"L'autobus proviene da Riva del Garda - Arco";"L'autobus proviene da Riva del Garda - Arco";
+"ROVERETO (Staz.F.S.) - Part.";5.07;6.43;7.00;7.20;;7.38;7.39;8.26;;9.16;10.04;11.10;11.25;12.27;12.27;13.19;14.02;14.15;;14.56;15.41;16.20;16.20;17.23;18.14;18.57;18.57;18.57;19.54
+"ROVERETO (Via Paoli) - Part.";5.09;6.45;7.02;7.22;7.37;7.41;7.41;8.32;9.19;9.19;10.09;11.12;11.27;12.32;12.32;13.23;14.07;14.17;14.41;15.01;15.43;16.25;16.25;17.28;18.19;19.02;19.02;19.02;19.56
+"S.Ilario";5.13;6.50;7.07;7.27;7.42;7.46;7.46;8.37;9.24;9.24;10.14;11.17;11.32;12.37;12.37;13.28;14.12;14.22;14.46;15.06;15.48;16.30;16.30;17.33;18.24;19.07;19.07;19.07;20.01
+"Volano";5.17;6.54;7.11;7.31;7.46;7.50;7.50;8.41;9.28;9.28;10.18;11.21;11.36;12.41;12.41;13.32;14.16;14.26;14.50;15.10;15.52;16.34;16.34;17.37;18.28;19.11;19.11;19.11;20.05
+"CALLIANO";5.22;7.00;7.17;7.37;7.52;7.56;7.56;8.47;9.34;9.34;10.24;11.27;11.42;12.47;12.47;13.38;14.22;14.32;14.56;15.16;15.58;16.40;16.40;17.43;18.34;19.17;19.17;19.17;20.11
+"Besenello";5.25;7.04;7.21;7.41;|;8.00;8.00;8.51;9.38;9.38;10.28;11.30;11.46;12.51;12.51;13.42;14.26;14.36;15.00;15.20;16.02;16.44;16.44;17.47;18.38;19.21;19.21;19.21;20.15
+"Acquaviva";5.31;7.10;7.27;7.47;7.58;8.06;8.06;8.57;9.44;9.44;10.34;;11.52;12.57;12.57;13.48;14.32;14.42;15.06;15.26;16.08;16.50;16.50;17.53;18.44;19.27;19.27;19.27
+"Mattarello";5.35;7.14;7.31;7.51;8.02;8.10;8.10;9.01;9.48;9.48;10.38;;11.56;13.01;13.01;13.52;14.36;14.46;15.10;15.30;16.12;16.54;16.54;17.57;18.48;19.31;19.31;19.31
+"TRENTO (Via Zambra)";|;|;|;|;8.16;|;|;|;|;|;|;;|;|;|;|;|;|;|;|;|;|;|;|;|;|;|;|
+"TRENTO  (Man)";5.40;7.19;7.36;7.56;|;8.15;8.15;9.06;9.53;9.53;10.43;;12.01;13.06;13.06;13.57;14.41;14.51;15.15;15.35;16.17;16.59;16.59;18.02;18.53;19.36;19.36;19.36
+"TRENTO (Distretto)";5.43;7.23;7.40;8.00;|;8.19;8.19;9.10;9.57;9.57;10.47;;12.05;13.10;13.10;14.01;14.45;14.55;15.19;15.39;16.21;17.03;17.03;18.06;18.57;19.40;19.40;19.40
+"TRENTO (Viale Verona)";5.45;7.25;7.42;8.02;|;8.21;8.21;9.12;9.59;9.59;10.49;;12.07;13.12;13.12;14.03;14.47;14.57;15.21;15.41;16.23;17.05;17.05;18.08;18.59;19.42;19.42;19.42
+"TRENTO   (Autostaz.) - Arr.";5.53;7.33;7.50;8.10;8.28;8.29;8.29;9.20;10.07;10.07;10.57;;12.15;13.20;13.20;14.11;14.55;15.05;15.29;15.49;16.31;17.13;17.13;18.16;19.07;19.50;19.50;19.50

@@ -1,0 +1,41 @@
+Descr.breve:;"204"
+Descr.lunga:;"Riva del Garda - Vigo Cavedine - Trento"
+Validità:;"Orario in vigore dal 27/06/2015 al 09/09/2015"
+Orario:;""
+Frequenza:;"Feriale escluso sabato";"Solo nei giorni feriali";"Solo nei giorni feriali";"Solo nei giorni feriali";"Solo nei giorni festivi";"Feriale escluso sabato";"Solo nei giorni feriali";"Solo nei giorni feriali";"Solo nei giorni feriali";"Solo nei giorni feriali";"Solo nei giorni festivi";"Solo nei giorni festivi";"Solo nei giorni feriali";"Feriale escluso sabato";"Feriale escluso sabato";"Solo al sabato feriale";"Solo nei giorni festivi";"Solo nei giorni feriali";
+Linea:;;"Servizio svolto da autonoleggiatore privato";;;"Servizio svolto da autonoleggiatore privato";"Servizio svolto da autonoleggiatore privato";;;"Servizio svolto da autonoleggiatore privato";;;;;;;;;;
+"RIVA DEL G. (Autostaz.) - Part.";;;;;;;;;;;;;12.25;;;;17.55;18.10
+"Riva del G. Viale Martiri";;;;;;;;;;;;;12.27;;;;17.57;18.12
+"Riva del G. V.le dei Tigli 21";;;;;;;;;;;;;12.31;;;;18.01;|
+"Varone Alberello";;;;;;;;;;;;;12.35;;;;18.05;|
+"Pasina bivio";;;;;;;;;;;;;12.39;;;;18.09;|
+"Ceole";;;;;;;;;;;;;12.42;;;;18.12;|
+"Varignano";;;;;;;;;;;;;12.43;;;;18.13;|
+"Vigne";;;;;;;;;;;;;12.44;;;;18.14;|
+"Chiarano";;;;;;;;;;;;;12.46;;;;18.16;|
+"Arco Ospedale";;;;;;;;;;;;;12.48;;;;18.18;|
+"ARCO  (Autostaz.) - Arr.";;;;;;;;;;;;;12.52;;;;18.22;18.26
+"ARCO  (Autostaz.) - Part.";;;;;;;;;;;;;12.52;;;;18.24;18.26
+"S.Martino di  Arco";;;;;;;;;;;;;12.57;;;;18.29;18.30
+"Ceniga";;;;;;;;;;;;;13.01;;;;18.33;18.34
+"DRO";;;;;;;;;;;;;13.05;;;;18.37;18.38
+"Centrale di Drena";;;;;;;;;;;;;13.07;;;;18.39;18.40
+"DRENA";;6.33;;;;;;;;;;;13.13;;;;18.45;18.46
+"Luch";;6.36;;;;;;;;;;;13.16;;;;18.48;18.49
+"VIGO CAVEDINE - Arr.";;6.40;;;;;;;;;;;13.20;;;;18.52;18.53
+"VIGO CAVEDINE - Part.";6.30;;6.40;6.50;7.10;7.25;;8.25;10.25;;12.53;;;13.50;;13.50;18.52;18.53
+"Vigo Cavedine bivio";6.31;;6.41;6.51;7.11;7.26;;8.26;10.26;;12.54;;;13.51;;13.51;18.53;18.54
+"Brusino";6.34;;6.44;6.54;7.14;7.28;;8.29;10.29;;12.57;;;13.54;;13.54;18.56;18.57
+"CAVEDINE";6.37;;6.47;6.57;7.17;7.31;;8.32;10.32;;13.00;;;13.57;;13.57;18.59;19.00
+"Stravino";6.39;;6.49;6.59;7.19;7.33;;8.34;10.34;;13.02;;;13.59;;13.59;19.01;19.02
+"Lasino";6.43;;6.53;7.03;7.23;7.37;;8.38;10.38;;13.06;;;14.03;;14.03;19.05;19.06
+"Madruzzo bivio";6.45;;6.55;7.05;7.25;7.39;;8.40;10.40;;13.08;;;14.05;;14.05;19.07;19.08
+"CALAVINO";6.47;;6.57;7.07;7.27;7.41;;8.42;10.42;;13.10;;;14.07;;14.07;19.09;19.10
+"Padergnone bivio";6.50;;7.00;7.10;7.30;7.44;;8.45;10.45;;13.13;;;14.10;;14.10;19.12;19.13
+"Vezzano (Apt) - Arr.";6.53;;7.03;7.13;7.33;7.47;;8.48;10.48;;13.16;;;14.13;;14.13;19.15;19.16
+"Vezzano (Apt) - Part.";6.53;;7.03;7.13;7.33;7.54;7.54;8.48;10.48;10.53;;13.26;;14.13;14.13;14.13;;19.16;19.22
+"VEZZANO (Piazza) - Part.";6.54;;7.04;7.14;7.34;7.55;7.55;8.49;10.49;|;;|;;14.14;14.14;14.14;;19.17;19.23
+"Vigolo Baselga (SS45)";7.00;;7.10;|;7.40;;8.01;|;;11.00;;13.33;;;14.20;14.20;;;19.29
+"Vigolo Baselga  (paese)";7.00;;7.10;7.21;|;;|;8.55;;|;;|;;;|;|;;;|
+"Cadine";|;;|;7.24;|;;|;|;;|;;|;;;|;|;;;19.32
+"TRENTO   (Autostaz.) - Arr.";7.14;;7.24;7.40;7.57;;8.18;9.12;;11.14;;13.47;;;14.37;14.37;;;19.45

@@ -1,0 +1,25 @@
+Descr.breve:;"302"
+Descr.lunga:;"Garniga Terme - Aldeno - Mattarello - Ravina - Trento"
+Validità:;"Orario in vigore dal 27/06/2015 al 09/09/2015"
+Orario:;""
+Frequenza:;"Solo nei giorni feriali";"Feriale escluso sabato";"Solo nei giorni feriali";"Solo nei giorni feriali";"Solo al giovedì feriale";"Feriale escluso sabato";"Solo nei giorni feriali";"Feriale escluso sabato";"Solo nei giorni feriali";"Feriale escluso sabato";"Solo nei giorni feriali";"Feriale escluso sabato";"Solo nei giorni feriali";"Solo nei giorni feriali";"Solo nei giorni festivi";"Feriale escluso sabato";"Solo nei giorni feriali";"Feriale escluso sabato";"Feriale escluso sabato";"Solo nei giorni feriali";"Solo nei giorni festivi"
+Linea:;;"Servizio svolto da autonoleggiatore privato";;;"La corsa si effettua solo il giorno di giovedì feriale";;;;;;;;;;"Servizio svolto da autonoleggiatore privato";;;;;;"Servizio svolto da autonoleggiatore privato"
+"GARNIGA VECCHIA - Part.";;;6.47;;;7.22;;8.27;;;;;13.35;;13.35;;;;;18.25;18.25
+"GARNIGA TERME";6.27;;6.55;;;7.30;;8.35;;;;;13.45;;13.45;;;17.31;;18.33;18.33
+"Cimoneri";6.33;;7.01;;;7.36;;8.41;;;;;13.51;;13.51;;;17.37;;18.39;18.39
+"Vigile - Part.";|;6.50;|;;7.30;|;;|;;;;;|;;|;;;|;;|;|
+"Costa di Cimone";|;6.52;|;;7.32;|;;|;;;;;|;;|;;;|;;|;|
+"Pietra di Cimone";|;6.55;|;;7.35;|;;|;;;;;|;;|;;;|;;|;|
+"Cimone - Bivio Pietra - Arr.";6.34;6.57;7.02;;7.37;7.37;;8.42;;;;;13.52;;13.52;;;17.38;;18.40;18.40
+"Cimone - Bivio Pietra - Part.";6.34;;7.02;;;7.37;;8.42;;;;;13.52;;13.52;;;17.38;;18.40;18.40
+"CIMONE";6.35;;7.03;;;7.38;;8.43;;;;;13.53;;13.53;;;17.39;;18.41;18.41
+"Covelo di Cimone";6.38;;7.06;;;7.41;;8.46;;;;;13.56;;13.56;;;17.42;;18.44;18.44
+"ALDENO - Arr.";6.45;;7.13;;;7.48;;8.53;;;;;14.03;;14.03;;;17.49;;18.51;18.51
+"ALDENO - Part.";6.47;;;7.15;;7.50;7.50;8.55;10.05;10.55;11.55;13.10;14.05;14.05;14.05;14.30;15.30;;17.50;18.53;18.53
+"Mattarello (Via Catoni)";|;;;|;;7.59;|;|;|;|;|;|;|;|;|;|;|;;|;|;|
+"Mattarello (SS. 12)";|;;;|;;8.01;|;9.04;|;|;|;|;14.14;|;14.14;|;|;;|;|;|
+"Romagnano Bivio";6.52;;;7.20;;|;7.55;|;10.10;11.00;12.00;13.15;|;14.10;|;14.35;15.35;;17.55;18.58;18.58
+"Ravina Bivio";6.57;;;7.25;;|;8.00;|;10.15;11.05;12.05;13.20;|;14.15;|;14.40;15.40;;18.00;19.03;19.03
+"TRENTO (Via Bezzi)";7.01;;;7.29;;|;8.04;|;10.19;11.09;12.09;13.24;|;14.19;|;14.44;15.44;;18.04;19.07;19.07
+"TRENTO (Viale Verona)";|;;;|;;8.11;|;9.14;|;|;|;|;14.24;|;14.24;|;|;;|;|;|
+"TRENTO   (Autostaz.) - Arr.";7.07;;;7.35;;8.21;8.15;9.22;10.25;11.15;12.15;13.30;14.32;14.25;14.32;14.50;15.50;;18.10;19.13;19.13
