@@ -1035,10 +1035,10 @@ public class AnnotatedTTGenerator {
 		routeId = getGTFSRouteIdFromRouteShortName(routeShortName);
 
 		if (matrix[5][colInPdf] != null && matrix[5][colInPdf].contains("Linea")) {
-			String pdfRouteId = matrix[5][currentCol].substring(matrix[5][colInPdf].indexOf('a') + 1);
+			String pdfRouteId = matrix[5][colInPdf].substring(matrix[5][colInPdf].indexOf('a') + 1);
 			routeId = getGTFSRouteIdFromRouteShortName(pdfRouteId);
 		} else if (matrix[5][colInPdf] != null && isInteger(matrix[5][colInPdf])) {
-			String pdfRouteId = matrix[5][currentCol];
+			String pdfRouteId = matrix[5][colInPdf];
 			routeId = getGTFSRouteIdFromRouteShortName(pdfRouteId);
 		}
 
@@ -1112,7 +1112,6 @@ public class AnnotatedTTGenerator {
 
 					// found
 					if (foundTrip) {
-						deepMatchedTripIds.add(tripId);
 						break;
 					}
 				}
@@ -1124,6 +1123,9 @@ public class AnnotatedTTGenerator {
 				if (matchingTripId.size() == 1) {
 					System.out.println("improved situation.... found trip Id " + matchingTripId.get(0));
 					annotation = matchingTripId.get(0);
+					if (!deepMatchedTripIds.contains(matchingTripId.get(0))) {
+						deepMatchedTripIds.add(matchingTripId.get(0));	
+					}
 				} else {
 					System.err.println("anamoly- mutliple trips detected");
 					for (String tripId : matchingTripId) {
@@ -1172,13 +1174,20 @@ public class AnnotatedTTGenerator {
 			System.out.println("\n\n\n\n");
 			System.out.println("%%%%%%%%%% OVERALL STATS %%%%%%%%%%");
 			System.out.println("total number of GTFS trips for routes: " + gtfsTripIds.size());
-			System.out.println("total number of matched trips for routes: " + matchedTripIds.size() + deepMatchedTripIds.size());
-			System.out.println("coverage : " +  (Double.valueOf(matchedTripIds.size() + deepMatchedTripIds.size()) / Double.valueOf(gtfsTripIds.size())) * 100);
+			System.out.println("total number of matched trips for routes: " + matchedTripIds.size());
+			System.out.println("coverage(normal) : " +  (Double.valueOf(matchedTripIds.size()) / Double.valueOf(gtfsTripIds.size())) * 100);
+			if (deepMode) {
+				System.out.println("Fixes in deep search mode :" + deepMatchedTripIds.size());
+				System.out.println("coverage(deep) : " +  (Double.valueOf(matchedTripIds.size() + deepMatchedTripIds.size()) / Double.valueOf(gtfsTripIds.size())) * 100);
+			}
 			System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
 			System.out.println("\n\n\n\n");
-			gtfsTripIds.removeAll(matchedTripIds);
-			System.out.println("Trips Delta");
-			for (String tripId: gtfsTripIds) {
+			List<String> deltaTrips = new ArrayList<String>();
+			deltaTrips.addAll(gtfsTripIds);
+			deltaTrips.removeAll(deepMatchedTripIds);
+			deltaTrips.removeAll(matchedTripIds);
+			System.out.println("Trips Delta size :" + deltaTrips.size());
+			for (String tripId: deltaTrips) {
 				System.out.println(tripId);
 			}
 			
@@ -1194,7 +1203,7 @@ public class AnnotatedTTGenerator {
 				continue;
 			} else {
 				System.out.println("Annotation in process for ->  " + fileEntry.getName());
-				timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + fileEntry.getName());
+				timeTableGenerator.processFiles(pathToOutput, "12", pathToInput + fileEntry.getName());
 			}
 		}
 
