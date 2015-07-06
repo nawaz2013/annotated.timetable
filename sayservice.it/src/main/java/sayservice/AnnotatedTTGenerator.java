@@ -34,7 +34,11 @@ public class AnnotatedTTGenerator {
 	// statistics details.
 	private static boolean stats = true;
 	// deep search mode.
-	private static boolean deepMode = false;
+	private static boolean deepMode = true;
+	// route stats.
+	private static boolean routeStats = false;
+	// overall stats.
+	private static boolean overallStats = true;
 
 	// input GTFS.
 	private static final String pathToGTFS = "src/test/resources/gtfs/12/";
@@ -786,6 +790,15 @@ public class AnnotatedTTGenerator {
 			 *  stopTimes.get(s)[2] departure time.
 			 *  stopTimes.get(s)[1] arrival time.**/
 			for (int s = 0; s < stopTimes.size(); s++) {
+				
+//				if (stopTimes.get(s)[2].contains(timeToCheck) && stopTimes.get(s)[1].contains(timeToCheck) && !tripSequence[s]) {
+//					found = true;
+//					tripSequence[s] = true;
+//					break;
+//				} else if (stopTimes.get(s)[1].contains(timeToCheck) && !tripSequence[s]) {  // only arrival time matches.
+//					found = true;
+//					break;
+//				}
 				if (stopTimes.get(s)[2].contains(timeToCheck) && !tripSequence[s]) {
 					found = true;
 					tripSequence[s] = true;
@@ -1166,13 +1179,16 @@ public class AnnotatedTTGenerator {
 			System.out.println("-----------------------------");
 			System.out.println("\n\n\n\n");
 			//stats.
-//			System.out.println("%%%%%%%%%% RUN STATS %%%%%%%%%%");
-//			System.out.println("successful matches: " + successMatch);
-//			System.out.println("failed matches: " + failedMatch);
-//			System.out.println("success rate: " +  (successMatch / (successMatch + failedMatch)) * 100);
-//			System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
+			if (routeStats) {
+			System.out.println("%%%%%%%%%% RUN STATS %%%%%%%%%%");
+			System.out.println("successful matches: " + successMatch);
+			System.out.println("failed matches: " + failedMatch);
+			System.out.println("success rate: " +  (successMatch / (successMatch + failedMatch)) * 100);
+			System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
+			}
+			if (overallStats) {
 			System.out.println("\n\n\n\n");
-			System.out.println("%%%%%%%%%% OVERALL STATS %%%%%%%%%%");
+			System.out.println("%%%%%%%%%%%%%%% OVERALL STATS %%%%%%%%%%%%%%");
 			System.out.println("total number of GTFS trips for routes: " + gtfsTripIds.size());
 			System.out.println("total number of matched trips for routes: " + matchedTripIds.size());
 			System.out.println("coverage(normal) : " +  (Double.valueOf(matchedTripIds.size()) / Double.valueOf(gtfsTripIds.size())) * 100);
@@ -1180,7 +1196,7 @@ public class AnnotatedTTGenerator {
 				System.out.println("Fixes in deep search mode :" + deepMatchedTripIds.size());
 				System.out.println("coverage(deep) : " +  (Double.valueOf(matchedTripIds.size() + deepMatchedTripIds.size()) / Double.valueOf(gtfsTripIds.size())) * 100);
 			}
-			System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
+			System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
 			System.out.println("\n\n\n\n");
 			List<String> deltaTrips = new ArrayList<String>();
 			deltaTrips.addAll(gtfsTripIds);
@@ -1189,6 +1205,7 @@ public class AnnotatedTTGenerator {
 			System.out.println("Trips Delta size :" + deltaTrips.size());
 			for (String tripId: deltaTrips) {
 				System.out.println(tripId);
+			}
 			}
 			
 		}
