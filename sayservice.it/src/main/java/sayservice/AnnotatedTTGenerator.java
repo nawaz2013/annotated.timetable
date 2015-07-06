@@ -38,16 +38,16 @@ public class AnnotatedTTGenerator {
 
 	// input GTFS.
 	private static final String pathToGTFS = "src/test/resources/gtfs/12/";
-	//	private static final String pathToGTFS = "src/test/resources/gtfs/16/";
-	//	private static final String pathToGTFS = "src/test/resources/gtfs/17/";
+//	private static final String pathToGTFS = "src/test/resources/gtfs/16/";
+//	private static final String pathToGTFS = "src/test/resources/gtfs/17/";
 	// output folder.
 	private static final String pathToOutput = "src/test/resources/annotatedtimetable/12/";
-	//	private static final String pathToOutput = "src/test/resources/annotatedtimetable/16/";
-	//	private static final String pathToOutput = "src/test/resources/annotatedtimetable/17/";
+//	private static final String pathToOutput = "src/test/resources/annotatedtimetable/16/";
+//	private static final String pathToOutput = "src/test/resources/annotatedtimetable/17/";
 	// input folder.
 	private static final String pathToInput = "src/test/resources/inputtimetable/12/";
-	//	private static final String pathToInput = "src/test/resources/inputtimetable/16/";
-	//	private static final String pathToInput = "src/test/resources/inputtimetable/17/";
+//	private static final String pathToInput = "src/test/resources/inputtimetable/16/";
+//	private static final String pathToInput = "src/test/resources/inputtimetable/17/";
 
 	private static final String UTF8_BOM = "\uFEFF";
 	private static final String ITALIC_ENTRY = "italic";
@@ -1117,9 +1117,9 @@ public class AnnotatedTTGenerator {
 			System.out.println("\n\n\n\n");
 			//stats.
 			System.out.println("%%%%%%%%%% RUN STATS %%%%%%%%%%");
-			System.out.println("successful matches: " + successMatch);
-			System.out.println("failed matches: " + failedMatch);
-			System.out.println("success rate: " +  (successMatch / (successMatch + failedMatch)) * 100);
+//			System.out.println("successful matches: " + successMatch);
+//			System.out.println("failed matches: " + failedMatch);
+//			System.out.println("success rate: " +  (successMatch / (successMatch + failedMatch)) * 100);
 			System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
 			System.out.println("\n\n\n\n");
 			System.out.println("%%%%%%%%%% OVERALL STATS %%%%%%%%%%");
