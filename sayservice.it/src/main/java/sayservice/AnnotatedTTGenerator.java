@@ -1073,6 +1073,12 @@ public class AnnotatedTTGenerator {
 		if (matrix[5][colInPdf] != null && matrix[5][colInPdf].contains("Linea")) {
 			String pdfRouteId = matrix[5][colInPdf].substring(matrix[5][colInPdf].indexOf('a') + 1);
 			routeId = getGTFSRouteIdFromRouteShortName(pdfRouteId);
+			if (routeId.isEmpty()) {
+				routeId = getGTFSRouteIdFromRouteShortName(pdfRouteId.substring(0, pdfRouteId.indexOf("/")));
+				if (routeId != null && !routeId.isEmpty()) {
+					columnGTFSRSName.put(colInPdf, pdfRouteId.substring(0, pdfRouteId.indexOf("/")));
+				}
+			}
 		} else if (matrix[5][colInPdf] != null && isInteger(matrix[5][colInPdf])) {
 			String pdfRouteId = matrix[5][colInPdf];
 			routeId = getGTFSRouteIdFromRouteShortName(pdfRouteId);
@@ -1633,9 +1639,9 @@ public class AnnotatedTTGenerator {
 			}
 		}
 
-//		timeTableGenerator.processFiles(pathToOutput, "12", pathToInput + "14A-Feriale.csv");
-//		timeTableGenerator.processFiles(pathToOutput, "12", pathToInput + "05A-Festivo.csv");
-//		timeTableGenerator.processFiles(pathToOutput, "12", pathToInput + "05R-Feriale.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "12", pathToInput + "08R-Feriale.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "12", pathToInput + "14R-Feriale.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "12", pathToInput + "07A-Feriale.csv");
 //		timeTableGenerator.processFiles(pathToOutput, "12", pathToInput + "05R-Festivo.csv");
 
 		timeTableGenerator.printStats();
