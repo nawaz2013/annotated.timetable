@@ -7,6 +7,7 @@ import java.net.UnknownHostException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -19,7 +20,9 @@ import org.springframework.util.StringUtils;
 
 import com.google.common.base.Charsets;
 import com.google.common.collect.Iterables;
+import com.google.common.html.HtmlEscapers;
 import com.google.common.io.Files;
+import com.google.gdata.util.common.html.HtmlToText;
 import com.google.gdata.util.io.base.UnicodeReader;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DB;
@@ -56,7 +59,7 @@ public class AnnotatedTTGenerator {
 //	private static final String pathToInput = "src/test/resources/inputtimetable/17/";
 	// agencyIds (12,16,17)
 	private static final String agencyId = "12"; //
-	
+	private static final List<String> roveretoNBuses = Arrays.asList("N1", "N2", "N3", "N5", "N6");
 	private static final String UTF8_BOM = "\uFEFF";
 	private static final String ITALIC_ENTRY = "italic";
 	private static final String ROUTE_ERROR = "route not found";
@@ -420,22 +423,30 @@ public class AnnotatedTTGenerator {
 			
 			routeId = getGTFSRouteIdFromRouteShortName(routeShortName);
 
-			if (matrix[5][currentCol] != null && matrix[5][currentCol].contains("Linea")) {
-				String pdfRouteId = matrix[5][currentCol].substring(matrix[5][currentCol].indexOf('a') + 1);
-				// check if xx/ routeId exist, else look for xx routeId.
-				routeId = getGTFSRouteIdFromRouteShortName(pdfRouteId);
-				if (routeId.isEmpty()) {
-					routeId = getGTFSRouteIdFromRouteShortName(pdfRouteId.substring(0, pdfRouteId.indexOf("/")));
-					if (routeId != null && !routeId.isEmpty()) {
-						columnGTFSRSName.put(currentCol, pdfRouteId.substring(0, pdfRouteId.indexOf("/")));
+			if (matrix[5][currentCol] != null && !matrix[5][currentCol].isEmpty()) {
+				String lineInfo = HtmlToText.htmlToPlainText(matrix[5][currentCol]);
+				if (lineInfo.contains("Linea")) {
+					String pdfRouteId = matrix[5][currentCol].substring(matrix[5][currentCol].indexOf('a') + 1);
+					// check if xx/ routeId exist, else look for xx routeId.
+					routeId = getGTFSRouteIdFromRouteShortName(pdfRouteId);
+					if (routeId.isEmpty()) {
+						routeId = getGTFSRouteIdFromRouteShortName(pdfRouteId.substring(0, pdfRouteId.indexOf("/")));
+						if (routeId != null && !routeId.isEmpty()) {
+							columnGTFSRSName.put(currentCol, pdfRouteId.substring(0, pdfRouteId.indexOf("/")));
+						}
 					}
+					mergedRoute = true;
+				} else if (isInteger(lineInfo)) {
+					String pdfRouteId = matrix[5][currentCol];
+					routeId = getGTFSRouteIdFromRouteShortName(pdfRouteId);
+					mergedRoute = true;
+				} else if (roveretoNBuses.contains(lineInfo)) { // rovereto.
+					String pdfRouteId = lineInfo;
+					routeId = getGTFSRouteIdFromRouteShortName(pdfRouteId);
+					mergedRoute = true;
 				}
-				mergedRoute = true;
-			} else if (matrix[5][currentCol] != null && isInteger(matrix[5][currentCol])) {
-				String pdfRouteId = matrix[5][currentCol];
-				routeId = getGTFSRouteIdFromRouteShortName(pdfRouteId);
-				mergedRoute = true;
 			}
+	
 
 			if (tripStartIndex > -1 && tripEndIndex > -1) {
 				
@@ -1062,27 +1073,27 @@ public class AnnotatedTTGenerator {
 
 	}
 	
-	private String partialTripMatchAlgo(String[][] matrix, int colInPdf, int startRow, String routeId2) {
+	private String partialTripMatchAlgo(String[][] matrix, int colInPdf, int startRow, String routeId) {
 	
 		String partialTripId = "";
 	
 		System.out.println("Processing column starting with time: " + matrix[numOfHeaders][colInPdf]);
 
-		routeId = getGTFSRouteIdFromRouteShortName(routeShortName);
-
-		if (matrix[5][colInPdf] != null && matrix[5][colInPdf].contains("Linea")) {
-			String pdfRouteId = matrix[5][colInPdf].substring(matrix[5][colInPdf].indexOf('a') + 1);
-			routeId = getGTFSRouteIdFromRouteShortName(pdfRouteId);
-			if (routeId.isEmpty()) {
-				routeId = getGTFSRouteIdFromRouteShortName(pdfRouteId.substring(0, pdfRouteId.indexOf("/")));
-				if (routeId != null && !routeId.isEmpty()) {
-					columnGTFSRSName.put(colInPdf, pdfRouteId.substring(0, pdfRouteId.indexOf("/")));
-				}
-			}
-		} else if (matrix[5][colInPdf] != null && isInteger(matrix[5][colInPdf])) {
-			String pdfRouteId = matrix[5][colInPdf];
-			routeId = getGTFSRouteIdFromRouteShortName(pdfRouteId);
-		}
+//		routeId = getGTFSRouteIdFromRouteShortName(routeShortName);
+//
+//		if (matrix[5][colInPdf] != null && matrix[5][colInPdf].contains("Linea")) {
+//			String pdfRouteId = matrix[5][colInPdf].substring(matrix[5][colInPdf].indexOf('a') + 1);
+//			routeId = getGTFSRouteIdFromRouteShortName(pdfRouteId);
+//			if (routeId.isEmpty()) {
+//				routeId = getGTFSRouteIdFromRouteShortName(pdfRouteId.substring(0, pdfRouteId.indexOf("/")));
+//				if (routeId != null && !routeId.isEmpty()) {
+//					columnGTFSRSName.put(colInPdf, pdfRouteId.substring(0, pdfRouteId.indexOf("/")));
+//				}
+//			}
+//		} else if (matrix[5][colInPdf] != null && isInteger(matrix[5][colInPdf])) {
+//			String pdfRouteId = matrix[5][colInPdf];
+//			routeId = getGTFSRouteIdFromRouteShortName(pdfRouteId);
+//		}
 
 		// validate trip with GTFS.
 		boolean[] toBeCheckTimeIndex = new boolean[matrix.length];
@@ -1437,21 +1448,28 @@ public class AnnotatedTTGenerator {
 			
 			routeId = getGTFSRouteIdFromRouteShortName(routeShortName);
 
-			if (matrix[5][currentCol] != null && matrix[5][currentCol].contains("Linea")) {
-				String pdfRouteId = matrix[5][currentCol].substring(matrix[5][currentCol].indexOf('a') + 1);
-				// check if xx/ routeId exist, else look for xx routeId.
-				routeId = getGTFSRouteIdFromRouteShortName(pdfRouteId);
-				if (routeId.isEmpty()) {
-					routeId = getGTFSRouteIdFromRouteShortName(pdfRouteId.substring(0, pdfRouteId.indexOf("/")));
-					if (routeId != null && !routeId.isEmpty()) {
-						columnGTFSRSName.put(currentCol, pdfRouteId.substring(0, pdfRouteId.indexOf("/")));
+			if (matrix[5][currentCol] != null && !matrix[5][currentCol].isEmpty()) {
+				String lineInfo = HtmlToText.htmlToPlainText(matrix[5][currentCol]);
+				if (lineInfo.contains("Linea")) {
+					String pdfRouteId = matrix[5][currentCol].substring(matrix[5][currentCol].indexOf('a') + 1);
+					// check if xx/ routeId exist, else look for xx routeId.
+					routeId = getGTFSRouteIdFromRouteShortName(pdfRouteId);
+					if (routeId.isEmpty()) {
+						routeId = getGTFSRouteIdFromRouteShortName(pdfRouteId.substring(0, pdfRouteId.indexOf("/")));
+						if (routeId != null && !routeId.isEmpty()) {
+							columnGTFSRSName.put(currentCol, pdfRouteId.substring(0, pdfRouteId.indexOf("/")));
+						}
 					}
+					mergedRoute = true;
+				} else if (isInteger(lineInfo)) {
+					String pdfRouteId = matrix[5][currentCol];
+					routeId = getGTFSRouteIdFromRouteShortName(pdfRouteId);
+					mergedRoute = true;
+				} else if (roveretoNBuses.contains(lineInfo)) { // rovereto.
+					String pdfRouteId = lineInfo;
+					routeId = getGTFSRouteIdFromRouteShortName(pdfRouteId);
+					mergedRoute = true;
 				}
-				mergedRoute = true;
-			} else if (matrix[5][currentCol] != null && isInteger(matrix[5][currentCol])) {
-				String pdfRouteId = matrix[5][currentCol];
-				routeId = getGTFSRouteIdFromRouteShortName(pdfRouteId);
-				mergedRoute = true;
 			}
 
 			if (tripStartIndex > -1 && tripEndIndex > -1) {
@@ -1635,14 +1653,14 @@ public class AnnotatedTTGenerator {
 				continue;
 			} else {
 				System.out.println("Annotation in process for ->  " + fileEntry.getName());
-				timeTableGenerator.processFiles(pathToOutput, "12", pathToInput + fileEntry.getName());
+				timeTableGenerator.processFiles(pathToOutput, "16", pathToInput + fileEntry.getName());
 			}
 		}
 
 //		timeTableGenerator.processFiles(pathToOutput, "12", pathToInput + "08R-Feriale.csv");
 //		timeTableGenerator.processFiles(pathToOutput, "12", pathToInput + "14R-Feriale.csv");
 //		timeTableGenerator.processFiles(pathToOutput, "12", pathToInput + "07A-Feriale.csv");
-//		timeTableGenerator.processFiles(pathToOutput, "12", pathToInput + "05R-Festivo.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "16", pathToInput + "E-03A-Feriale.csv");
 
 		timeTableGenerator.printStats();
 
