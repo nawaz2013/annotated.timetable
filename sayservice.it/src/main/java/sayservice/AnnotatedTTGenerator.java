@@ -41,19 +41,19 @@ public class AnnotatedTTGenerator {
 	private static boolean overallStats = true;
 
 	// input GTFS.
-	private static final String pathToGTFS = "src/test/resources/gtfs/12/";
+//	private static final String pathToGTFS = "src/test/resources/gtfs/12/";
 //	private static final String pathToGTFS = "src/test/resources/gtfs/16/";
-//	private static final String pathToGTFS = "src/test/resources/gtfs/17/";
+	private static final String pathToGTFS = "src/test/resources/gtfs/17/";
 	// output folder.
-	private static final String pathToOutput = "src/test/resources/annotatedtimetable/12/";
+//	private static final String pathToOutput = "src/test/resources/annotatedtimetable/12/";
 //	private static final String pathToOutput = "src/test/resources/annotatedtimetable/16/";
-//	private static final String pathToOutput = "src/test/resources/annotatedtimetable/17/";
+	private static final String pathToOutput = "src/test/resources/annotatedtimetable/17/";
 	// input folder.
-	private static final String pathToInput = "src/test/resources/inputtimetable/12/";
+//	private static final String pathToInput = "src/test/resources/inputtimetable/12/";
 //	private static final String pathToInput = "src/test/resources/inputtimetable/16/";
-//	private static final String pathToInput = "src/test/resources/inputtimetable/17/";
+	private static final String pathToInput = "src/test/resources/inputtimetable/17/";
 	// agencyIds (12,16,17)
-	private static final String agencyId = "12"; //
+	private static final String agencyId = "17"; //
 	
 	private static final String UTF8_BOM = "\uFEFF";
 	private static final String ITALIC_ENTRY = "italic";
@@ -1473,6 +1473,13 @@ public class AnnotatedTTGenerator {
 						}
 					}
 
+					if (matchingTripId == null || matchingTripId.isEmpty()) {
+						// algorithm to check trip in other route.
+						String tripId = partialTripMatchAlgo(matrix, currentCol, startRow, routeId);
+						if (tripId != null && !tripId.isEmpty())
+							matchingTripId.add(tripId);
+					}
+					
 					// prepare stops list.
 					if (matchingTripId != null && !matchingTripId.isEmpty()) {
 
