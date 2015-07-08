@@ -1,0 +1,1 @@
+- remove ,00: with ,24: in stopTimes.txt.

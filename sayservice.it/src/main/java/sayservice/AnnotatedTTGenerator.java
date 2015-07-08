@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.UnknownHostException;
+import java.text.DecimalFormat;
+import java.text.Format;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -72,7 +74,8 @@ public class AnnotatedTTGenerator {
 	private DB database = null;
 	private DBCollection collection = null;
 	ObjectMapper mapper = new ObjectMapper();
-
+	DecimalFormat formatter = new DecimalFormat("00");
+	
 	private String routeShortName;
 	private String routeId;
 
@@ -383,7 +386,8 @@ public class AnnotatedTTGenerator {
 
 			int tripStartIndex = -1;
 			for (int i = startRow; i < matrix.length; i++) {
-				if (matrix[i][currentCol] != null && !matrix[i][currentCol].isEmpty()) {
+				if (matrix[i][currentCol] != null && !matrix[i][currentCol].isEmpty()
+						&& !matrix[i][currentCol].contains("|")) {
 					if (matrix[i][currentCol].contains("-")) {
 						italics = true;
 						if (!columnNotes.contains(ITALIC_ENTRY)) {
@@ -402,7 +406,8 @@ public class AnnotatedTTGenerator {
 			}
 			int tripEndIndex = -1;
 			for (int i = matrix.length - 1; i >= startRow; i--) {
-				if (matrix[i][currentCol] != null && !matrix[i][currentCol].isEmpty()) {
+				if (matrix[i][currentCol] != null && !matrix[i][currentCol].isEmpty()
+						&& !matrix[i][currentCol].contains("|")) {
 					if (matrix[i][currentCol].contains("-")) {
 						italics = true;
 						if (!columnNotes.contains(ITALIC_ENTRY)) {
@@ -451,8 +456,23 @@ public class AnnotatedTTGenerator {
 			if (tripStartIndex > -1 && tripEndIndex > -1) {
 				
 				String startTime = matrix[tripStartIndex][currentCol].replace(".", ":");
+				
+				int startTimeHour = Integer.valueOf(startTime.substring(0, startTime.indexOf(":")));
+				
+				if (startTimeHour > 24) {
+					startTimeHour = startTimeHour - 24;
+					startTime = formatter.format(startTimeHour) + startTime.substring(startTime.indexOf(":"));
+				}
+
 				String endTime = matrix[tripEndIndex][currentCol].replace(".", ":");
 
+				int endTimeHour = Integer.valueOf(endTime.substring(0, endTime.indexOf(":")));
+
+				if (endTimeHour > 24) {
+					endTimeHour = endTimeHour - 24;
+					endTime = formatter.format(endTimeHour) + endTime.substring(endTime.indexOf(":"));
+				}
+				
 				System.out.println("checking column: " + matrix[startRow][currentCol] + " - routeId " + routeId + "["
 						+ startTime + "-" + endTime + "]");
 				
@@ -534,8 +554,19 @@ public class AnnotatedTTGenerator {
 								pdfStopName = pdfStopName.replaceAll("\"", "");
 								String pdfTime = "";
 								if (matrix[i + numOfHeaders][currentCol] != null
+										&& !matrix[i + numOfHeaders][currentCol].contains("|")
 										&& !(matrix[i + numOfHeaders][currentCol].isEmpty())) {
+
 									pdfTime = matrix[i + numOfHeaders][currentCol].replace(".", ":") + ":00";
+
+									int pdfTimeHour = Integer.valueOf(pdfTime.substring(0, pdfTime.indexOf(":")));
+
+									if (pdfTimeHour > 24) {
+										pdfTimeHour = pdfTimeHour - 24;
+										pdfTime = formatter.format(pdfTimeHour)
+												+ pdfTime.substring(pdfTime.indexOf(":"));
+									}
+
 								}
 								stopIdsMap.put(stopsMap.get(stoptimeseq.get(gtfsSeq)[3]).toLowerCase(),
 										stoptimeseq.get(gtfsSeq)[3]);
@@ -818,7 +849,16 @@ public class AnnotatedTTGenerator {
 				continue;
 
 			}
+			
 			String timeToCheck = matrix[i][currentCol].replace(".", ":");
+
+			int timeToCheckHour = Integer.valueOf(timeToCheck.substring(0, timeToCheck.indexOf(":")));
+
+			if (timeToCheckHour > 24) {
+				timeToCheckHour = timeToCheckHour - 24;
+				timeToCheck = formatter.format(timeToCheckHour) + timeToCheck.substring(timeToCheck.indexOf(":"));
+			}
+			
 			boolean found = false;
 			/** to make sure if sequence time checked once. **/
 			boolean[] tripSequence = new boolean[stopTimes.size()];
@@ -1134,8 +1174,16 @@ public class AnnotatedTTGenerator {
 				boolean timeChecks[] = new boolean[count];
 
 				for (int t = startRow, tbc = 0; t < toBeCheckTimeIndex.length; t++) {
-					if (toBeCheckTimeIndex[t] && matrix[t][colInPdf] != null && !matrix[t][colInPdf].isEmpty()) {
+					if (toBeCheckTimeIndex[t] && matrix[t][colInPdf] != null && !matrix[t][colInPdf].isEmpty()
+							&& !matrix[t][colInPdf].contains("|")) {
 						String timeToCheck = matrix[t][colInPdf].replace(".", ":");
+						int timeToCheckHour = Integer.valueOf(timeToCheck.substring(0, timeToCheck.indexOf(":")));
+
+						if (timeToCheckHour > 24) {
+							timeToCheckHour = timeToCheckHour - 24;
+							timeToCheck = formatter.format(timeToCheckHour)
+									+ timeToCheck.substring(timeToCheck.indexOf(":"));
+						}
 						System.out.println("check all trips for time " + matrix[t][colInPdf]);
 						for (int s = 0; s < stopTimes.size(); s++) {
 							// matches arrival or departure time (since pdf contains both entries).
@@ -1408,7 +1456,8 @@ public class AnnotatedTTGenerator {
 
 			int tripStartIndex = -1;
 			for (int i = startRow; i < matrix.length; i++) {
-				if (matrix[i][currentCol] != null && !matrix[i][currentCol].isEmpty()) {
+				if (matrix[i][currentCol] != null && !matrix[i][currentCol].isEmpty()
+						&& !matrix[i][currentCol].contains("|")) {
 					if (matrix[i][currentCol].contains("-")) {
 						italics = true;
 						if (!columnNotes.contains(ITALIC_ENTRY)) {
@@ -1427,7 +1476,8 @@ public class AnnotatedTTGenerator {
 			}
 			int tripEndIndex = -1;
 			for (int i = matrix.length - 1; i >= startRow; i--) {
-				if (matrix[i][currentCol] != null && !matrix[i][currentCol].isEmpty()) {
+				if (matrix[i][currentCol] != null && !matrix[i][currentCol].isEmpty()
+						&& !matrix[i][currentCol].contains("|")) {
 					if (matrix[i][currentCol].contains("-")) {
 						italics = true;
 						if (!columnNotes.contains(ITALIC_ENTRY)) {
@@ -1473,9 +1523,24 @@ public class AnnotatedTTGenerator {
 			}
 
 			if (tripStartIndex > -1 && tripEndIndex > -1) {
-
+				
 				String startTime = matrix[tripStartIndex][currentCol].replace(".", ":");
+				
+				int startTimeHour = Integer.valueOf(startTime.substring(0, startTime.indexOf(":")));
+				
+				if (startTimeHour > 24) {
+					startTimeHour = startTimeHour - 24;
+					startTime = formatter.format(startTimeHour) + startTime.substring(startTime.indexOf(":"));
+				}
+
 				String endTime = matrix[tripEndIndex][currentCol].replace(".", ":");
+
+				int endTimeHour = Integer.valueOf(endTime.substring(0, endTime.indexOf(":")));
+
+				if (endTimeHour > 24) {
+					endTimeHour = endTimeHour - 24;
+					endTime = formatter.format(endTimeHour) + endTime.substring(endTime.indexOf(":"));
+				}
 
 				System.out.println("checking column: " + matrix[startRow][currentCol] + " - routeId " + routeId + "["
 						+ startTime + "-" + endTime + "]");
@@ -1555,8 +1620,17 @@ public class AnnotatedTTGenerator {
 								pdfStopName = pdfStopName.replaceAll("\"", "");
 								String pdfTime = "";
 								if (matrix[i + numOfHeaders][currentCol] != null
+										&& !matrix[i + numOfHeaders][currentCol].contains("|")
 										&& !(matrix[i + numOfHeaders][currentCol].isEmpty())) {
 									pdfTime = matrix[i + numOfHeaders][currentCol].replace(".", ":") + ":00";
+
+									int pdfTimeHour = Integer.valueOf(pdfTime.substring(0, pdfTime.indexOf(":")));
+
+									if (pdfTimeHour > 24) {
+										pdfTimeHour = pdfTimeHour - 24;
+										pdfTime = formatter.format(pdfTimeHour)
+												+ pdfTime.substring(pdfTime.indexOf(":"));
+									}
 								}
 								stopIdsMap.put(stopsMap.get(stoptimeseq.get(gtfsSeq)[3]).toLowerCase(),
 										stoptimeseq.get(gtfsSeq)[3]);
@@ -1653,14 +1727,14 @@ public class AnnotatedTTGenerator {
 				continue;
 			} else {
 				System.out.println("Annotation in process for ->  " + fileEntry.getName());
-				timeTableGenerator.processFiles(pathToOutput, "16", pathToInput + fileEntry.getName());
+				timeTableGenerator.processFiles(pathToOutput, agencyId, pathToInput + fileEntry.getName());
 			}
 		}
 
 //		timeTableGenerator.processFiles(pathToOutput, "12", pathToInput + "08R-Feriale.csv");
 //		timeTableGenerator.processFiles(pathToOutput, "12", pathToInput + "14R-Feriale.csv");
-//		timeTableGenerator.processFiles(pathToOutput, "12", pathToInput + "07A-Feriale.csv");
-//		timeTableGenerator.processFiles(pathToOutput, "16", pathToInput + "E-03A-Feriale.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "104A.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "16", pathToInput + "E-01R-Feriale.csv");
 
 		timeTableGenerator.printStats();
 
