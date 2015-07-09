@@ -41,7 +41,7 @@ public class AnnotatedTTGenerator {
 	// route stats.
 	private static boolean routeStats = false;
 	// overall stats.
-	private static boolean gtfsStats = true;
+	private static boolean gtfsStats = false;
 	// csv stats.
 	private static boolean csvStats = true;
 
@@ -61,6 +61,10 @@ public class AnnotatedTTGenerator {
 	private static final String agencyId = "17";
 	private static final List<String> roveretoNBuses = Arrays.asList("N1", "N2", "N3", "N5", "N6");
 	private static final List<String> exUrbTrenoRoutes = Arrays.asList("578", "518", "352");
+	private static final Map<String, String> unalignedRoutesMap = new HashMap<String, String>();
+	{
+		unalignedRoutesMap.put("119", "109");
+	}
 	private static final String exUrbanArrivalSymbol = " - arr.";
 	private static final String exUrbanDepartureSymbol = " - part.";
 	private static final String UTF8_BOM = "\uFEFF";
@@ -1534,7 +1538,7 @@ public class AnnotatedTTGenerator {
 			}
 			if (gtfsStats) {
 			System.out.println("\n\n\n\n");
-			System.out.println("%%%%%%%%%%%%%%% OVERALL STATS %%%%%%%%%%%%%%");
+			System.out.println("%%%%%%%%%%%%%%% GTFS STATS %%%%%%%%%%%%%%");
 			System.out.println("total number of GTFS trips for routes: " + gtfsTripIds.size());
 			System.out.println("total number of matched trips for routes: " + matchedTripIds.size());
 			System.out.println("coverage(normal) : " +  (Double.valueOf(matchedTripIds.size()) / Double.valueOf(gtfsTripIds.size())) * 100);
@@ -1542,7 +1546,7 @@ public class AnnotatedTTGenerator {
 				System.out.println("Fixes in deep search mode :" + deepMatchedTripIds.size());
 				System.out.println("coverage(deep) : " +  (Double.valueOf(matchedTripIds.size() + deepMatchedTripIds.size()) / Double.valueOf(gtfsTripIds.size())) * 100);
 			}
-			System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
+			System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
 			System.out.println("\n\n\n\n");
 			List<String> deltaTrips = new ArrayList<String>();
 			deltaTrips.addAll(gtfsTripIds);
@@ -1576,7 +1580,6 @@ public class AnnotatedTTGenerator {
 
 		for (int currentCol = 1; currentCol < noOfCols; currentCol++) {
 
-//			boolean italics = false;
 			boolean mergedRoute = false;
 			// additional notes for column map.
 			List<String> columnNotes = new ArrayList<String>();
@@ -1586,12 +1589,15 @@ public class AnnotatedTTGenerator {
 			List<String> italicStopEntry = new ArrayList<String>();
 			columnItalicStopNames.put(currentCol, italicStopEntry);
 
+			// total csv trips counter.
+			totalCSVTrips++;
+			
 			int tripStartIndex = -1;
 			for (int i = startRow; i < matrix.length; i++) {
 				if (matrix[i][currentCol] != null && !matrix[i][currentCol].isEmpty()
 						&& !matrix[i][currentCol].contains("|")) {
 					if (matrix[i][currentCol].contains("-")) {
-//						italics = true;
+						//						italics = true;
 						if (!columnNotes.contains(ITALIC_ENTRY)) {
 							columnNotes.add(ITALIC_ENTRY);
 						}
@@ -1616,7 +1622,7 @@ public class AnnotatedTTGenerator {
 				if (matrix[i][currentCol] != null && !matrix[i][currentCol].isEmpty()
 						&& !matrix[i][currentCol].contains("|")) {
 					if (matrix[i][currentCol].contains("-")) {
-//						italics = true;
+						//						italics = true;
 						if (!columnNotes.contains(ITALIC_ENTRY)) {
 							columnNotes.add(ITALIC_ENTRY);
 						}
@@ -1661,36 +1667,38 @@ public class AnnotatedTTGenerator {
 				}
 			}
 
-			if (tripStartIndex > -1 && tripEndIndex > -1) {
+			// check for unaligned routes.
+			if (routeId.isEmpty() && unalignedRoutesMap.containsKey(routeShortName)) {
+				routeId = getGTFSRouteIdFromRouteShortName(unalignedRoutesMap.get(routeShortName));
+			}
 
-				String startTime = matrix[tripStartIndex][currentCol].replace(".", ":");
+			if (routeId != null && !routeId.isEmpty()) {
 
-				int startTimeHour = Integer.valueOf(startTime.substring(0, startTime.indexOf(":")));
+				if (tripStartIndex > -1 && tripEndIndex > -1) {
 
-				if (startTimeHour > 24) {
-					startTimeHour = startTimeHour - 24;
-				}
+					String startTime = matrix[tripStartIndex][currentCol].replace(".", ":");
 
-				startTime = formatter.format(startTimeHour) + startTime.substring(startTime.indexOf(":")).trim();
+					int startTimeHour = Integer.valueOf(startTime.substring(0, startTime.indexOf(":")));
 
-				String endTime = matrix[tripEndIndex][currentCol].replace(".", ":");
+					if (startTimeHour > 24) {
+						startTimeHour = startTimeHour - 24;
+					}
 
-				int endTimeHour = Integer.valueOf(endTime.substring(0, endTime.indexOf(":")));
+					startTime = formatter.format(startTimeHour) + startTime.substring(startTime.indexOf(":")).trim();
 
-				if (endTimeHour > 24) {
-					endTimeHour = endTimeHour - 24;
+					String endTime = matrix[tripEndIndex][currentCol].replace(".", ":");
 
-				}
+					int endTimeHour = Integer.valueOf(endTime.substring(0, endTime.indexOf(":")));
 
-				endTime = formatter.format(endTimeHour) + endTime.substring(endTime.indexOf(":")).trim();
+					if (endTimeHour > 24) {
+						endTimeHour = endTimeHour - 24;
 
-				System.out.println("checking column: " + matrix[startRow][currentCol] + " - routeId " + routeId + "["
-						+ startTime + "-" + endTime + "]");
+					}
 
-				// total csv trips counter.
-				totalCSVTrips++;
+					endTime = formatter.format(endTimeHour) + endTime.substring(endTime.indexOf(":")).trim();
 
-				if (routeId != null && !routeId.isEmpty()) {
+					System.out.println("checking column: " + matrix[startRow][currentCol] + " - routeId " + routeId
+							+ "[" + startTime + "-" + endTime + "]");
 
 					List<String> tripsForRoute = routeTripsMap.get(routeId);
 
@@ -1737,12 +1745,13 @@ public class AnnotatedTTGenerator {
 						String tripId = partialTripMatchAlgo(matrix, currentCol, startRow, routeId);
 						if (tripId != null && !tripId.isEmpty()) {
 							matchingTripId.add(tripId);
-						} else { //rerun with 90% match.
+						} 
+//						else { //rerun with 90% match.
 //							tripId = partialTripMatchByPercentAlgo(matrix, currentCol, startRow, routeId, 90);
 //							if (tripId != null && !tripId.isEmpty()) {
 //								matchingTripId.add(tripId);
 //							}
-						}
+//						}
 					}
 
 					// check trains.
@@ -1760,7 +1769,7 @@ public class AnnotatedTTGenerator {
 
 						if (!matchedTripIds.contains(matchingTripId.get(0))) {
 							matchedTripIds.add(matchingTripId.get(0));
-							//							successMatch++;
+							//	successMatch++;
 						}
 
 						columnTripIdMap.put(currentCol, matchingTripId);
@@ -1934,15 +1943,15 @@ public class AnnotatedTTGenerator {
 					}
 
 				} else {
-					System.err.println("\n\n\n\n\n----- no route found ----" + matrix[startRow][currentCol]);
-					columnNotes.add(ROUTE_ERROR);
+					System.err.println("\n\n\\n--- perhaps no time defined in pdf ---");
 					failedMatch++;
-					mismatchColIds = mismatchColIds + (currentCol + 2) + ",";
 				}
 
 			} else {
-				System.err.println("\n\n\\n--- perhaps no time defined in pdf ---");
+				System.err.println("\n\n\n\n\n----- no route found ----" + matrix[startRow][currentCol]);
+				columnNotes.add(ROUTE_ERROR);
 				failedMatch++;
+				mismatchColIds = mismatchColIds + (currentCol + 2) + ",";
 			}
 		}
 
