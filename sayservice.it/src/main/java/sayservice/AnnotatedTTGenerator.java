@@ -41,9 +41,9 @@ public class AnnotatedTTGenerator {
 	// route stats.
 	private static boolean routeStats = false;
 	// overall stats.
-	private static boolean overallStats = true;
+	private static boolean gtfsStats = true;
 	// csv stats.
-	private static boolean csvStats = true;;
+	private static boolean csvStats = true;
 
 	// input GTFS.
 //	private static final String pathToGTFS = "src/test/resources/gtfs/12/";
@@ -60,6 +60,7 @@ public class AnnotatedTTGenerator {
 	// agencyIds (12,16,17)
 	private static final String agencyId = "17";
 	private static final List<String> roveretoNBuses = Arrays.asList("N1", "N2", "N3", "N5", "N6");
+	private static final List<String> exUrbTrenoRoutes = Arrays.asList("578", "518", "352");
 	private static final String exUrbanArrivalSymbol = " - arr.";
 	private static final String exUrbanDepartureSymbol = " - part.";
 	private static final String UTF8_BOM = "\uFEFF";
@@ -202,12 +203,12 @@ public class AnnotatedTTGenerator {
 		int noOfOutputCols = maxNumberOfCols + 1;
 		
 		String[][] output;
-		if (agencyId.equalsIgnoreCase("17")) {
-			output = processExUrbanMatrix(matrix, noOfOutputCols);
-		} else {
-			output = processUrbanMatrix(matrix, noOfOutputCols);	
-		}
-		
+//		if (agencyId.equalsIgnoreCase("17")) {
+//			output = processExUrbanMatrix(matrix, noOfOutputCols);
+//		} else {
+//			output = processExUrbanMatrix(matrix, noOfOutputCols);	
+//		}
+		output = processMatrix(matrix, noOfOutputCols);
 
 		// simple print existing matrix.
 		for (int i = 0; i < output.length; i++) {
@@ -222,11 +223,11 @@ public class AnnotatedTTGenerator {
 		return converted;
 	}
 
-	private String[][] processExUrbanMatrix(String[][] matrix, int noOfOutputCols) {
+	private String[][] processMatrix(String[][] matrix, int noOfOutputCols) {
 
 		// create list of stops taking in to consideration GTFS data.
 		List<String> stops = new ArrayList<String>();
-		stops = processExUrbStops(matrix, numOfHeaders, noOfOutputCols - 1);
+		stops = processStops(matrix, numOfHeaders, noOfOutputCols - 1);
 
 		int noOfOutputRows = (stops.size() + 1);
 		String[][] output = new String[noOfOutputRows][noOfOutputCols];
@@ -265,7 +266,7 @@ public class AnnotatedTTGenerator {
 					/*output[stops.indexOf(stopListName) + 1][j] = stoptimeseq.get(gtfsSeq)[1].substring(0,
 							time.lastIndexOf(":"));*/
 				}
-				
+
 				// rerun for arrival times.
 				for (int gtfsSeq = 0; gtfsSeq < stoptimeseq.size(); gtfsSeq++) {
 
@@ -348,15 +349,16 @@ public class AnnotatedTTGenerator {
 
 	}
 
+	/**
 	private String[][] processUrbanMatrix(String[][] matrix, int noOfOutputCols) {
 
-		/** version 1.
-		for (int i = numOfHeaders; i < matrix.length; i++) {
-			for (int j = 1; j < noOfOutputCols; j++) {
-				output[i - numOfHeaders + 1][j] = matrix[i][j];
-			}
-			//	System.out.println(Arrays.toString(output[i]));
-		}**/
+		// version 1.
+		//for (int i = numOfHeaders; i < matrix.length; i++) {
+		//	for (int j = 1; j < noOfOutputCols; j++) {
+		//		output[i - numOfHeaders + 1][j] = matrix[i][j];
+		//	}
+		//	System.out.println(Arrays.toString(output[i]));
+		}
 
 		// create list of stops taking in to consideration GTFS data.
 		List<String> stops = new ArrayList<String>();
@@ -380,7 +382,7 @@ public class AnnotatedTTGenerator {
 					String time = stoptimeseq.get(gtfsSeq)[1];
 					String id = stoptimeseq.get(gtfsSeq)[3];
 					String stopListName = stopsMap.get(id).toLowerCase();
-					/** logic for handling cyclic trips for e.g. A_C festivo.**/
+					// logic for handling cyclic trips for e.g. A_C festivo.
 					int foundIndex = -1;
 					for (int i = 0; i < stops.size(); i++) {
 						if (stops.get(i).equals(stopListName) && !traversed[i]) {
@@ -393,9 +395,8 @@ public class AnnotatedTTGenerator {
 						traversed[foundIndex] = true;
 					}
 
-					/** else simply following code works. **/
-					/*output[stops.indexOf(stopListName) + 1][j] = stoptimeseq.get(gtfsSeq)[1].substring(0,
-							time.lastIndexOf(":"));*/
+					//else simply following code works.
+					
 				}
 
 			}
@@ -408,14 +409,14 @@ public class AnnotatedTTGenerator {
 			}
 		}
 
-		/** version 1.
-		for (int i = numOfHeaders; i < matrix.length; i++) {
-			output[i - numOfHeaders + 1][0] = processStopsColumns(matrix[i][0]);
-		}
+		//version 1.
+		//for (int i = numOfHeaders; i < matrix.length; i++) {
+		//	output[i - numOfHeaders + 1][0] = processStopsColumns(matrix[i][0]);
+		//}
 
-		for (int j = 1; j < noOfOutputCols - 1; j++) {
-			output[0][j] = mapTOGTFS(matrix, output, numOfHeaders, j);
-		}**/
+		//for (int j = 1; j < noOfOutputCols - 1; j++) {
+		//	output[0][j] = mapTOGTFS(matrix, output, numOfHeaders, j);
+		//}
 
 		for (int i = 0; i < stops.size(); i++) {
 
@@ -445,7 +446,7 @@ public class AnnotatedTTGenerator {
 		output = clean(output);
 
 		return output;
-	}
+	} **/
 
 	public static String[][] clean(String[][] array) {
 		for (int i = 0; i < array.length; i++) {
@@ -487,6 +488,7 @@ public class AnnotatedTTGenerator {
 		return annotation;
 	}
 
+	/**
 	private List<String> processStops(String[][] matrix, int startRow, int noOfCols) {
 
 		// merged list of stops.
@@ -595,7 +597,7 @@ public class AnnotatedTTGenerator {
 				if (startTimeHour > 24) {
 					startTimeHour = startTimeHour - 24;
 				}
-				startTime = formatter.format(startTimeHour) + startTime.substring(startTime.indexOf(":"));
+				startTime = formatter.format(startTimeHour) + startTime.substring(startTime.indexOf(":")).trim();
 
 				String endTime = matrix[tripEndIndex][currentCol].replace(".", ":");
 
@@ -604,7 +606,7 @@ public class AnnotatedTTGenerator {
 				if (endTimeHour > 24) {
 					endTimeHour = endTimeHour - 24;
 				}
-				endTime = formatter.format(endTimeHour) + endTime.substring(endTime.indexOf(":"));
+				endTime = formatter.format(endTimeHour) + endTime.substring(endTime.indexOf(":")).trim();
 				
 				System.out.println("checking column: " + matrix[startRow][currentCol] + " - routeId " + routeId + "["
 						+ startTime + "-" + endTime + "]");
@@ -631,13 +633,11 @@ public class AnnotatedTTGenerator {
 								&& stopTimes.get(stopTimes.size() - 1)[2].contains(endTime)) {
 
 							if (mergedRoute) {
-								/** first version(trip matching algorithm. **/
 								if (!matchingTripId.contains(tripId)) {
 									matchingTripId.add(tripId);
 //									break;
 								}
 							} else {
-								/** second version (trip matching algorithm). **/
 								if (matchTrips(matrix, currentCol, tripStartIndex, tripEndIndex, stopTimes)) {
 									if (!matchingTripId.contains(tripId)) {
 										matchingTripId.add(tripId);
@@ -698,7 +698,7 @@ public class AnnotatedTTGenerator {
 										pdfTimeHour = pdfTimeHour - 24;
 
 									}
-									pdfTime = formatter.format(pdfTimeHour) + pdfTime.substring(pdfTime.indexOf(":"));
+									pdfTime = formatter.format(pdfTimeHour) + pdfTime.substring(pdfTime.indexOf(":")).trim();
 
 								}
 								stopIdsMap.put(stopsMap.get(stoptimeseq.get(gtfsSeq)[3]).toLowerCase(),
@@ -786,7 +786,7 @@ public class AnnotatedTTGenerator {
 
 		//		return stopList;
 		return stopsFinal;
-	}
+	} **/
 
 	private String mapTOGTFS(String[][] matrix, String[][] output, int startRow, int currentCol) {
 
@@ -1249,32 +1249,31 @@ public class AnnotatedTTGenerator {
 	private String partialTripMatchAlgo(String[][] matrix, int colInPdf, int startRow, String routeId) {
 	
 		String partialTripId = "";
-	
+
 		System.out.println("Processing column starting with time: " + matrix[numOfHeaders][colInPdf]);
 
-//		routeId = getGTFSRouteIdFromRouteShortName(routeShortName);
-//
-//		if (matrix[5][colInPdf] != null && matrix[5][colInPdf].contains("Linea")) {
-//			String pdfRouteId = matrix[5][colInPdf].substring(matrix[5][colInPdf].indexOf('a') + 1);
-//			routeId = getGTFSRouteIdFromRouteShortName(pdfRouteId);
-//			if (routeId.isEmpty()) {
-//				routeId = getGTFSRouteIdFromRouteShortName(pdfRouteId.substring(0, pdfRouteId.indexOf("/")));
-//				if (routeId != null && !routeId.isEmpty()) {
-//					columnGTFSRSName.put(colInPdf, pdfRouteId.substring(0, pdfRouteId.indexOf("/")));
-//				}
-//			}
-//		} else if (matrix[5][colInPdf] != null && isInteger(matrix[5][colInPdf])) {
-//			String pdfRouteId = matrix[5][colInPdf];
-//			routeId = getGTFSRouteIdFromRouteShortName(pdfRouteId);
-//		}
+		//		routeId = getGTFSRouteIdFromRouteShortName(routeShortName);
+		//
+		//		if (matrix[5][colInPdf] != null && matrix[5][colInPdf].contains("Linea")) {
+		//			String pdfRouteId = matrix[5][colInPdf].substring(matrix[5][colInPdf].indexOf('a') + 1);
+		//			routeId = getGTFSRouteIdFromRouteShortName(pdfRouteId);
+		//			if (routeId.isEmpty()) {
+		//				routeId = getGTFSRouteIdFromRouteShortName(pdfRouteId.substring(0, pdfRouteId.indexOf("/")));
+		//				if (routeId != null && !routeId.isEmpty()) {
+		//					columnGTFSRSName.put(colInPdf, pdfRouteId.substring(0, pdfRouteId.indexOf("/")));
+		//				}
+		//			}
+		//		} else if (matrix[5][colInPdf] != null && isInteger(matrix[5][colInPdf])) {
+		//			String pdfRouteId = matrix[5][colInPdf];
+		//			routeId = getGTFSRouteIdFromRouteShortName(pdfRouteId);
+		//		}
 
 		// validate trip with GTFS.
 		boolean[] toBeCheckTimeIndex = new boolean[matrix.length];
 
 		for (int i = startRow; i < matrix.length; i++) {
 
-			if (matrix[i][colInPdf] != null && !matrix[i][colInPdf].isEmpty()
-					&& !matrix[i][colInPdf].contains("|")) {
+			if (matrix[i][colInPdf] != null && !matrix[i][colInPdf].isEmpty() && !matrix[i][colInPdf].contains("|")) {
 				if (matrix[i][colInPdf].contains("-")) {
 					continue;
 				}
@@ -1299,7 +1298,7 @@ public class AnnotatedTTGenerator {
 			}
 
 			List<String> matchingTripId = new ArrayList<String>();
-			
+
 			for (String tripId : tripsForRoute) {
 				List<String[]> stopTimes = tripStopsTimesMap.get(tripId);
 
@@ -1314,9 +1313,10 @@ public class AnnotatedTTGenerator {
 
 						if (timeToCheckHour > 24) {
 							timeToCheckHour = timeToCheckHour - 24;
-							timeToCheck = formatter.format(timeToCheckHour)
-									+ timeToCheck.substring(timeToCheck.indexOf(":"));
+
 						}
+						timeToCheck = formatter.format(timeToCheckHour)
+								+ timeToCheck.substring(timeToCheck.indexOf(":")).trim();
 						System.out.println("check all trips for time " + matrix[t][colInPdf]);
 						for (int s = 0; s < stopTimes.size(); s++) {
 							// matches arrival or departure time (since pdf contains both entries).
@@ -1366,11 +1366,11 @@ public class AnnotatedTTGenerator {
 			}
 		}
 
-	
 		return partialTripId;
 
 	}
-
+	
+	
 	private String processColumn(String[][] matrix, int currentCol, int startRow) {
 
 		String annotation = "";
@@ -1532,7 +1532,7 @@ public class AnnotatedTTGenerator {
 				System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
 				
 			}
-			if (overallStats) {
+			if (gtfsStats) {
 			System.out.println("\n\n\n\n");
 			System.out.println("%%%%%%%%%%%%%%% OVERALL STATS %%%%%%%%%%%%%%");
 			System.out.println("total number of GTFS trips for routes: " + gtfsTripIds.size());
@@ -1557,7 +1557,7 @@ public class AnnotatedTTGenerator {
 		}
 	}
 	
-	private List<String> processExUrbStops(String[][] matrix, int startRow, int noOfCols) {
+	private List<String> processStops(String[][] matrix, int startRow, int noOfCols) {
 
 		// merged list of stops.
 		List<String> stopList = new ArrayList<String>();
@@ -1576,11 +1576,8 @@ public class AnnotatedTTGenerator {
 
 		for (int currentCol = 1; currentCol < noOfCols; currentCol++) {
 
-			boolean italics = false;
+//			boolean italics = false;
 			boolean mergedRoute = false;
-			boolean startTimeArrival = false;
-			boolean endTimeArrival = false;
-
 			// additional notes for column map.
 			List<String> columnNotes = new ArrayList<String>();
 			columnHeaderNotes.put(currentCol, columnNotes);
@@ -1594,7 +1591,7 @@ public class AnnotatedTTGenerator {
 				if (matrix[i][currentCol] != null && !matrix[i][currentCol].isEmpty()
 						&& !matrix[i][currentCol].contains("|")) {
 					if (matrix[i][currentCol].contains("-")) {
-						italics = true;
+//						italics = true;
 						if (!columnNotes.contains(ITALIC_ENTRY)) {
 							columnNotes.add(ITALIC_ENTRY);
 						}
@@ -1609,7 +1606,7 @@ public class AnnotatedTTGenerator {
 
 					// set arrival time flag.
 					if (matrix[i][0].contains(" - Arr.")) {
-						startTimeArrival = true;
+						continue;
 					}
 					break;
 				}
@@ -1619,7 +1616,7 @@ public class AnnotatedTTGenerator {
 				if (matrix[i][currentCol] != null && !matrix[i][currentCol].isEmpty()
 						&& !matrix[i][currentCol].contains("|")) {
 					if (matrix[i][currentCol].contains("-")) {
-						italics = true;
+//						italics = true;
 						if (!columnNotes.contains(ITALIC_ENTRY)) {
 							columnNotes.add(ITALIC_ENTRY);
 						}
@@ -1631,9 +1628,8 @@ public class AnnotatedTTGenerator {
 						continue;
 					}
 					tripEndIndex = i;
-					// set arrival time flag.
 					if (matrix[i][0].contains(" - Arr.")) {
-						endTimeArrival = true;
+						continue;
 					}
 					break;
 				}
@@ -1674,8 +1670,8 @@ public class AnnotatedTTGenerator {
 				if (startTimeHour > 24) {
 					startTimeHour = startTimeHour - 24;
 				}
-				
-				startTime = formatter.format(startTimeHour) + startTime.substring(startTime.indexOf(":"));
+
+				startTime = formatter.format(startTimeHour) + startTime.substring(startTime.indexOf(":")).trim();
 
 				String endTime = matrix[tripEndIndex][currentCol].replace(".", ":");
 
@@ -1683,10 +1679,10 @@ public class AnnotatedTTGenerator {
 
 				if (endTimeHour > 24) {
 					endTimeHour = endTimeHour - 24;
-					
+
 				}
-				
-				endTime = formatter.format(endTimeHour) + endTime.substring(endTime.indexOf(":"));
+
+				endTime = formatter.format(endTimeHour) + endTime.substring(endTime.indexOf(":")).trim();
 
 				System.out.println("checking column: " + matrix[startRow][currentCol] + " - routeId " + routeId + "["
 						+ startTime + "-" + endTime + "]");
@@ -1711,37 +1707,12 @@ public class AnnotatedTTGenerator {
 					for (String tripId : tripsForRoute) {
 						List<String[]> stopTimes = tripStopsTimesMap.get(tripId);
 
-						if (startTimeArrival && endTimeArrival) { // if start index is arrival time & end index is arrival time too.
-							if (stopTimes.get(0)[1].contains(startTime)
-									&& stopTimes.get(stopTimes.size() - 1)[1].contains(endTime)) {
+						if (stopTimes.get(0)[2].contains(startTime)
+								&& stopTimes.get(stopTimes.size() - 1)[2].contains(endTime)) {
 
-								foundTripId = tripId;
-								break;
-							}
+							foundTripId = tripId;
+							break;
 
-						} else if (startTimeArrival && !endTimeArrival) { // if start index is arrival time & end index is departure time.
-							if (stopTimes.get(0)[1].contains(startTime)
-									&& stopTimes.get(stopTimes.size() - 1)[2].contains(endTime)) {
-								foundTripId = tripId;
-								break;
-							}
-
-						} else if (!startTimeArrival && endTimeArrival) { // if start index is departure time & end index is arrival time.
-							if (stopTimes.get(0)[2].contains(startTime)
-									&& stopTimes.get(stopTimes.size() - 1)[1].contains(endTime)) {
-								foundTripId = tripId;
-								break;
-							}
-
-						} else { // if both index are departure times.
-
-							if (stopTimes.get(0)[2].contains(startTime)
-									&& stopTimes.get(stopTimes.size() - 1)[2].contains(endTime)) {
-
-								foundTripId = tripId;
-								break;
-
-							}
 						}
 					}
 
@@ -1753,7 +1724,7 @@ public class AnnotatedTTGenerator {
 								matchingTripId.add(foundTripId);
 							}
 						} else {
-							if (matchExUrbanTrips(matrix, currentCol, tripStartIndex, tripEndIndex, stopTimes)) {
+							if (deepMatchTrips(matrix, currentCol, tripStartIndex, tripEndIndex, stopTimes)) {
 								if (!matchingTripId.contains(foundTripId)) {
 									matchingTripId.add(foundTripId);
 								}
@@ -1764,6 +1735,20 @@ public class AnnotatedTTGenerator {
 					if (matchingTripId == null || matchingTripId.isEmpty()) {
 						// algorithm to check trip in other route.
 						String tripId = partialTripMatchAlgo(matrix, currentCol, startRow, routeId);
+						if (tripId != null && !tripId.isEmpty()) {
+							matchingTripId.add(tripId);
+						} else { //rerun with 90% match.
+//							tripId = partialTripMatchByPercentAlgo(matrix, currentCol, startRow, routeId, 90);
+//							if (tripId != null && !tripId.isEmpty()) {
+//								matchingTripId.add(tripId);
+//							}
+						}
+					}
+
+					// check trains.
+					if (matchingTripId == null || matchingTripId.isEmpty()) {
+						// algorithm to check trip in other route.
+						String tripId = checkTrainTrips(matrix, currentCol, startRow);
 						if (tripId != null && !tripId.isEmpty())
 							matchingTripId.add(tripId);
 					}
@@ -1771,9 +1756,11 @@ public class AnnotatedTTGenerator {
 					// prepare stops list.
 					if (matchingTripId != null && !matchingTripId.isEmpty()) {
 
+						successMatch++;
+
 						if (!matchedTripIds.contains(matchingTripId.get(0))) {
 							matchedTripIds.add(matchingTripId.get(0));
-							successMatch++;
+							//							successMatch++;
 						}
 
 						columnTripIdMap.put(currentCol, matchingTripId);
@@ -1821,8 +1808,9 @@ public class AnnotatedTTGenerator {
 									if (pdfTimeHour > 24) {
 										pdfTimeHour = pdfTimeHour - 24;
 									}
-									
-									pdfTime = formatter.format(pdfTimeHour)	+ pdfTime.substring(pdfTime.indexOf(":"));
+
+									pdfTime = formatter.format(pdfTimeHour)
+											+ pdfTime.substring(pdfTime.indexOf(":")).trim();
 								}
 								stopIdsMap.put(stopsMap.get(stoptimeseq.get(gtfsSeq)[3]).toLowerCase(),
 										stoptimeseq.get(gtfsSeq)[3]);
@@ -1889,7 +1877,8 @@ public class AnnotatedTTGenerator {
 									if (pdfTimeHour > 24) {
 										pdfTimeHour = pdfTimeHour - 24;
 									}
-									pdfTime = formatter.format(pdfTimeHour)	+ pdfTime.substring(pdfTime.indexOf(":"));
+									pdfTime = formatter.format(pdfTimeHour)
+											+ pdfTime.substring(pdfTime.indexOf(":")).trim();
 								}
 								stopIdsMap.put(stopsMap.get(stoptimeseq.get(gtfsSeq)[3]).toLowerCase(),
 										stoptimeseq.get(gtfsSeq)[3]);
@@ -1942,13 +1931,18 @@ public class AnnotatedTTGenerator {
 						columnNotes.add(TRIP_ERROR);
 						failedMatch++;
 						mismatchColIds = mismatchColIds + (currentCol + 2) + ",";
-
 					}
 
 				} else {
-					System.err.println("\n\n\\n--- perhaps no time defined in pdf ---");
+					System.err.println("\n\n\n\n\n----- no route found ----" + matrix[startRow][currentCol]);
+					columnNotes.add(ROUTE_ERROR);
+					failedMatch++;
+					mismatchColIds = mismatchColIds + (currentCol + 2) + ",";
 				}
 
+			} else {
+				System.err.println("\n\n\\n--- perhaps no time defined in pdf ---");
+				failedMatch++;
 			}
 		}
 
@@ -1959,19 +1953,19 @@ public class AnnotatedTTGenerator {
 			List<String[]> stoptimeseq = tripStopsTimesMap.get(tripId);
 
 			for (int anamoly : anamoliesList) {
-                System.out.println("trying to add stop " + stopsMap.get(stoptimeseq.get(anamoly)[3]) + ":" + stoptimeseq.get(anamoly)[3]); 
+				System.out.println("trying to add stop " + stopsMap.get(stoptimeseq.get(anamoly)[3]) + ":"
+						+ stoptimeseq.get(anamoly)[3]);
 				String stopNameBefore = null;
 				for (int a = anamoly - 1; a > -1; a--) {
 					stopNameBefore = stopsMap.get(stoptimeseq.get(a)[3]);
 					System.err.println(stopNameBefore);
-					if (stopNameBefore != null && !stopNameBefore.isEmpty()
-							&& stopList.indexOf(stopNameBefore) != -1) {
+					if (stopNameBefore != null && !stopNameBefore.isEmpty() && stopList.indexOf(stopNameBefore) != -1) {
 						break;
 					}
 				}
-				
-				if (stopList.indexOf(stopNameBefore+exUrbanDepartureSymbol) != -1) {
-					int insertIndex = stopList.indexOf(stopNameBefore+exUrbanDepartureSymbol) + 1;
+
+				if (stopList.indexOf(stopNameBefore + exUrbanDepartureSymbol) != -1) {
+					int insertIndex = stopList.indexOf(stopNameBefore + exUrbanDepartureSymbol) + 1;
 					String stopName = stopsMap.get(stoptimeseq.get(anamoly)[3]);
 					if (stopList.indexOf(stopName) == -1) {
 						stopList.add(insertIndex, stopsMap.get(stoptimeseq.get(anamoly)[3]));
@@ -2010,30 +2004,269 @@ public class AnnotatedTTGenerator {
 			}
 		}
 
-		//		return stopList;
+		//return stopList;
 		return stopsFinal;
+		
 	}
 
-	private boolean matchExUrbanTrips(String[][] matrix, int currentCol, int tripStartIndex, int tripEndIndex,
+    private String checkTrainTrips(String[][] matrix, int colInPdf, int startRow) {
+    	String trainTripId = "";
+
+		System.out.println("Processing column starting with time: " + matrix[numOfHeaders][colInPdf]);
+
+		// validate trip with GTFS.
+		boolean[] toBeCheckTimeIndex = new boolean[matrix.length];
+
+		for (int i = startRow; i < matrix.length; i++) {
+
+			if (matrix[i][colInPdf] != null && !matrix[i][colInPdf].isEmpty() && !matrix[i][colInPdf].contains("|")) {
+				if (matrix[i][colInPdf].contains("-")) {
+					continue;
+				}
+
+				if (matrix[i][0].contains(" - Arr.")) {
+					continue;
+				}
+
+				toBeCheckTimeIndex[i] = true;
+			}
+		}
+
+		for(String trainRouteId: exUrbTrenoRoutes) {
+
+			List<String> tripsForRoute = routeTripsMap.get(trainRouteId);
+
+			if (tripsForRoute != null && !tripsForRoute.isEmpty()) {
+				int count = 0;
+				for (Boolean boolT : toBeCheckTimeIndex) {
+					if (boolT) {
+						count++;
+					}
+				}
+
+				List<String> matchingTripId = new ArrayList<String>();
+
+				for (String tripId : tripsForRoute) {
+					List<String[]> stopTimes = tripStopsTimesMap.get(tripId);
+
+					boolean foundPdfTime = false;
+					boolean timeChecks[] = new boolean[count];
+
+					for (int t = startRow, tbc = 0; t < toBeCheckTimeIndex.length; t++) {
+						if (toBeCheckTimeIndex[t] && matrix[t][colInPdf] != null && !matrix[t][colInPdf].isEmpty()
+								&& !matrix[t][colInPdf].contains("|")) {
+							String timeToCheck = matrix[t][colInPdf].replace(".", ":");
+							int timeToCheckHour = Integer.valueOf(timeToCheck.substring(0, timeToCheck.indexOf(":")));
+
+							if (timeToCheckHour > 24) {
+								timeToCheckHour = timeToCheckHour - 24;
+
+							}
+
+							timeToCheck = formatter.format(timeToCheckHour)
+									+ timeToCheck.substring(timeToCheck.indexOf(":")).trim();
+
+							System.out.println("check all trips for time " + matrix[t][colInPdf]);
+							for (int s = 0; s < stopTimes.size(); s++) {
+								if (stopTimes.get(s)[2].contains(timeToCheck) | stopTimes.get(s)[2].contains(timeToCheck)) {
+									foundPdfTime = true;
+									timeChecks[tbc] = true;
+									tbc++;
+									break;
+								}
+							}
+							if (!foundPdfTime) {
+								break;
+							}
+						}
+					}
+
+					if (foundPdfTime) {
+						boolean foundTrip = true;
+						// check if all found.
+						for (Boolean index : timeChecks) {
+							if (!index) {
+								foundTrip = false;
+
+							}
+						}
+
+						// found
+						if (foundTrip) {
+							matchingTripId.add(tripId);
+							break;
+						}
+					}
+
+				}
+
+				if (matchingTripId != null && !matchingTripId.isEmpty()) {
+
+					if (matchingTripId.size() == 1) {
+						System.out.println("found partial matched trip Id " + matchingTripId.get(0));
+						trainTripId = matchingTripId.get(0);
+					} else {
+						System.err.println("anamoly- mutliple trips detected");
+						for (String tripId : matchingTripId) {
+							trainTripId = trainTripId + "-" + tripId;
+						}
+					}
+				}				
+			} else {
+				return trainTripId;
+			}
+		}
+
+		return trainTripId;
+	}
+
+	private String partialTripMatchByPercentAlgo(String[][] matrix, int colInPdf, int startRow, String routeId, int percentage) {
+		
+		String partialTripId = "";
+
+		System.out.println("Processing column starting with time: " + matrix[numOfHeaders][colInPdf]);
+
+		// validate trip with GTFS.
+		boolean[] toBeCheckTimeIndex = new boolean[matrix.length];
+
+		for (int i = startRow; i < matrix.length; i++) {
+
+			if (matrix[i][colInPdf] != null && !matrix[i][colInPdf].isEmpty() && !matrix[i][colInPdf].contains("|")) {
+				if (matrix[i][colInPdf].contains("-")) {
+					continue;
+				}
+
+				if (matrix[i][0].contains(" - Arr.")) {
+					continue;
+				}
+
+				toBeCheckTimeIndex[i] = true;
+			}
+		}
+
+		if (routeId != null && !routeId.isEmpty()) {
+
+			List<String> tripsForRoute = routeTripsMap.get(routeId);
+
+			if (tripsForRoute.isEmpty()) {
+				partialTripId = "no route found";
+				return partialTripId;
+			}
+
+			int count = 0;
+			for (Boolean boolT : toBeCheckTimeIndex) {
+				if (boolT) {
+					count++;
+				}
+			}
+
+			List<String> matchingTripId = new ArrayList<String>();
+
+			for (String tripId : tripsForRoute) {
+				List<String[]> stopTimes = tripStopsTimesMap.get(tripId);
+
+				boolean foundPdfTime = false;
+				boolean timeChecks[] = new boolean[count];
+
+				for (int t = startRow, tbc = 0; t < toBeCheckTimeIndex.length; t++) {
+					if (toBeCheckTimeIndex[t] && matrix[t][colInPdf] != null && !matrix[t][colInPdf].isEmpty()
+							&& !matrix[t][colInPdf].contains("|")) {
+						String timeToCheck = matrix[t][colInPdf].replace(".", ":");
+						int timeToCheckHour = Integer.valueOf(timeToCheck.substring(0, timeToCheck.indexOf(":")));
+
+						if (timeToCheckHour > 24) {
+							timeToCheckHour = timeToCheckHour - 24;
+
+						}
+
+						timeToCheck = formatter.format(timeToCheckHour)
+								+ timeToCheck.substring(timeToCheck.indexOf(":")).trim();
+
+						System.out.println("check all trips for time " + matrix[t][colInPdf]);
+						for (int s = 0; s < stopTimes.size(); s++) {
+							if (stopTimes.get(s)[2].contains(timeToCheck) | stopTimes.get(s)[2].contains(timeToCheck)) {
+								foundPdfTime = true;
+								timeChecks[tbc] = true;
+								tbc++;
+								break;
+							}
+						}
+						if (Double.valueOf(tbc)/Double.valueOf(count) * 100 >= percentage) {
+							foundPdfTime = true;
+							break;
+							
+						}
+						if (!foundPdfTime) {
+							break;
+						}
+					}
+				}
+
+				if (foundPdfTime && percentage == 100) {
+					boolean foundTrip = true;
+					// check if all found.
+					for (Boolean index : timeChecks) {
+						
+						if (!index) {
+							foundTrip = false;
+
+						}
+					}
+					// found
+					if (foundTrip) {
+						matchingTripId.add(tripId);
+						break;
+					}
+				} else {
+					matchingTripId.add(tripId);
+					break;
+				}
+
+			}
+
+			if (matchingTripId != null && !matchingTripId.isEmpty()) {
+
+				if (matchingTripId.size() == 1) {
+					System.out.println("found partial matched trip Id " + matchingTripId.get(0));
+					partialTripId = matchingTripId.get(0);
+				} else {
+					System.err.println("anamoly- mutliple trips detected");
+					for (String tripId : matchingTripId) {
+						partialTripId = partialTripId + "-" + tripId;
+					}
+				}
+			}
+		}
+
+		return partialTripId;
+
+	}
+	
+	private boolean deepMatchTrips(String[][] matrix, int currentCol, int tripStartIndex, int tripEndIndex,
 			List<String[]> stopTimes) {
 
 		int i = 0;
 		for (i = tripStartIndex; i <= tripEndIndex; i++) {
 
-			boolean isArrivalTime = false;
+//			boolean isArrivalTime = false;
 
 			if (matrix[i][currentCol] == null || matrix[i][currentCol].isEmpty() || matrix[i][currentCol].contains("|")
 					|| matrix[i][currentCol].contains("-")) {
 				continue;
 
 			}
+			
+			// set arrival time flag.
+			if (matrix[i][0].contains(" - Arr.")) {
+				continue;
+			}
 
 			String timeToCheck = matrix[i][currentCol].replace(".", ":");
 
 			// set arrival time flag.
-			if (matrix[i][0].contains(" - Arr.")) {
-				isArrivalTime = true;
-			}
+//			if (matrix[i][0].contains(" - Arr.")) {
+//				isArrivalTime = true;
+//			}
 
 			int timeToCheckHour = Integer.valueOf(timeToCheck.substring(0, timeToCheck.indexOf(":")));
 
@@ -2041,7 +2274,7 @@ public class AnnotatedTTGenerator {
 				timeToCheckHour = timeToCheckHour - 24;
 			}
 			
-			timeToCheck = formatter.format(timeToCheckHour) + timeToCheck.substring(timeToCheck.indexOf(":"));
+			timeToCheck = formatter.format(timeToCheckHour) + timeToCheck.substring(timeToCheck.indexOf(":")).trim();
 
 			boolean found = false;
 			/** to make sure if sequence time checked once. **/
@@ -2052,19 +2285,12 @@ public class AnnotatedTTGenerator {
 			 *  stopTimes.get(s)[1] arrival time.**/
 			for (int s = 0; s < stopTimes.size(); s++) {
 
-				if (isArrivalTime) {
-					if (stopTimes.get(s)[1].contains(timeToCheck) && !tripSequence[s]) {
-						found = true;
-						//	tripSequence[s] = true;
-						break;
-					}
-				} else {
-					if (stopTimes.get(s)[2].contains(timeToCheck) && !tripSequence[s]) {
+				if (stopTimes.get(s)[2].contains(timeToCheck) && !tripSequence[s]) {
 						found = true;
 						tripSequence[s] = true;
 						break;
 					}
-				}
+				
 
 			}
 			if (!found) {
@@ -2097,8 +2323,8 @@ public class AnnotatedTTGenerator {
 
 //		timeTableGenerator.processFiles(pathToOutput, "12", pathToInput + "05A-Feriale.csv");
 //		timeTableGenerator.processFiles(pathToOutput, "12", pathToInput + "14R-Feriale.csv");
-//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "101ESA.csv");
-//		timeTableGenerator.processFiles(pathToOutput, "16", pathToInput + "E-01R-Feriale.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "119ESA.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "401INA.csv");
 
 		timeTableGenerator.printStats();
 
