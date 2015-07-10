@@ -5,3 +5,6 @@ sayservice.it/src/test/resources/annotatedtimetable/*
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 
+sayservice.it/src/test/resources/gtfs/12/*.txt
+sayservice.it/src/test/resources/gtfs/16/*.txt
+sayservice.it/src/test/resources/gtfs/17/*.txt
