@@ -46,19 +46,19 @@ public class AnnotatedTTGenerator {
 	private static boolean csvStats = true;
 
 	// input GTFS.
-//	private static final String pathToGTFS = "src/test/resources/gtfs/12/";
+	private static final String pathToGTFS = "src/test/resources/gtfs/12/";
 //	private static final String pathToGTFS = "src/test/resources/gtfs/16/";
-	private static final String pathToGTFS = "src/test/resources/gtfs/17/";
+//	private static final String pathToGTFS = "src/test/resources/gtfs/17/";
 	// output folder.
-//	private static final String pathToOutput = "src/test/resources/annotatedtimetable/12/";
+	private static final String pathToOutput = "src/test/resources/annotatedtimetable/12/";
 //	private static final String pathToOutput = "src/test/resources/annotatedtimetable/16/";
-	private static final String pathToOutput = "src/test/resources/annotatedtimetable/17/";
+//	private static final String pathToOutput = "src/test/resources/annotatedtimetable/17/";
 	// input folder.
-//	private static final String pathToInput = "src/test/resources/inputtimetable/12/";
+	private static final String pathToInput = "src/test/resources/inputtimetable/12/";
 //	private static final String pathToInput = "src/test/resources/inputtimetable/16/";
-	private static final String pathToInput = "src/test/resources/inputtimetable/17/";
+//	private static final String pathToInput = "src/test/resources/inputtimetable/17/";
 	// agencyIds (12,16,17)
-	private static final String agencyId = "17";
+	private static final String agencyId = "12";
 	private static final List<String> roveretoNBuses = Arrays.asList("N1", "N2", "N3", "N5", "N6");
 	private static final List<String> exUrbTrenoRoutes = Arrays.asList("578", "518", "352");
 	private static final Map<String, String> unalignedRoutesMap = new HashMap<String, String>();
@@ -240,7 +240,15 @@ public class AnnotatedTTGenerator {
 		int noOfOutputRows = (stops.size() + 1);
 		String[][] output = new String[noOfOutputRows][noOfOutputCols];
 		
+		// stops column.
+		output[0][0] = "stops;stop_id";
+		
+		for (int i = 0; i < stops.size(); i++) {
+			output[i+1][0] = stops.get(i) + ";";
+		}
+				
 		for (int j = 1; j < noOfOutputCols - 1; j++) {
+			
 			if (columnTripIdMap.containsKey(j)) {
 				List<String[]> stoptimeseq = tripStopsTimesMap.get(columnTripIdMap.get(j).get(0));
 				boolean traversed[] = new boolean[stops.size()];
@@ -300,6 +308,7 @@ public class AnnotatedTTGenerator {
 						}
 					}
 					
+					
 					if (foundIndex > -1) {
 						output[foundIndex + 1][j] = gtfs2pdfMappedTime;
 						
@@ -318,9 +327,10 @@ public class AnnotatedTTGenerator {
 							output[foundIndex + 1][0] = "*" + output[foundIndex + 1][0];
 						}
 						traversed[foundIndex] = true;
-					} else {
-						output[foundIndex + 1][0] = id + ";";
 					}
+//					else {
+//						output[foundIndex + 1][0] = ";";
+//					}
 
 					/** else simply following code works. **/
 					/*output[stops.indexOf(stopListName) + 1][j] = stoptimeseq.get(gtfsSeq)[1].substring(0,
@@ -401,9 +411,10 @@ public class AnnotatedTTGenerator {
 						}
 						
 						traversed[foundIndex] = true;
-					} else {
-						output[foundIndex + 1][0] = id + ";";
 					}
+//					else {
+//						output[foundIndex + 1][0] = id + ";";
+//					}
 					/** else simply following code works. **/
 					/*output[stops.indexOf(stopListName) + 1][j] = stoptimeseq.get(gtfsSeq)[1].substring(0,
 							time.lastIndexOf(":"));*/
@@ -415,12 +426,13 @@ public class AnnotatedTTGenerator {
 			for (String italicEntry : columnItalicStopNames.get(j)) {
 				String name = italicEntry.substring(0, italicEntry.indexOf("$"));
 				String time = italicEntry.substring(italicEntry.indexOf("$") + 1);
-				output[stops.indexOf(name) + 1][j] = time;
+				output[stops.indexOf(name.toLowerCase()) + 1][j] = time;
+				output[stops.indexOf(name.toLowerCase()) + 1][0] = name + ";";
 			}
 		}
 		
-		// stops column.
-		output[0][0] = "stops;stop_id";
+//		// stops column.
+//		output[0][0] = "stops;stop_id";
 
 
 //		for (int i = 0; i < stops.size(); i++) {
@@ -1740,7 +1752,7 @@ public class AnnotatedTTGenerator {
 						if (!columnNotes.contains(ITALIC_ENTRY)) {
 							columnNotes.add(ITALIC_ENTRY);
 						}
-						String stopName = matrix[i][0].replaceAll("\\s+", " ").toLowerCase();
+						String stopName = matrix[i][0].replaceAll("\\s+", " ");
 						String time = matrix[i][currentCol];
 						if (!italicStopEntry.contains(stopName + "$" + time)) {
 							italicStopEntry.add(stopName + "$" + time);
@@ -1765,7 +1777,7 @@ public class AnnotatedTTGenerator {
 						if (!columnNotes.contains(ITALIC_ENTRY)) {
 							columnNotes.add(ITALIC_ENTRY);
 						}
-						String stopName = matrix[i][0].replaceAll("\\s+", " ").toLowerCase();
+						String stopName = matrix[i][0].replaceAll("\\s+", " ");
 						String time = matrix[i][currentCol];
 						if (!italicStopEntry.contains(stopName + "$" + time)) {
 							italicStopEntry.add(stopName + "$" + time);
@@ -2488,20 +2500,20 @@ public class AnnotatedTTGenerator {
 
 	public static void main(String[] args) throws Exception {
 		AnnotatedTTGenerator timeTableGenerator = new AnnotatedTTGenerator();
-//		File folder = new File(pathToInput);
-//
-//		for (final File fileEntry : folder.listFiles()) {
-//			if (fileEntry.isDirectory() | fileEntry.getName().contains(".json")) {
-//				continue;
-//			} else {
-//				System.out.println("Annotation in process for ->  " + fileEntry.getName());
-//				timeTableGenerator.processFiles(pathToOutput, agencyId, pathToInput + fileEntry.getName());
-//			}
-//		}
+		File folder = new File(pathToInput);
 
-//		timeTableGenerator.processFiles(pathToOutput, "12", pathToInput + "05A-Feriale.csv");
+		for (final File fileEntry : folder.listFiles()) {
+			if (fileEntry.isDirectory() | fileEntry.getName().contains(".json")) {
+				continue;
+			} else {
+				System.out.println("Annotation in process for ->  " + fileEntry.getName());
+				timeTableGenerator.processFiles(pathToOutput, agencyId, pathToInput + fileEntry.getName());
+			}
+		}
+
+//		timeTableGenerator.processFiles(pathToOutput, "12", pathToInput + "17_A-Feriale.csv");
 //		timeTableGenerator.processFiles(pathToOutput, "16", pathToInput + "E-03R-Feriale.csv");
-		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "632R.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "632R.csv");
 //		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "209A-R.csv");
 
 		timeTableGenerator.printStats();
