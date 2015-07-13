@@ -283,9 +283,6 @@ public class AnnotatedTTGenerator {
 						if (stops.get(i).contains(exUrbanDepartureSymbol)) {
 							String[] stopMatchPart = stops.get(i).split(exUrbanDepartureSymbol);
 							stopName = stopMatchPart[0]; 
-						} else if (stops.get(i).contains(exUrbanArrivalSymbol)) {
-							String[] stopMatchPart = stops.get(i).split(exUrbanArrivalSymbol);
-							stopName = stopMatchPart[0];
 						}
 						
 						if (isAnomalyStop) {
@@ -377,11 +374,7 @@ public class AnnotatedTTGenerator {
 						if (stops.get(i).contains(exUrbanArrivalSymbol)) {
 							String[] stopMatchPart = stops.get(i).split(exUrbanArrivalSymbol);
 							stopName = stopMatchPart[0];
-							
-						} else if (stops.get(i).contains(exUrbanArrivalSymbol)) {
-							String[] stopMatchPart = stops.get(i).split(exUrbanArrivalSymbol);
-							stopName = stopMatchPart[0];
-						} 
+						}
 						
 						if (isAnomalyStop) {
 							if (stopName.equals(stopListName) && !traversed[i]) {
@@ -1959,10 +1952,10 @@ public class AnnotatedTTGenerator {
 						// RUN FIRST FOR DEPARTURE TIMES.
 						for (int gtfsSeq = 0; gtfsSeq < stoptimeseq.size(); gtfsSeq++) {
 
-							boolean found = false;
 							String gtfsStopName = stopsMap.get(stoptimeseq.get(gtfsSeq)[3]).replaceAll("\"", "")
 									.toLowerCase();
-
+							boolean found = false;
+							
 							for (int i = 0; i < pdfStopList.size(); i++) {
 								boolean appendDepartureString = false;
 								// pdf sequence = i + numOfHeaders;
@@ -2030,10 +2023,10 @@ public class AnnotatedTTGenerator {
 						// run again for arrival.
 						for (int gtfsSeq = 0; gtfsSeq < stoptimeseq.size(); gtfsSeq++) {
 
-							boolean found = false;
 							String gtfsStopName = stopsMap.get(stoptimeseq.get(gtfsSeq)[3]).replaceAll("\"", "")
 									.toLowerCase();
-
+							boolean found = false;
+							
 							for (int i = 0; i < pdfStopList.size(); i++) {
 								boolean isArrival = false;
 								boolean appendDepartureString = false;
@@ -2158,19 +2151,23 @@ public class AnnotatedTTGenerator {
 				System.out.println("trying to add stop " + stopToBeAdded + ":"
 						+ stoptimeseq.get(anamoly)[3]);
 				String stopNameBefore = null;
-				for (int a = anamoly - 1; a > -1; a--) {
-					stopNameBefore = stopsMap.get(stoptimeseq.get(a)[3]).toLowerCase();
-					System.err.println(stopNameBefore + "-" + stoptimeseq.get(a)[3]);
-					if (stopNameBefore != null && !stopNameBefore.isEmpty() && stopList.lastIndexOf(stopNameBefore) != -1) {
-						break;
-					}
-				}
 
 				if (stopList.indexOf(stopToBeAdded + exUrbanArrivalSymbol) != -1
 						|| stopList.indexOf(stopToBeAdded + exUrbanDepartureSymbol) != -1) {
 					continue;
 				}
 				
+				for (int a = anamoly - 1; a > -1; a--) {
+					stopNameBefore = stopsMap.get(stoptimeseq.get(a)[3]).toLowerCase();
+					System.err.println(stopNameBefore + "-" + stoptimeseq.get(a)[3]);
+					if (stopNameBefore != null
+							&& !stopNameBefore.isEmpty()
+							&& (stopList.indexOf(stopNameBefore + exUrbanDepartureSymbol) != -1 | stopList
+									.indexOf(stopNameBefore) != -1)) {
+						break;
+					}
+				}
+
 				if (stopList.lastIndexOf(stopNameBefore + exUrbanDepartureSymbol) != -1) {
 					int insertIndex = stopList.lastIndexOf(stopNameBefore + exUrbanDepartureSymbol) + 1;
 					String stopId = stoptimeseq.get(anamoly)[3];
@@ -2527,16 +2524,16 @@ public class AnnotatedTTGenerator {
 
 	public static void main(String[] args) throws Exception {
 		AnnotatedTTGenerator timeTableGenerator = new AnnotatedTTGenerator();
-		File folder = new File(pathToInput);
-
-		for (final File fileEntry : folder.listFiles()) {
-			if (fileEntry.isDirectory() | fileEntry.getName().contains(".json")) {
-				continue;
-			} else {
-				System.out.println("Annotation in process for ->  " + fileEntry.getName());
-				timeTableGenerator.processFiles(pathToOutput, agencyId, pathToInput + fileEntry.getName());
-			}
-		}
+//		File folder = new File(pathToInput);
+//
+//		for (final File fileEntry : folder.listFiles()) {
+//			if (fileEntry.isDirectory() | fileEntry.getName().contains(".json")) {
+//				continue;
+//			} else {
+//				System.out.println("Annotation in process for ->  " + fileEntry.getName());
+//				timeTableGenerator.processFiles(pathToOutput, agencyId, pathToInput + fileEntry.getName());
+//			}
+//		}
 
 //		timeTableGenerator.processFiles(pathToOutput, "12", pathToInput + "17_A-Feriale.csv");
 //		timeTableGenerator.processFiles(pathToOutput, "16", pathToInput + "E-06R-Feriale.csv");
@@ -2618,7 +2615,7 @@ public class AnnotatedTTGenerator {
 //		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "464A.csv");
 		
 		//fix stops.
-//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "102R.csv");
+		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "106A-R.csv");
 
 		timeTableGenerator.printStats();
 
