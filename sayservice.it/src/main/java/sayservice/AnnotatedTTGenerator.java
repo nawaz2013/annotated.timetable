@@ -2524,16 +2524,16 @@ public class AnnotatedTTGenerator {
 
 	public static void main(String[] args) throws Exception {
 		AnnotatedTTGenerator timeTableGenerator = new AnnotatedTTGenerator();
-//		File folder = new File(pathToInput);
-//
-//		for (final File fileEntry : folder.listFiles()) {
-//			if (fileEntry.isDirectory() | fileEntry.getName().contains(".json")) {
-//				continue;
-//			} else {
-//				System.out.println("Annotation in process for ->  " + fileEntry.getName());
-//				timeTableGenerator.processFiles(pathToOutput, agencyId, pathToInput + fileEntry.getName());
-//			}
-//		}
+		File folder = new File(pathToInput);
+
+		for (final File fileEntry : folder.listFiles()) {
+			if (fileEntry.isDirectory() | fileEntry.getName().contains(".json")) {
+				continue;
+			} else {
+				System.out.println("Annotation in process for ->  " + fileEntry.getName());
+				timeTableGenerator.processFiles(pathToOutput, agencyId, pathToInput + fileEntry.getName());
+			}
+		}
 
 //		timeTableGenerator.processFiles(pathToOutput, "12", pathToInput + "17_A-Feriale.csv");
 //		timeTableGenerator.processFiles(pathToOutput, "16", pathToInput + "E-06R-Feriale.csv");
@@ -2615,7 +2615,7 @@ public class AnnotatedTTGenerator {
 //		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "464A.csv");
 		
 		//fix stops.
-		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "106A-R.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "106A-R.csv");
 
 		timeTableGenerator.printStats();
 
