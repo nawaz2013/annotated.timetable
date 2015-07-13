@@ -46,19 +46,19 @@ public class AnnotatedTTGenerator {
 	private static boolean csvStats = true;
 
 	// input GTFS.
-	private static final String pathToGTFS = "src/test/resources/gtfs/12/";
+//	private static final String pathToGTFS = "src/test/resources/gtfs/12/";
 //	private static final String pathToGTFS = "src/test/resources/gtfs/16/";
-//	private static final String pathToGTFS = "src/test/resources/gtfs/17/";
+	private static final String pathToGTFS = "src/test/resources/gtfs/17/";
 	// output folder.
-	private static final String pathToOutput = "src/test/resources/annotatedtimetable/12/";
+//	private static final String pathToOutput = "src/test/resources/annotatedtimetable/12/";
 //	private static final String pathToOutput = "src/test/resources/annotatedtimetable/16/";
-//	private static final String pathToOutput = "src/test/resources/annotatedtimetable/17/";
+	private static final String pathToOutput = "src/test/resources/annotatedtimetable/17/";
 	// input folder.
-	private static final String pathToInput = "src/test/resources/inputtimetable/12/";
+//	private static final String pathToInput = "src/test/resources/inputtimetable/12/";
 //	private static final String pathToInput = "src/test/resources/inputtimetable/16/";
-//	private static final String pathToInput = "src/test/resources/inputtimetable/17/";
+	private static final String pathToInput = "src/test/resources/inputtimetable/17/";
 	// agencyIds (12,16,17)
-	private static final String agencyId = "12";
+	private static final String agencyId = "17";
 	private static final List<String> roveretoNBuses = Arrays.asList("N1", "N2", "N3", "N5", "N6");
 	private static final List<String> exUrbTrenoRoutes = Arrays.asList("578", "518", "352");
 	private static final Map<String, String> unalignedRoutesMap = new HashMap<String, String>();
@@ -103,7 +103,7 @@ public class AnnotatedTTGenerator {
 
 	private List<String> anamolyStopIdMap = new ArrayList<String>();
 
-	private List<String> anomalyStopIds = new ArrayList<String>();
+	private Map<String, Integer> anomalyStopIds = new HashMap<String, Integer>();
 
 	// stats variables.
 	private static double failedMatch = 0;
@@ -269,8 +269,8 @@ public class AnnotatedTTGenerator {
 					
 					
 					String anomalyKey = id + "_" + gtfs2pdfMappedTime; 
-					if (anomalyStopIds.contains(anomalyKey)) {
-						isAnomalyStop = true;	
+					if (anomalyStopIds.containsKey(anomalyKey) && anomalyStopIds.get(anomalyKey) == -1) {
+						isAnomalyStop = true;
 					}
 					
 					
@@ -302,8 +302,17 @@ public class AnnotatedTTGenerator {
 							
 							String inputPdfTime = "";
 							if (inputCsvTimeList != null && !inputCsvTimeList.isEmpty()
-									&& inputCsvTimeList.size() > (j-1)) {
-								inputPdfTime = inputCsvTimeList.get(j - 1);	
+									&& inputCsvTimeList.size() > (j - 1)) {
+								inputPdfTime = inputCsvTimeList.get(j - 1);
+								if (inputPdfTime != null && !inputPdfTime.isEmpty() && inputPdfTime.indexOf(":") != -1) {
+									int pdfHour = Integer.valueOf(inputPdfTime.substring(0, inputPdfTime.indexOf(":")));
+									if (pdfHour > 24) {
+										pdfHour = pdfHour - 24;
+									}
+
+									inputPdfTime = formatter.format(pdfHour)
+											+ inputPdfTime.substring(inputPdfTime.indexOf(":")).trim();
+								}
 							}
 							
 							if (stopName.equals(stopListName) && !traversed[i] && inputPdfTime.equals(gtfs2pdfMappedTime) ) {
@@ -331,6 +340,7 @@ public class AnnotatedTTGenerator {
 						
 						if (isAnomalyStop) {
 							output[foundIndex + 1][0] = "*" + output[foundIndex + 1][0];
+							anomalyStopIds.put(anomalyKey, 0);
 						}
 						traversed[foundIndex] = true;
 					}
@@ -354,7 +364,7 @@ public class AnnotatedTTGenerator {
 					String stopListName = stopsMap.get(id).toLowerCase();
 					
 					String anomalyKey = id + "_" + gtfs2pdfMappedTime; 
-					if (anomalyStopIds.contains(anomalyKey)) {
+					if (anomalyStopIds.containsKey(anomalyKey) && anomalyStopIds.get(anomalyKey) == -1) {
 						isAnomalyStop = true;	
 					}
 					
@@ -388,7 +398,16 @@ public class AnnotatedTTGenerator {
 							String inputPdfTime = "";
 							if (inputCsvTimeList != null && !inputCsvTimeList.isEmpty()
 									&& inputCsvTimeList.size() > (j-1)) {
-								inputPdfTime = inputCsvTimeList.get(j - 1);	
+								inputPdfTime = inputCsvTimeList.get(j - 1);
+								if (inputPdfTime != null && !inputPdfTime.isEmpty() && inputPdfTime.indexOf(":") != -1) {
+									int pdfHour = Integer.valueOf(inputPdfTime.substring(0, inputPdfTime.indexOf(":")));
+									if (pdfHour > 24) {
+										pdfHour = pdfHour - 24;
+									}
+
+									inputPdfTime = formatter.format(pdfHour)
+											+ inputPdfTime.substring(inputPdfTime.indexOf(":")).trim();
+								}
 							}
 							
 							if (stopName.equals(stopListName) && !traversed[i] && inputPdfTime.equals(gtfs2pdfMappedTime) ) {
@@ -1949,8 +1968,8 @@ public class AnnotatedTTGenerator {
 								// pdf sequence = i + numOfHeaders;
 								String pdfStopName = pdfStopList.get(i).replaceAll("\\s+", " ").toLowerCase();
 								pdfStopName = pdfStopName.replaceAll("\"", "");
-								pdfStopName = pdfStopName.replace(" (", "-");
-								pdfStopName = pdfStopName.replace(")", "");
+//								pdfStopName = pdfStopName.replace(" (", "-");
+//								pdfStopName = pdfStopName.replace(")", "");
 
 								if (pdfStopName.contains(exUrbanArrivalSymbol)) {
 									continue;
@@ -2021,8 +2040,8 @@ public class AnnotatedTTGenerator {
 								// pdf sequence = i + numOfHeaders;
 								String pdfStopName = pdfStopList.get(i).replaceAll("\\s+", " ").toLowerCase();
 								pdfStopName = pdfStopName.replaceAll("\"", "");
-								pdfStopName = pdfStopName.replace(" (", "-");
-								pdfStopName = pdfStopName.replace(")", "");
+//								pdfStopName = pdfStopName.replace(" (", "-");
+//								pdfStopName = pdfStopName.replace(")", "");
 
 								if (pdfStopName.contains(exUrbanArrivalSymbol)) {
 									pdfStopName = pdfStopName.replace(exUrbanArrivalSymbol, "").trim();
@@ -2154,29 +2173,31 @@ public class AnnotatedTTGenerator {
 				
 				if (stopList.lastIndexOf(stopNameBefore + exUrbanDepartureSymbol) != -1) {
 					int insertIndex = stopList.lastIndexOf(stopNameBefore + exUrbanDepartureSymbol) + 1;
-					String stopName = stopsMap.get(stoptimeseq.get(anamoly)[3]).toLowerCase();
+					String stopId = stoptimeseq.get(anamoly)[3];
+					String stopName = stopsMap.get(stopId).toLowerCase();
 					String depTime = stoptimeseq.get(anamoly)[2];
-					anomalyStopIds.add(stoptimeseq.get(anamoly)[3] + "_" + depTime.substring(0, depTime.lastIndexOf(":")).trim());
-					if (!handledAnomalyStops.contains(stopName)) {
+					anomalyStopIds.put(stopId + "_" + depTime.substring(0, depTime.lastIndexOf(":")).trim(), -1);
+					if (!handledAnomalyStops.contains(stopId)) {
 						stopList.add(insertIndex, stopsMap.get(stoptimeseq.get(anamoly)[3]).toLowerCase());
 						pdfStopList.add(insertIndex, "*"); // to align with modified stopList.
 						inputPdfTimes.add(insertIndex, new ArrayList<String>());
 						stopIdsMap.put(stopsMap.get(stoptimeseq.get(anamoly)[3]).toLowerCase(),
 								stoptimeseq.get(anamoly)[3]);
-						handledAnomalyStops.add(stopName);
+						handledAnomalyStops.add(stopId);
 					}
 				} else if (stopList.lastIndexOf(stopNameBefore) != -1) {
 					int insertIndex = stopList.lastIndexOf(stopNameBefore) + 1;
-					String stopName = stopsMap.get(stoptimeseq.get(anamoly)[3]);
+					String stopId = stoptimeseq.get(anamoly)[3];
+					String stopName = stopsMap.get(stopId);
 					String depTime = stoptimeseq.get(anamoly)[2];
-					anomalyStopIds.add(stoptimeseq.get(anamoly)[3] + "_" + depTime.substring(0, depTime.lastIndexOf(":")).trim());
-					if (!handledAnomalyStops.contains(stopName)) {
+					anomalyStopIds.put(stopId + "_" + depTime.substring(0, depTime.lastIndexOf(":")).trim(), -1);
+					if (!handledAnomalyStops.contains(stopId)) {
 						stopList.add(insertIndex, stopsMap.get(stoptimeseq.get(anamoly)[3]).toLowerCase());
 						pdfStopList.add(insertIndex, "*"); // to align with modified stopList.
 						inputPdfTimes.add(insertIndex, new ArrayList<String>());
 						stopIdsMap.put(stopsMap.get(stoptimeseq.get(anamoly)[3]).toLowerCase(),
 								stoptimeseq.get(anamoly)[3]);
-						handledAnomalyStops.add(stopName);
+						handledAnomalyStops.add(stopId);
 					}
 				}
 			}
@@ -2518,7 +2539,7 @@ public class AnnotatedTTGenerator {
 		}
 
 //		timeTableGenerator.processFiles(pathToOutput, "12", pathToInput + "17_A-Feriale.csv");
-//		timeTableGenerator.processFiles(pathToOutput, "16", pathToInput + "E-03R-Feriale.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "16", pathToInput + "E-06R-Feriale.csv");
 //		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "632R.csv");
 //		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "209A-R.csv");
 		
@@ -2597,7 +2618,7 @@ public class AnnotatedTTGenerator {
 //		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "464A.csv");
 		
 		//fix stops.
-		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "102R.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "102R.csv");
 
 		timeTableGenerator.printStats();
 
