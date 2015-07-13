@@ -64,6 +64,12 @@ public class AnnotatedTTGenerator {
 	private static final Map<String, String> unalignedRoutesMap = new HashMap<String, String>();
 	{
 		unalignedRoutesMap.put("119", "109");
+		unalignedRoutesMap.put("108", "112");
+		unalignedRoutesMap.put("245", "215");
+		unalignedRoutesMap.put("463", "401");
+		unalignedRoutesMap.put("467", "401");
+		unalignedRoutesMap.put("321", "306");
+		unalignedRoutesMap.put("Servizio Extraurbano", "627");
 	}
 	private static final String exUrbanArrivalSymbol = " - arr.";
 	private static final String exUrbanDepartureSymbol = " - part.";
@@ -2515,6 +2521,83 @@ public class AnnotatedTTGenerator {
 //		timeTableGenerator.processFiles(pathToOutput, "16", pathToInput + "E-03R-Feriale.csv");
 //		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "632R.csv");
 //		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "209A-R.csv");
+		
+//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "119ESA.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "401INA.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "231A.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "406A-R.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "119ESR.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "646R.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "122ESA.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "461R.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "503ESR.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "646A.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "334A.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "511ESA.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "203A-R.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "131ESR.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "104A.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "206R.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "511ESR.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "111A.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "630R.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "461A.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "403R.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "120ESA.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "231R.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "111R.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "503ESA.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "463A-A.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "307R.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "501R.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "205A.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "321A-R.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "645R.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "204A.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "332A.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "403A.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "204R.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "301R.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "306R.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "462R.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "335A.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "206A.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "307A.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "630A.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "120ESR.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "506ESA.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "467A.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "332R.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "501A.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "642R.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "405R.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "321A-A.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "643A-R.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "405A.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "122ESR.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "306A.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "101ESA.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "201R.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "406A-A.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "401INR.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "464R.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "642A.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "201A.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "463A-R.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "104R.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "103A.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "462A.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "645A.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "620R.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "303A.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "310ESA-A.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "467R.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "312A.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "620A.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "464A.csv");
+		
+		//fix stops.
+		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "102R.csv");
 
 		timeTableGenerator.printStats();
 
