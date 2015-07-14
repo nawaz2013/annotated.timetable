@@ -341,13 +341,7 @@ public class AnnotatedTTGenerator {
 						}
 						traversed[foundIndex] = true;
 					}
-//					else {
-//						output[foundIndex + 1][0] = ";";
-//					}
 
-					/** else simply following code works. **/
-					/*output[stops.indexOf(stopListName) + 1][j] = stoptimeseq.get(gtfsSeq)[1].substring(0,
-							time.lastIndexOf(":"));*/
 				}
 
 				// rerun for arrival times.
@@ -430,12 +424,7 @@ public class AnnotatedTTGenerator {
 						
 						traversed[foundIndex] = true;
 					}
-//					else {
-//						output[foundIndex + 1][0] = id + ";";
-//					}
-					/** else simply following code works. **/
-					/*output[stops.indexOf(stopListName) + 1][j] = stoptimeseq.get(gtfsSeq)[1].substring(0,
-							time.lastIndexOf(":"));*/
+
 				}
 
 			}
@@ -2143,35 +2132,39 @@ public class AnnotatedTTGenerator {
 			List<Integer> anamoliesList = anamolyMap.get(tripId);
 			List<String[]> stoptimeseq = tripStopsTimesMap.get(tripId);
 
-//			if (tripId.equalsIgnoreCase("0001796202015062720150909")) {
-//				System.err.println("0001796202015062720150909");
-//			}
 			for (int anamoly : anamoliesList) {
-				String stopToBeAdded = stopsMap.get(stoptimeseq.get(anamoly)[3]).toLowerCase();
-				System.out.println("trying to add stop " + stopToBeAdded + ":"
-						+ stoptimeseq.get(anamoly)[3]);
-				String stopNameBefore = null;
+				String stopId = stoptimeseq.get(anamoly)[3];
+				String stopName = stopsMap.get(stopId).toLowerCase();
 
-				if (stopList.indexOf(stopToBeAdded + exUrbanArrivalSymbol) != -1
-						|| stopList.indexOf(stopToBeAdded + exUrbanDepartureSymbol) != -1) {
+//				if (stopId.equalsIgnoreCase("1752")) {
+//					System.err.println("arrived.");
+//				}
+				if (stopList.indexOf(stopName + exUrbanArrivalSymbol) != -1
+						|| stopList.indexOf(stopName + exUrbanDepartureSymbol) != -1) {
 					continue;
 				}
-				
+
+				System.out.println("trying to add stop " + stopName + ":" + stoptimeseq.get(anamoly)[3]);
+				String stopNameBefore = null;
+
+				boolean isArrival = false;
 				for (int a = anamoly - 1; a > -1; a--) {
 					stopNameBefore = stopsMap.get(stoptimeseq.get(a)[3]).toLowerCase();
-					System.err.println(stopNameBefore + "-" + stoptimeseq.get(a)[3]);
-					if (stopNameBefore != null
-							&& !stopNameBefore.isEmpty()
-							&& (stopList.indexOf(stopNameBefore + exUrbanDepartureSymbol) != -1 | stopList
-									.indexOf(stopNameBefore) != -1)) {
+					System.out.println("adding after stop: " + stopNameBefore + " - " + stoptimeseq.get(a)[3]);
+					if (stopNameBefore != null && !stopNameBefore.isEmpty() && (stopList.indexOf(stopNameBefore) != -1)) { // check for stopName
+						break;
+					} else if (stopNameBefore != null && !stopNameBefore.isEmpty() // 2. check if exist stopName with appended departure string.
+							&& stopList.indexOf(stopNameBefore + exUrbanDepartureSymbol) != -1) {
+						break;
+					} else if (stopNameBefore != null && !stopNameBefore.isEmpty() // 3. check if exist stopName with appended arrival string.
+							&& stopList.indexOf(stopNameBefore + exUrbanArrivalSymbol) != -1) {
+						isArrival = true;
 						break;
 					}
 				}
 
-				if (stopList.lastIndexOf(stopNameBefore + exUrbanDepartureSymbol) != -1) {
-					int insertIndex = stopList.lastIndexOf(stopNameBefore + exUrbanDepartureSymbol) + 1;
-					String stopId = stoptimeseq.get(anamoly)[3];
-					String stopName = stopsMap.get(stopId).toLowerCase();
+				if (stopList.lastIndexOf(stopNameBefore) != -1 && !isArrival) {
+					int insertIndex = stopList.lastIndexOf(stopNameBefore) + 1;
 					String depTime = stoptimeseq.get(anamoly)[2];
 					anomalyStopIds.put(stopId + "_" + depTime.substring(0, depTime.lastIndexOf(":")).trim(), -1);
 					if (!handledAnomalyStops.contains(stopId)) {
@@ -2182,10 +2175,20 @@ public class AnnotatedTTGenerator {
 								stoptimeseq.get(anamoly)[3]);
 						handledAnomalyStops.add(stopId);
 					}
-				} else if (stopList.lastIndexOf(stopNameBefore) != -1) {
-					int insertIndex = stopList.lastIndexOf(stopNameBefore) + 1;
-					String stopId = stoptimeseq.get(anamoly)[3];
-					String stopName = stopsMap.get(stopId);
+				} else if (stopList.lastIndexOf(stopNameBefore + exUrbanDepartureSymbol) != -1 && !isArrival) {
+					int insertIndex = stopList.lastIndexOf(stopNameBefore + exUrbanDepartureSymbol) + 1;
+					String depTime = stoptimeseq.get(anamoly)[2];
+					anomalyStopIds.put(stopId + "_" + depTime.substring(0, depTime.lastIndexOf(":")).trim(), -1);
+					if (!handledAnomalyStops.contains(stopId)) {
+						stopList.add(insertIndex, stopsMap.get(stoptimeseq.get(anamoly)[3]).toLowerCase());
+						pdfStopList.add(insertIndex, "*"); // to align with modified stopList.
+						inputPdfTimes.add(insertIndex, new ArrayList<String>());
+						stopIdsMap.put(stopsMap.get(stoptimeseq.get(anamoly)[3]).toLowerCase(),
+								stoptimeseq.get(anamoly)[3]);
+						handledAnomalyStops.add(stopId);
+					}
+				} else if (stopList.lastIndexOf(stopNameBefore + exUrbanArrivalSymbol) != -1 && isArrival) {
+					int insertIndex = stopList.lastIndexOf(stopNameBefore + exUrbanArrivalSymbol) + 1;
 					String depTime = stoptimeseq.get(anamoly)[2];
 					anomalyStopIds.put(stopId + "_" + depTime.substring(0, depTime.lastIndexOf(":")).trim(), -1);
 					if (!handledAnomalyStops.contains(stopId)) {
@@ -2615,7 +2618,8 @@ public class AnnotatedTTGenerator {
 //		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "464A.csv");
 		
 		//fix stops.
-//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "106A-R.csv");
+		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "204A.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "201R.csv");
 
 		timeTableGenerator.printStats();
 
