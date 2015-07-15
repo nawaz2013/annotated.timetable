@@ -2000,14 +2000,17 @@ public class AnnotatedTTGenerator {
 								}
 							}
 
-							if (!found && !mergedRoute && stopList.indexOf(stopsMap.get(stoptimeseq.get(gtfsSeq)[3])) == -1) {
+							if (!found && !mergedRoute) { // && stopList.indexOf(stopsMap.get(stoptimeseq.get(gtfsSeq)[3])) == -1
 								anamolies = anamolyMap.get(matchingTripId.get(0));
 								if (anamolies == null) {
 									anamolies = new ArrayList<Integer>();
 									anamolyMap.put(matchingTripId.get(0), anamolies);
 								}
-								anamolies.add(gtfsSeq); // adding sequence number.	
-								//	System.err.println( "anamoly - " +  stopsMap.get(stoptimeseq.get(gtfsSeq)[3]) + " - " + stoptimeseq.get(gtfsSeq)[3] );
+								if (!anamolies.contains(gtfsSeq)) {
+									anamolies.add(gtfsSeq); // adding sequence number.	
+								}
+									
+								System.err.println( "anamoly - " +  stopsMap.get(stoptimeseq.get(gtfsSeq)[3]) + " - " + stoptimeseq.get(gtfsSeq)[3] );
 							}
 						}
 
@@ -2016,16 +2019,12 @@ public class AnnotatedTTGenerator {
 
 							String gtfsStopName = stopsMap.get(stoptimeseq.get(gtfsSeq)[3]).replaceAll("\"", "")
 									.toLowerCase();
-							boolean found = false;
-							
+							boolean isArrival = false;
 							for (int i = 0; i < pdfStopList.size(); i++) {
-								boolean isArrival = false;
-								boolean appendDepartureString = false;
-								// pdf sequence = i + numOfHeaders;
 								String pdfStopName = pdfStopList.get(i).replaceAll("\\s+", " ").toLowerCase();
 								pdfStopName = pdfStopName.replaceAll("\"", "");
-//								pdfStopName = pdfStopName.replace(" (", "-");
-//								pdfStopName = pdfStopName.replace(")", "");
+								//pdfStopName = pdfStopName.replace(" (", "-");
+								//pdfStopName = pdfStopName.replace(")", "");
 
 								if (pdfStopName.contains(exUrbanArrivalSymbol)) {
 									pdfStopName = pdfStopName.replace(exUrbanArrivalSymbol, "").trim();
@@ -2055,48 +2054,19 @@ public class AnnotatedTTGenerator {
 								if (isArrival) {
 									if (pdfStopName.equalsIgnoreCase(gtfsStopName)
 											&& stoptimeseq.get(gtfsSeq)[1].contains(pdfTime)) {
-										
+
 										if (stopList.indexOf(stopsMap.get(stoptimeseq.get(gtfsSeq)[3])) == -1) {
 											String stopNameInList = stopsMap.get(stoptimeseq.get(gtfsSeq)[3])
 													+ exUrbanArrivalSymbol;
-											stopList.set(i, stopNameInList);	
+											stopList.set(i, stopNameInList);
 										}
-										found = true;
 										isArrival = false;
 										// System.out.println( i + " - " + stopsMap.get(stoptimeseq.get(gtfsSeq)[3]) + " - " + stoptimeseq.get(gtfsSeq)[3] );
 										break;
 									}
-
-								} else {
-
-									if (pdfStopName.equalsIgnoreCase(gtfsStopName)
-											&& stoptimeseq.get(gtfsSeq)[2].contains(pdfTime)) {
-
-										if (stopList.indexOf(stopsMap.get(stoptimeseq.get(gtfsSeq)[3])) == -1) {
-											String stopNameInList = stopsMap.get(stoptimeseq.get(gtfsSeq)[3]);
-											if (appendDepartureString) {
-												stopNameInList = stopNameInList + exUrbanDepartureSymbol;
-												appendDepartureString = false;
-											}
-											stopList.set(i, stopNameInList);	
-										}
-										
-										found = true;
-										// System.out.println( i + " - " + stopsMap.get(stoptimeseq.get(gtfsSeq)[3]) + " - " + stoptimeseq.get(gtfsSeq)[3] );
-										break;
-									}
 								}
 							}
 
-							if (!found && !mergedRoute &&  stopList.indexOf(stopsMap.get(stoptimeseq.get(gtfsSeq)[3])) == -1) {
-								anamolies = anamolyMap.get(matchingTripId.get(0));
-								if (anamolies == null) {
-									anamolies = new ArrayList<Integer>();
-									anamolyMap.put(matchingTripId.get(0), anamolies);
-								}
-								anamolies.add(gtfsSeq);
-								//	System.err.println( "anamoly - " +  stopsMap.get(stoptimeseq.get(gtfsSeq)[3]) + " - " + stoptimeseq.get(gtfsSeq)[3] );
-							}
 						}
 
 					} else {
@@ -2142,9 +2112,6 @@ public class AnnotatedTTGenerator {
 				String stopId = stoptimeseq.get(anamoly)[3];
 				String stopName = stopsMap.get(stopId).toLowerCase();
 
-				if (stopId.equalsIgnoreCase("1752")) {
-					System.err.println("arrived.");
-				}
 				if (stopList.indexOf(stopName + exUrbanArrivalSymbol) != -1
 						|| stopList.indexOf(stopName + exUrbanDepartureSymbol) != -1) {
 					continue;
@@ -2544,7 +2511,7 @@ public class AnnotatedTTGenerator {
 			}
 		}
 
-//		timeTableGenerator.processFiles(pathToOutput, "12", pathToInput + "17_A-Feriale.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "12", pathToInput + "05A-Feriale.csv");
 //		timeTableGenerator.processFiles(pathToOutput, "16", pathToInput + "E-06R-Feriale.csv");
 //		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "632R.csv");
 //		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "209A-R.csv");
@@ -2626,6 +2593,7 @@ public class AnnotatedTTGenerator {
 		//fix stops.
 //		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "204A.csv");
 //		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "201R.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "205R.csv");
 
 		timeTableGenerator.printStats();
 
