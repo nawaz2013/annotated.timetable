@@ -279,18 +279,22 @@ public class AnnotatedTTGenerator {
 					for (int i = 0; i < stops.size(); i++) {
 						
 						// logic for taking stopName of final List.
-						String stopName = stops.get(i); 
+						String stopName = stops.get(i);
 						if (stops.get(i).contains(exUrbanDepartureSymbol)) {
 							String[] stopMatchPart = stops.get(i).split(exUrbanDepartureSymbol);
 							stopName = stopMatchPart[0]; 
 						}
 						
 						if (isAnomalyStop) {
-							if (stopName.equals(stopListName) && !traversed[i]) {
-								foundIndex = i;
-								break;
+							if (stopName.contains("$")) {
+								String[] stopNameParts = stopName.split("\\$"); 
+								if (stopNameParts[0].equals(stopListName)
+										&& id.equalsIgnoreCase(stopNameParts[1])
+										&& !traversed[i]) {
+									foundIndex = i;
+									break;
+								}
 							}
-							
 						} else {
 							List<String> inputCsvTimeList = null;
 							if (inputCSVTimes.get(i) != null) {
@@ -371,11 +375,15 @@ public class AnnotatedTTGenerator {
 						}
 						
 						if (isAnomalyStop) {
-							if (stopName.equals(stopListName) && !traversed[i]) {
-								foundIndex = i;
-								break;
+							if (stopName.contains("$")) {
+								String[] stopNameParts = stopName.split("\\$"); 
+								if (stopNameParts[0].equals(stopListName)
+										&& id.equalsIgnoreCase(stopNameParts[1])
+										&& !traversed[i]) {
+									foundIndex = i;
+									break;
+								}
 							}
-							
 						} else {
 							List<String> inputCsvTimeList = null;
 							if (inputCSVTimes.get(i) != null) {
@@ -2117,7 +2125,7 @@ public class AnnotatedTTGenerator {
 					continue;
 				}
 
-				System.out.println("trying to add stop " + stopName + ":" + stoptimeseq.get(anamoly)[3]);
+				System.out.println(tripId + "- trying to add stop " + stopName + ":" + stoptimeseq.get(anamoly)[3]);
 				String stopNameBefore = null;
 
 				boolean isArrival = false;
@@ -2141,8 +2149,8 @@ public class AnnotatedTTGenerator {
 					String depTime = stoptimeseq.get(anamoly)[2];
 					anomalyStopIds.put(stopId + "_" + depTime.substring(0, depTime.lastIndexOf(":")).trim(), -1);
 					if (!handledAnomalyStops.contains(stopId)) {
-						stopList.add(insertIndex, stopsMap.get(stoptimeseq.get(anamoly)[3]).toLowerCase());
-						pdfStopList.add(insertIndex, "*"); // to align with modified stopList.
+						stopList.add(insertIndex, stopsMap.get(stoptimeseq.get(anamoly)[3]).toLowerCase() + "$" + stopId);
+						pdfStopList.add(insertIndex, "*"+ stopId); // to align with modified stopList.
 						inputPdfTimes.add(insertIndex, new ArrayList<String>());
 						stopIdsMap.put(stopsMap.get(stoptimeseq.get(anamoly)[3]).toLowerCase(),
 								stoptimeseq.get(anamoly)[3]);
@@ -2153,8 +2161,8 @@ public class AnnotatedTTGenerator {
 					String depTime = stoptimeseq.get(anamoly)[2];
 					anomalyStopIds.put(stopId + "_" + depTime.substring(0, depTime.lastIndexOf(":")).trim(), -1);
 					if (!handledAnomalyStops.contains(stopId)) {
-						stopList.add(insertIndex, stopsMap.get(stoptimeseq.get(anamoly)[3]).toLowerCase());
-						pdfStopList.add(insertIndex, "*"); // to align with modified stopList.
+						stopList.add(insertIndex, stopsMap.get(stoptimeseq.get(anamoly)[3]).toLowerCase() + "$" + stopId);
+						pdfStopList.add(insertIndex, "*" + stopId); // to align with modified stopList.
 						inputPdfTimes.add(insertIndex, new ArrayList<String>());
 						stopIdsMap.put(stopsMap.get(stoptimeseq.get(anamoly)[3]).toLowerCase(),
 								stoptimeseq.get(anamoly)[3]);
@@ -2165,8 +2173,8 @@ public class AnnotatedTTGenerator {
 					String depTime = stoptimeseq.get(anamoly)[2];
 					anomalyStopIds.put(stopId + "_" + depTime.substring(0, depTime.lastIndexOf(":")).trim(), -1);
 					if (!handledAnomalyStops.contains(stopId)) {
-						stopList.add(insertIndex, stopsMap.get(stoptimeseq.get(anamoly)[3]).toLowerCase());
-						pdfStopList.add(insertIndex, "*"); // to align with modified stopList.
+						stopList.add(insertIndex, stopsMap.get(stoptimeseq.get(anamoly)[3]).toLowerCase() + "$" + stopId);
+						pdfStopList.add(insertIndex, "*" + stopId); // to align with modified stopList.
 						inputPdfTimes.add(insertIndex, new ArrayList<String>());
 						stopIdsMap.put(stopsMap.get(stoptimeseq.get(anamoly)[3]).toLowerCase(),
 								stoptimeseq.get(anamoly)[3]);
