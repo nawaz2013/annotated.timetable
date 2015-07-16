@@ -10,6 +10,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -1742,7 +1743,7 @@ public class AnnotatedTTGenerator {
 		// add all pdf stop first to final list.
 		stopList.addAll(pdfStopList);
 
-		Map<String, List<Integer>> anamolyMap = new HashMap<String, List<Integer>>();
+		LinkedHashMap<String, List<Integer>> anamolyMap = new LinkedHashMap<String, List<Integer>>();
 
 		for (int currentCol = 1; currentCol < noOfCols; currentCol++) {
 
@@ -2127,12 +2128,17 @@ public class AnnotatedTTGenerator {
 
 				System.out.println(tripId + "- trying to add stop " + stopName + ":" + stoptimeseq.get(anamoly)[3]);
 				String stopNameBefore = null;
+				String stopIdBefore = null;
 
 				boolean isArrival = false;
 				for (int a = anamoly - 1; a > -1; a--) {
-					stopNameBefore = stopsMap.get(stoptimeseq.get(a)[3]).toLowerCase();
+					stopIdBefore = stoptimeseq.get(a)[3];
+					stopNameBefore = stopsMap.get(stopIdBefore).toLowerCase();
 					System.out.println("adding after stop: " + stopNameBefore + " - " + stoptimeseq.get(a)[3]);
-					if (stopNameBefore != null && !stopNameBefore.isEmpty() && (stopList.indexOf(stopNameBefore) != -1)) { // check for stopName
+					if (stopNameBefore != null
+							&& !stopNameBefore.isEmpty()
+							&& (stopList.indexOf(stopNameBefore) != -1 | stopList.indexOf(stopNameBefore + "$"
+									+ stopIdBefore) != -1)) { // check for stopName
 						break;
 					} else if (stopNameBefore != null && !stopNameBefore.isEmpty() // 2. check if exist stopName with appended departure string.
 							&& stopList.indexOf(stopNameBefore + exUrbanDepartureSymbol) != -1) {
@@ -2156,7 +2162,21 @@ public class AnnotatedTTGenerator {
 								stoptimeseq.get(anamoly)[3]);
 						handledAnomalyStops.add(stopId);
 					}
-				} else if (stopList.lastIndexOf(stopNameBefore + exUrbanDepartureSymbol) != -1 && !isArrival) {
+				} if (stopList.lastIndexOf(stopNameBefore + "$" + stopIdBefore) != -1 && !isArrival) {
+					int insertIndex = stopList.lastIndexOf(stopNameBefore + "$" + stopIdBefore) + 1;
+					String depTime = stoptimeseq.get(anamoly)[2];
+					anomalyStopIds.put(stopId + "_" + depTime.substring(0, depTime.lastIndexOf(":")).trim(), -1);
+					if (!handledAnomalyStops.contains(stopId)) {
+						stopList.add(insertIndex, stopsMap.get(stoptimeseq.get(anamoly)[3]).toLowerCase() + "$" + stopId);
+						pdfStopList.add(insertIndex, "*"+ stopId); // to align with modified stopList.
+						inputPdfTimes.add(insertIndex, new ArrayList<String>());
+						stopIdsMap.put(stopsMap.get(stoptimeseq.get(anamoly)[3]).toLowerCase(),
+								stoptimeseq.get(anamoly)[3]);
+						handledAnomalyStops.add(stopId);
+					}
+				}
+				
+				else if (stopList.lastIndexOf(stopNameBefore + exUrbanDepartureSymbol) != -1 && !isArrival) {
 					int insertIndex = stopList.lastIndexOf(stopNameBefore + exUrbanDepartureSymbol) + 1;
 					String depTime = stoptimeseq.get(anamoly)[2];
 					anomalyStopIds.put(stopId + "_" + depTime.substring(0, depTime.lastIndexOf(":")).trim(), -1);
