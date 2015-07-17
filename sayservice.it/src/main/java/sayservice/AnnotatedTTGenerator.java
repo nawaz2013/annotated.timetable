@@ -62,7 +62,7 @@ public class AnnotatedTTGenerator {
 //	private static final String pathToInput = "src/test/resources/inputtimetable/16/";
 	private static final String pathToInput = "src/test/resources/inputtimetable/17/";
 	// agencyIds (12,16,17)
-	private static final String agencyId = "17";
+	private static final String agencyId = "16";
 	private static final List<String> roveretoNBuses = Arrays.asList("N1", "N2", "N3", "N5", "N6");
 	private static final List<String> exUrbTrenoRoutes = Arrays.asList("578", "518", "352");
 	private static final Map<String, String> unalignedRoutesMap = new HashMap<String, String>();
@@ -2164,10 +2164,10 @@ public class AnnotatedTTGenerator {
 							}
 
 							if (!found && !mergedRoute) { // && stopList.indexOf(stopsMap.get(stoptimeseq.get(gtfsSeq)[3])) == -1
-								anamolies = anamolyMap.get(matchingTripId.get(0));
+								anamolies = anamolyMap.get(matchingTripId.get(0) + "$" + currentCol);
 								if (anamolies == null) {
 									anamolies = new ArrayList<Integer>();
-									anamolyMap.put(matchingTripId.get(0), anamolies);
+									anamolyMap.put(matchingTripId.get(0) + "$" + currentCol, anamolies);
 								}
 								if (!anamolies.contains(gtfsSeq)) {
 									anamolies.add(gtfsSeq); // adding sequence number.	
@@ -2266,9 +2266,14 @@ public class AnnotatedTTGenerator {
 		
 		List<String> handledAnomalyStops = new ArrayList<String>();
 		// adding anamolies.
-		for (String tripId : anamolyMap.keySet()) {
+		for (String tripId$Col : anamolyMap.keySet()) {
 
-			List<Integer> anamoliesList = anamolyMap.get(tripId);
+			String[] tripIdColArray = tripId$Col.split("\\$");
+			
+			String tripId = tripIdColArray[0];
+			int columnNo = Integer.valueOf(tripIdColArray[1]);
+			
+			List<Integer> anamoliesList = anamolyMap.get(tripId$Col);
 			List<String[]> stoptimeseq = tripStopsTimesMap.get(tripId);
 
 			for (int anamoly : anamoliesList) {
@@ -2284,73 +2289,170 @@ public class AnnotatedTTGenerator {
 				if (verbose) System.out.println(tripId + "- trying to add stop " + stopName + ":" + stoptimeseq.get(anamoly)[3]);
 				String stopNameBefore = null;
 				String stopIdBefore = null;
+				String stopBeforeDepTime = null;
+				String stopBeforeArrTime = null;
+				int stopBeforeRowNoInList = -1;
 
 				boolean isArrival = false;
+				boolean isAnomalyTime = false;
+				boolean isDepartureTime = false;
 				for (int a = anamoly - 1; a > -1; a--) {
 					stopIdBefore = stoptimeseq.get(a)[3];
 					stopNameBefore = stopsMap.get(stopIdBefore).toLowerCase();
-					if (verbose) System.out.println("adding after stop: " + stopNameBefore + " - " + stoptimeseq.get(a)[3]);
-					if (stopNameBefore != null
-							&& !stopNameBefore.isEmpty()
-							&& (stopList.indexOf(stopNameBefore) != -1 | stopList.indexOf(stopNameBefore + "$"
-									+ stopIdBefore) != -1)) { // check for stopName
-						break;
-					} else if (stopNameBefore != null && !stopNameBefore.isEmpty() // 2. check if exist stopName with appended departure string.
-							&& stopList.indexOf(stopNameBefore + exUrbanDepartureSymbol) != -1) {
-						break;
-					} else if (stopNameBefore != null && !stopNameBefore.isEmpty() // 3. check if exist stopName with appended arrival string.
-							&& stopList.indexOf(stopNameBefore + exUrbanArrivalSymbol) != -1) {
-						isArrival = true;
-						break;
+					stopBeforeDepTime = stoptimeseq.get(a)[2].substring(0, stoptimeseq.get(a)[2].lastIndexOf(":")).trim();
+					stopBeforeArrTime = stoptimeseq.get(a)[1].substring(0, stoptimeseq.get(a)[1].lastIndexOf(":")).trim();
+					if (verbose) {
+						System.out.println("checking after stop: " + stopNameBefore + " - " + stoptimeseq.get(a)[3]);
+					}
+					
+					if (stopNameBefore != null && !stopNameBefore.isEmpty()) {
+
+//						stopBeforeRowNoInList = stopList.indexOf(stopNameBefore); // if pdf stop.
+						
+						List<Integer> indexs =new ArrayList<Integer>();
+						for (int p = 0; p < stopList.size(); p++) {
+						    if(stopList.get(p).equalsIgnoreCase(stopNameBefore)) {
+						        indexs.add(p);
+						    }
+						}
+						
+						for (int p = 0; p < stopList.size(); p++) {
+							    if(stopList.get(p).equalsIgnoreCase(stopNameBefore + "$" + stopIdBefore)) {
+							        indexs.add(p);
+							        isAnomalyTime = true;
+							        
+							    }
+							}			
+						
+						if (indexs.isEmpty()) {
+							for (int p = 0; p < stopList.size(); p++) {
+							    if(stopList.get(p).equalsIgnoreCase(stopNameBefore + exUrbanDepartureSymbol)) {
+							        indexs.add(p);
+							        isDepartureTime = true;
+							    }
+							}		
+						}
+						
+						if (indexs.isEmpty()) {
+							for (int p = 0; p < stopList.size(); p++) {
+							    if(stopList.get(p).equalsIgnoreCase(stopNameBefore + exUrbanArrivalSymbol)) {
+							        indexs.add(p);
+							        isArrival = true;
+							    }
+							}	
+						}
+						
+						
+						for (int matchIndex: indexs) {
+							if (inputPdfTimes.get(matchIndex) != null) {
+								List<String> stopTimesInListColumns = inputPdfTimes.get(matchIndex);
+								if (stopTimesInListColumns != null && !stopTimesInListColumns.isEmpty()
+										&& (stopTimesInListColumns.size() > (columnNo -1))
+										&& stopTimesInListColumns.get(columnNo-1).equalsIgnoreCase(stopBeforeDepTime)) {
+									stopBeforeRowNoInList = matchIndex;
+									break;
+								}
+							}
+						}
+						
+						if (stopBeforeRowNoInList != -1) {
+							break;
+						}
+//						stopBeforeRowNoInList = stopList.indexOf(stopNameBefore);
+//						if (stopBeforeRowNoInList == -1) { 
+//							stopBeforeRowNoInList = stopList.indexOf(stopNameBefore + "$" + stopIdBefore); // if recently added anomaly stop
+//							isAnomalyTime = true;
+//							
+//						}
+//
+//						if (stopBeforeRowNoInList == -1) {
+//							stopBeforeRowNoInList = stopList.indexOf(stopNameBefore + exUrbanDepartureSymbol); // check if exist stopName with appended departure string.
+//							isDepartureTime = true;
+//						}
+//
+//						if (stopBeforeRowNoInList == -1) {
+//							stopBeforeRowNoInList = stopList.indexOf(stopNameBefore + exUrbanArrivalSymbol); // check if exist stopName with appended arrival string.
+//							isArrival = true;
+//						}
+
+//						if (stopBeforeRowNoInList != -1 && inputPdfTimes.get(stopBeforeRowNoInList) != null) {
+//
+//							List<String> stopTimesInListColumns = inputPdfTimes.get(stopBeforeRowNoInList);
+//							if (stopTimesInListColumns != null && !stopTimesInListColumns.isEmpty()
+//									&& (stopTimesInListColumns.size() > (columnNo -1))
+//									&& stopTimesInListColumns.get(columnNo - 1).equalsIgnoreCase(stopBeforeDepTime)) {
+//								break;
+//							}
+//						}
 					}
 				}
 
-				if (stopList.lastIndexOf(stopNameBefore) != -1 && !isArrival) {
-					int insertIndex = stopList.lastIndexOf(stopNameBefore) + 1;
+				if (stopBeforeRowNoInList != -1 && !isAnomalyTime && !isArrival && !isDepartureTime) { //stopList.lastIndexOf(stopNameBefore) != -1 && !isArrival 
+					int insertIndex = stopBeforeRowNoInList + 1;//stopList.lastIndexOf(stopNameBefore) + 1;
 					String depTime = stoptimeseq.get(anamoly)[2];
 					anomalyStopIds.put(stopId + "_" + depTime.substring(0, depTime.lastIndexOf(":")).trim(), -1);
 					if (!handledAnomalyStops.contains(stopId)) {
 						stopList.add(insertIndex, stopsMap.get(stoptimeseq.get(anamoly)[3]).toLowerCase() + "$" + stopId);
 						pdfStopList.add(insertIndex, "*"+ stopId); // to align with modified stopList.
-						inputPdfTimes.add(insertIndex, new ArrayList<String>());
+						List<String> stopTimesInList = new ArrayList<String>();
+						for (int i = 0 ; i < noOfCols; i++) {
+							stopTimesInList.add(i, "");
+						}
+						stopTimesInList.add(columnNo - 1, depTime.substring(0, depTime.lastIndexOf(":")).trim()); 
+						inputPdfTimes.add(insertIndex, stopTimesInList);
 						stopIdsMap.put(stopsMap.get(stoptimeseq.get(anamoly)[3]).toLowerCase(),
 								stoptimeseq.get(anamoly)[3]);
 						handledAnomalyStops.add(stopId);
 					}
-				} if (stopList.lastIndexOf(stopNameBefore + "$" + stopIdBefore) != -1 && !isArrival) {
-					int insertIndex = stopList.lastIndexOf(stopNameBefore + "$" + stopIdBefore) + 1;
+				} if (stopBeforeRowNoInList != -1 && isAnomalyTime && !isArrival && !isDepartureTime) { //if (stopList.lastIndexOf(stopNameBefore + "$" + stopIdBefore) != -1 && !isArrival) {
+					int insertIndex = stopBeforeRowNoInList + 1;//stopList.lastIndexOf(stopNameBefore + "$" + stopIdBefore) + 1;
 					String depTime = stoptimeseq.get(anamoly)[2];
 					anomalyStopIds.put(stopId + "_" + depTime.substring(0, depTime.lastIndexOf(":")).trim(), -1);
 					if (!handledAnomalyStops.contains(stopId)) {
 						stopList.add(insertIndex, stopsMap.get(stoptimeseq.get(anamoly)[3]).toLowerCase() + "$" + stopId);
 						pdfStopList.add(insertIndex, "*"+ stopId); // to align with modified stopList.
-						inputPdfTimes.add(insertIndex, new ArrayList<String>());
+						List<String> stopTimesInList = new ArrayList<String>();
+						for (int i = 0 ; i < noOfCols; i++) {
+							stopTimesInList.add(i, "");
+						}
+						stopTimesInList.add(columnNo - 1, depTime.substring(0, depTime.lastIndexOf(":")).trim()); 
+						inputPdfTimes.add(insertIndex, stopTimesInList);
 						stopIdsMap.put(stopsMap.get(stoptimeseq.get(anamoly)[3]).toLowerCase(),
 								stoptimeseq.get(anamoly)[3]);
 						handledAnomalyStops.add(stopId);
 					}
 				}
 				
-				else if (stopList.lastIndexOf(stopNameBefore + exUrbanDepartureSymbol) != -1 && !isArrival) {
-					int insertIndex = stopList.lastIndexOf(stopNameBefore + exUrbanDepartureSymbol) + 1;
+				else if (stopBeforeRowNoInList != -1 && !isAnomalyTime && isDepartureTime && !isArrival) { //stopList.lastIndexOf(stopNameBefore + exUrbanDepartureSymbol) != -1 && !isArrival
+					int insertIndex = stopBeforeRowNoInList + 1;//stopList.lastIndexOf(stopNameBefore + exUrbanDepartureSymbol) + 1;
 					String depTime = stoptimeseq.get(anamoly)[2];
 					anomalyStopIds.put(stopId + "_" + depTime.substring(0, depTime.lastIndexOf(":")).trim(), -1);
 					if (!handledAnomalyStops.contains(stopId)) {
 						stopList.add(insertIndex, stopsMap.get(stoptimeseq.get(anamoly)[3]).toLowerCase() + "$" + stopId);
 						pdfStopList.add(insertIndex, "*" + stopId); // to align with modified stopList.
-						inputPdfTimes.add(insertIndex, new ArrayList<String>());
+						List<String> stopTimesInList = new ArrayList<String>();
+						for (int i = 0 ; i < noOfCols; i++) {
+							stopTimesInList.add(i, "");
+						}
+						stopTimesInList.add(columnNo - 1, depTime.substring(0, depTime.lastIndexOf(":")).trim());
+						inputPdfTimes.add(insertIndex, stopTimesInList);
 						stopIdsMap.put(stopsMap.get(stoptimeseq.get(anamoly)[3]).toLowerCase(),
 								stoptimeseq.get(anamoly)[3]);
 						handledAnomalyStops.add(stopId);
 					}
-				} else if (stopList.lastIndexOf(stopNameBefore + exUrbanArrivalSymbol) != -1 && isArrival) {
-					int insertIndex = stopList.lastIndexOf(stopNameBefore + exUrbanArrivalSymbol) + 1;
+				} else if (stopBeforeRowNoInList != -1 && !isAnomalyTime && !isDepartureTime && isArrival) { //stopList.lastIndexOf(stopNameBefore + exUrbanArrivalSymbol) != -1 && isArrival
+					int insertIndex = stopBeforeRowNoInList + 1;//stopList.lastIndexOf(stopNameBefore + exUrbanArrivalSymbol) + 1;
 					String depTime = stoptimeseq.get(anamoly)[2];
 					anomalyStopIds.put(stopId + "_" + depTime.substring(0, depTime.lastIndexOf(":")).trim(), -1);
 					if (!handledAnomalyStops.contains(stopId)) {
 						stopList.add(insertIndex, stopsMap.get(stoptimeseq.get(anamoly)[3]).toLowerCase() + "$" + stopId);
 						pdfStopList.add(insertIndex, "*" + stopId); // to align with modified stopList.
-						inputPdfTimes.add(insertIndex, new ArrayList<String>());
+						List<String> stopTimesInList = new ArrayList<String>();
+						for (int i = 0 ; i < noOfCols; i++) {
+							stopTimesInList.add(i, "");
+						}
+						stopTimesInList.add(columnNo - 1, depTime.substring(0, depTime.lastIndexOf(":")).trim());
+						inputPdfTimes.add(insertIndex, stopTimesInList);
 						stopIdsMap.put(stopsMap.get(stoptimeseq.get(anamoly)[3]).toLowerCase(),
 								stoptimeseq.get(anamoly)[3]);
 						handledAnomalyStops.add(stopId);
