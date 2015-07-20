@@ -69,10 +69,17 @@ public class AnnotatedTTGenerator {
 	{
 		unalignedRoutesMap.put("119", new ArrayList<>(Arrays.asList("109", "110")));
 		unalignedRoutesMap.put("108", new ArrayList<>(Arrays.asList("112")));
+//		unalignedRoutesMap.put("201", new ArrayList<>(Arrays.asList("204", "205")));
+		unalignedRoutesMap.put("231", new ArrayList<>(Arrays.asList("201")));
 		unalignedRoutesMap.put("245", new ArrayList<>(Arrays.asList("215")));
 		unalignedRoutesMap.put("463", new ArrayList<>(Arrays.asList("401")));
 		unalignedRoutesMap.put("467", new ArrayList<>(Arrays.asList("401")));
 		unalignedRoutesMap.put("321", new ArrayList<>(Arrays.asList("306")));
+//		unalignedRoutesMap.put("646", new ArrayList<>(Arrays.asList("336")));
+		unalignedRoutesMap.put("301", new ArrayList<>(Arrays.asList("332", "335")));
+		unalignedRoutesMap.put("334", new ArrayList<>(Arrays.asList("301")));
+		unalignedRoutesMap.put("501", new ArrayList<>(Arrays.asList("506", "512")));
+		unalignedRoutesMap.put("511", new ArrayList<>(Arrays.asList("501", "503", "506", "514")));
 		unalignedRoutesMap.put("Servizio Extraurbano", new ArrayList<>(Arrays.asList("627")));
 	}
 	private static final String exUrbanArrivalSymbol = " - arr.";
@@ -2079,7 +2086,18 @@ public class AnnotatedTTGenerator {
 						List<String> tripId = partialTripMatchAlgo(matrix, currentCol, startRow, routeId, isUnAlignedRoute);
 						if (tripId != null && !tripId.isEmpty()) {
 							matchingTripId.addAll(tripId);
-						} 
+						} else { // EX-URBAN:  if this route is covered in another route, check for it.
+							if (unalignedRoutesMap.containsKey(routeShortName) && agencyId.equalsIgnoreCase("17")) {
+								for (String otherRouteTripId: unalignedRoutesMap.get(routeShortName)) {
+									routeId = getGTFSRouteIdFromRouteShortName(otherRouteTripId);
+									List<String> otherRoutesTripId = partialTripMatchAlgo(matrix, currentCol, startRow, routeId, isUnAlignedRoute);
+									if (otherRoutesTripId != null && !otherRoutesTripId.isEmpty()) {
+										matchingTripId.addAll(otherRoutesTripId);
+									}
+									
+								}
+							}
+						}
 //						else { //rerun with 90% match.
 //							tripId = partialTripMatchByPercentAlgo(matrix, currentCol, startRow, routeId, 90);
 //							if (tripId != null && !tripId.isEmpty()) {
@@ -2944,9 +2962,7 @@ public class AnnotatedTTGenerator {
 //		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "464A.csv");
 		
 		//fix stops.
-//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "208ESA-A.csv");
-//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "201R.csv");
-//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "205R.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "201A.csv");
 
 		timeTableGenerator.printStats();
 
