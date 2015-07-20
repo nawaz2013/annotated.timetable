@@ -1588,6 +1588,12 @@ public class AnnotatedTTGenerator {
 			List<String> matchingTripId = new ArrayList<String>();
 
 			for (String tripId : tripsForRoute) {
+				
+				// skip ones matched already.
+				if (matchedTripIds.contains(tripId)) {
+					continue;
+				}
+				 
 				List<String[]> stopTimes = tripStopsTimesMap.get(tripId);
 
 				boolean foundPdfTime = false;
@@ -2877,7 +2883,7 @@ public class AnnotatedTTGenerator {
 //		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "464A.csv");
 		
 		//fix stops.
-//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "204A.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "208ESA-A.csv");
 //		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "201R.csv");
 //		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "205R.csv");
 
