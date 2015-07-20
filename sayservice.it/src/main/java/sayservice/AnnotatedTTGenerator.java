@@ -62,18 +62,18 @@ public class AnnotatedTTGenerator {
 //	private static final String pathToInput = "src/test/resources/inputtimetable/16/";
 	private static final String pathToInput = "src/test/resources/inputtimetable/17/";
 	// agencyIds (12,16,17)
-	private static final String agencyId = "16";
+	private static final String agencyId = "17";
 	private static final List<String> roveretoNBuses = Arrays.asList("N1", "N2", "N3", "N5", "N6");
 	private static final List<String> exUrbTrenoRoutes = Arrays.asList("578", "518", "352");
-	private static final Map<String, String> unalignedRoutesMap = new HashMap<String, String>();
+	private static final Map<String, List<String>> unalignedRoutesMap = new HashMap<String, List<String>>();
 	{
-		unalignedRoutesMap.put("119", "109");
-		unalignedRoutesMap.put("108", "112");
-		unalignedRoutesMap.put("245", "215");
-		unalignedRoutesMap.put("463", "401");
-		unalignedRoutesMap.put("467", "401");
-		unalignedRoutesMap.put("321", "306");
-		unalignedRoutesMap.put("Servizio Extraurbano", "627");
+		unalignedRoutesMap.put("119", new ArrayList<>(Arrays.asList("109", "110")));
+		unalignedRoutesMap.put("108", new ArrayList<>(Arrays.asList("112")));
+		unalignedRoutesMap.put("245", new ArrayList<>(Arrays.asList("215")));
+		unalignedRoutesMap.put("463", new ArrayList<>(Arrays.asList("401")));
+		unalignedRoutesMap.put("467", new ArrayList<>(Arrays.asList("401")));
+		unalignedRoutesMap.put("321", new ArrayList<>(Arrays.asList("306")));
+		unalignedRoutesMap.put("Servizio Extraurbano", new ArrayList<>(Arrays.asList("627")));
 	}
 	private static final String exUrbanArrivalSymbol = " - arr.";
 	private static final String exUrbanDepartureSymbol = " - part.";
@@ -1534,133 +1534,192 @@ public class AnnotatedTTGenerator {
 
 	}
 	
-	private String partialTripMatchAlgo(String[][] matrix, int colInPdf, int startRow, String routeId) {
+	private List<String> partialTripMatchAlgo(String[][] matrix, int colInPdf, int startRow, String routeId, boolean isUnAlignedRoute) {
 	
-		String partialTripId = "";
+		List<String> matchingTripId = new ArrayList<String>();
 
-		if (verbose) System.out.println("Processing column starting with time: " + matrix[numOfHeaders][colInPdf]);
+		if (verbose)
+			System.out.println("Processing column starting with time: " + matrix[numOfHeaders][colInPdf]);
 
-		//		routeId = getGTFSRouteIdFromRouteShortName(routeShortName);
-		//
-		//		if (matrix[5][colInPdf] != null && matrix[5][colInPdf].contains("Linea")) {
-		//			String pdfRouteId = matrix[5][colInPdf].substring(matrix[5][colInPdf].indexOf('a') + 1);
-		//			routeId = getGTFSRouteIdFromRouteShortName(pdfRouteId);
-		//			if (routeId.isEmpty()) {
-		//				routeId = getGTFSRouteIdFromRouteShortName(pdfRouteId.substring(0, pdfRouteId.indexOf("/")));
-		//				if (routeId != null && !routeId.isEmpty()) {
-		//					columnGTFSRSName.put(colInPdf, pdfRouteId.substring(0, pdfRouteId.indexOf("/")));
-		//				}
-		//			}
-		//		} else if (matrix[5][colInPdf] != null && isInteger(matrix[5][colInPdf])) {
-		//			String pdfRouteId = matrix[5][colInPdf];
-		//			routeId = getGTFSRouteIdFromRouteShortName(pdfRouteId);
-		//		}
+		if (!isUnAlignedRoute) {
 
-		// validate trip with GTFS.
-		boolean[] toBeCheckTimeIndex = new boolean[matrix.length];
+			// validate trip with GTFS.
+			boolean[] toBeCheckTimeIndex = new boolean[matrix.length];
 
-		for (int i = startRow; i < matrix.length; i++) {
+			for (int i = startRow; i < matrix.length; i++) {
 
-			if (matrix[i][colInPdf] != null && !matrix[i][colInPdf].isEmpty() && !matrix[i][colInPdf].contains("|")) {
-				if (matrix[i][colInPdf].contains("-")) {
-					continue;
-				}
-				toBeCheckTimeIndex[i] = true;
-			}
-		}
-
-		if (routeId != null && !routeId.isEmpty()) {
-
-			List<String> tripsForRoute = routeTripsMap.get(routeId);
-
-			if (tripsForRoute.isEmpty()) {
-				partialTripId = "no route found";
-				return partialTripId;
-			}
-
-			int count = 0;
-			for (Boolean boolT : toBeCheckTimeIndex) {
-				if (boolT) {
-					count++;
+				if (matrix[i][colInPdf] != null && !matrix[i][colInPdf].isEmpty() && !matrix[i][colInPdf].contains("|")) {
+					if (matrix[i][colInPdf].contains("-")) {
+						continue;
+					}
+					toBeCheckTimeIndex[i] = true;
 				}
 			}
 
-			List<String> matchingTripId = new ArrayList<String>();
+			if (routeId != null && !routeId.isEmpty()) {
 
-			for (String tripId : tripsForRoute) {
-				
-				// skip ones matched already.
-				if (matchedTripIds.contains(tripId)) {
-					continue;
+				List<String> tripsForRoute = routeTripsMap.get(routeId);
+
+				if (tripsForRoute.isEmpty()) {
+					//				partialTripId = "no route found";
+					return matchingTripId;
 				}
-				 
-				List<String[]> stopTimes = tripStopsTimesMap.get(tripId);
 
-				boolean foundPdfTime = false;
-				boolean timeChecks[] = new boolean[count];
+				int count = 0;
+				for (Boolean boolT : toBeCheckTimeIndex) {
+					if (boolT) {
+						count++;
+					}
+				}
 
-				for (int t = startRow, tbc = 0; t < toBeCheckTimeIndex.length; t++) {
-					if (toBeCheckTimeIndex[t] && matrix[t][colInPdf] != null && !matrix[t][colInPdf].isEmpty()
-							&& !matrix[t][colInPdf].contains("|")) {
-						String timeToCheck = matrix[t][colInPdf].replace(".", ":");
-						int timeToCheckHour = Integer.valueOf(timeToCheck.substring(0, timeToCheck.indexOf(":")));
+				for (String tripId : tripsForRoute) {
 
-						if (timeToCheckHour > 24) {
-							timeToCheckHour = timeToCheckHour - 24;
+					List<String[]> stopTimes = tripStopsTimesMap.get(tripId);
 
-						}
-						timeToCheck = formatter.format(timeToCheckHour)
-								+ timeToCheck.substring(timeToCheck.indexOf(":")).trim();
-						if (verbose) System.out.println("check all trips for time " + matrix[t][colInPdf]);
-						for (int s = 0; s < stopTimes.size(); s++) {
-							// matches arrival or departure time (since pdf contains both entries).
-							if (stopTimes.get(s)[1].contains(timeToCheck) | stopTimes.get(s)[2].contains(timeToCheck)) {
-								foundPdfTime = true;
-								timeChecks[tbc] = true;
-								tbc++;
+					boolean foundPdfTime = false;
+					boolean timeChecks[] = new boolean[count];
+
+					for (int t = startRow, tbc = 0; t < toBeCheckTimeIndex.length; t++) {
+						if (toBeCheckTimeIndex[t] && matrix[t][colInPdf] != null && !matrix[t][colInPdf].isEmpty()
+								&& !matrix[t][colInPdf].contains("|")) {
+							String timeToCheck = matrix[t][colInPdf].replace(".", ":");
+							int timeToCheckHour = Integer.valueOf(timeToCheck.substring(0, timeToCheck.indexOf(":")));
+
+							if (timeToCheckHour > 24) {
+								timeToCheckHour = timeToCheckHour - 24;
+
+							}
+							timeToCheck = formatter.format(timeToCheckHour)
+									+ timeToCheck.substring(timeToCheck.indexOf(":")).trim();
+							if (verbose)
+								System.out.println("check all trips for time " + matrix[t][colInPdf]);
+							for (int s = 0; s < stopTimes.size(); s++) {
+								// matches arrival or departure time (since pdf contains both entries).
+								if (stopTimes.get(s)[1].contains(timeToCheck)
+										| stopTimes.get(s)[2].contains(timeToCheck)) {
+									foundPdfTime = true;
+									timeChecks[tbc] = true;
+									tbc++;
+									break;
+								}
+							}
+							if (!foundPdfTime) {
 								break;
 							}
 						}
-						if (!foundPdfTime) {
-							break;
+					}
+
+					if (foundPdfTime) {
+						boolean foundTrip = true;
+						// check if all found.
+						for (Boolean index : timeChecks) {
+							if (!index) {
+								foundTrip = false;
+
+							}
 						}
+
+						// found
+						if (foundTrip) {
+							matchingTripId.add(tripId);
+						}
+					}
+
+				}
+			}
+		} else {
+
+			// validate trip with GTFS.
+			boolean[] toBeCheckTimeIndex = new boolean[matrix.length];
+
+			for (int i = startRow; i < matrix.length; i++) {
+
+				if (matrix[i][colInPdf] != null && !matrix[i][colInPdf].isEmpty() && !matrix[i][colInPdf].contains("|")) {
+					if (matrix[i][colInPdf].contains("-")) {
+						continue;
+					}
+					toBeCheckTimeIndex[i] = true;
+				}
+			}
+
+			for (String unAlignedRouteId : unalignedRoutesMap.get(routeShortName)) {
+
+				routeId = getGTFSRouteIdFromRouteShortName(unAlignedRouteId);
+
+				List<String> tripsForRoute = routeTripsMap.get(routeId);
+
+				if (tripsForRoute.isEmpty()) {
+					return matchingTripId;
+				}
+
+				int count = 0;
+				for (Boolean boolT : toBeCheckTimeIndex) {
+					if (boolT) {
+						count++;
 					}
 				}
 
-				if (foundPdfTime) {
-					boolean foundTrip = true;
-					// check if all found.
-					for (Boolean index : timeChecks) {
-						if (!index) {
-							foundTrip = false;
+				for (String tripId : tripsForRoute) {
 
+					List<String[]> stopTimes = tripStopsTimesMap.get(tripId);
+
+					boolean foundPdfTime = false;
+					boolean timeChecks[] = new boolean[count];
+
+					for (int t = startRow, tbc = 0; t < toBeCheckTimeIndex.length; t++) {
+						if (toBeCheckTimeIndex[t] && matrix[t][colInPdf] != null && !matrix[t][colInPdf].isEmpty()
+								&& !matrix[t][colInPdf].contains("|")) {
+							String timeToCheck = matrix[t][colInPdf].replace(".", ":");
+							int timeToCheckHour = Integer.valueOf(timeToCheck.substring(0, timeToCheck.indexOf(":")));
+
+							if (timeToCheckHour > 24) {
+								timeToCheckHour = timeToCheckHour - 24;
+
+							}
+							timeToCheck = formatter.format(timeToCheckHour)
+									+ timeToCheck.substring(timeToCheck.indexOf(":")).trim();
+							if (verbose)
+								System.out.println("check all trips for time " + matrix[t][colInPdf]);
+							for (int s = 0; s < stopTimes.size(); s++) {
+								// matches arrival or departure time (since pdf contains both entries).
+								if (stopTimes.get(s)[1].contains(timeToCheck)
+										| stopTimes.get(s)[2].contains(timeToCheck)) {
+									foundPdfTime = true;
+									timeChecks[tbc] = true;
+									tbc++;
+									break;
+								}
+							}
+							if (!foundPdfTime) {
+								break;
+							}
 						}
 					}
 
-					// found
-					if (foundTrip) {
-						matchingTripId.add(tripId);
-						break;
+					if (foundPdfTime) {
+						boolean foundTrip = true;
+						// check if all found.
+						for (Boolean index : timeChecks) {
+							if (!index) {
+								foundTrip = false;
+
+							}
+						}
+
+						// found
+						if (foundTrip) {
+							matchingTripId.add(tripId);
+						}
 					}
+
 				}
 
 			}
 
-			if (matchingTripId != null && !matchingTripId.isEmpty()) {
-
-				if (matchingTripId.size() == 1) {
-					if (verbose) System.out.println("found partial matched trip Id " + matchingTripId.get(0));
-					partialTripId = matchingTripId.get(0);
-				} else {
-					if (err) System.err.println("anamoly- mutliple trips detected");
-					for (String tripId : matchingTripId) {
-						partialTripId = partialTripId + "-" + tripId;
-					}
-				}
-			}
 		}
+		
 
-		return partialTripId;
+		return matchingTripId;
 
 	}
 	
@@ -1958,8 +2017,10 @@ public class AnnotatedTTGenerator {
 			}
 
 			// check for unaligned routes.
+			boolean isUnAlignedRoute = false;
 			if (routeId.isEmpty() && unalignedRoutesMap.containsKey(routeShortName)) {
-				routeId = getGTFSRouteIdFromRouteShortName(unalignedRoutesMap.get(routeShortName));
+				routeId = getGTFSRouteIdFromRouteShortName(unalignedRoutesMap.get(routeShortName).get(0));
+				isUnAlignedRoute = true;
 			}
 
 			if (routeId != null && !routeId.isEmpty()) {
@@ -2015,9 +2076,9 @@ public class AnnotatedTTGenerator {
 					}
 					
 					if (matchingTripId == null || matchingTripId.isEmpty()) {
-						String tripId = partialTripMatchAlgo(matrix, currentCol, startRow, routeId);
+						List<String> tripId = partialTripMatchAlgo(matrix, currentCol, startRow, routeId, isUnAlignedRoute);
 						if (tripId != null && !tripId.isEmpty()) {
-							matchingTripId.add(tripId);
+							matchingTripId.addAll(tripId);
 						} 
 //						else { //rerun with 90% match.
 //							tripId = partialTripMatchByPercentAlgo(matrix, currentCol, startRow, routeId, 90);
