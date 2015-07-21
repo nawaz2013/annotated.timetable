@@ -69,7 +69,7 @@ public class AnnotatedTTGenerator {
 	{
 		unalignedRoutesMap.put("119", new ArrayList<>(Arrays.asList("109", "110")));
 		unalignedRoutesMap.put("108", new ArrayList<>(Arrays.asList("112")));
-//		unalignedRoutesMap.put("201", new ArrayList<>(Arrays.asList("204", "205")));
+		unalignedRoutesMap.put("201", new ArrayList<>(Arrays.asList("204", "205")));
 		unalignedRoutesMap.put("231", new ArrayList<>(Arrays.asList("201")));
 		unalignedRoutesMap.put("245", new ArrayList<>(Arrays.asList("215")));
 		unalignedRoutesMap.put("463", new ArrayList<>(Arrays.asList("401")));
@@ -106,6 +106,7 @@ public class AnnotatedTTGenerator {
 	private Map<String, String> tripServiceIdMap = new HashMap<String, String>();
 	private HashMap<String, String> stopsMap = new HashMap<String, String>();
 	private HashMap<Integer, List<String>> columnTripIdMap = new HashMap<Integer, List<String>>();
+	private List<String> unAlignedTripIds = new ArrayList<String>();
 	private HashMap<Integer, List<String>> columnHeaderNotes = new HashMap<Integer, List<String>>();
 	private HashMap<Integer, List<String>> columnItalicStopNames = new HashMap<Integer, List<String>>();
 	private HashMap<String, String> stopIdsMap = new HashMap<String, String>();
@@ -207,6 +208,7 @@ public class AnnotatedTTGenerator {
 		columnTripIdMap.clear();
 		columnGTFSRSName.clear();
 		mismatchColIds = "";
+		unAlignedTripIds.clear();
 
 	}
 
@@ -682,13 +684,23 @@ public class AnnotatedTTGenerator {
 
 		if (tripIds != null) {
 			if (tripIds.size() == 1) {
-				// exact
-				annotation = tripIds.get(0);
-
+				if (unAlignedTripIds.contains(tripIds.get(0)) && agencyId.equalsIgnoreCase("17")) {
+					annotation = "*" + tripIds.get(0);
+				} else { // exact
+					annotation = tripIds.get(0);
+				}
 			} else if (tripIds.size() > 1) {
+				boolean isUnalignedTrip = false;
 				// multiple trips.
 				for (String tripId : tripIds) {
+					if (unAlignedTripIds.contains(tripId) && agencyId.equalsIgnoreCase("17")) {
+						isUnalignedTrip = true;
+					}
 					annotation = annotation + tripId + ",";
+				}
+
+				if (isUnalignedTrip) {
+					annotation = "*" + annotation;
 				}
 
 			}
@@ -1628,7 +1640,9 @@ public class AnnotatedTTGenerator {
 
 						// found
 						if (foundTrip) {
-							matchingTripId.add(tripId);
+							if (!matchingTripId.contains(foundTrip)) {
+								matchingTripId.add(tripId);	
+							}
 						}
 					}
 
@@ -1715,7 +1729,9 @@ public class AnnotatedTTGenerator {
 
 						// found
 						if (foundTrip) {
-							matchingTripId.add(tripId);
+							if (!matchingTripId.contains(foundTrip)) {
+								matchingTripId.add(tripId);	
+							}
 						}
 					}
 
@@ -2024,10 +2040,10 @@ public class AnnotatedTTGenerator {
 			}
 
 			// check for unaligned routes.
-			boolean isUnAlignedRoute = false;
+			boolean isExUrbanUnalignedRoute = false;
 			if (routeId.isEmpty() && unalignedRoutesMap.containsKey(routeShortName)) {
 				routeId = getGTFSRouteIdFromRouteShortName(unalignedRoutesMap.get(routeShortName).get(0));
-				isUnAlignedRoute = true;
+				isExUrbanUnalignedRoute = true;
 			}
 
 			if (routeId != null && !routeId.isEmpty()) {
@@ -2083,18 +2099,22 @@ public class AnnotatedTTGenerator {
 					}
 					
 					if (matchingTripId == null || matchingTripId.isEmpty()) {
-						List<String> tripId = partialTripMatchAlgo(matrix, currentCol, startRow, routeId, isUnAlignedRoute);
+						List<String> tripId = partialTripMatchAlgo(matrix, currentCol, startRow, routeId, isExUrbanUnalignedRoute);
 						if (tripId != null && !tripId.isEmpty()) {
 							matchingTripId.addAll(tripId);
 						} else { // EX-URBAN:  if this route is covered in another route, check for it.
 							if (unalignedRoutesMap.containsKey(routeShortName) && agencyId.equalsIgnoreCase("17")) {
+								isExUrbanUnalignedRoute = true;
 								for (String otherRouteTripId: unalignedRoutesMap.get(routeShortName)) {
 									routeId = getGTFSRouteIdFromRouteShortName(otherRouteTripId);
-									List<String> otherRoutesTripId = partialTripMatchAlgo(matrix, currentCol, startRow, routeId, isUnAlignedRoute);
+									List<String> otherRoutesTripId = partialTripMatchAlgo(matrix, currentCol, startRow, routeId, isExUrbanUnalignedRoute);
 									if (otherRoutesTripId != null && !otherRoutesTripId.isEmpty()) {
-										matchingTripId.addAll(otherRoutesTripId);
+										for (String foundOtherTripId: otherRoutesTripId) {
+											if (!matchingTripId.contains(foundOtherTripId)) {
+												matchingTripId.add(foundOtherTripId);		
+											}
+										}
 									}
-									
 								}
 							}
 						}
@@ -2107,10 +2127,11 @@ public class AnnotatedTTGenerator {
 					}
 
 					// check trains.
-					if (matchingTripId == null || matchingTripId.isEmpty()) {
+					if (matchingTripId == null || matchingTripId.isEmpty() && agencyId.equalsIgnoreCase("17")) {
 						// algorithm to check trip in other route.
 						String tripId = checkTrainTrips(matrix, currentCol, startRow);
 						if (tripId != null && !tripId.isEmpty())
+							isExUrbanUnalignedRoute = true;
 							matchingTripId.add(tripId);
 					}
 
@@ -2119,11 +2140,6 @@ public class AnnotatedTTGenerator {
 					copyOfTripIds.addAll(matchingTripId);
 					
 					if (copyOfTripIds != null && !copyOfTripIds.isEmpty()) {
-
-//						if (!deleteList.contains(matrix[4][currentCol])) {
-//							deleteList.add(matrix[4][currentCol]);
-//							System.out.println(matrix[4][currentCol]);
-//						}
 
 						for (String matchId : copyOfTripIds) {
 							
@@ -2145,29 +2161,15 @@ public class AnnotatedTTGenerator {
 							// algorithm to check trip in other route.
 							if(deepMatchTrips(matrix, currentCol, tripStartIndex, tripEndIndex, stopTimes)) {
 								foundTripId = matchId;
+								if (isExUrbanUnalignedRoute) {
+									unAlignedTripIds.add(foundTripId);
+								}
 							}
 							
 						}
 						
 					}
 					
-//					if (matchingTripId != null && !foundTripId.isEmpty()) {
-//						List<String[]> stopTimes = tripStopsTimesMap.get(foundTripId);
-//						if (mergedRoute) {
-//							/** first version(trip matching algorithm. **/
-//							if (!matchingTripId.contains(foundTripId)) {
-//								matchingTripId.add(foundTripId);
-//							}
-//						} else {
-//							if (deepMatchTrips(matrix, currentCol, tripStartIndex, tripEndIndex, stopTimes)) {
-//								if (!matchingTripId.contains(foundTripId)) {
-//									matchingTripId.add(foundTripId);
-//								}
-//							}
-//						}
-//					}
-
-
 					// prepare stops list.
 					if (foundTripId != null && !foundTripId.isEmpty()) {
 
@@ -2248,7 +2250,7 @@ public class AnnotatedTTGenerator {
 								}
 							}
 
-							if (!found && !mergedRoute) { // && stopList.indexOf(stopsMap.get(stoptimeseq.get(gtfsSeq)[3])) == -1
+							if (!found && !mergedRoute && !isExUrbanUnalignedRoute) { // && stopList.indexOf(stopsMap.get(stoptimeseq.get(gtfsSeq)[3])) == -1
 								anamolies = anamolyMap.get(matchingTripId.get(0) + "$" + currentCol);
 								if (anamolies == null) {
 									anamolies = new ArrayList<Integer>();
@@ -2806,62 +2808,67 @@ public class AnnotatedTTGenerator {
 			List<String[]> stopTimes) {
 
 		int i = 0;
-		for (i = tripStartIndex; i <= tripEndIndex; i++) {
 
-//			boolean isArrivalTime = false;
-
-			if (matrix[i][currentCol] == null || matrix[i][currentCol].isEmpty() || matrix[i][currentCol].contains("|")
-					|| matrix[i][currentCol].contains("-")) {
-				continue;
-
-			}
+		if (stopTimes != null && !stopTimes.isEmpty()) {
 			
-			// set arrival time flag.
-			if (matrix[i][0].contains(" - Arr.")) {
-				continue;
-			}
+			for (i = tripStartIndex; i <= tripEndIndex; i++) {
 
-			String timeToCheck = matrix[i][currentCol].replace(".", ":");
+				//	boolean isArrivalTime = false;
 
-			// set arrival time flag.
-//			if (matrix[i][0].contains(" - Arr.")) {
-//				isArrivalTime = true;
-//			}
+				if (matrix[i][currentCol] == null || matrix[i][currentCol].isEmpty()
+						|| matrix[i][currentCol].contains("|") || matrix[i][currentCol].contains("-")) {
+					continue;
 
-			int timeToCheckHour = Integer.valueOf(timeToCheck.substring(0, timeToCheck.indexOf(":")));
+				}
 
-			if (timeToCheckHour > 24) {
-				timeToCheckHour = timeToCheckHour - 24;
-			}
-			
-			timeToCheck = formatter.format(timeToCheckHour) + timeToCheck.substring(timeToCheck.indexOf(":")).trim();
+				// set arrival time flag.
+				if (matrix[i][0].contains(" - Arr.")) {
+					continue;
+				}
 
-			boolean found = false;
-			/** to make sure if sequence time checked once. **/
-			boolean[] tripSequence = new boolean[stopTimes.size()];
+				String timeToCheck = matrix[i][currentCol].replace(".", ":");
 
-			/** very important (pdf seems to contain time mapped to departure time in stoptimes.txt.)
-			 *  stopTimes.get(s)[2] departure time.
-			 *  stopTimes.get(s)[1] arrival time.**/
-			for (int s = 0; s < stopTimes.size(); s++) {
+				// set arrival time flag.
+				//			if (matrix[i][0].contains(" - Arr.")) {
+				//				isArrivalTime = true;
+				//			}
 
-				if (stopTimes.get(s)[2].contains(timeToCheck) && !tripSequence[s]) {
+				int timeToCheckHour = Integer.valueOf(timeToCheck.substring(0, timeToCheck.indexOf(":")));
+
+				if (timeToCheckHour > 24) {
+					timeToCheckHour = timeToCheckHour - 24;
+				}
+
+				timeToCheck = formatter.format(timeToCheckHour)
+						+ timeToCheck.substring(timeToCheck.indexOf(":")).trim();
+
+				boolean found = false;
+				/** to make sure if sequence time checked once. **/
+				boolean[] tripSequence = new boolean[stopTimes.size()];
+
+				/** very important (pdf seems to contain time mapped to departure time in stoptimes.txt.)
+				 *  stopTimes.get(s)[2] departure time.
+				 *  stopTimes.get(s)[1] arrival time.**/
+				for (int s = 0; s < stopTimes.size(); s++) {
+
+					if (stopTimes.get(s)[2].contains(timeToCheck) && !tripSequence[s]) {
 						found = true;
 						tripSequence[s] = true;
 						break;
 					}
-				
 
+				}
+				if (!found) {
+					if (err)
+						System.err.println("probably misaligned GTFS time, compare tripId: " + stopTimes.get(0)[0]
+								+ " times with PDF");
+					return false;
+				}
 			}
-			if (!found) {
-				if (err) System.err.println("probably misaligned GTFS time, compare tripId: " + stopTimes.get(0)[0]
-						+ " times with PDF");
-				return false;
-			}
-		}
 
-		if (i == tripEndIndex + 1) {
-			return true;
+			if (i == tripEndIndex + 1) {
+				return true;
+			}
 		}
 
 		return false;
