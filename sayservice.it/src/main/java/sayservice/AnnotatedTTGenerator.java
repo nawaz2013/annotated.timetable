@@ -68,18 +68,30 @@ public class AnnotatedTTGenerator {
 	private static final Map<String, List<String>> unalignedRoutesMap = new HashMap<String, List<String>>();
 	{
 		unalignedRoutesMap.put("119", new ArrayList<>(Arrays.asList("109", "110")));
+		unalignedRoutesMap.put("120", new ArrayList<>(Arrays.asList("102", "103", "112")));
+		unalignedRoutesMap.put("122", new ArrayList<>(Arrays.asList("501")));
+		unalignedRoutesMap.put("131", new ArrayList<>(Arrays.asList("636")));
 		unalignedRoutesMap.put("108", new ArrayList<>(Arrays.asList("112")));
 		unalignedRoutesMap.put("201", new ArrayList<>(Arrays.asList("204", "205")));
+		unalignedRoutesMap.put("204", new ArrayList<>(Arrays.asList("201", "205")));
+		unalignedRoutesMap.put("205", new ArrayList<>(Arrays.asList("201", "204")));
+		unalignedRoutesMap.put("206", new ArrayList<>(Arrays.asList("204")));
 		unalignedRoutesMap.put("231", new ArrayList<>(Arrays.asList("201")));
 		unalignedRoutesMap.put("245", new ArrayList<>(Arrays.asList("215")));
-		unalignedRoutesMap.put("463", new ArrayList<>(Arrays.asList("401")));
-		unalignedRoutesMap.put("467", new ArrayList<>(Arrays.asList("401")));
 		unalignedRoutesMap.put("321", new ArrayList<>(Arrays.asList("306")));
-//		unalignedRoutesMap.put("646", new ArrayList<>(Arrays.asList("336")));
 		unalignedRoutesMap.put("301", new ArrayList<>(Arrays.asList("332", "335")));
 		unalignedRoutesMap.put("334", new ArrayList<>(Arrays.asList("301")));
+		unalignedRoutesMap.put("335", new ArrayList<>(Arrays.asList("301")));
+		unalignedRoutesMap.put("403", new ArrayList<>(Arrays.asList("402")));
+		unalignedRoutesMap.put("461", new ArrayList<>(Arrays.asList("403")));
+		unalignedRoutesMap.put("462", new ArrayList<>(Arrays.asList("417", "418")));
+		unalignedRoutesMap.put("463", new ArrayList<>(Arrays.asList("401")));
+		unalignedRoutesMap.put("464", new ArrayList<>(Arrays.asList("423")));
+		unalignedRoutesMap.put("467", new ArrayList<>(Arrays.asList("115", "401", "403", "303")));
 		unalignedRoutesMap.put("501", new ArrayList<>(Arrays.asList("506", "512")));
 		unalignedRoutesMap.put("511", new ArrayList<>(Arrays.asList("501", "503", "506", "514")));
+		unalignedRoutesMap.put("645", new ArrayList<>(Arrays.asList("646")));
+		unalignedRoutesMap.put("646", new ArrayList<>(Arrays.asList("640", "642", "645")));
 		unalignedRoutesMap.put("Servizio Extraurbano", new ArrayList<>(Arrays.asList("627")));
 	}
 	private static final String exUrbanArrivalSymbol = " - arr.";
@@ -1741,6 +1753,30 @@ public class AnnotatedTTGenerator {
 
 		}
 		
+		List<String> copyOfTripIds = new ArrayList<String>();
+		copyOfTripIds.addAll(matchingTripId);
+		
+		if (copyOfTripIds != null && !copyOfTripIds.isEmpty()) {
+
+			for (String matchId : copyOfTripIds) {
+				
+				// read frequency info.
+				if (matrix[4][colInPdf] != null && !matrix[4][colInPdf].isEmpty()) {
+					String pdfFreqString = matrix[4][colInPdf].replaceAll("\\s+", " ").toLowerCase();
+					pdfFreqString = pdfFreqString.replace("\"","");
+					if (pdfFreqStringServiceIdMap.containsKey(pdfFreqString)) {
+						String servicIdMapIdentifier = pdfFreqStringServiceIdMap.get(pdfFreqString);
+						List<String> serviceIds = serviceIdMapping.get(servicIdMapIdentifier);
+						if (!serviceIds.contains(tripServiceIdMap.get(matchId))) {
+							matchingTripId.remove(matchId);
+							continue;
+						}
+					}
+				} 
+			}
+		}
+			
+		
 
 		return matchingTripId;
 
@@ -2969,7 +3005,9 @@ public class AnnotatedTTGenerator {
 //		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "464A.csv");
 		
 		//fix stops.
-//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "201A.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "335A.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "131ESR.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "620R.csv");
 
 		timeTableGenerator.printStats();
 
