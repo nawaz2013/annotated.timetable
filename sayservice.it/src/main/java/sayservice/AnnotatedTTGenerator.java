@@ -53,7 +53,7 @@ public class AnnotatedTTGenerator {
 //	private static final String pathToGTFS = "src/test/resources/gtfs/12/";
 //	private static final String pathToGTFS = "src/test/resources/gtfs/16/";
 	private static final String pathToGTFS = "src/test/resources/gtfs/17/";
-	// output folder.
+//	 output folder.
 //	private static final String pathToOutput = "src/test/resources/annotatedtimetable/12/";
 //	private static final String pathToOutput = "src/test/resources/annotatedtimetable/16/";
 	private static final String pathToOutput = "src/test/resources/annotatedtimetable/17/";
@@ -70,7 +70,7 @@ public class AnnotatedTTGenerator {
 		unalignedRoutesMap.put("119", new ArrayList<>(Arrays.asList("109", "110")));
 		unalignedRoutesMap.put("120", new ArrayList<>(Arrays.asList("102", "103", "112")));
 		unalignedRoutesMap.put("122", new ArrayList<>(Arrays.asList("501")));
-		unalignedRoutesMap.put("131", new ArrayList<>(Arrays.asList("636")));
+		unalignedRoutesMap.put("131", new ArrayList<>(Arrays.asList("101")));
 		unalignedRoutesMap.put("108", new ArrayList<>(Arrays.asList("112")));
 		unalignedRoutesMap.put("201", new ArrayList<>(Arrays.asList("204", "205")));
 		unalignedRoutesMap.put("204", new ArrayList<>(Arrays.asList("201", "205")));
@@ -94,8 +94,8 @@ public class AnnotatedTTGenerator {
 		unalignedRoutesMap.put("646", new ArrayList<>(Arrays.asList("640", "642", "645")));
 		unalignedRoutesMap.put("Servizio Extraurbano", new ArrayList<>(Arrays.asList("627")));
 	}
-	private static final String exUrbanArrivalSymbol = " - arr.";
-	private static final String exUrbanDepartureSymbol = " - part.";
+	private static final String exUrbanArrivalSymbol = "- arr.";
+	private static final String exUrbanDepartureSymbol = "- part.";
 	private static final String UTF8_BOM = "\uFEFF";
 	private static final String ITALIC_ENTRY = "italic";
 	private static final String ROUTE_ERROR = "route not found";
@@ -501,7 +501,11 @@ public class AnnotatedTTGenerator {
 				String name = italicEntry.substring(0, italicEntry.indexOf("$"));
 				String time = italicEntry.substring(italicEntry.indexOf("$") + 1);
 				output[stops.indexOf(name.toLowerCase()) + 1][j] = time;
-				output[stops.indexOf(name.toLowerCase()) + 1][0] = name + ";";
+				String[] stopNameId = output[stops.indexOf(name.toLowerCase()) + 1][0].split(";");
+				if (stopNameId.length < 2) {
+					output[stops.indexOf(name.toLowerCase()) + 1][0] = name + ";";
+				}
+				
 			}
 		}
 		
@@ -1978,7 +1982,12 @@ public class AnnotatedTTGenerator {
 		List<Integer> anamolies = null;
 
 		for (int i = 0; i < (matrix.length - numOfHeaders); i++) {
-			pdfStopList.add(matrix[i + numOfHeaders][0]);
+			String pdfStopName = matrix[i + numOfHeaders][0].trim();
+			pdfStopName = pdfStopName.replaceAll("\\s+", " ");
+			pdfStopName = pdfStopName.replace(" )", ")");
+			pdfStopName = pdfStopName.replace(" (", "(");
+			pdfStopName = pdfStopName.replace(". ", ".");
+			pdfStopList.add(pdfStopName);
 		}
 
 		// add all pdf stop first to final list.
@@ -2925,7 +2934,7 @@ public class AnnotatedTTGenerator {
 		}
 
 //		timeTableGenerator.processFiles(pathToOutput, "12", pathToInput + "05A-Feriale.csv");
-//		timeTableGenerator.processFiles(pathToOutput, "12", pathToInput + "01_R-Feriale.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "12", pathToInput + "11A-Feriale.csv");
 //		timeTableGenerator.processFiles(pathToOutput, "16", pathToInput + "E-06R-Feriale.csv");
 //		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "632R.csv");
 //		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "209A-R.csv");
@@ -3007,7 +3016,8 @@ public class AnnotatedTTGenerator {
 		//fix stops.
 //		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "335A.csv");
 //		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "131ESR.csv");
-//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "620R.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "315A.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "307R.csv");
 
 		timeTableGenerator.printStats();
 
