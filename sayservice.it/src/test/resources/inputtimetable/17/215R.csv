@@ -1,9 +1,10 @@
 Descr.breve:;"215"
-Descr.lunga:;"Baitoni - Storo - Pieve di Bono - Tione"
-Validità:;"Orario in vigore dal 27/06/2015 al 09/09/2015"
+Descr.lunga:;"Ponte Caffaro-Baitoni-Storo-Pieve di B.-Tione"
+Validità:;"Orario in vigore dal 06/07/2015 al 09/09/2015"
 Orario:;""
 Frequenza:;"Solo nei ggiorni feriali";"Solo nei ggiorni feriali";"Solo nei giorni festivi";"Solo nei ggiorni feriali";"Solo nei ggiorni feriali";"Solo nei giorni festivi";"Solo nei ggiorni feriali";"Solo nei ggiorni feriali";"Solo nei giorni festivi";"Feriale escluso sabato";"Solo nei giorni festivi";"Solo nei ggiorni feriali"
 Linea:;;;;;;;;"Servizio svolto da autonoleggiatore privato";;;;
+Servizio:;;;;;;;;;;;;
 "Ponte Caffaro (V. Caduti) - Part.";;;;;10.30;10.30;;;;;16.55;17.10
 "BAITONI - Part.";5.15;6.42;6.42;9.00;|;|;11.30;13.55;13.55;16.00;16.59;|
 "Ponte Caffaro bivio";5.20;6.47;6.47;9.05;|;|;11.35;14.00;14.00;16.05;16.55;|

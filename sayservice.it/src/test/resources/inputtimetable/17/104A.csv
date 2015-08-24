@@ -2,23 +2,24 @@ Descr.breve:;"104"
 Descr.lunga:;"Trento - S.Michele a/A - Salorno - Egna - Ora - Cavalese"
 Validità:;"Orario in vigore dal 27/06/2015 al 09/09/2015"
 Orario:;""
-Frequenza:;"Solo nei giorni feriali";"Solo nei giorni feriali";"Solo nei giorni festivi";"Solo nei giorni feriali";"Solo nei giorni festivi";"Solo nei giorni feriali";"Solo nei giorni feriali";"Solo nei giorni festivi";;"Solo nei giorni festivi";"Feriale escluso sabato";"Solo al sabato feriale";"Solo nei giorni feriali";"Solo nei giorni festivi";"Solo nei giorni festivi";"Solo nei giorni feriali";"Solo nei giorni feriali";"Solo nei giorni feriali";"Solo nei giorni festivi";"Solo nei giorni festivi";"Solo nei giorni feriali";;"Solo nei giorni feriali";"Solo nei giorni festivi";"Solo nei giorni festivi";"Solo al sabato feriale";"Feriale escluso sabato";"Solo nei giorni feriali";;"Feriale escluso sabato";"Solo al sabato feriale";"Solo nei giorni festivi";"Feriale escluso sabato";;"Solo nei giorni feriali";"Solo al sabato feriale";"Feriale escluso sabato";"Solo nei giorni festivi"
-Linea:;;"L'autobus prosegue per Passo Fedaia";"L'autobus prosegue per Passo Fedaia";;;;;;"L'autobus prosegue per Passo Fedaia";;;;"L'autobus prosegue per Passo Fedaia";"L'autobus prosegue per Penia";;;"L'autobus parte dal settore 14 dell'Autostazione di Trento";;;;;"L'autobus prosegue per Passo Fedaia";;;;;;;;;;;;;"L'autobus prosegue per Penia";;;
-"TRENTO   (Autostaz.) - Part.";;6.35;6.35;;;7.40;;;8.35;;;;10.35;10.35;;;12.23;;;;;13.35;;;;;;16.05;;16.55;;;;;18.40
-"TRENTO (Stazione FS) - Part.";6.05;|;|;7.32;;|;8.32;8.32;|;8.54;9.32;9.32;|;|;10.54;;|;12.32;;12.54;13.32;|;14.32;14.32;14.54;15.05;15.32;|;16.32;|;16.54;16.54;17.32;18.32;|;18.54;19.32;19.32
-"Trento (Bren Center)";|;6.42;6.42;|;;7.47;|;|;8.42;|;|;|;10.42;10.42;|;;12.30;|;;|;|;13.42;|;|;|;|;|;16.12;|;17.01;|;|;|;|;18.47;|;|;|
-"Gardolo (Via Bolzano)";|;|;|;|;;7.49;|;|;|;|;|;|;|;|;|;;12.32;|;;|;|;|;|;|;|;|;|;16.14;|;|;|;|;|;|;|;|;|;|
-"Stabilimento Whirlpool";|;|;|;|;;|;|;|;|;|;|;|;|;|;|;;|;|;;|;|;|;|;|;|;|;|;|;|;17.10;|;|;|;|;|;|;|;|
-"LAVIS";|;6.51;6.51;|;;7.56;|;|;8.51;|;|;|;10.51;10.51;|;;12.39;|;;|;|;13.51;|;|;|;|;|;16.21;|;17.20;|;|;|;|;18.56;|;|;|
-"Lavis (Stazione FS)";6.12;|;|;7.40;;|;8.40;8.40;|;|;9.40;9.40;|;|;|;;|;12.40;;|;13.40;|;14.40;14.40;|;|;15.40;|;16.40;|;|;|;17.40;18.40;|;|;19.40;19.40
-"Nave S.Felice";|;|;|;|;;7.59;|;|;|;|;|;|;|;|;|;;12.42;|;;|;|;|;|;|;|;|;|;16.24;|;17.23;|;|;|;|;|;|;|;|
-"Sorni bivio";|;|;|;|;;8.01;|;|;|;|;|;|;|;|;|;;12.44;|;;|;|;|;|;|;|;|;|;16.26;|;17.25;|;|;|;|;|;|;|;|
-"Sornello";|;6.57;6.57;|;;8.02;|;|;8.57;|;|;|;10.57;10.57;|;;12.45;|;;|;|;13.57;|;|;|;|;|;16.27;|;17.26;|;|;|;|;19.02;|;|;|
-"S.Michele a/Adige";|;6.59;6.59;|;;8.04;|;|;8.59;|;|;|;10.59;10.59;|;;12.47;|;;|;|;13.59;|;|;|;|;|;16.29;|;17.28;|;|;|;|;19.04;|;|;|
-"MEZZOCORONA (St. FS) - Arr.";|;|;|;|;;|;|;|;|;|;|;|;|;|;|;;|;|;;|;|;|;|;|;|;|;|;;|;17.33;|;|;|;|;|;|;|;|
-"Mezzocorona (Staz. FS)";6.17;|;|;7.46;;|;8.46;8.46;|;9.05;9.46;9.46;|;|;11.05;;|;12.46;;13.05;13.46;|;14.46;14.46;15.05;15.16;15.46;;16.46;;17.05;17.05;17.46;18.46;|;19.05;19.46;19.46
-"Cadino";|;7.03;7.03;|;;8.08;|;|;9.03;|;|;|;11.03;11.03;|;;12.51;|;;|;|;14.03;|;|;|;|;|;;|;;|;|;|;|;19.08;|;|;|
-"Salorno - Salurn";|;7.08;7.08;|;;8.13;|;|;9.08;|;|;|;11.08;11.08;|;;12.56;|;;|;|;14.08;|;|;|;|;|;;|;;|;|;|;|;19.13;|;|;|
-"Laghetti - Laag";|;7.13;7.13;|;;8.18;|;|;9.13;|;|;|;11.13;11.13;|;;13.01;|;;|;|;14.13;|;|;|;|;|;;|;;|;|;|;|;19.18;|;|;|
-"EGNA - NEUMARKT - Arr.";|;7.22;7.22;|;;8.27;|;|;9.22;|;|;|;11.22;11.22;|;;13.10;|;;|;|;14.22;|;|;|;|;|;;|;;|;|;|;|;19.27;|;|;|
-"Ora (Stazione FS) - Arr.";6.35;|;|;8.05;;;9.05;9.05;|;9.18;10.05;10.05;|;|;11.18;;;13.05;;13.18;14.05;|;15.05;15.05;15.18;15.35;16.05;;17.05;;17.18;17.18;18.05;19.05;|;19.18;20.05;20.05
+Frequenza:;"Solo nei giorni feriali";"Solo nei giorni feriali";"Solo nei giorni festivi";"Solo nei giorni feriali";"Solo nei giorni festivi";"Solo nei giorni feriali";"Solo nei giorni feriali";"Solo nei giorni festivi";;"Solo nei giorni festivi";"Feriale escluso sabato";"Solo al sabato feriale";;"Solo nei giorni feriali";"Solo nei giorni festivi";"Solo nei giorni festivi";"Solo nei giorni feriali";"Solo nei giorni feriali";"Solo nei giorni feriali";"Solo nei giorni festivi";"Solo nei giorni festivi";"Solo nei giorni feriali";;"Solo nei giorni feriali";"Solo nei giorni festivi";"Solo nei giorni festivi";"Solo al sabato feriale";"Feriale escluso sabato";"Solo nei giorni feriali";;"Feriale escluso sabato";"Solo al sabato feriale";"Solo nei giorni festivi";"Feriale escluso sabato";;"Solo nei giorni feriali";"Solo al sabato feriale";"Feriale escluso sabato";"Solo nei giorni festivi"
+Linea:;;"L'autobus prosegue per Passo Fedaia";"L'autobus prosegue per Passo Fedaia";;;;;;"L'autobus prosegue per Passo Fedaia";;;;;"L'autobus prosegue per Passo Fedaia";"L'autobus prosegue per Penia";;;"L'autobus parte dal settore 14 dell'Autostazione di Trento";;;;;"L'autobus prosegue per Passo Fedaia";;;;;;;;;;;;;"L'autobus prosegue per Penia";;;
+Servizio:;"Treno Trenitalia";"Bus TTE";"Bus TTE";"Treno Trenitalia";"Bus SAD";"Bus TTE";"Treno Trenitalia";"Treno Trenitalia";"Bus TTE";"Treno Trenitalia";"Treno Trenitalia";"Treno Trenitalia";"Bus SAD";"Bus TTE";"Bus TTE";"Treno Trenitalia";"Bus SAD";"Bus TTE";"Treno Trenitalia";"Bus SAD";"Treno Trenitalia";"Treno Trenitalia";"Bus TTE";"Treno Trenitalia";"Treno Trenitalia";"Treno Trenitalia";"Treno Trenitalia";"Treno Trenitalia";"Bus TTE";"Treno Trenitalia";"Bus TTE";"Treno Trenitalia";"Treno Trenitalia";"Treno Trenitalia";"Treno Trenitalia";"Bus TTE";"Treno Trenitalia";"Treno Trenitalia";"Treno Trenitalia"
+"TRENTO   (Autostaz.) - Part.";;6.35;6.35;;;7.40;;;8.35;;;;;10.35;10.35;;;12.23;;;;;13.35;;;;;;16.05;;16.55;;;;;18.40
+"TRENTO (Stazione FS) - Part.";6.05;|;|;7.32;;|;8.32;8.32;|;8.54;9.32;9.32;;|;|;10.54;;|;12.32;;12.54;13.32;|;14.32;14.32;14.54;15.05;15.32;|;16.32;|;16.54;16.54;17.32;18.32;|;18.54;19.32;19.32
+"Trento (Bren Center)";|;6.42;6.42;|;;7.47;|;|;8.42;|;|;|;;10.42;10.42;|;;12.30;|;;|;|;13.42;|;|;|;|;|;16.12;|;17.01;|;|;|;|;18.47;|;|;|
+"Gardolo (Via Bolzano)";|;|;|;|;;7.49;|;|;|;|;|;|;;|;|;|;;12.32;|;;|;|;|;|;|;|;|;|;16.14;|;|;|;|;|;|;|;|;|;|
+"Stabilimento Whirlpool";|;|;|;|;;|;|;|;|;|;|;|;;|;|;|;;|;|;;|;|;|;|;|;|;|;|;|;|;17.10;|;|;|;|;|;|;|;|
+"LAVIS";|;6.51;6.51;|;;7.56;|;|;8.51;|;|;|;;10.51;10.51;|;;12.39;|;;|;|;13.51;|;|;|;|;|;16.21;|;17.20;|;|;|;|;18.56;|;|;|
+"Lavis (Stazione FS)";6.12;|;|;7.40;;|;8.40;8.40;|;|;9.40;9.40;;|;|;|;;|;12.40;;|;13.40;|;14.40;14.40;|;|;15.40;|;16.40;|;|;|;17.40;18.40;|;|;19.40;19.40
+"Nave S.Felice";|;|;|;|;;7.59;|;|;|;|;|;|;;|;|;|;;12.42;|;;|;|;|;|;|;|;|;|;16.24;|;17.23;|;|;|;|;|;|;|;|
+"Sorni bivio";|;|;|;|;;8.01;|;|;|;|;|;|;;|;|;|;;12.44;|;;|;|;|;|;|;|;|;|;16.26;|;17.25;|;|;|;|;|;|;|;|
+"Sornello";|;6.57;6.57;|;;8.02;|;|;8.57;|;|;|;;10.57;10.57;|;;12.45;|;;|;|;13.57;|;|;|;|;|;16.27;|;17.26;|;|;|;|;19.02;|;|;|
+"S.Michele a/Adige";|;6.59;6.59;|;;8.04;|;|;8.59;|;|;|;;10.59;10.59;|;;12.47;|;;|;|;13.59;|;|;|;|;|;16.29;|;17.28;|;|;|;|;19.04;|;|;|
+"MEZZOCORONA (St. FS) - Arr.";|;|;|;|;;|;|;|;|;|;|;|;;|;|;|;;|;|;;|;|;|;|;|;|;|;|;;|;17.33;|;|;|;|;|;|;|;|
+"Mezzocorona (Staz. FS)";6.17;|;|;7.46;;|;8.46;8.46;|;9.05;9.46;9.46;;|;|;11.05;;|;12.46;;13.05;13.46;|;14.46;14.46;15.05;15.16;15.46;;16.46;;17.05;17.05;17.46;18.46;|;19.05;19.46;19.46
+"Cadino";|;7.03;7.03;|;;8.08;|;|;9.03;|;|;|;;11.03;11.03;|;;12.51;|;;|;|;14.03;|;|;|;|;|;;|;;|;|;|;|;19.08;|;|;|
+"Salorno - Salurn";|;7.08;7.08;|;;8.13;|;|;9.08;|;|;|;;11.08;11.08;|;;12.56;|;;|;|;14.08;|;|;|;|;|;;|;;|;|;|;|;19.13;|;|;|
+"Laghetti - Laag";|;7.13;7.13;|;;8.18;|;|;9.13;|;|;|;;11.13;11.13;|;;13.01;|;;|;|;14.13;|;|;|;|;|;;|;;|;|;|;|;19.18;|;|;|
+"EGNA - NEUMARKT - Arr.";|;7.22;7.22;|;;8.27;|;|;9.22;|;|;|;;11.22;11.22;|;;13.10;|;;|;|;14.22;|;|;|;|;|;;|;;|;|;|;|;19.27;|;|;|
+"Ora (Stazione FS) - Arr.";6.35;|;|;8.05;;;9.05;9.05;|;9.18;10.05;10.05;;|;|;11.18;;;13.05;;13.18;14.05;|;15.05;15.05;15.18;15.35;16.05;;17.05;;17.18;17.18;18.05;19.05;|;19.18;20.05;20.05

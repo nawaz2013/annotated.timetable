@@ -16,7 +16,9 @@ import java.util.Map;
 
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
+import org.codehaus.jackson.JsonParseException;
 import org.codehaus.jackson.map.DeserializationConfig.Feature;
+import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.util.StringUtils;
 
@@ -50,23 +52,24 @@ public class AnnotatedTTGenerator {
 	// err.
 	private static boolean err = false;
 	// input GTFS.
-//	private static final String pathToGTFS = "src/test/resources/gtfs/12/";
+	private static final String pathToGTFS = "src/test/resources/gtfs/12/";
 //	private static final String pathToGTFS = "src/test/resources/gtfs/16/";
-	private static final String pathToGTFS = "src/test/resources/gtfs/17/";
+//	private static final String pathToGTFS = "src/test/resources/gtfs/17/";
 //	 output folder.
-//	private static final String pathToOutput = "src/test/resources/annotatedtimetable/12/";
+	private static final String pathToOutput = "src/test/resources/annotatedtimetable/12/";
 //	private static final String pathToOutput = "src/test/resources/annotatedtimetable/16/";
-	private static final String pathToOutput = "src/test/resources/annotatedtimetable/17/";
+//	private static final String pathToOutput = "src/test/resources/annotatedtimetable/17/";
 	// input folder.
-//	private static final String pathToInput = "src/test/resources/inputtimetable/12/";
+	private static final String pathToInput = "src/test/resources/inputtimetable/12/";
 //	private static final String pathToInput = "src/test/resources/inputtimetable/16/";
-	private static final String pathToInput = "src/test/resources/inputtimetable/17/";
+//	private static final String pathToInput = "src/test/resources/inputtimetable/17/";
 	// agencyIds (12,16,17)
-	private static final String agencyId = "17";
+	private static final String agencyId = "12";
 	private static final List<String> roveretoNBuses = Arrays.asList("N1", "N2", "N3", "N5", "N6");
 	private static final List<String> exUrbTrenoRoutes = Arrays.asList("578", "518", "352");
 	private static final Map<String, List<String>> unalignedRoutesMap = new HashMap<String, List<String>>();
 	{
+		unalignedRoutesMap.put("104", new ArrayList<>(Arrays.asList("101")));
 		unalignedRoutesMap.put("119", new ArrayList<>(Arrays.asList("109", "110")));
 		unalignedRoutesMap.put("120", new ArrayList<>(Arrays.asList("102", "103", "112")));
 		unalignedRoutesMap.put("122", new ArrayList<>(Arrays.asList("501")));
@@ -75,13 +78,17 @@ public class AnnotatedTTGenerator {
 		unalignedRoutesMap.put("201", new ArrayList<>(Arrays.asList("204", "205")));
 		unalignedRoutesMap.put("204", new ArrayList<>(Arrays.asList("201", "205")));
 		unalignedRoutesMap.put("205", new ArrayList<>(Arrays.asList("201", "204")));
-		unalignedRoutesMap.put("206", new ArrayList<>(Arrays.asList("204")));
-		unalignedRoutesMap.put("231", new ArrayList<>(Arrays.asList("201")));
+		unalignedRoutesMap.put("206", new ArrayList<>(Arrays.asList("204", "236")));
+		unalignedRoutesMap.put("231", new ArrayList<>(Arrays.asList("201", "215")));
 		unalignedRoutesMap.put("245", new ArrayList<>(Arrays.asList("215")));
 		unalignedRoutesMap.put("321", new ArrayList<>(Arrays.asList("306")));
 		unalignedRoutesMap.put("301", new ArrayList<>(Arrays.asList("332", "335")));
-		unalignedRoutesMap.put("334", new ArrayList<>(Arrays.asList("301")));
-		unalignedRoutesMap.put("335", new ArrayList<>(Arrays.asList("301")));
+		unalignedRoutesMap.put("303", new ArrayList<>(Arrays.asList("306")));
+		unalignedRoutesMap.put("306", new ArrayList<>(Arrays.asList("303")));
+		unalignedRoutesMap.put("307", new ArrayList<>(Arrays.asList("334")));
+		unalignedRoutesMap.put("332", new ArrayList<>(Arrays.asList("301")));
+		unalignedRoutesMap.put("334", new ArrayList<>(Arrays.asList("301", "335")));
+		unalignedRoutesMap.put("335", new ArrayList<>(Arrays.asList("301", "334")));
 		unalignedRoutesMap.put("403", new ArrayList<>(Arrays.asList("402")));
 		unalignedRoutesMap.put("461", new ArrayList<>(Arrays.asList("403")));
 		unalignedRoutesMap.put("462", new ArrayList<>(Arrays.asList("417", "418")));
@@ -89,6 +96,7 @@ public class AnnotatedTTGenerator {
 		unalignedRoutesMap.put("464", new ArrayList<>(Arrays.asList("423")));
 		unalignedRoutesMap.put("467", new ArrayList<>(Arrays.asList("115", "401", "403", "303")));
 		unalignedRoutesMap.put("501", new ArrayList<>(Arrays.asList("506", "512")));
+		unalignedRoutesMap.put("503", new ArrayList<>(Arrays.asList("501", "506")));
 		unalignedRoutesMap.put("511", new ArrayList<>(Arrays.asList("501", "503", "506", "514")));
 		unalignedRoutesMap.put("645", new ArrayList<>(Arrays.asList("646")));
 		unalignedRoutesMap.put("646", new ArrayList<>(Arrays.asList("640", "642", "645")));
@@ -101,7 +109,7 @@ public class AnnotatedTTGenerator {
 	private static final String ROUTE_ERROR = "route not found";
 	private static final String TRIP_ERROR = "trip not found";
 	private static final String GTFS_RS_NAME = "GTFS_RS_Name";
-	private static int numOfHeaders = 6;
+	private static int numOfHeaders = 7;
 	private static final SimpleDateFormat TIME_FORMAT = new SimpleDateFormat("HH:mm");
 
 	private MongoClient mongoClient = null;
@@ -115,6 +123,7 @@ public class AnnotatedTTGenerator {
 
 	private HashMap<String, List<String[]>> tripStopsTimesMap = new HashMap<String, List<String[]>>();
 	private HashMap<String, List<String>> routeTripsMap = new HashMap<String, List<String>>();
+	private static Map<String, List<String>> tripRouteServiceHeadsignIdMap = new HashMap<String, List<String>>();
 	private Map<String, String> tripServiceIdMap = new HashMap<String, String>();
 	private HashMap<String, String> stopsMap = new HashMap<String, String>();
 	private HashMap<Integer, List<String>> columnTripIdMap = new HashMap<Integer, List<String>>();
@@ -172,10 +181,30 @@ public class AnnotatedTTGenerator {
 		pdfFreqStringServiceIdMap.put("solo al giovedì feriale", CALENDAR_SOLGIOV);
 		pdfFreqStringServiceIdMap.put("solo nei girni feriali", CALENDAR_LUNSAB);
 		pdfFreqStringServiceIdMap.put("solo nei ggiorni festivi", CALENDAR_FESTIVO);
+		pdfFreqStringServiceIdMap.put("orario festivo", CALENDAR_FESTIVO);
+		pdfFreqStringServiceIdMap.put("orario feriali", CALENDAR_LUNSAB);
 //		"Postfestivo"
 	}
 	
 	List<String> deleteList = new ArrayList<String>();
+
+	private static RouteModel routeModel;
+
+	private static String[] andataSuffix = new String[] { "A-annotated.csv", "a-annotated.csv",
+			"A-Feriale-annotated.csv", "a-Feriale-annotated.csv", "A-Festivo-annotated", "a-Festivo-annotated" };
+
+	private static String[] ritornoSuffix = new String[] { "R-annotated.csv", "r-annotated.csv",
+			"R-Feriale-annotated.csv", "r-Feriale-annotated.csv", "R-Festivo-annotated", "r-Festivo-annotated" };
+
+	private static List<String> ignoreServiceList = new ArrayList<String>() {
+		{
+			add("Treno Trenitalia");
+			add("Bus SAD");
+			add("Treno TTE");
+		}
+	};
+	
+	private static  List<String> servizioString = new ArrayList<String>();
 
 	public AnnotatedTTGenerator() throws IOException {
 		try {
@@ -184,6 +213,8 @@ public class AnnotatedTTGenerator {
 			collection = database.getCollection("stops");
 			mapper.configure(Feature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 			init(agencyId);
+			// route model read from configuration
+			this.routeModel = readRouteModel();
 
 		} catch (UnknownHostException e) {
 			// TODO Auto-generated catch block
@@ -195,17 +226,18 @@ public class AnnotatedTTGenerator {
 		List<String> annotated = new ArrayList<String>();
 		for (String filename : files) {
 			String outputName = filename.substring(filename.lastIndexOf("/") + 1, filename.lastIndexOf("."));
+			outputName = outputName + "-annotated.csv";
 			File file = new File(filename);
 			List<String> lines = Files.asCharSource(file, Charsets.UTF_8).readLines();
-			annotated.addAll(convertLines(lines));
+			annotated.addAll(convertLines(lines, outputName));
 			File outputDirFile = new File(outputDir);
 			if (!outputDirFile.exists()) {
 				outputDirFile.mkdir();
 			}
-			File annotatedCSV = new File(outputDirFile, outputName + "-annotated.csv");
+			File annotatedCSV = new File(outputDirFile, outputName);
 			Files.asCharSink(annotatedCSV, Charsets.UTF_8).writeLines(annotated);
 
-			fileColumnMismatchMap.put(outputName + "-annotated.csv", mismatchColIds);
+			fileColumnMismatchMap.put(outputName, mismatchColIds);
 			destroy();
 		}
 
@@ -224,7 +256,7 @@ public class AnnotatedTTGenerator {
 
 	}
 
-	private List<String> convertLines(List<String> lines) throws Exception {
+	private List<String> convertLines(List<String> lines, String outputFileName) throws Exception {
 
 		List<String> converted = new ArrayList<String>();
 		/** read as table. **/
@@ -236,11 +268,6 @@ public class AnnotatedTTGenerator {
 				/** max number of possible columns. **/
 				maxNumberOfCols = table[i][0].split(";").length;
 			}
-		}
-
-		/** write heading in output. **/
-		for (int i = 0; i < numOfHeaders; i++) {
-			converted.add(lines.get(i).replaceFirst(";", ";;"));
 		}
 
 		/** create local copy of table as string[][] matrix. **/
@@ -263,8 +290,50 @@ public class AnnotatedTTGenerator {
 			}
 		}
 
+		// filter matrix, removing ignore services.
+		String[][] matrixFiltered = new String[lines.size()][maxNumberOfCols + 1];
+
+		// copy values until row 3.
+		for (int row = 0; row < 3; row++) {
+			for (int col = 0; col < maxNumberOfCols; col++) {
+				matrixFiltered[row][col] = matrix[row][col];
+			}
+		}
+
+		for (int col = 0, filterMatrixCol = 0; col < maxNumberOfCols; col++) {
+			if (matrix[6][col] != null && !matrix[6][col].isEmpty()) {
+				String spId = matrix[6][col].replace("\"", "");
+				if (spId != null && !spId.isEmpty() && ignoreServiceList.contains(spId)) {
+					continue;
+				}
+//				if (spId.equalsIgnoreCase("IMG-dd911eede1c24553c75cd26555941fb8") | spId.equalsIgnoreCase("IMG-e300c0d85bcaad9ef44f653cc91f112c")
+//						| spId.equalsIgnoreCase("TRENTO   (Autostaz.) - Part.") | spId.equalsIgnoreCase("RONCOGNO - Part.")
+//						| spId.equalsIgnoreCase("MOLVENO - Part.") | spId.equalsIgnoreCase("PERGINE (C.Intermodale) - Part")) {
+//					System.err.println("break");
+//				}
+				if (!servizioString.contains(spId)) {
+					servizioString.add(spId);
+				}
+			}
+
+			for (int row = 3; row < matrix.length; row++) {
+				matrixFiltered[row][filterMatrixCol] = matrix[row][col];
+			}
+			filterMatrixCol++;
+		}
+
+		/** write heading in output. **/
+		for (int i = 0; i < numOfHeaders; i++) {
+			String line = "";
+			for (int col = 0; col < maxNumberOfCols; col++) {
+				if (matrixFiltered[i][col] != null && !matrixFiltered[i][col].equalsIgnoreCase("null"))
+					line = line + matrixFiltered[i][col] + ";";
+			}
+			converted.add(line.replaceFirst(";", ";;"));
+		}
+		
 		// extract GTFS information and structures.
-		routeShortName = matrix[0][1].replaceAll("\"","");
+		routeShortName = matrixFiltered[0][1].replaceAll("\"","");
 //		agencyId = "12"; // ?? to be put inside csv matrix[0][2].
 //		init(agencyId);
 
@@ -277,7 +346,7 @@ public class AnnotatedTTGenerator {
 //		} else {
 //			output = processExUrbanMatrix(matrix, noOfOutputCols);	
 //		}
-		output = processMatrix(matrix, noOfOutputCols);
+		output = processMatrix(matrixFiltered, noOfOutputCols, outputFileName);
 
 		// simple print existing matrix.
 		for (int i = 0; i < output.length; i++) {
@@ -292,7 +361,7 @@ public class AnnotatedTTGenerator {
 		return converted;
 	}
 
-	private String[][] processMatrix(String[][] matrix, int noOfOutputCols) {
+	private String[][] processMatrix(String[][] matrix, int noOfOutputCols, String outputFileName) {
 
 		// create list of stops taking in to consideration GTFS data.
 		List<String> stops = new ArrayList<String>();
@@ -302,14 +371,17 @@ public class AnnotatedTTGenerator {
 		
 		stops = processStops(matrix, numOfHeaders, noOfOutputCols - 1, inputCSVTimes);
 
-		int noOfOutputRows = (stops.size() + 1);
+		int noOfOutputRows = (stops.size() + 5);
 		String[][] output = new String[noOfOutputRows][noOfOutputCols];
 		
 		// stops column.
-		output[0][0] = "stops;stop_id";
+		output[0][0] = "gtfs trip_id;";
+		output[1][0] = "smartplanner route_id;";
+		output[2][0] = "service_id;";
+		output[3][0] = "stops;stop_id";
 		
 		for (int i = 0; i < stops.size(); i++) {
-			output[i+1][0] = stops.get(i) + ";";
+			output[i+4][0] = stops.get(i) + ";";
 		}
 				
 		for (int j = 1; j < noOfOutputCols - 1; j++) {
@@ -385,7 +457,7 @@ public class AnnotatedTTGenerator {
 					
 					
 					if (foundIndex > -1) {
-						output[foundIndex + 1][j] = gtfs2pdfMappedTime;
+						output[foundIndex + 4][j] = gtfs2pdfMappedTime;
 						
 						String outputStopName = stopsMap.get(id);
 						
@@ -396,10 +468,10 @@ public class AnnotatedTTGenerator {
 							outputStopName = outputStopName + exUrbanDepartureSymbol;
 						} 
 						
-						output[foundIndex + 1][0] = outputStopName + ";" + id;
+						output[foundIndex + 4][0] = outputStopName + ";" + id;
 						
 						if (isAnomalyStop) {
-							output[foundIndex + 1][0] = "*" + output[foundIndex + 1][0];
+							output[foundIndex + 4][0] = "*" + output[foundIndex + 4][0];
 							anomalyStopIds.put(anomalyKey, 0);
 						}
 						traversed[foundIndex] = true;
@@ -473,7 +545,7 @@ public class AnnotatedTTGenerator {
 						
 					}
 					if (foundIndex > -1) {
-						output[foundIndex + 1][j] = gtfs2pdfMappedTime;
+						output[foundIndex + 4][j] = gtfs2pdfMappedTime;
 						
 						String outputStopName = stopsMap.get(id);
 						if (stops.get(foundIndex).contains(exUrbanArrivalSymbol)) {
@@ -483,10 +555,10 @@ public class AnnotatedTTGenerator {
 							outputStopName = outputStopName + exUrbanDepartureSymbol;
 						} 
 						
-						output[foundIndex + 1][0] = outputStopName + ";" + id;
+						output[foundIndex + 4][0] = outputStopName + ";" + id;
 							
 						if (isAnomalyStop) {
-							output[foundIndex + 1][0] = "*" + output[foundIndex + 1][0];
+							output[foundIndex + 4][0] = "*" + output[foundIndex + 4][0];
 						}
 						
 						traversed[foundIndex] = true;
@@ -500,10 +572,10 @@ public class AnnotatedTTGenerator {
 			for (String italicEntry : columnItalicStopNames.get(j)) {
 				String name = italicEntry.substring(0, italicEntry.indexOf("$"));
 				String time = italicEntry.substring(italicEntry.indexOf("$") + 1);
-				output[stops.indexOf(name.toLowerCase()) + 1][j] = time;
-				String[] stopNameId = output[stops.indexOf(name.toLowerCase()) + 1][0].split(";");
+				output[stops.indexOf(name.toLowerCase()) + 4][j] = time;
+				String[] stopNameId = output[stops.indexOf(name.toLowerCase()) + 4][0].split(";");
 				if (stopNameId.length < 2) {
-					output[stops.indexOf(name.toLowerCase()) + 1][0] = name + ";";
+					output[stops.indexOf(name.toLowerCase()) + 4][0] = name + ";";
 				}
 				
 			}
@@ -546,13 +618,142 @@ public class AnnotatedTTGenerator {
 //		}
 
 		for (int col = 1; col < noOfOutputCols - 1; col++) {
-			output[0][col] = fillHeaderAnnotation(stops, col);
+			output[0][col] = fillGTFSTripId(col);
+			output[1][col] = fillSmartPlannerRouteId(stops, col, outputFileName);
+			output[2][col] = fillServiceId(col);
+			output[3][col] = fillHeaderAnnotation(stops, col);
 		}
 
 		output = clean(output);
 
 		return output;
 
+	}
+
+	private String fillServiceId(int col) {
+		String serviceId = "";
+
+		List<String> tripIds = columnTripIdMap.get(col);
+		String gtfsTripId = "";
+
+		if (tripIds != null) {
+			if (tripIds.size() == 1) {
+				gtfsTripId = tripIds.get(0);
+				if (tripServiceIdMap.containsKey(gtfsTripId)) {
+					serviceId = tripServiceIdMap.get(gtfsTripId);
+				}
+
+			} else if (tripIds.size() > 1) {
+				// multiple trips.
+				for (String tripId : tripIds) {
+					if (tripServiceIdMap.containsKey(tripId)) {
+						serviceId = serviceId + tripServiceIdMap.get(tripId) + "$";
+					}
+				}
+			}
+		}
+
+		return serviceId;
+	}
+
+	private String fillSmartPlannerRouteId(List<String> stops, int col, String fileName) {
+		String cacheRouteId = "";
+		
+		
+		List<String> tripIds = columnTripIdMap.get(col);
+		String gtfsTripId = "";
+
+		if (tripIds != null) {
+			if (tripIds.size() == 1) {
+				gtfsTripId = tripIds.get(0);
+				if (tripRouteServiceHeadsignIdMap.containsKey(gtfsTripId)) {
+					List<String> tripInfoGTFS = tripRouteServiceHeadsignIdMap.get(gtfsTripId);
+					String directionId = tripInfoGTFS.get(3);
+					String routeId = tripInfoGTFS.get(0);
+					// if file name ends with A-annoated.csv. (ANDATA)
+					for (String aSuffix : andataSuffix) {
+						if (fileName.endsWith(aSuffix)) {
+							directionId = "0";
+						}
+					}
+					for (String rSuffix : ritornoSuffix) {
+						if (fileName.endsWith(rSuffix)) {
+							directionId = "1";
+						}
+					}
+					if (Integer.valueOf(directionId) != Integer.valueOf(tripInfoGTFS.get(3))) {
+						System.err.println("directionId different from GTFS for: " + fileName + " tripId: "
+								+ gtfsTripId + "(gtfsDirectionId -> " + tripInfoGTFS.get(3) + ")");
+					}
+					// identify new routeId
+					String key = routeId + "_" + agencyId + "_" + directionId;
+					sayservice.RouteModel.AgencyModel am = routeModel.agency(agencyId);
+					if (am.getRouteMappings() != null && am.getRouteMappings().containsKey(key)) {
+						cacheRouteId = am.getRouteMappings().get(key);
+					} else {
+						cacheRouteId = key;
+					}
+				}
+			} else if (tripIds.size() > 1) {
+				// multiple trips.
+				for (String tripId : tripIds) {
+					if (tripRouteServiceHeadsignIdMap.containsKey(tripId)) {
+						List<String> tripInfoGTFS = tripRouteServiceHeadsignIdMap.get(tripId);
+						String directionId = tripInfoGTFS.get(3);
+						String routeId = tripInfoGTFS.get(0);
+						// if file name ends with A-annoated.csv. (ANDATA)
+						for (String aSuffix : andataSuffix) {
+							if (fileName.endsWith(aSuffix)) {
+								directionId = "0";
+							}
+						}
+						for (String rSuffix : ritornoSuffix) {
+							if (fileName.endsWith(rSuffix)) {
+								directionId = "1";
+							}
+						}
+						if (Integer.valueOf(directionId) != Integer.valueOf(tripInfoGTFS.get(3))) {
+							System.err.println("directionId different from GTFS for: " + fileName + " tripId: "
+									+ gtfsTripId + "(gtfsDirectionId -> " + tripInfoGTFS.get(3) + ")");
+						}
+						// identify new routeId
+						String key = routeId + "_" + agencyId + "_" + directionId;
+						sayservice.RouteModel.AgencyModel am = routeModel.agency(agencyId);
+						if (am.getRouteMappings() != null && am.getRouteMappings().containsKey(key)) {
+							cacheRouteId = cacheRouteId + am.getRouteMappings().get(key) + "$";
+						} else {
+							cacheRouteId = cacheRouteId + key + "$";
+						}
+					}
+				}
+			}
+		}
+
+		return cacheRouteId;
+	}
+
+	
+	private String fillGTFSTripId(int col) {
+
+		List<String> tripIds = columnTripIdMap.get(col);
+		String gtfsTripId = "";
+
+		if (tripIds != null) {
+			if (tripIds.size() == 1) {
+				gtfsTripId = tripIds.get(0);
+			} else if (tripIds.size() > 1) {
+				// multiple trips.
+				for (String tripId : tripIds) {
+					gtfsTripId = gtfsTripId + tripId + "$";
+					if (gtfsTripId.equalsIgnoreCase("0002695852015061020150909")) {
+						System.err.println("arrived at breakpoint.");
+					}
+				}
+			}
+		}
+
+		return gtfsTripId;
+	
 	}
 
 	private List<List<String>> createListOfList(String[][] matrix, int numOfHeaders, int noOfCols) {
@@ -568,6 +769,7 @@ public class AnnotatedTTGenerator {
 						&& !matrix[i][j].contains("|")
 						&& !matrix[i][j].isEmpty()) {
 					String pdfTime = matrix[i][j].replace(".", ":");
+					System.err.println(pdfTime);
 					int startTimeHour = Integer.valueOf(pdfTime.substring(0, pdfTime.indexOf(":")));
 					String formattedTime = formatter.format(startTimeHour) + pdfTime.substring(pdfTime.indexOf(":")).trim();
 					temp.add(formattedTime);
@@ -712,7 +914,7 @@ public class AnnotatedTTGenerator {
 					if (unAlignedTripIds.contains(tripId) && agencyId.equalsIgnoreCase("17")) {
 						isUnalignedTrip = true;
 					}
-					annotation = annotation + tripId + ",";
+					annotation = annotation + tripId + "$";
 				}
 
 				if (isUnalignedTrip) {
@@ -1422,7 +1624,20 @@ public class AnnotatedTTGenerator {
 		}
 		
 		for (int i = 0; i < linesTrip.size(); i++) {
-			tripServiceIdMap .put(linesTrip.get(i)[2], linesTrip.get(i)[1]);
+			tripServiceIdMap.put(linesTrip.get(i)[2], linesTrip.get(i)[1]);
+		}
+		
+		for (int i = 0; i < linesTrip.size(); i++) {
+			List<String> list = tripRouteServiceHeadsignIdMap.get(linesTrip.get(i)[0]);
+			if (list == null) {
+				list = new ArrayList<String>();
+				tripRouteServiceHeadsignIdMap.put(linesTrip.get(i)[2], list);
+			}
+			list.add(linesTrip.get(i)[0]);
+			list.add(linesTrip.get(i)[1]);
+			list.add(linesTrip.get(i)[3]);
+			list.add(linesTrip.get(i)[4]);
+			list.add(linesTrip.get(i)[5]);
 		}
 
 	}
@@ -2006,9 +2221,6 @@ public class AnnotatedTTGenerator {
 			List<String> italicStopEntry = new ArrayList<String>();
 			columnItalicStopNames.put(currentCol, italicStopEntry);
 
-			// total csv trips counter.
-			totalCSVTrips++;
-			
 			int tripStartIndex = -1;
 			for (int i = startRow; i < matrix.length; i++) {
 				if (matrix[i][currentCol] != null && !matrix[i][currentCol].isEmpty()
@@ -2057,7 +2269,12 @@ public class AnnotatedTTGenerator {
 					break;
 				}
 			}
-
+			
+			if (tripStartIndex > -1 | tripEndIndex > -1) {
+				// total csv trips counter (increase only if column is valid i.e at least with one time).
+				totalCSVTrips++;	
+			}
+			
 			routeId = getGTFSRouteIdFromRouteShortName(routeShortName);
 
 			if (matrix[5][currentCol] != null && !matrix[5][currentCol].isEmpty()) {
@@ -2172,13 +2389,13 @@ public class AnnotatedTTGenerator {
 					}
 
 					// check trains.
-					if (matchingTripId == null || matchingTripId.isEmpty() && agencyId.equalsIgnoreCase("17")) {
-						// algorithm to check trip in other route.
-						String tripId = checkTrainTrips(matrix, currentCol, startRow);
-						if (tripId != null && !tripId.isEmpty())
-							isExUrbanUnalignedRoute = true;
-							matchingTripId.add(tripId);
-					}
+//					if (matchingTripId == null || matchingTripId.isEmpty() && agencyId.equalsIgnoreCase("17")) {
+//						// algorithm to check trip in other route.
+//						String tripId = checkTrainTrips(matrix, currentCol, startRow);
+//						if (tripId != null && !tripId.isEmpty())
+//							isExUrbanUnalignedRoute = true;
+//							matchingTripId.add(tripId);
+//					}
 
 
 					List<String> copyOfTripIds = new ArrayList<String>();
@@ -2187,30 +2404,38 @@ public class AnnotatedTTGenerator {
 					if (copyOfTripIds != null && !copyOfTripIds.isEmpty()) {
 
 						for (String matchId : copyOfTripIds) {
-							
+
 							// read frequency info.
+							String pdfFreqString = "";
 							if (matrix[4][currentCol] != null && !matrix[4][currentCol].isEmpty()) {
-								String pdfFreqString = matrix[4][currentCol].replaceAll("\\s+", " ").toLowerCase();
-								pdfFreqString = pdfFreqString.replace("\"","");
-								if (pdfFreqStringServiceIdMap.containsKey(pdfFreqString)) {
-									String servicIdMapIdentifier = pdfFreqStringServiceIdMap.get(pdfFreqString);
-									List<String> serviceIds = serviceIdMapping.get(servicIdMapIdentifier);
-									if (!serviceIds.contains(tripServiceIdMap.get(matchId))) {
-										matchingTripId.remove(matchId);
-										continue;
-									}
+								pdfFreqString = matrix[4][currentCol].replaceAll("\\s+", " ").toLowerCase();
+							}
+							if (matrix[3][1] != null && !matrix[3][1].isEmpty()
+									&& (pdfFreqString == null | pdfFreqString.isEmpty())) { // read pdf orario type.
+								pdfFreqString = matrix[3][1].replaceAll("\\s+", " ").toLowerCase();
+							}
+
+							pdfFreqString = pdfFreqString.replace("\"", "");
+
+							if (pdfFreqString != null && !pdfFreqString.isEmpty()
+									&& pdfFreqStringServiceIdMap.containsKey(pdfFreqString)) {
+								String servicIdMapIdentifier = pdfFreqStringServiceIdMap.get(pdfFreqString);
+								List<String> serviceIds = serviceIdMapping.get(servicIdMapIdentifier);
+								if (!serviceIds.contains(tripServiceIdMap.get(matchId))) {
+									matchingTripId.remove(matchId);
+									continue;
 								}
-							} 
-							
+							}
+
 							List<String[]> stopTimes = tripStopsTimesMap.get(matchId);
 							// algorithm to check trip in other route.
-							if(deepMatchTrips(matrix, currentCol, tripStartIndex, tripEndIndex, stopTimes)) {
+							if (deepMatchTrips(matrix, currentCol, tripStartIndex, tripEndIndex, stopTimes)) {
 								foundTripId = matchId;
 								if (isExUrbanUnalignedRoute) {
 									unAlignedTripIds.add(foundTripId);
 								}
 							}
-							
+
 						}
 						
 					}
@@ -2373,7 +2598,7 @@ public class AnnotatedTTGenerator {
 
 				} else {
 					if (err) System.err.println("\n\n\\n--- perhaps no time defined in pdf ---");
-					failedMatch++;
+//					failedMatch++;
 				}
 
 			} else {
@@ -2919,13 +3144,19 @@ public class AnnotatedTTGenerator {
 		return false;
 
 	}
+	
+	private RouteModel readRouteModel() throws JsonParseException, JsonMappingException, IOException {
+		return new ObjectMapper().readValue(
+				Thread.currentThread().getContextClassLoader().getResourceAsStream("tn-routemodel.json"),
+				RouteModel.class);
+	}
 
 	public static void main(String[] args) throws Exception {
 		AnnotatedTTGenerator timeTableGenerator = new AnnotatedTTGenerator();
 		File folder = new File(pathToInput);
 
 		for (final File fileEntry : folder.listFiles()) {
-			if (fileEntry.isDirectory() | fileEntry.getName().contains(".json")) {
+			if (fileEntry.isDirectory() | fileEntry.getName().contains(".json") | fileEntry.getName().contains(".zip")) {
 				continue;
 			} else {
 				if (verbose) System.out.println("Annotation in process for ->  " + fileEntry.getName());
@@ -2934,12 +3165,12 @@ public class AnnotatedTTGenerator {
 		}
 
 //		timeTableGenerator.processFiles(pathToOutput, "12", pathToInput + "05A-Feriale.csv");
-//		timeTableGenerator.processFiles(pathToOutput, "12", pathToInput + "11A-Feriale.csv");
-//		timeTableGenerator.processFiles(pathToOutput, "16", pathToInput + "E-06R-Feriale.csv");
-//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "632R.csv");
-//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "209A-R.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "12", pathToInput + "%20A_C-Festivo.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "16", pathToInput + "E-01R-Feriale.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "104A.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "12", pathToInput + "01_R-Festivo.csv");
 		
-//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "119ESA.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "503ESR.csv");
 //		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "401INA.csv");
 //		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "231A.csv");
 //		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "406A-R.csv");
@@ -2949,7 +3180,7 @@ public class AnnotatedTTGenerator {
 //		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "461R.csv");
 //		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "503ESR.csv");
 //		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "646A.csv");
-//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "334A.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "332A.csv");
 //		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "511ESA.csv");
 //		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "203A-R.csv");
 //		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "131ESR.csv");
@@ -3030,6 +3261,10 @@ public class AnnotatedTTGenerator {
 
 			timeTableGenerator.printStats();
 		}
+		
+//		for (String servizio: servizioString) {
+//			System.err.println(servizio);
+//		}
 
 	}
 

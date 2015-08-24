@@ -1,9 +1,10 @@
 Descr.breve:;"314"
-Descr.lunga:;"Ometto - Obra di Vallarsa - Riva - Rovereto"
-Validità:;"Orario in vigore dal 27/06/2015 al 09/09/2015"
+Descr.lunga:;"Ometto-Obra di Vallarsa-Riva-Rovereto"
+Validità:;"Orario in vigore dal 03/08/2015 al 09/09/2015"
 Orario:;""
-Frequenza:;"Solo nei giorni feriali";;;"Feriale escluso sabato";;;"Solo nei giorni feriali";"Feriale escluso sabato"
-Linea:;;"La corsa si effettua solo nei giorni di martedì e venerdì feriali";"La corsa si effettua solo nei giorni di martedì e venerdì feriali / Servizio svolto da autonoleggiatore privato";;"La corsa si effettua solo nei giorni di martedì e venerdì feriali / Servizio svolto da autonoleggiatore privato";"La corsa si effettua solo nei giorni di martedì e venerdì feriali / Servizio svolto da autonoleggiatore privato";;
+Frequenza:;;"";;;;"K";;;;"";;"K"
+Linea:;;"La corsa si effettua solo nei giorni feriali di martedì e venerdì";"La corsa si effettua solo nei giorni feriali di martedì e venerdì / Servizio svolto da autonoleggiatore privato";;"La corsa si effettua solo nei giorni feriali di martedì e venerdì / Servizio svolto da autonoleggiatore privato";"La corsa si effettua solo nei giorni feriali di martedì e venerdì / Servizio svolto da autonoleggiatore privato";;"La corsa è sospesa dal 10.8 al 14.8.2015 / Entfaellt ab 10.8 bis 14.8.2015"
+Servizio:;;;;;;;;
 "OMETTO - Part.";6.35;9.02;;;10.52;;13.35;18.12
 "OBRA DI VALLARSA";6.37;9.05;;;10.55;;13.37;18.13
 "Bruni";6.43;9.10;;;11.00;;13.43;18.19

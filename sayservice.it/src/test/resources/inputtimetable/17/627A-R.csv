@@ -1,9 +1,10 @@
-Descr.breve:;"Servizio Extraurbano"
-Descr.lunga:;"Servizio Extraurbano"
+Descr.breve:;"627"
+Descr.lunga:;"Cles - Dermulo - Coredo - Smarano - Sfruz"
 Validità:;"Orario in vigore dal 27/06/2015 al 09/09/2015"
 Orario:;""
 Frequenza:;"Solo nei giorni feriali";"Solo nei giorni feriali";"Solo nei giorni feriali";"Solo nei giorni festivi";"Solo nei giorni feriali";"Solo nei giorni feriali";
 Linea:;;;;;;;
+Servizio:;"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE"
 "SFRUZ - Loc. Credai - Part.";;;8.38;;12.43
 "SFRUZ - Part.";6.48;;8.40;12.35;12.45;;19.00
 "Smarano";6.50;;8.43;12.38;12.48;;19.03

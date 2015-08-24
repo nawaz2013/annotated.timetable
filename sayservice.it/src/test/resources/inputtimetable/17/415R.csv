@@ -2,8 +2,9 @@ Descr.breve:;"415"
 Descr.lunga:;"Lochere - S.Giuliana - Barco - Levico Terme"
 Validità:;"Orario in vigore dal 27/06/2015 al 09/09/2015"
 Orario:;""
-Frequenza:;"Solo nei giorni feriali";"Solo nei giorni feriali";"Solo nei giorni feriali";"Feriale escluso sabato";;"[S+96]";"Solo nei giorni feriali";"Feriale escluso sabato"
+Frequenza:;"Solo nei giorni feriali";"Solo nei giorni feriali";"Solo nei giorni feriali";"Feriale escluso sabato";;"";"Solo nei giorni feriali";"Feriale escluso sabato"
 Linea:;;;"La corsa si effettua solo nei giorni di lunedì, mercoledì e venerdì feriali /   Nur montags - mittwochs und freitags wenn Werkstag";;"La corsa si effettua solo nei giorni di lunedì, mercoledì e venerdì feriali /   Nur montags - mittwochs und freitags wenn Werkstag";;
+Servizio:;"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE"
 "Lochere - Part.";;;9.05;;11.45
 "Quaere";;;9.07;;11.41
 "S.GIULIANA";;;9.10;;11.38

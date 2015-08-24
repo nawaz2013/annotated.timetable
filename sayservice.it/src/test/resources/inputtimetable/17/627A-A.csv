@@ -1,9 +1,10 @@
-Descr.breve:;"Servizio Extraurbano"
-Descr.lunga:;"Servizio Extraurbano"
+Descr.breve:;"627"
+Descr.lunga:;"Cles - Dermulo - Coredo - Smarano - Sfruz"
 Validità:;"Orario in vigore dal 27/06/2015 al 09/09/2015"
 Orario:;""
 Frequenza:;"Solo nei giorni festivi";"Solo nei giorni feriali";"Solo nei giorni feriali";"Solo nei giorni festivi";"Solo nei giorni feriali";"Solo nei giorni feriali"
 Linea:;;;;;;
+Servizio:;"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE"
 "CLES (Autostaz.) - Part.";18.25;18.25;12.10;12.00
 "S. Giustina";18.30;18.30;12.15;12.05
 "DERMULO - Arr.";18.33;18.33;12.18;12.08
