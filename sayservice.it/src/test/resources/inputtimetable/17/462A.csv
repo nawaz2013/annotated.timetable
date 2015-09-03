@@ -1,28 +1,28 @@
 Descr.breve:;"462"
-Descr.lunga:;"Linea 2 Pergine Vals. - Zivignago - Canezza - Viarago - Serso"
-Validità:;"Orario in vigore  dal 27/06/2015 al 09/09/2015"
+Descr.lunga:;"Linea 2 Pergine-Zivignago-Canezza-Viarago-Serso"
+Validità:;"Orario in vigore dal 10/09/2015 al 24/06/2016"
 Orario:;""
-Frequenza:;"Solo nei giorni feriali";"Solo nei giorni feriali";"Solo nei giorni feriali";"Solo nei giorni feriali";"Solo nei giorni feriali";"Solo nei giorni feriali";"Solo nei giorni feriali";"Feriale escluso sabato";"Solo al sabato feriale";"Feriale escluso sabato";"Solo al sabato feriale";"Feriale escluso sabato";"Solo nei giorni feriali";"Solo nei giorni feriali";"Feriale escluso sabato";"Solo al sabato feriale";"Feriale escluso sabato";"Solo al sabato feriale"
-Linea:;"Servizio svolto da autonoleggiatore privato";;;;"Servizio svolto da autonoleggiatore privato";;"Servizio svolto da autonoleggiatore privato";;;;;"Servizio svolto da autonoleggiatore privato";;"Servizio svolto da autonoleggiatore privato";"Servizio svolto da autonoleggiatore privato";"Servizio svolto da autonoleggiatore privato";;
-Servizio:;"Servizio con Bus";"Servizio con Bus";"Servizio con Bus";"Servizio con Bus";"Servizio con Bus";"Servizio con Bus";"Servizio con Bus";"Servizio con Bus";"Servizio con Bus";"Servizio con Bus";"Servizio con Bus";"Servizio con Bus";"Servizio con Bus";"Servizio con Bus";"Servizio con Bus";"Servizio con Bus";"Servizio con Bus";"Servizio con Bus"
-"PERGINE (C.Intermodale) - Part.";6.55;8.03;8.22;9.25;11.05;12.10;12.40;13.03;13.03;13.05;13.05;17.05;17.40;18.35;18.58;18.58;18.58;18.58
-"PERGINE V. (P.Gavazzi)";6.57;8.05;8.24;9.27;11.07;12.12;12.42;13.05;13.05;13.07;13.07;17.07;17.42;18.37;19.00;19.00;19.00;19.00
-"Pergine (Via Baratieri)";|;8.06;|;|;|;|;12.43;13.06;13.06;13.08;13.08;|;17.43;18.38;19.01;19.01;19.01;19.01
-"Pergine (Distr.Tamoil)";|;8.07;|;|;|;|;12.44;|;|;13.09;13.09;|;17.44;18.39;19.02;19.02;|;|
-"Pergine(V.Marconi C.Ripos";6.58;|;8.25;9.28;11.08;12.13;|;|;|;|;|;17.08;|;|;|;|;|;|
-"Pergine (V.Marconi ITEA)";6.59;|;8.26;9.29;11.09;12.14;|;|;|;|;|;17.09;|;|;|;|;|;|
-"Zivignago";7.01;8.09;8.28;9.31;11.11;12.16;12.46;|;|;13.11;13.11;17.11;17.46;18.41;19.04;19.04;|;|
-"Zivignago (Cons.S.Orsola)";7.02;8.10;8.29;9.32;11.12;12.17;12.47;|;|;13.12;13.12;17.12;17.47;18.42;19.05;19.05;|;|
-"Zivignago (Al Ponte)";7.03;8.11;8.30;9.33;11.13;12.18;12.48;|;|;13.13;13.13;17.13;17.48;18.43;19.06;19.06;|;|
-"Canezza (Maso Sleifer)";7.04;8.12;8.31;9.34;11.14;12.19;12.49;|;|;13.14;13.14;17.14;17.49;18.44;19.07;19.07;|;|
-"Canezza (Bivio) - Arr.";|;|;|;|;|;|;12.50;|;|;13.15;13.15;|;|;18.45;19.08;19.08;|;|
-"CANEZZA";7.05;8.13;8.32;9.35;11.15;12.20;;|;|;;;17.15;17.50;;;;|;|
-"Canezza (Rist. Al Sole)";7.06;8.14;8.33;9.36;11.16;12.21;;|;|;;;17.16;17.51;;;;|;|
-"Canezza (Maso Drazeri) - Arr.";7.09;8.17;8.36;9.39;11.19;12.24;;|;|;;;17.19;17.54;;;;|;|
-"Viarago Bivio Cittadella";7.10;;8.37;9.40;11.20;12.25;;|;|;;;17.20;;;;;|;|
-"Viarago (Via delle Miniere)";7.11;;8.38;9.41;11.21;12.26;;13.19;13.19;;;17.21;;;;;19.14;19.14
-"Viarago (Via Vinciguerra)";7.13;;8.40;9.43;11.23;12.28;;13.17;13.17;;;17.23;;;;;19.12;19.12
-"VIARAGO";7.14;;8.41;9.44;11.24;12.29;;13.16;13.16;;;17.24;;;;;19.11;19.11
-"Viarago (Via Montegian)";7.15;;8.42;9.45;11.25;12.30;;13.15;13.15;;;17.25;;;;;19.10;19.10
-"Serso";7.18;;8.45;9.48;11.28;12.33;;13.12;13.12;;;17.28;;;;;19.07;19.07
-"Serso Centr. Idroelettrica";7.20;;8.47;9.50;11.30;12.35;;13.10;13.10;;;17.30;;;;;19.05;19.05
+Frequenza:;"Solo  nei giorni feriali";"Solo  nei giorni feriali";"Solo  nei giorni feriali";"Solo  nei giorni feriali";"Solo  nei giorni feriali";"Solo  nei giorni feriali";"Feriale non scolastico";"Solo nei giorni scolastici";"Solo nei giorni scolastici";"Solo nei giorni scolastici";"Feriale non scolastico";"Feriale non scolastico";"Solo nei giorni scolastici";"Solo nei giorni scolastici";"Solo nei giorni scolastici";"Solo nei giorni scolastici";"Feriale escluso sabato";"Scolastico escluso sabato";"Feriale escluso sabato";"Feriale escluso sabato";"Scolastico escluso sabato";"Solo  nei giorni feriali";"Solo  nei giorni feriali";"Solo  nei giorni feriali"
+Linea:;"Servizio svolto da autonoleggiatore privato";;;;;;"Servizio svolto da autonoleggiatore privato";"Servizio svolto da autonoleggiatore privato";"Servizio svolto da autonoleggiatore privato";;;;;;;;;"Servizio svolto da autonoleggiatore privato";"Servizio svolto da autonoleggiatore privato";;;"Servizio svolto da autonoleggiatore privato";"Servizio svolto da autonoleggiatore privato";
+Servizio:;"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE"
+"PERGINE (C.Intermodale) - Part.";6.52;8.03;8.22;9.15;11.05;12.10;12.45;12.45;12.55;12.55;13.03;13.03;13.18;13.18;13.45;13.55;14.40;14.40;17.03;17.40;17.48;18.35;18.58;18.58
+"PERGINE V. (P.Gavazzi)";6.54;8.05;8.24;9.17;11.07;12.12;12.47;12.47;12.57;12.57;13.05;13.05;13.20;13.20;13.47;13.57;14.42;14.42;17.05;17.42;17.50;18.37;19.00;19.00
+"Pergine (Via Baratieri)";|;8.06;|;|;|;|;12.48;12.48;12.58;12.58;13.06;13.06;13.21;13.21;13.48;13.58;|;14.43;|;17.43;17.51;18.38;19.01;19.01
+"Pergine (Distr.Tamoil)";|;8.07;|;|;|;|;12.49;|;|;|;|;13.07;|;13.22;13.49;|;|;14.44;|;17.44;|;18.39;19.02;|
+"Pergine(V.Marconi C.Riposo";6.55;|;8.25;9.18;11.08;12.13;|;|;|;|;|;|;|;|;|;|;14.43;|;17.06;|;|;|;|;|
+"Pergine (V.Marconi ITEA)";6.56;|;8.26;9.19;11.09;12.14;|;|;|;|;|;|;|;|;|;|;14.44;|;17.07;|;|;|;|;|
+"Zivignago";6.58;8.09;8.28;9.21;11.11;12.16;12.51;12.56;13.01;|;|;13.09;|;13.24;13.51;|;14.46;14.46;17.09;17.46;|;18.41;19.04;|
+"Zivignago (Cons.S.Orsola)";6.59;8.10;8.29;9.22;11.12;12.17;12.52;12.57;13.02;|;|;13.10;|;13.25;13.52;|;14.47;14.47;17.10;17.47;|;18.42;19.05;|
+"Zivignago (Al Ponte)";7.00;8.11;8.30;9.23;11.13;12.18;12.53;12.58;13.03;|;|;13.11;|;13.26;13.53;|;14.48;14.48;17.11;17.48;|;18.43;19.06;|
+"Canezza (Maso Sleifer)";7.01;8.12;8.31;9.24;11.14;12.19;12.54;12.59;13.04;|;|;13.12;|;13.27;13.54;|;14.49;14.49;17.12;17.49;|;18.44;19.07;|
+"Canezza (Bivio) - Arr.";|;|;|;|;|;|;12.55;13.00;13.05;|;|;13.13;|;13.28;13.55;|;|;14.50;|;|;|;18.45;19.08;|
+"CANEZZA";7.02;8.13;8.32;9.25;11.15;12.20;;;;|;|;;|;;;|;14.50;;17.13;17.50;|;;;|
+"Canezza (Rist. Al Sole)";7.03;8.14;8.33;9.26;11.16;12.21;;;;|;|;;|;;;|;14.51;;17.14;17.51;|;;;|
+"Canezza (Maso Drazeri) - Arr.";7.06;8.17;8.36;9.29;11.19;12.24;;;;|;|;;|;;;|;14.54;;17.17;17.54;|;;;|
+"Viarago Bivio Cittadella";7.07;;8.37;9.30;11.20;12.25;;;;|;|;;|;;;|;14.55;;17.18;;|;;;|
+"Viarago (Via delle Miniere)";7.08;;8.38;9.31;11.21;12.26;;;;13.11;13.19;;13.34;;;14.11;14.56;;17.19;;|;;;19.14
+"Viarago (Via Vinciguerra)";7.10;;8.40;9.33;11.23;12.28;;;;13.09;13.17;;13.32;;;14.09;14.58;;17.21;;|;;;19.12
+"VIARAGO";7.11;;8.41;9.34;11.24;12.29;;;;13.08;13.16;;13.31;;;14.08;14.59;;17.22;;18.01;;;19.11
+"Viarago (Via Montegian)";7.12;;8.42;9.35;11.25;12.30;;;;13.07;13.15;;13.30;;;14.07;15.00;;17.23;;18.00;;;19.10
+"Serso";7.15;;8.45;9.38;11.28;12.33;;;;13.04;13.12;;13.27;;;14.04;15.03;;17.26;;17.57;;;19.07
+"Serso Centr. Idroelettrica";7.17;;8.47;9.40;11.30;12.35;;;;13.02;13.10;;13.25;;;14.02;15.05;;17.28;;17.55;;;19.05

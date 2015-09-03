@@ -1,19 +1,19 @@
 Descr.breve:;"230"
-Descr.lunga:;"Trento - Monte Terlago - Ranzo - Margone"
-Validità:;"Orario in vigore dal 27/06/2015 al 09/09/2015"
+Descr.lunga:;"Trento-Monte Terlago-Ranzo-Margone"
+Validità:;"Orario in vigore dal 10/09/2015 al 24/06/2016"
 Orario:;""
-Frequenza:;"Feriale escluso sabato";"Solo nei giorni feriali"
-Linea:;;
-Servizio:;;
-"TRENTO   (Autostaz.) - Part.";16.45;11.00
-"Cadine";16.58;11.13
-"Terlago bivio";17.00;11.15
-"TERLAGO";17.05;11.20
-"MONTE TERLAGO (P.zza)";|;11.28
-"M.TERLAGO (H. 2 Laghi)";|;11.30
-"Maso Ariol";|;11.36
-"COVELO";|;11.38
-"Ciago";17.11;11.42
+Frequenza:;"Feriale escluso sabato";"Solo  nei giorni feriali";"Solo nei giorni scolastici"
+Linea:;;;
+Servizio:;;;
+"TRENTO   (Autostaz.) - Part.";16.45;11.00;7.15
+"Cadine";16.58;11.13;|
+"Terlago bivio";17.00;11.15;|
+"TERLAGO";17.05;11.20;7.32
+"MONTE TERLAGO (P.zza)";|;11.28;7.40
+"M.TERLAGO (H. 2 Laghi)";|;11.30;7.42
+"Maso Ariol";|;11.36;7.45
+"COVELO";|;11.38;7.46
+"Ciago";17.11;11.42;7.49
 "VEZZANO (Piazza)";|;|
 "Lon";17.15;11.46
 "Lon (Ris. Fior di Roccia)";|;|

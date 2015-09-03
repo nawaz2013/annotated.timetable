@@ -1,33 +1,32 @@
 Descr.breve:;"307"
 Descr.lunga:;"Avio-Ala-Cornè-Chizzola-Mori-Rovereto"
-Validità:;"Orario in vigore dal 20/07/2015 al 09/09/2015"
+Validità:;"Orario in vigore dal 10/09/2015 al 24/06/2016"
 Orario:;""
-Frequenza:;"Solo nei gg. Feriali";"Solo nei gg. Feriali";"Solo nei gg. Feriali";"Solo nei gg. Feriali";"Feriale escluso sabato";"Solo nei gg. Feriali";"Solo nei gg. Feriali"
-Linea:;;;;;;;
-Servizio:;;;;;;;
-"AVIO (Via M.Baldo) - Part.";;6.37;8.10;;;13.35
-"AVIO";;6.39;8.13;;;13.38
-"Sabbionara.";;6.43;8.16;;;13.41
-"Campagnola";;6.48;8.21;;;13.46
-"ALA (Staz. FS). - Arr.";;|;8.25;;;13.50
-"ALA (Staz. FS). - Part.";;|;;8.26;;;13.51
-"ALA (Ospedale bivio).";;|;;8.27;11.05;;13.52
-"ALA (Via Malfatti).";;|;;8.29;11.07;;13.54
-"Pilcante Bivio.";;|;;8.30;11.08;;13.55
-"Pilcante";;6.50;;8.32;11.28;;13.57
-"S.Lucia di Ala";;6.55;;8.37;11.23;;14.02
-"Serravalle";;|;;|;11.19;;|
-"Villetta";;6.57;;8.39;11.21;;14.04
-"CORNE' - Part.";6.40;|;;|;|;;|
-"CHIZZOLA(V.De Gasperi)";|;|;;|;11.20;;|
-"CHIZZOLA";6.53;6.58;;8.40;;;14.05
-"S.Cecilia";6.57;7.02;;8.44;;;14.09
-"MORI (Terranera)";7.02;|;;8.49;;;14.14
-"MORI (Bar  Centrale)";7.05;|;;8.50;;;14.15
-"Ravazzone di Mori";7.08;7.12;;8.53;;;14.18
-"Marco";|;|;;|;;;|
-"Lizzana";|;|;;|;;;|
-"Lizzanella";7.17;7.23;;9.01;;;14.26
-"ROVERETO (Ospedale).";7.20;|;;9.04;;;14.29
-"ROVERETO (Staz.F.S.)";7.24;7.27;;9.08;;;14.33
-"ROVERETO (Via Paoli) - Arr.";7.26;7.29;;9.10;;;14.35
+Frequenza:;"Solo  nei giorni feriali";"Solo nei giorni scolastici";"Feriale non scolastico";"Feriale non scolastico";"Solo nei giorni scolastici";"Solo  nei giorni feriali";"Solo nei giorni scolastici";"Feriale non scolastico";"Feriale escluso sabato";"Solo al sabato feriale"
+Linea:;;;;;;;;;;
+Servizio:;;;;;;;;;;
+"AVIO (Via M.Baldo) - Part.";;6.30;6.30;8.10;8.10;;13.48;13.48
+"AVIO";;6.33;6.33;8.13;8.13;;13.51;13.51
+"Sabbionara.";;6.36;6.36;8.16;8.16;;13.54;13.54
+"Campagnola";;6.41;6.41;8.21;8.21;;13.59;13.59
+"ALA (Staz. FS). - Arr.";;6.45;6.45;8.25;8.25;;14.03;14.03
+"ALA (Staz. FS). - Part.";;6.45;6.45;;;8.36;;;14.04;14.04
+"ALA (Ospedale bivio).";;6.46;6.46;;;8.37;;;14.05;14.05
+"ALA (Via Malfatti).";;6.48;6.48;;;8.39;;;14.07;14.07
+"Pilcante Bivio.";;6.49;6.49;;;8.40;;;14.08;14.08
+"Pilcante";;6.51;6.51;;;8.42;;;14.10;14.10
+"S.Lucia di Ala";;6.56;6.56;;;8.47;;;14.15;14.15
+"Serravalle";;|;|;;;|;;;|;|
+"Villetta";;6.58;6.58;;;8.49;;;14.17;14.17
+"CORNE' - Part.";6.35;|;|;;;|;;;|;|
+"CHIZZOLA";6.47;6.59;6.59;;;8.50;;;14.18;14.18
+"S.Cecilia";6.51;7.03;7.03;;;8.54;;;14.22;14.22
+"MORI (Terranera)";6.56;7.08;7.08;;;8.59;;;14.27;14.27
+"MORI (Bar  Centrale)";6.57;7.09;7.09;;;9.00;;;14.28;14.28
+"Ravazzone di Mori";6.59;7.12;7.12;;;9.03;;;14.31;14.31
+"Rov.Z.Ind. difr."Luxottica"";|;7.17;7.17;;;|;;;|;|
+"Lizzanella";7.08;7.21;7.21;;;9.11;;;14.39;14.39
+"ROVERETO (Ospedale).";|;|;|;;;9.14;;;14.42;14.42
+"ROVERETO (Staz.F.S.)";7.12;7.25;7.25;;;9.18;;;14.46;14.46
+"ROVERETO (Via Paoli) - Arr.";7.14;|;|;;;9.20;;;14.48;14.48
+"ROVERETO (Via Manzoni) - Arr.";;7.27;7.27

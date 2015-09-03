@@ -1,16 +1,16 @@
 Descr.breve:;"423"
-Descr.lunga:;"Levico Terme - Tenna - Ischia -Pergine Valsugana"
-Validità:;"Orario in vigore dal 27/06/2015 al 09/09/2015"
+Descr.lunga:;"Levico Terme-Tenna-Ischia-Pergine Vals."
+Validità:;"Orario in vigore dal 10/09/2015 al 24/06/2016"
 Orario:;""
-Frequenza:;"Solo nei giorni feriali";"Solo nei giorni feriali";"Solo nei giorni feriali";"Solo nei giorni feriali";"Feriale escluso sabato";"Solo al sabato feriale";"Solo nei giorni feriali";"Solo nei giorni feriali";"Solo nei giorni feriali"
-Linea:;;;;;;;;;
-Servizio:;"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE"
-"LEVICO T. ( P.za Medici) - Part.";;7.36;9.25;10.45;12.36;12.36;13.30;17.34;18.30
-"LEVICO T.  (Autostaz.)";;7.38;9.27;10.47;12.38;12.38;13.32;17.36;18.32
-"LEVICO T. (Rist.Brenta)";;7.40;9.29;10.49;12.40;12.40;13.34;17.38;18.34
-"TENNA";6.50;7.46;9.35;10.55;12.46;12.46;13.40;17.44;18.40
-"Albere' di Tenna";6.55;7.51;9.40;;12.51;12.51;13.45;17.49
-"ISCHIA DI PERGINE";6.58;7.54;9.43;;12.54;12.54;13.48;17.52
-"PERGINE V. (Bivio Susa')";7.03;7.59;9.48;;12.59;12.59;13.53;17.57
-"PERGINE V. (P.Gavazzi)";7.05;8.01;9.50;;13.01;13.01;13.55;17.59
-"PERGINE (C.Intermodale) - Arr.";7.07;8.03;9.52;;13.03;13.03;13.57;18.01
+Frequenza:;"Solo  nei giorni feriali";"Solo nei giorni scolastici";"Feriale non scolastico";"Solo  nei giorni feriali";"Feriale escluso sabato";"Solo  nei giorni feriali";"Solo nei giorni scolastici";"Feriale non scolastico";"Scolastico escluso sabato";"Feriale escluso sabato";"Solo  nei giorni feriali";"Solo  nei giorni feriali"
+Linea:;;;;;;;;;;;;
+Servizio:;"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE"
+"LEVICO T. ( P.za Medici) - Part.";;;7.30;9.25;9.55;12.35;;13.30;14.30;16.32;17.32;18.30
+"LEVICO T.  (Autostaz.)";;7.23;7.32;9.27;9.57;12.37;13.32;13.32;14.32;16.34;17.34;18.32
+"LEVICO T. (Rist.Brenta)";;7.25;7.34;9.29;9.59;12.39;13.34;13.34;14.34;16.36;17.36;18.34
+"TENNA";6.50;7.31;7.40;9.35;10.05;12.45;13.40;13.40;14.40;16.42;17.42;18.40
+"Albere' di Tenna";6.55;7.36;7.45;9.40;;12.50;13.45;13.45;14.45;;17.47
+"ISCHIA DI PERGINE";6.58;7.39;7.48;9.43;;12.53;13.48;13.48;14.48;;17.50
+"PERGINE V. (Bivio Susa')";7.03;7.44;7.53;9.48;;12.58;13.53;13.53;14.53;;17.55
+"PERGINE V. (P.Gavazzi)";7.05;7.46;7.55;9.50;;13.00;13.55;13.55;14.55;;17.57
+"PERGINE (C.Intermodale) - Arr.";7.07;7.49;7.57;9.52;;13.02;13.57;13.57;14.57;;17.59

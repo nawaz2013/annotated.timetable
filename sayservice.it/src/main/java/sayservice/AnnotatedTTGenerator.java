@@ -22,6 +22,8 @@ import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.util.StringUtils;
 
+import sayservice.FileRouteModel.FileRouteAgencyModel;
+
 import com.google.common.base.Charsets;
 import com.google.common.collect.Iterables;
 import com.google.common.io.Files;
@@ -151,6 +153,25 @@ public class AnnotatedTTGenerator {
 
 	String mismatchColIds = "";
 
+	private List<String> ignoreServiceIdPattern = new ArrayList<String>() {
+		{
+			// urban.
+			add("2015062620150909");
+			// ex-urban(ignore winter).
+//			add("20160624");
+//			add("20160329");
+//			add("20160106");
+//			add("20160607");
+//			add("20151031");
+//			add("20151222");
+			// ex-urban (ignore summer.)
+//			add("20150909");
+//			add("20150831");
+			
+		}
+	};
+	  
+	private String outputPattern = "2015091020160607";
 	private Map<String, boolean[]> calendarEntries = new HashMap<String, boolean[]>();
 	private Map<String, List<String>> serviceIdMapping = new HashMap<String, List<String>>();
 	private static final String CALENDAR_ALLDAYS = "AD";
@@ -188,7 +209,7 @@ public class AnnotatedTTGenerator {
 	}
 	
 	List<String> deleteList = new ArrayList<String>();
-
+	
 	private static RouteModel routeModel;
 
 	private static String[] andataSuffix = new String[] { "A-annotated.csv", "a-annotated.csv",
@@ -206,6 +227,8 @@ public class AnnotatedTTGenerator {
 	};
 	
 	private static  List<String> servizioString = new ArrayList<String>();
+	
+	private static FileRouteModel fileRouteModel;
 
 	public AnnotatedTTGenerator() throws IOException {
 		try {
@@ -214,7 +237,8 @@ public class AnnotatedTTGenerator {
 			collection = database.getCollection("stops");
 			mapper.configure(Feature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 			init(agencyId);
-			// route model read from configuration
+			// route model read from configuration (remove)
+			this.fileRouteModel = readFileRouteConfigurationModel();
 			this.routeModel = readRouteModel();
 
 		} catch (UnknownHostException e) {
@@ -227,13 +251,17 @@ public class AnnotatedTTGenerator {
 		List<String> annotated = new ArrayList<String>();
 		for (String filename : files) {
 			String outputName = filename.substring(filename.lastIndexOf("/") + 1, filename.lastIndexOf("."));
-			outputName = outputName + "-annotated.csv";
+			outputName = outputName + "-" + outputPattern + "-annotated.csv";
 			File file = new File(filename);
 			List<String> lines = Files.asCharSource(file, Charsets.UTF_8).readLines();
 			annotated.addAll(convertLines(lines, outputName));
 			File outputDirFile = new File(outputDir);
 			if (!outputDirFile.exists()) {
 				outputDirFile.mkdir();
+			}
+			// rovereto.
+			if (agencyId.equalsIgnoreCase("16")) {
+				outputName = outputName.substring(outputName.indexOf("-") + 1);
 			}
 			File annotatedCSV = new File(outputDirFile, outputName);
 			Files.asCharSink(annotatedCSV, Charsets.UTF_8).writeLines(annotated);
@@ -373,7 +401,7 @@ public class AnnotatedTTGenerator {
 		// prepare list of List<String> for input matrix.
 		List<List<String>> inputCSVTimes = createListOfList(matrix, numOfHeaders, noOfOutputCols);
 		
-		stops = processStops(matrix, numOfHeaders, noOfOutputCols - 1, inputCSVTimes);
+		stops = processStops(matrix, numOfHeaders, noOfOutputCols - 1, inputCSVTimes, outputFileName);
 
 		int noOfOutputRows = (stops.size() + 5);
 		String[][] output = new String[noOfOutputRows][noOfOutputCols];
@@ -573,13 +601,29 @@ public class AnnotatedTTGenerator {
 			}
 
 			// fill in italic entries.
+			boolean[] italicEntered = new boolean[stops.size()];
 			for (String italicEntry : columnItalicStopNames.get(j)) {
 				String name = italicEntry.substring(0, italicEntry.indexOf("$"));
 				String time = italicEntry.substring(italicEntry.indexOf("$") + 1);
-				output[stops.indexOf(name.toLowerCase()) + 4][j] = time.replace(".", ":");
-				String[] stopNameId = output[stops.indexOf(name.toLowerCase()) + 4][0].split(";");
-				if (stopNameId.length < 2) {
-					output[stops.indexOf(name.toLowerCase()) + 4][0] = name + ";";
+//				output[stops.indexOf(name.toLowerCase()) + 4][j] = time.replace(".", ":");
+//				String[] stopNameId = output[stops.indexOf(name.toLowerCase()) + 4][0].split(";");
+//				if (stopNameId.length < 2) {
+//					output[stops.indexOf(name.toLowerCase()) + 4][0] = name + ";";
+//				}
+				int stopIndex = -1;
+				for (int i = 0; i < stops.size(); i++) {
+					if (stops.get(i).equalsIgnoreCase(name) && !italicEntered[i]) {
+						stopIndex = i;
+						italicEntered[i] = true;
+						break;
+					}
+				}
+				if (stopIndex != -1) {
+					output[stopIndex + 4][j] = time.replace(".", ":");
+					String[] stopNameId = output[stopIndex + 4][0].split(";");
+					if (stopNameId.length < 2) {
+						output[stopIndex + 4][0] = name + ";";
+					}
 				}
 				
 			}
@@ -1535,6 +1579,13 @@ public class AnnotatedTTGenerator {
 		
 		// create mapping for calendar LV,F,AD,SS,LS
 		for (String serviceId : calendarEntries.keySet()) {
+			
+			for (String ignoreServiceId : ignoreServiceIdPattern) {
+				if (serviceId.endsWith(ignoreServiceId)) {
+					continue;
+				}
+			}
+			
 			boolean[] b = calendarEntries.get(serviceId);
 			List<String> serviceIds = null;
 			if (b[0] & b[1] & b[2] & b[3] & b[4] & b[5] & b[6]) { //AD.
@@ -2192,7 +2243,8 @@ public class AnnotatedTTGenerator {
 		}
 	}
 	
-	private List<String> processStops(String[][] matrix, int startRow, int noOfCols, List<List<String>> inputPdfTimes) {
+	private List<String> processStops(String[][] matrix, int startRow, int noOfCols, List<List<String>> inputPdfTimes
+			, String outputfileName) {
 
 		// merged list of stops.
 		List<String> stopList = new ArrayList<String>();
@@ -2291,10 +2343,11 @@ public class AnnotatedTTGenerator {
 			if (matrix[5][currentCol] != null && !matrix[5][currentCol].isEmpty()) {
 				String lineInfo = HtmlToText.htmlToPlainText(matrix[5][currentCol]);
 				if (lineInfo.contains("Linea")) {
-					String pdfRouteId = matrix[5][currentCol].substring(matrix[5][currentCol].indexOf('a') + 1);
+					String pdfRouteId = matrix[5][currentCol].substring(matrix[5][currentCol].lastIndexOf('a') + 1);
+					pdfRouteId = pdfRouteId.replace("\"", "");
 					// check if xx/ routeId exist, else look for xx routeId.
 					routeId = getGTFSRouteIdFromRouteShortName(pdfRouteId);
-					if (routeId.isEmpty()) {
+					if (routeId.isEmpty() && pdfRouteId.indexOf("/") != -1) {
 						routeId = getGTFSRouteIdFromRouteShortName(pdfRouteId.substring(0, pdfRouteId.indexOf("/")));
 						if (routeId != null && !routeId.isEmpty()) {
 							columnGTFSRSName.put(currentCol, pdfRouteId.substring(0, pdfRouteId.indexOf("/")));
@@ -2311,6 +2364,29 @@ public class AnnotatedTTGenerator {
 					mergedRoute = true;
 				}
 			}
+			
+			// (remove)
+			if (mergedRoute) {
+				boolean supportedRoute = false;
+				String fileName = outputfileName.substring(0, outputfileName.lastIndexOf(outputPattern + "-annotated.csv") - 1);
+				for (FileRouteAgencyModel agencyModel: fileRouteModel.getAgencies()) {
+					if (agencyModel.getAgencyId().equalsIgnoreCase(agencyId)) {
+						if (agencyModel.getFileRouteMappings().containsKey(fileName)) {
+							String[] supportedRouteIds = agencyModel.getFileRouteMappings().get(fileName).split(",");
+							for (String keyRouteId: supportedRouteIds) {
+								if (keyRouteId.equalsIgnoreCase(routeId)) {
+									supportedRoute = true;
+									break;
+								}
+							}
+						}
+					}
+				}
+				if (!supportedRoute) {
+					continue;
+				}
+			}
+			
 
 			// check for unaligned routes.
 			boolean isExUrbanUnalignedRoute = false;
@@ -2435,6 +2511,23 @@ public class AnnotatedTTGenerator {
 								if (!serviceIds.contains(tripServiceIdMap.get(matchId))) {
 									matchingTripId.remove(matchId);
 									continue;
+								}
+							}
+						}
+					}
+					
+					// additional check for removal of wrong service id(if any).
+					if (matchingTripId.size() > 1) {
+						List<String> copyOfSWTripIds = new ArrayList<String>();
+						copyOfSWTripIds.addAll(matchingTripId);
+
+						for (String matchId : copyOfSWTripIds) {
+
+							String serviceId = tripServiceIdMap.get(matchId);
+
+							for (String ignoreServiceId : ignoreServiceIdPattern) {
+								if (serviceId.endsWith(ignoreServiceId)) {
+									matchingTripId.remove(matchId);
 								}
 							}
 						}
@@ -3281,6 +3374,12 @@ public class AnnotatedTTGenerator {
 				Thread.currentThread().getContextClassLoader().getResourceAsStream("tn-routemodel.json"),
 				RouteModel.class);
 	}
+	
+	private FileRouteModel readFileRouteConfigurationModel() throws JsonParseException, JsonMappingException, IOException {
+		return new ObjectMapper().readValue(
+				Thread.currentThread().getContextClassLoader().getResourceAsStream("file-route.json"),
+				FileRouteModel.class);
+	}
 
 	public static void main(String[] args) throws Exception {
 		AnnotatedTTGenerator timeTableGenerator = new AnnotatedTTGenerator();
@@ -3295,8 +3394,8 @@ public class AnnotatedTTGenerator {
 			}
 		}
 
-//		timeTableGenerator.processFiles(pathToOutput, "12", pathToInput + "05A-Feriale.csv");
-//		timeTableGenerator.processFiles(pathToOutput, "12", pathToInput + "%20A_C-Festivo.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "12", pathToInput + "04_A-Feriale.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "12", pathToInput + "01_R-Festivo.csv");
 //		timeTableGenerator.processFiles(pathToOutput, "16", pathToInput + "E-01R-Feriale.csv");
 //		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "104A.csv");
 //		timeTableGenerator.processFiles(pathToOutput, "12", pathToInput + "07A-Feriale.csv");
@@ -3376,7 +3475,7 @@ public class AnnotatedTTGenerator {
 //		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "464A.csv");
 		
 		//fix stops.
-//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "335A.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "204A.csv");
 //		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "131ESR.csv");
 //		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "315A.csv");
 //		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "307A.csv");

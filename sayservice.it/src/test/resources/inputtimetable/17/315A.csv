@@ -1,29 +1,28 @@
 Descr.breve:;"315"
-Descr.lunga:;"Rovereto - Terragnolo - Serrada - Folgaria"
-Validità:;"Orario in vigore dal 27/06/2015 al 09/09/2015"
+Descr.lunga:;"Rovereto-Terragnolo-Serrada-Folgaria"
+Validità:;"Orario in vigore dal 10/09/2015 al 24/06/2016"
 Orario:;""
-Frequenza:;"Feriale escluso Sab";"Solo nei gg. Feriali";"Solo nei gg. Festivi";"Solo nei gg. Feriali";"Solo nei gg. Feriali";"Solo nei gg. Festivi";"Feriale escluso Sab";"Solo nei gg. Feriali";"Solo nei gg. Festivi";"Solo nei gg. Feriali";"Solo nei gg. Feriali";"Solo nei gg. Festivi"
-Linea:;;;"Servizio svolto da autonoleggiatore privato";;;;"La corsa è sospesa dal 10.8 al 14.8.2015 / Entfaellt ab 10.8 bis 14.8.2015";;;;;
-Servizio:;;;;;;;;;;;;
-"ROVERETO (Staz.F.S.) - Part.";;10.10;10.10;12.30;;;17.10;;;17.40;18.50;18.50
-"ROVERETO (Via Paoli)";;|;|;|;;;|;;;|;|;|
-"ROV. (C. Rosmini-Monu.)";;10.12;10.12;12.32;;;17.12;;;17.42;18.52;18.52
-"Campolongo (Noriglio)";;10.20;10.20;12.40;;;17.20;;;17.50;19.00;19.00
-"NORIGLIO";;10.21;10.21;12.41;;;17.21;;;17.51;19.01;19.01
-"Valgrande";;10.29;10.29;12.49;;;17.29;;;17.59;19.09;19.09
-"Valduga";;10.34;10.34;12.54;;;17.34;;;18.04;19.14;19.14
-"Pedrazzi";;10.35;10.35;12.55;;;17.35;;;18.05;19.15;19.15
-"Peltreri";;10.36;10.36;12.56;;;17.36;;;18.12;19.16;19.16
-"PIAZZA DI TERRAGNOLO - Arr.";;10.38;10.38;12.58;;;17.38;;;18.14;19.18;19.18
-"PIAZZA DI TERRAGNOLO - Part.";;10.38;10.38;12.58;12.58;;17.38;;;18.14;19.18;19.18
-"Camperi";;|;|;|;13.01;;17.41;;;|;19.21;|
-"Baisi";;|;|;|;13.05;;17.45;;;|;19.25;|
-"Zoreri-Soldati";;|;|;|;13.08;;17.48;;;|;19.28;|
-"Geroli - Arr.";;|;|;|;;;;;;|;;|
-"Costa di Terragnolo";;10.41;10.41;13.01;;;;;;18.17;;19.21
-"Scottini";;10.48;10.48;13.08;;;;;;18.24;;19.28
-"SERRADA - Part.";6.15;10.53;10.53;13.13;;13.12;;17.25;17.25;18.29;;19.33
-"Mezzaselva";6.20;10.58;10.58;13.18;;13.17;;17.30;17.30;18.34;;19.38
-"Folgaria - P.le N.Unite - Arr.";6.25;11.03;11.03;13.23;;13.22;;17.35;17.35;18.39;;19.43
-"Folgaria - P.le N.Unite - Part.";6.27;11.03;11.03;13.29;;13.22;;17.35;17.44;18.39;;19.43
-"Folgaria (Via Battisti) - Arr.";6.29;11.05;11.05;13.31;;13.24;;17.37;17.46;18.41;;19.45
+Frequenza:;"Solo  nei giorni feriali";"Solo nei giorni scolastici";"Solo  nei giorni feriali";"Solo  nei giorni feriali";"Solo nei giorni festivi";"Solo  nei giorni feriali";"Solo  nei giorni feriali";"Solo nei giorni scolastici";"Feriale non scolastico";"Feriale non scolastico";"Solo nei giorni scolastici";"Solo nei giorni scolastici";"Solo nei giorni scolastici";"Solo  nei giorni feriali";"Solo nei giorni festivi";"Solo  nei giorni feriali";"Feriale escluso sabato";"Solo  nei giorni feriali";"Solo  nei giorni feriali"
+Linea:;;;;;"La corsa si effettua solo nei giorni festivi dal 26/12/2015 al 29/03/2016";;;;;;;;"Servizio svolto da autonoleggiatore privato";"La coinc. per Lavarone sottoriportata si effettua nei gg. scol. escl. sabato";"La corsa si effettua solo nei giorni festivi dal 26/12/2015 al 29/03/2016";;;;
+Servizio:;;;;;;;;;;;;;;;;;;;
+"ROVERETO (Staz.F.S.) - Part.";;;;;;10.10;;12.53;12.53;;;13.30;;;;17.10;17.50;18.50
+"ROV. (C. Rosmini-Monu.)";;;;;;10.12;;12.55;12.55;;;13.32;;;;17.12;17.52;18.52
+"Campolongo (Noriglio)";;;;;;10.20;;13.08;13.03;;;13.40;;;;17.20;18.00;19.00
+"NORIGLIO";;;;;;10.21;;13.09;13.04;;;13.41;;;;17.21;18.01;19.01
+"Valgrande";;;;;;10.29;;13.17;13.12;;;13.49;;;;17.29;18.09;19.09
+"Valduga";;;;;;10.34;;13.22;13.17;;;13.54;;;;17.34;18.14;19.14
+"Pedrazzi";;;;;;10.35;;13.23;13.18;;;13.55;;;;17.35;18.15;19.15
+"Peltreri";;;;;;10.36;;13.24;13.19;;;13.56;;;;17.36;18.16;19.16
+"PIAZZA DI TERRAGNOLO - Arr.";;;;;;10.38;;13.26;13.21;;;13.57;;;;17.38;18.18;19.18
+"PIAZZA DI TERRAGNOLO - Part.";;;;;;10.38;;13.26;13.21;13.21;13.26;13.57;14.00;;;17.38;18.18;19.18;19.18
+"Camperi";;;;;;|;;|;|;13.24;13.29;|;14.13;;;|;18.21;|;19.21
+"Baisi";;;;;;|;;|;|;13.28;13.33;|;14.17;;;|;18.25;|;19.25
+"Zoreri-Soldati";;;;;;|;;|;|;13.31;13.36;|;14.20;;;|;18.28;|;19.28
+"Geroli - Arr.";;;;;;|;;|;|;;;|;14.32;;;|;;|
+"Costa di Terragnolo";;;;;;10.41;;13.29;13.24;;;13.59;;;;17.41;;19.21
+"Scottini";;;;;;10.48;;13.36;13.31;;;14.05;;;;17.48;;19.28
+"SERRADA - Part.";6.15;6.45;7.39;8.38;9.30;10.53;11.55;13.41;13.36;;;14.10;;16.35;17.12;17.53;;19.33
+"Mezzaselva";6.20;6.50;7.44;8.43;9.35;10.58;12.00;13.46;13.41;;;14.15;;16.40;17.17;17.58
+"Folgaria - P.le N.Unite - Arr.";6.25;6.55;7.49;8.48;9.40;11.03;12.05;13.51;13.46;;;14.20;;16.45;17.22;18.03
+"Folgaria - P.le N.Unite - Part.";6.27;6.55;7.52;8.48;;11.03;12.05;13.51;13.46;;;14.20;;16.48;17.22;18.03
+"Folgaria (Via Battisti) - Arr.";6.29;6.56;7.54;8.50;;11.05;12.07;13.53;13.48;;;14.22;;16.50;17.24;18.05

@@ -1,0 +1,20 @@
+Descr.breve:;"417"
+Descr.lunga:;"Pergine -Canezza -Viarago -S.Orsola -Palù"
+Validità:;"Orario in vigore dal 10/09/2015 al 24/06/2016"
+Orario:;""
+Frequenza:;"Solo  nei giorni feriali";"Solo nei giorni scolastici";"Feriale non scolastico";"Solo nei giorni scolastici";"Solo nei giorni scolastici";"Feriale escluso sabato";"Scolastico escluso sabato";"Solo  nei giorni feriali"
+Linea:;;;;;;;;
+Servizio:;"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE"
+"PERGINE (C.Intermodale) - Part.";8.03;12.55;13.03;13.18;13.55;17.40;17.48;18.58
+"PERGINE V. (P.Gavazzi)";8.05;12.57;13.05;13.20;13.57;17.42;17.50;19.00
+"Pergine (Via Baratieri)";8.06;12.58;13.06;13.21;13.58;17.43;17.51;19.01
+"Zivignago";8.09;|;|;|;|;17.46;|;|
+"CANEZZA - Arr.";8.13;|;|;|;|;17.50;|;|
+"Serso";|;13.04;13.12;13.27;14.04;|;17.57;19.07
+"VIARAGO - Arr.";|;13.08;13.16;13.31;14.08;|;18.01;19.11
+"MALA";8.19;13.14;13.22;13.37;14.14;17.56;;19.17
+"Stefani";8.22;13.17;13.25;13.40;14.17;17.59;;19.20
+"S.ORSOLA";8.26;13.21;13.29;13.44;14.21;18.03;;19.24
+"Fontanari";8.32;13.27;13.35;13.50;14.27;18.09;;19.30
+"PALU' del F. - Arr.";8.37;13.32;13.40;13.55;14.32;18.14;;19.35
+"Battisti - Arr.";;13.37;13.45;14.00;14.37;18.19;;19.40

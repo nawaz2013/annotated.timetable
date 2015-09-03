@@ -1,18 +1,19 @@
 Descr.breve:;"632"
 Descr.lunga:;"Cles - Revò - Castelfondo - Fondo"
-Validità:;"Orario in vigore dal 27/06/2015 al 09/09/2015"
+Validità:;"Orario in vigore dal 10/09/2015 al 24/06/2016"
 Orario:;""
-Frequenza:;"Solo nei giorni feriali";"Feriale escluso sabato";;"Solo nei giorni feriali";"Solo nei giorni feriali";"Solo nei giorni feriali";"Solo nei giorni feriali";"Solo nei giorni festivi";"Solo nei giorni feriali";"Solo nei giorni festivi"
-Linea:;;;;;;"La corsa si effettua solo nei giorni feriali dal lunedì al giovedì";;;"Servizio svolto da autonoleggiatore privato";
-Servizio:;"Servizio con Bus";"Servizio con Bus";"Servizio con Bus";"Servizio con Bus";"Servizio con Bus";"Servizio con Bus";"Servizio con Bus";"Servizio con Bus";"Servizio con Bus";"Servizio con Bus"
-"CLES (Autostaz.) - Part.";8.02;9.05;9.40;12.25;14.57;16.30;17.50;17.17;19.52;19.52
-"Cles (Piazza Fiera)";8.04;9.07;9.42;12.27;14.59;16.32;17.52;17.19;19.54;19.54
-"Cagno'";8.09;9.12;9.47;12.32;15.04;16.37;17.57;17.24;19.59;19.59
-"Revo' (piazza Madonna)";|;9.17;|;|;|;|;|;|;|;|
-"Revo'";8.14;9.17;9.52;12.37;15.09;16.42;18.02;17.29;20.04;20.04
-"Romallo";8.16;9.19;9.54;12.39;15.11;16.44;18.04;17.31;20.06;20.06
-"Cloz";8.22;;10.00;12.45;15.17;;18.10;17.37;20.12;20.12
-"Arsio";8.24;;10.02;12.47;15.19;;18.12;17.39;20.14;20.14
-"Brez";8.27;;10.05;12.50;15.22;;18.15;17.42;20.17;20.17
-"Castelfondo";8.37;;10.15;13.00;15.32;;18.25;17.52;20.27;20.27
-"FONDO (Via Garibaldi) - Arr.";8.47;;10.25;13.10;15.42;;18.35;18.02;20.37;20.37
+Frequenza:;"Scolastico escluso sabato";"Solo al sabato scolastico";"Solo  nei giorni feriali";"Feriale escluso sabato";"Solo  nei giorni feriali";"Solo nei giorni festivi";"Solo nei giorni scolastici";"Feriale non scolastico";"Scolastico escluso sabato";"Solo nei giorni scolastici";"Solo  nei giorni feriali";"Solo  nei giorni feriali";"Solo nei giorni festivi";"Solo  nei giorni feriali";"Solo  nei giorni feriali";"Solo nei giorni festivi"
+Linea:;;;;;;;;;"Servizio svolto da autonoleggiatore privato";"Al giovedì scolastico la corsa si attesta a Brez.";;;;"Servizio svolto da autonoleggiatore privato";"Servizio svolto da autonoleggiatore privato";
+Servizio:;"Bus  TTE";"Bus  TTE";"Bus  TTE";"Bus  TTE";"Bus  TTE";"Bus  TTE";"Bus  TTE";"Bus  TTE";"Bus  TTE";"Bus  TTE";"Bus  TTE";"Bus  TTE";"Bus  TTE";"Bus  TTE";"Bus  TTE";"Bus  TTE"
+"CLES (Autostaz.) - Part.";7.10;7.10;8.00;9.05;9.40;9.40;12.25;12.55;13.10;14.00;15.00;17.10;17.40;18.42;19.52;19.52
+"Cles (Piazza Fiera)";7.12;7.12;8.02;9.07;9.42;9.42;12.27;12.57;13.12;14.02;15.02;17.12;17.42;18.44;19.54;19.54
+"Cagno'";7.17;7.17;8.07;9.12;9.47;9.47;12.32;13.02;13.17;14.07;15.07;17.17;17.47;18.49;19.59;19.59
+"Revo' (piazza Madonna)";|;|;|;9.17;|;|;|;|;|;|;|;|;|;|;|;|
+"Revo'";7.22;7.22;8.12;9.17;9.52;9.52;12.40;13.07;13.22;14.12;15.12;17.22;17.52;18.54;20.04;20.04
+"Romallo";7.24;7.24;8.14;9.19;9.54;9.54;12.43;13.09;13.24;14.14;15.14;17.24;17.54;18.56;20.06;20.06
+"Cloz";7.30;7.30;8.20;;10.00;10.00;12.49;13.15;13.31;14.20;15.20;17.30;18.00;19.02;20.12;20.12
+"Arsio";7.32;7.32;8.22;;10.02;10.02;12.52;13.17;13.34;14.22;15.22;17.32;18.02;19.04;20.14;20.14
+"Brez";7.35;7.35;8.25;;10.05;10.05;12.55;13.20;13.37;14.25;15.25;17.35;18.05;19.07;20.17;20.17
+"Dovena";7.50;7.50;|;;|;|;|;|;|;|;|;|;|;|;|;|
+"Castelfondo";7.45;7.45;8.35;;10.15;10.15;13.05;13.30;13.47;14.35;15.35;17.45;|;19.17;20.27;20.27
+"FONDO (Via Garibaldi) - Arr.";8.07;8.07;8.45;;10.25;10.25;13.15;13.40;;;15.45;17.55;18.15;;20.37;20.37

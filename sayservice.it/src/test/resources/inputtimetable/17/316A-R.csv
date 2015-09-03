@@ -1,20 +1,20 @@
 Descr.breve:;"316"
-Descr.lunga:;"Rovereto - Trambileno - Vanza - Pozzacchio"
-Validità:;"Orario in vigore dal 27/06/2015 al 09/09/2015"
+Descr.lunga:;"Rovereto-Trambileno-Vanza-Pozzacchio"
+Validità:;"Orario in vigore dal 10/09/2015 al 24/06/2016"
 Orario:;""
-Frequenza:;"Feriale escluso sabato";"Solo nei giorni feriali";"Feriale escluso sabato";"Solo nei giorni feriali"
-Linea:;"La corsa è sospesa dal 10.8 al 14.8.2015 / Entfaellt ab 10.8 bis 14.8.2015";;;
+Frequenza:;"Feriale escluso sabato";"Solo  nei giorni feriali";"Feriale escluso sabato";"Solo  nei giorni feriali"
+Linea:;;;;
 Servizio:;;;;
-"POZZACCHIO - Part.";6.05;6.35;11.05;13.40
-"Vanza";6.14;6.44;11.14;13.49
+"POZZACCHIO - Part.";5.55;6.30;11.05;13.40
+"Vanza";6.04;6.39;11.14;13.49
 "Vanza SP50";|;|;|;|
-"Pozza di Trambileno";6.20;6.50;11.20;13.55
-"Boccaldo";6.24;6.54;11.24;13.59
-"Vignala";6.27;6.57;11.27;14.02
-"Clocchi";6.29;6.59;11.29;14.04
-"Moscheri";6.30;7.00;11.30;14.05
-"Toldo";6.34;7.04;11.34;14.09
-"Trattoria Genovesa";6.39;7.09;11.39;14.14
-"ROVERETO (Staz.FS)";6.48 ;7.18 ;11.48 ;14.23
-"ROVERETO (Via Manzoni) - Part.";6.50 ;7.20 ;11.50 ;14.25
+"Pozza di Trambileno";6.10;6.45;11.20;13.55
+"Boccaldo";6.14;6.49;11.24;13.59
+"Vignala";6.17;6.52;11.27;14.02
+"Clocchi";6.19;6.54;11.29;14.04
+"Moscheri";6.20;6.55;11.30;14.05
+"Toldo";6.24;6.59;11.34;14.09
+"Trattoria Genovesa";6.29;7.04;11.39;14.14
+"ROVERETO (Staz.FS)";6.38 ;7.13 ;11.48 ;14.23
+"ROVERETO (Via Manzoni) - Part.";6.40;7.15;11.50;14.25
 "ROVERETO (Via Savioli) - Arr."

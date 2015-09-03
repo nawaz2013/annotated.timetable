@@ -1,19 +1,19 @@
 Descr.breve:;"642"
 Descr.lunga:;"Malè - Folgarida - Madonna di Campiglio"
-Validità:;"Orario in vigore dal 27/06/2015 al 09/09/2015"
+Validità:;"Orario in vigore dal 10/09/2015 al 24/06/2016"
 Orario:;""
-Frequenza:;"Solo nei giorni feriali";"Solo nei giorni festivi";"Solo nei giorni feriali";"Solo nei giorni festivi";"Solo nei giorni feriali";"Solo nei giorni festivi";"Solo nei giorni feriali";;"Solo nei giorni feriali";"Solo nei giorni feriali"
-Linea:;;;;;;"La corsa proviene da Passo Mendola";;"Autobus attrezzato per trasporto bici (max 7)(tratta Malè-M.di Campiglio)";;
-Servizio:;"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE"
-"MALE' - Part.";7.00;8.00;9.00;9.55;12.20;12.20;13.50;15.25;16.40;19.05
-"Croviana";7.05;8.05;9.05;10.00;12.25;12.25;13.55;15.30;16.45;19.10
-"MONCLASSICO";7.09;8.09;9.09;10.04;12.29;12.29;13.59;15.34;16.49;19.14
-"Presson";7.10;8.10;9.10;10.05;12.30;12.30;14.00;15.35;16.50;19.15
-"DIMARO (paese)";7.13;8.13;9.13;10.08;12.33;12.33;14.03;15.38;16.53;19.19
-"FOLGARIDA";7.25;8.25;9.25;10.20;12.45;12.45;14.15;15.50;17.05;19.31
-"Belvedere - Arr.";7.28;8.28;9.28;10.23;12.48;12.48;14.18;15.53;17.08;19.34
-"Genziana";7.35;8.35;9.35;10.30;12.55;12.55;14.25;16.00
-"CAMPO CARLOMAGNO";7.40;8.40;9.40;10.35;13.00;13.00;14.30;16.05
-"Funivia Groste'";7.42;8.42;9.42;10.37;13.02;13.02;14.32;16.07
-"M. CAMPIGLIO";7.48;8.48;9.48;10.43;13.08;13.08;14.38;16.13
-"M.CAMPIGLIO (VV.FF.) - Arr.";7.50;8.50;9.50;10.45;13.10;13.10;14.40;16.15
+Frequenza:;"Solo nei giorni scolastici";"Feriale non scolastico";"Solo nei giorni festivi";"Solo  nei giorni feriali";"Solo nei giorni festivi";"Solo nei giorni festivi";"Solo  nei giorni feriali";"Solo  nei giorni feriali";"Solo nei giorni festivi";"Solo nei giorni scolastici";"Solo  nei giorni feriali";"Solo  nei giorni feriali";"Solo nei giorni festivi";"Feriale escluso sabato";"Solo  nei giorni feriali";"Solo nei giorni festivi"
+Linea:;;;"La corsa si effettua solo dal 08.12.15 al 29.03.16";"La corsa si effettua solo dal 08.12.15 al 29.03.16";"La corsa si effettua solo dal 08.12.15 al 29.03.16";;"La corsa si effettua solo dal 08.12.15 al 29.03.16";"La corsa si effettua solo dal 08.12.15 al 29.03.16";"La corsa si effettua solo dal 08.12.15 al 29.03.16";;"La corsa si effettua solo dal 08.12.15 al 29.03.16";"La corsa si effettua solo dal 08.12.15 al 29.03.16";;;"La corsa si effettua solo dal 08.12.15 al 29.03.16";"La corsa si effettua solo dal 08.12.15 al 29.03.16"
+Servizio:;"Bus  TTE";"Bus  TTE";"Bus  TTE";"Bus  TTE";"Bus  TTE";"Bus  TTE";"Bus  TTE";"Bus  TTE";"Bus  TTE";"Bus  TTE";"Bus  TTE";"Bus  TTE";"Bus  TTE";"Bus  TTE";"Bus  TTE";"Bus  TTE"
+"MALE' - Part.";6.50;7.12;7.12;8.00;8.00;9.55;9.55;12.10;12.20;13.03;13.03;14.25;14.25;16.40;16.40;16.50
+"Croviana";6.55;7.17;7.17;8.05;8.05;10.00;10.00;12.15;12.25;13.08;13.08;14.30;14.30;16.45;16.45;16.55
+"MONCLASSICO";6.59;7.21;7.21;8.09;8.09;10.04;10.04;12.19;12.29;13.12;13.12;14.34;14.34;16.49;16.49;16.59
+"Presson";7.00;7.22;7.22;8.10;8.10;10.05;10.05;12.20;12.30;13.13;13.13;14.35;14.35;16.50;16.50;17.00
+"DIMARO (paese)";7.03;7.25;7.25;8.13;8.13;10.08;10.08;12.23;12.33;13.16;13.16;14.38;14.38;16.53;16.53;17.03
+"FOLGARIDA";7.15;7.37;7.37;8.25;8.25;10.20;10.20;12.35;12.45;13.28;13.28;14.50;14.50;17.05;17.05;17.15
+"Belvedere - Arr.";7.18;7.40;7.40;8.28;8.28;10.23;10.23;12.38;12.48;13.31;13.31;14.53;14.53;17.08;17.08;17.18
+"Genziana";;;;8.35;8.35;10.30;10.30;;12.55;13.38;13.38;15.00;15.00
+"CAMPO CARLOMAGNO";;;;8.40;8.40;10.35;10.35;;13.00;13.43;13.43;15.05;15.05
+"Funivia Groste'";;;;8.42;8.42;10.37;10.37;;13.02;13.45;13.45;15.07;15.07
+"M. CAMPIGLIO";;;;8.48;8.48;10.43;10.43;;13.08;13.51;13.51;15.13;15.13
+"M.CAMPIGLIO (VV.FF.) - Arr.";;;;8.50;8.50;10.45;10.45;;13.10;13.53;13.53;15.15;15.15

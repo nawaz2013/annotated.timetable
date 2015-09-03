@@ -1,15 +1,15 @@
 Descr.breve:;"415"
-Descr.lunga:;"Lochere - S.Giuliana - Barco - Levico Terme"
-Validità:;"Orario in vigore dal 27/06/2015 al 09/09/2015"
+Descr.lunga:;"Lochere - S.Giuliana - Barco -Levico Terme"
+Validità:;"Orario in vigore dal 10/09/2015 al 24/06/2016"
 Orario:;""
-Frequenza:;"Solo nei giorni feriali";"Solo nei giorni feriali";"Solo nei giorni feriali";"Feriale escluso sabato";;"";"Solo nei giorni feriali";"Feriale escluso sabato"
-Linea:;;;"La corsa si effettua solo nei giorni di lunedì, mercoledì e venerdì feriali /   Nur montags - mittwochs und freitags wenn Werkstag";;"La corsa si effettua solo nei giorni di lunedì, mercoledì e venerdì feriali /   Nur montags - mittwochs und freitags wenn Werkstag";;
-Servizio:;"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE"
-"Lochere - Part.";;;9.05;;11.45
-"Quaere";;;9.07;;11.41
-"S.GIULIANA";;;9.10;;11.38
-"Maso Colpi bivio";;;9.15;;11.33
-"BARCO";6.40;7.25;|;9.36;11.28;13.24;17.43
-"LEVICO T. (Cimitero)";6.45;7.30;|;9.41;|;13.29;17.48
-"LEVICO T. ( P.za Medici)";6.46;7.31;|;9.42;|;13.30;17.49
-"LEVICO T.  (Autostaz.) - Arr.";6.48;7.33;9.20;9.45;11.51;13.32;17.51
+Frequenza:;"Solo nei giorni scolastici";"Solo  nei giorni feriali";"Solo nei giorni scolastici";"Feriale non scolastico";;"Feriale escluso sabato";;"Solo al sabato scolastico";"Scolastico escluso sabato";"Feriale non scolastico";"Solo nei giorni scolastici";"Scolastico escluso sabato";"Feriale non scol dal lun al ve"
+Linea:;;;;;"La corsa si effettua solo nei giorni feriali di Lunedì, Mercoledì e Venerdì";;"La corsa si effettua solo nei giorni feriali di Lunedì, Mercoledì e Venerdì";;;;"A Levico coincidenza con treno 5520 delle ore 14.44 per Trento";;
+Servizio:;"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE"
+"Lochere - Part.";6.25;;6.59;;9.05;;11.45;13.41;13.47;;14.26;17.58
+"Quaere";6.27;;7.01;;9.07;;11.41;13.39;13.45;;14.24;17.56
+"S.GIULIANA";6.30;;7.04;;9.10;;11.38;13.36;13.42;;14.21;17.53
+"Maso Colpi bivio";6.35;;7.09;;9.15;;11.33;13.31;13.37;;14.16;17.48
+"BARCO";6.40;6.40;7.14;7.14;|;9.36;11.28;13.26;13.32;13.21;14.11;17.43;17.43
+"LEVICO T. (Cimitero)";6.45;6.45;7.19;7.19;|;9.41;|;|;|;|;|;|;17.48
+"LEVICO T. ( P.za Medici)";6.46;6.46;7.20;7.20;|;9.42;|;|;|;|;|;|;17.49
+"LEVICO T.  (Autostaz.) - Arr.";6.48;6.48;7.22;7.22;9.20;9.45;11.51;13.47;13.53;13.42;14.34;18.04;17.51
