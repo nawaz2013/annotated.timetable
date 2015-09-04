@@ -1,12 +1,12 @@
 Descr.breve:;"245"
-Descr.lunga:;"Vestone-Idro-Anfo-Ponte Caffaro"
-Validità:;"Orario in vigore dal 10/09/2015 al 24/06/2016"
+Descr.lunga:;"Vestone - Idro - Anfo - Ponte Caffaro"
+Validità:;"Orario in vigore dal 27/06/2015 al 09/09/2015"
 Orario:;""
-Frequenza:;"Solo  nei giorni feriali";"Solo nei giorni festivi";"Solo nei giorni festivi";"Solo  nei giorni feriali";
-Linea:;"L'autobus prosegue per Tione";"L'autobus prosegue per Tione / A Vestone coincidenze da Brescia con corse SIA";;"A Vestone coinc. con corsa SIA: part. da Brescia 14.40 arrivo  Vestone  16.10  / L'autobus prosegue per Tione";"La corsa si effettua solo il Venerdì feriale e prosegue fino a Spiazzo  Rendena - Servizio svolto da autonoleggiatore privato / A Vestone coincidenze da Brescia con corse SIA"
-Servizio:;;;;;
-"VESTONE - Part.";10.00;10.00;16.30;16.40;20.20
-"LAVENONE";10.06;10.06;16.36;16.46;20.26
-"IDRO";10.10;10.10;16.40;16.50;20.30
-"ANFO";10.16;10.16;16.46;16.56;20.36
-"Ponte Caffaro (V. Caduti) - Arr.";10.30;10.30;17.00;17.10;20.50
+Frequenza:;"Solo nei giorni feriali";"Solo nei giorni festivi";"Solo nei giorni festivi";"Solo nei giorni feriali"
+Linea:;"A Vestone coincidenza da Brescia con corsa SIA";"A Vestone coincidenza da Brescia con corsa SIA";;"A Vestone coincidenza da Brescia con corsa SIA"
+Servizio:;;;;
+"VESTONE - Part.";10.00;10.00;16.25;16.40
+"LAVENONE";10.06;10.06;16.31;16.46
+"IDRO";10.10;10.10;16.35;16.50
+"ANFO";10.16;10.16;16.41;16.56
+"Ponte Caffaro (V. Caduti) - Arr.";10.30;10.30;16.55;17.10

@@ -171,7 +171,11 @@ public class AnnotatedTTGenerator {
 		}
 	};
 	  
+	// urban.
 	private String outputPattern = "2015091020160607";
+	// ex-urban.
+//	private String outputPattern = "2015062620150909";
+	
 	private Map<String, boolean[]> calendarEntries = new HashMap<String, boolean[]>();
 	private Map<String, List<String>> serviceIdMapping = new HashMap<String, List<String>>();
 	private static final String CALENDAR_ALLDAYS = "AD";
@@ -251,6 +255,11 @@ public class AnnotatedTTGenerator {
 		List<String> annotated = new ArrayList<String>();
 		for (String filename : files) {
 			String outputName = filename.substring(filename.lastIndexOf("/") + 1, filename.lastIndexOf("."));
+			
+			//ex-urban.
+			if (agencyId.equalsIgnoreCase("17")) {
+				outputName = outputName.replace("-", "_");
+			}
 			outputName = outputName + "-" + outputPattern + "-annotated.csv";
 			File file = new File(filename);
 			List<String> lines = Files.asCharSource(file, Charsets.UTF_8).readLines();
@@ -263,6 +272,8 @@ public class AnnotatedTTGenerator {
 			if (agencyId.equalsIgnoreCase("16")) {
 				outputName = outputName.substring(outputName.indexOf("-") + 1);
 			}
+			
+			
 			File annotatedCSV = new File(outputDirFile, outputName);
 			Files.asCharSink(annotatedCSV, Charsets.UTF_8).writeLines(annotated);
 
@@ -2366,7 +2377,7 @@ public class AnnotatedTTGenerator {
 			}
 			
 			// (remove)
-			if (mergedRoute) {
+			if (mergedRoute && !agencyId.equalsIgnoreCase("17")) {
 				boolean supportedRoute = false;
 				String fileName = outputfileName.substring(0, outputfileName.lastIndexOf(outputPattern + "-annotated.csv") - 1);
 				for (FileRouteAgencyModel agencyModel: fileRouteModel.getAgencies()) {

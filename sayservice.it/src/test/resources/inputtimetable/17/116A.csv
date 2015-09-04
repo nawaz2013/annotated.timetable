@@ -1,17 +1,17 @@
 Descr.breve:;"116"
 Descr.lunga:;"Civezzano - S.Agnese - Bosco"
-Validità:;"Orario in vigore dal 10/09/2015 al 24/06/2016"
+Validità:;"Orario in vigore dal 27/06/2015 al 09/09/2015"
 Orario:;""
-Frequenza:;"Solo  nei giorni feriali";"Solo  nei giorni feriali";"Solo  nei giorni feriali";"Scolastico escluso sabato";"Solo al sabato scolastico";"Solo  nei giorni feriali";"Scolastico escluso sabato";"Feriale escluso sabato";"Feriale escluso sabato";"Solo  nei giorni feriali"
-Linea:;;"Servizio svolto da autonoleggiatore privato";;;;;;;"Servizio svolto da autonoleggiatore privato";"Servizio svolto da autonoleggiatore privato"
-Servizio:;;;;;;;;;;
-"CIVEZZANO - Part.";10.40;11.35;12.45;13.40;13.45;14.35;16.05;17.05;18.00;19.50
-"Torchio";10.45;11.40;12.50;13.45;13.49;14.40;16.10;17.10;18.05;19.55
-"Cogatti";10.46;11.41;12.51;13.46;13.50;14.41;16.11;17.11;18.06;19.56
-"Seregnano";10.47;11.42;12.52;13.47;13.51;14.42;16.12;17.12;18.07;19.57
-"Rovere'";10.50;11.45;12.55;13.50;13.54;14.45;16.15;17.15;18.10;20.00
-"Barbaniga";10.54;11.49;12.59;13.54;13.57;14.49;16.19;17.19;18.14;20.04
-"S.AGNESE";10.56;11.51;13.01;13.56;13.59;14.51;16.21;17.21;18.16;20.06
-"Mazzanigo";10.58;11.53;13.03;13.58;14.00;14.53;16.23;17.23;18.18;20.08
-"Penedallo";11.01;11.56;13.06;14.01;14.03;14.56;16.26;17.26;18.21;20.11
-"BOSCO di CIVEZZANO - Arr.";11.10;12.05;13.15;14.10;14.10;15.05;16.35;17.35;18.30;20.20
+Frequenza:;"Solo nei giorni feriali";"Solo nei giorni feriali";"Solo nei giorni feriali";"Solo nei giorni feriali";"Feriale escluso sabato";"Feriale escluso sabato";"Solo nei giorni feriali"
+Linea:;"Servizio svolto da autonoleggiatore privato";"Servizio svolto da autonoleggiatore privato";;;"Servizio svolto da autonoleggiatore privato";"Servizio svolto da autonoleggiatore privato";"Servizio svolto da autonoleggiatore privato"
+Servizio:;;;;;;;
+"CIVEZZANO - Part.";10.40;11.35;12.40;14.35;17.00;18.00;19.50
+"Torchio";10.45;11.40;12.45;14.40;17.05;18.05;19.55
+"Cogatti";10.46;11.41;12.46;14.41;17.06;18.06;19.56
+"Seregnano";10.47;11.42;12.47;14.42;17.07;18.07;19.57
+"Rovere'";10.50;11.45;12.50;14.45;17.10;18.10;20.00
+"Barbaniga";10.54;11.49;12.54;14.49;17.14;18.14;20.04
+"S.AGNESE";10.56;11.51;12.56;14.51;17.16;18.16;20.06
+"Mazzanigo";10.58;11.53;12.58;14.53;17.18;18.18;20.08
+"Penedallo";11.01;11.56;13.01;14.56;17.21;18.21;20.11
+"BOSCO di CIVEZZANO - Arr.";11.10;12.05;13.10;15.05;17.30;18.30;20.20

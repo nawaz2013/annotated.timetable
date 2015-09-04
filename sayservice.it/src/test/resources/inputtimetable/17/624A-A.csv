@@ -1,11 +1,10 @@
 Descr.breve:;"624"
 Descr.lunga:;"Cles - Mechel"
-Validità:;"Orario in vigore dal 10/09/2015 al 24/06/2016"
+Validità:;"Orario in vigore dal 27/06/2015 al 09/09/2015"
 Orario:;""
-Frequenza:;"Solo  nei giorni feriali";"Feriale non scolastico";"Solo nei giorni scolastici";"Solo  nei giorni feriali"
-Linea:;"Servizio svolto da autonoleggiatore privato";;;
-Servizio:;"Bus  TTE";"Bus  TTE";"Bus  TTE";"Bus  TTE"
-"CLES (Autostaz.) - Part.";18.22;13.07;13.05
-"Cles (Piazza Fiera)";|;|;13.07;7.21
-"CLES (Ospedale)";18.24;13.09;13.10;7.23
-"MECHEL - Arr.";18.28;13.14;13.16;7.28
+Frequenza:;"Solo nei giorni feriali";"Solo nei giorni feriali";"Solo nei giorni feriali"
+Linea:;"Servizio svolto da autonoleggiatore privato";;
+Servizio:;"Servizio con Bus";"Servizio con Bus";"Servizio con Bus"
+"CLES (Autostaz.) - Part.";18.20;11.55;7.30
+"CLES (Ospedale)";18.22;11.57;7.32
+"MECHEL - Arr.";18.27;12.02;7.37

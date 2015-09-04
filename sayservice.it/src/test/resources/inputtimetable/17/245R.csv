@@ -1,12 +1,12 @@
 Descr.breve:;"245"
-Descr.lunga:;"Ponte Caffaro-Anfo-Idro-Vestone"
-Validità:;"Orario in vigore dal 10/09/2015 al 24/06/2016"
+Descr.lunga:;"Ponte Caffaro - Anfo - Idro - Vestone"
+Validità:;"Orario in vigore dal 27/06/2015 al 09/09/2015"
 Orario:;""
-Frequenza:;"Solo  nei giorni feriali";"Solo  nei giorni feriali";"Solo nei giorni festivi";"Solo nei giorni festivi"
-Linea:;"A Vestone coincidenze per Brescia con corse SIA";"A Vestone coincidenze per Brescia con corse SIA";"A Vestone coincidenze per Brescia con corse SIA";
-Servizio:;;;;
-"Ponte Caffaro (V. Caduti) - Part.";8.00;15.50;15.50;19.17
-"ANFO";8.14;16.04;16.04;19.31
-"IDRO";8.20;16.10;16.10;19.37
-"LAVENONE";8.24;16.14;16.14;19.41
-"VESTONE - Arr.";8.29;16.20;16.20;19.47
+Frequenza:;"Solo nei giorni feriali";"Solo nei giorni festivi";"Solo nei giorni feriali";"Solo nei giorni festivi";"Solo nei giorni festivi"
+Linea:;"A Vestone coincidenza per Brescia con corsa SIA";;"A Vestone coincidenza per Brescia con corsa SIA";"A Vestone coincidenza per Brescia con corsa SIA";
+Servizio:;;;;;
+"Ponte Caffaro (V. Caduti) - Part.";8.00;9.32;15.50;15.50;19.22
+"ANFO";8.14;9.46;16.04;16.04;19.36
+"IDRO";8.20;9.51;16.10;16.10;19.42
+"LAVENONE";8.24;9.54;16.14;16.14;19.46
+"VESTONE - Arr.";8.29;10.00;16.20;16.20;19.52

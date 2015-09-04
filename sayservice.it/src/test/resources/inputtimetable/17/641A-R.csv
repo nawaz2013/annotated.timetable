@@ -1,10 +1,10 @@
 Descr.breve:;"641"
 Descr.lunga:;"Malè - Bolentina"
-Validità:;"Orario in vigore dal 10/09/2015 al 24/06/2016"
+Validità:;"Orario in vigore dal 27/06/2015 al 09/09/2015"
 Orario:;""
-Frequenza:;"Solo nei giorni scolastici";"Solo nei giorni scolastici";"Solo nei giorni scolastici"
-Linea:;;;"Servizio svolto da autonoleggiatore privato"
-Servizio:;"Bus  TTE";"Bus  TTE";"Bus  TTE"
-"BOLENTINA - Part.";6.45;7.30;13.00
-"Montes";6.48;7.33;13.03
-"MALE' - Arr.";7.05;7.50;13.20
+Frequenza:;"Solo al Mercoledì  feriale"
+Linea:;"c"
+Servizio:;"Bus TTE"
+"BOLENTINA - Part.";8.20
+"Montes";8.23
+"MALE' - Arr.";8.40

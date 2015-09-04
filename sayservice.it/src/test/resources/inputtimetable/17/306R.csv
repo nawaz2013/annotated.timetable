@@ -1,37 +1,34 @@
 Descr.breve:;"306"
-Descr.lunga:;"Lavarone-Folgaria-Calliano-Rovereto"
-Validità:;"Orario in vigore dal 10/09/2015 al 24/06/2016"
+Descr.lunga:;"Lavarone Cappella - Folgaria - Calliano  - Rovereto"
+Validità:;"Orario in vigore dal 27/06/2015 al 09/09/2015"
 Orario:;""
-Frequenza:;"Solo postfestivo scolastico";"Solo nei giorni scolastici";"Solo nei giorni scolastici";"Solo nei giorni scolastici";"Feriale non scolastico";"Solo nei giorni scolastici";"Feriale non scolastico";"Solo nei giorni scolastici";"Solo nei giorni scolastici";"Solo nei giorni scolastici";"Scolastico escluso sabato";"Solo al sabato scolastico";;"Solo  nei giorni feriali";"Solo  nei giorni feriali";;"Solo nei giorni scolastici";"Solo  nei giorni feriali";"Solo nei giorni scolastici";"Scolastico escluso sabato";"Solo  nei giorni feriali";"Solo nei giorni festivi"
-Linea:;;;;;;;;"Servizio svolto da autonoleggiatore privato";;;"Servizio svolto da autonoleggiatore privato";;"La corsa si effettua solo al martedì feriale";;;"La corsa si effettua solo al martedì feriale / Servizio svolto da autonoleggiatore privato";;;;;;"La corsa si effettua solo nei giorni festivi dal 26/12/2015 al 29/03/2016"
-Servizio:;;;;;;;;;;;;;;;;;;;;;;
-"LAVARONE CAPPELLA - Part.";5.45;;;;;6.21;6.21;;;6.30;;;;;9.48;;;13.18;;;16.03;16.20
-"Gionghi";5.48;;;;;6.24;6.24;;;6.33;;;;;9.51;;;13.21;;;16.06;16.23
-"Bertoldi";5.51;;;;;6.27;6.27;;;|;;;;;9.54;;;13.24;;;16.11;16.26
-"Stengheli";5.52;;;;;6.28;6.28;;;|;;;;;9.55;;;13.25;;;16.12;16.27
-"Lanzino";5.54;;;;;6.30;6.30;;;|;;;;;9.57;;;13.27;;;16.14;16.29
-"LAVARONE CHIESA";5.56;;;;;6.32;6.32;;;6.35;;;;7.20;9.59;;;13.29;;;16.16;16.31
-"Lago di Lavarone";5.58;;;;;6.34;6.34;;;|;;;;7.22;10.01;;;13.31;;;16.18;16.33
-"Virti";|;;;;;|;|;;;6.39;;;;7.15;|;;;|;;;|;|
-"Nosellari";6.03;;;;;6.38;6.38;;;|;;;;7.26;10.05;;;13.35;;;16.22;16.37
-"CARBONARE - Arr.";6.08;;;;;6.43;6.43;;;6.43;;;;7.31;10.10;;;13.40;;;16.27;16.43
-"CARBONARE - Part.";6.08;6.08;;;6.08;;;;;6.43;;;;7.32;10.11;;;13.41;14.20;;16.28;16.43
-"S.Sebastiano";6.15;6.15;;;6.15;;;;;6.50;;;;7.39;10.18;;;13.48;14.27;;16.35;16.50
-"Passo del Sommo";6.18;6.18;;;6.18;;;;;6.53;;;;7.42;10.21;;;13.51;14.30;;16.38;16.53
-"Costa";6.22;6.22;;;6.22;;;;;6.57;;;;7.46;10.25;;;13.55;14.34;;16.42;16.57
-"Folgaria - P.le N.Unite - Arr.";6.27;6.27;;;6.27;;;;;7.02;;;;7.51;10.30;;;14.00;14.39;;16.47;17.02
-"Folgaria - P.le N.Unite - Part.";;;6.27;;6.27;;;;6.55;;7.02;7.02;;7.52;10.30;10.55;12.05;14.01;14.39;;16.48;17.22
-"Folgaria (Via Battisti)";;;6.29;;6.29;;;;6.56;;|;|;;7.54;10.32;10.57;12.07;14.03;14.41;;16.50;17.24
-"Carpeneda";;;6.35;;6.35;;;;7.00;;|;|;;8.00;;11.03;12.13;14.09;;;16.56;17.30
-"Peneri";;;6.40;;6.40;;;;7.05;;|;|;;8.05;;11.08;12.18;14.14;;;17.01;17.35
-"Guardia di Folgaria - Part.";;;|;;|;;;6.55;|;;|;|;7.50;|;;11.34;|;|;;;|;|
-"Mezzomonte";;;6.47;;6.47;;;7.10;7.11;;7.07;7.07;8.05;8.12;;11.16;12.25;14.21;;16.26;17.08;17.42
-"Dietrobeseno";;;6.53;;6.53;;;;7.16;;|;|;;8.18;;;12.31;14.27;;16.32;17.14;17.48
-"CALLIANO(bivio Folgaria)";;;6.58;;6.58;;;;7.21;;7.21;7.21;;8.23;;;12.36;14.32;;16.39;17.19;17.53
-"CALLIANO";;;6.58;7.00;7.00;;;;|;;|;|;;|;;;|;|;;|;|;|
-"Volano";;;;7.06;7.07;;;;7.28;;7.28;7.28;;8.30;;;12.43;14.39;;16.45;17.26;18.00
-"S.Ilario";;;;7.10;7.09;;;;7.32;;7.32;7.32;;8.34;;;12.47;14.43;;16.49;17.30;18.04
-"ROVERETO (Via Manzoni)";;;;7.15;7.14;;;;|;;7.37;7.37;;8.39;;;12.52;14.48;;16.54;17.35;18.09
-"ROV. (C. Rosmini-Monu.) - Arr.";;;;|;|;;;;7.46;;|;|;;|;;;|;|;;|;|;|
-"ROVERETO (Staz.F.S.) - Arr.";;;;|;7.16;;;;;;7.39;7.39;;8.41;;;12.54;14.50;;16.56;17.37;18.11
-"Rovereto - Ist. Veronesi - Arr.";;;;7.16
+Frequenza:;"Feriale escluso sabato";"Solo nei giorni feriali";;"Solo nei giorni feriali";"Solo nei giorni festivi";"Solo nei giorni feriali";"Solo nei giorni feriali";"Solo nei giorni feriali";"Solo nei giorni feriali";"Solo nei giorni festivi";"Solo nei giorni festivi";"Solo nei giorni feriali";"Solo nei giorni feriali";"Solo nei giorni festivi";"Solo nei giorni festivi";"Feriale escluso sabato"
+Linea:;;;"La corsa si effettua solo al martedì feriale";;;"La corsa si effettua solo al martedì feriale / Servizio svolto da autonoleggiatore privato";;;;;;;;;"Servizio svolto da autonoleggiatore privato";
+Servizio:;;;;;;;;;;;;;;;;
+"LAVARONE CAPPELLA - Part.";;6.21;;7.00;;;10.15;12.46;12.55;12.46;12.55;17.01;17.10;17.01;17.10;18.10
+"Gionghi";;6.24;;7.03;;;10.18;12.49;12.58;12.49;12.58;17.04;17.13;17.04;17.13;18.13
+"Bertoldi";;6.27;;7.06;;;10.21;12.52;|;12.52;|;17.07;|;17.07;|;18.16
+"Stengheli";;6.28;;7.07;;;10.22;12.53;|;12.53;|;17.08;|;17.08;|;18.17
+"Lanzino";;6.30;;7.09;;;10.24;12.55;|;12.55;|;17.10;|;17.10;|;18.19
+"LAVARONE CHIESA";;6.32;;7.10;7.20;;10.26;12.57;13.00;12.57;13.00;17.12;17.15;17.12;17.15;18.21
+"Lago di Lavarone";;6.34;;7.12;7.22;;10.28;12.59;|;12.59;|;17.14;|;17.14;|;18.23
+"Virti";;|;;6.55;7.15;;|;|;13.04;|;13.04;|;17.19;|;17.19;|
+"Nosellari";;6.38;;7.16;7.26;;10.32;13.03;|;13.03;|;17.18;|;17.18;|;18.27
+"CARBONARE - Arr.";;6.43;;7.21;7.31;;10.37;13.08;13.08;13.08;13.08;17.23;17.23;17.23;17.23;18.32
+"CARBONARE - Part.";6.08;;;7.22;7.32;;10.38;;13.09;;13.09;;17.24;17.24
+"S.Sebastiano";6.15;;;7.29;7.39;;10.45;;13.16;;13.16;;17.31;17.31
+"Passo del Sommo";6.18;;;7.32;7.42;;10.48;;13.19;;13.19;;17.34;17.34
+"Costa";6.22;;;7.36;7.46;;10.52;;13.23;;13.23;;17.38;17.38
+"Folgaria - P.le N.Unite - Arr.";6.27;;;7.41;7.51;;10.57;;13.28;;13.28;;17.43;17.43
+"Folgaria - P.le N.Unite - Part.";6.27;;;7.42;7.52;10.55;10.57;;13.29;;13.29;;17.44;17.44
+"Folgaria (Via Battisti)";6.29;;;7.44;7.54;10.57;10.59;;13.31;;13.31;;17.46;17.46
+"Carpeneda";6.35;;;7.50;8.00;11.03;;;13.37;;13.37;;17.52;17.52
+"Peneri";6.40;;;7.55;8.05;11.08;;;13.42;;13.42;;17.57;17.57
+"Guardia di Folgaria - Part.";|;;7.45;|;|;11.34;;;|;;|;;|;|
+"Mezzomonte";6.47;;8.00;8.02;8.12;11.16;;;13.49;;13.49;;18.04;18.04
+"Dietrobeseno";6.53;;;8.08;8.18;;;;13.55;;13.55;;18.10;18.10
+"CALLIANO(bivio Folgaria)";6.58;;;8.13;8.23;;;;14.00;;14.00;;18.15;18.15
+"Volano";7.05;;;8.20;8.30;;;;14.07;;14.07;;18.22;18.22
+"S.Ilario";7.09;;;8.24;8.34;;;;14.11;;14.11;;18.26;18.26
+"ROVERETO (Via Manzoni)";7.14;;;8.29;8.39;;;;14.16;;14.16;;18.31;18.31
+"ROVERETO (Staz.F.S.) - Arr.";7.16;;;8.31;8.41;;;;14.18;;14.18;;18.33;18.33

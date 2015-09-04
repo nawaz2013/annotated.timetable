@@ -1,18 +1,18 @@
 Descr.breve:;"634"
 Descr.lunga:;"Cles - Livo - Lanza di Rumo"
-Validità:;"Orario in vigore dal 10/09/2015 al 24/06/2016"
+Validità:;"Orario in vigore dal 27/06/2015 al 09/09/2015"
 Orario:;""
-Frequenza:;"Solo nei giorni festivi";"Solo  nei giorni feriali";"Solo  nei giorni feriali";"Solo nei giorni scolastici";"Solo  nei giorni feriali";"Solo nei giorni festivi";"Solo  nei giorni feriali";"Solo  nei giorni feriali";"Solo nei giorni festivi";"Solo  nei giorni feriali"
-Linea:;"Servizio svolto da autonoleggiatore privato";"La corsa transita da Bresimo";;;"La corsa transita da Bresimo";"Servizio svolto da autonoleggiatore privato / La corsa transita da Bresimo";"Servizio svolto da autonoleggiatore privato";"Servizio svolto da autonoleggiatore privato / La corsa prosegue per Bresimo";"Servizio svolto da autonoleggiatore privato";"Servizio svolto da autonoleggiatore privato"
-Servizio:;"Bus  TTE";"Bus  TTE";"Bus  TTE";"Bus  TTE";"Bus  TTE";"Bus  TTE";"Bus  TTE";"Bus  TTE";"Bus  TTE";"Bus  TTE"
-"CLES (Autostaz.) - Part.";9.40;10.00;12.25;13.10;14.45;16.23;17.50;18.37;18.37;19.52
-"Cles (Piazza Fiera)";9.42;10.02;12.27;13.12;14.47;16.25;17.52;18.39;18.39;19.54
-"Mostizzolo";9.48;10.08;12.33;13.18;14.53;16.31;17.58;18.45;18.45;20.00
-"Scanna";9.54;10.14;12.39;13.24;14.59;16.37;18.04;18.51;18.51;20.06
-"Varollo";9.55;10.15;12.40;13.25;15.00;16.38;18.05;18.52;18.52;20.07
-"LIVO";9.58;10.18;12.43;13.28;15.03;16.41;18.08;18.55;18.55;20.10
-"Preghena nord";10.21;10.41;12.46;13.31;15.26;17.04;18.10;;18.57;20.12
-"Marcena";10.30;10.50;12.55;13.40;15.35;17.12;18.18;;19.05;20.20
-"MIONE";10.32;10.52;12.57;13.42;15.37;17.13;18.19;;19.06;20.21
-"Mocenigo";10.37;10.57;13.02;13.47;15.42;17.16;18.22;;19.09;20.24
-"LANZA DI RUMO - Arr.";10.40;11.00;13.05;13.50;15.45;17.18;18.24;;19.11;20.26
+Frequenza:;"Solo nei giorni feriali";"Solo nei giorni festivi";"Solo nei giorni feriali";"Solo nei giorni feriali";"Solo nei giorni feriali";"Solo nei giorni festivi";"Solo nei giorni feriali";"Solo nei giorni feriali";"Solo nei giorni feriali"
+Linea:;;"Servizio svolto da autonoleggiatore privato";"La corsa transita da Bresimo";;"La corsa transita da Bresimo";"Servizio svolto da autonoleggiatore privato / La corsa transita da Bresimo";"Servizio svolto da autonoleggiatore privato";"Servizio svolto da autonoleggiatore privato / La corsa prosegue per Bresimo";"Servizio svolto da autonoleggiatore privato"
+Servizio:;"Servizio con Bus";"Servizio con Bus";"Servizio con Bus";"Servizio con Bus";"Servizio con Bus";"Servizio con Bus";"Servizio con Bus";"Servizio con Bus";"Servizio con Bus"
+"CLES (Autostaz.) - Part.";8.10;9.40;10.45;12.25;14.57;17.40;17.47;18.40;19.50
+"Cles (Piazza Fiera)";8.12;9.42;10.47;12.27;14.59;17.42;17.49;18.42;19.52
+"Mostizzolo";8.18;9.48;10.53;12.33;15.05;17.48;17.55;18.48;19.58
+"Scanna";8.24;9.54;10.59;12.39;15.11;17.54;18.01;18.54;20.04
+"Varollo";8.25;9.55;11.00;12.40;15.12;17.55;18.02;18.55;20.05
+"LIVO";8.28;9.58;11.03;12.43;15.15;17.58;18.05;18.58;20.08
+"Preghena nord";8.31;10.21;11.26;12.46;15.38;18.21;18.07;;20.10
+"Marcena";8.40;10.29;11.35;12.55;15.47;18.29;18.15;;20.18
+"MIONE";8.42;10.30;11.37;12.57;15.49;18.30;18.16;;20.19
+"Mocenigo";8.47;10.33;11.42;13.02;15.54;18.33;18.19;;20.22
+"LANZA DI RUMO - Arr.";8.50;10.35;11.45;13.05;15.57;18.35;18.21;;20.24

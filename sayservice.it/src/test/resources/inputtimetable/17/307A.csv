@@ -1,34 +1,34 @@
 Descr.breve:;"307"
-Descr.lunga:;"Rovereto-Mori-Chizzola-Cornè-Ala-Avio"
-Validità:;"Orario in vigore dal 10/09/2015 al 24/06/2016"
+Descr.lunga:;"Rovereto - Mori - Chizzola - Cornè - Ala - Avio"
+Validità:;"Orario in vigore dal 27/06/2015 al 09/09/2015"
 Orario:;""
-Frequenza:;"Scolastico escluso sabato";"Scolastico escluso sabato";"Feriale non scol dal lun al ve";"Feriale escluso sabato";"Feriale escluso sabato";"Solo al sabato feriale";"Solo al sabato feriale";"Scolastico escluso sabato";"Feriale non scol dal lun al ve";"Solo  nei giorni feriali";"Solo nei giorni scolastici";"Solo nei giorni scolastici";"Feriale escluso sabato";"Scolastico escluso sabato";"Feriale non scol dal lun al ve";"Solo  nei giorni feriali";"Solo nei giorni scolastici";"Feriale non scolastico";"Solo  nei giorni feriali";"Feriale escluso sabato";"Scolastico escluso sabato";"Solo al sabato scolastico";"Feriale non scolastico";"Solo  nei giorni feriali"
-Linea:;;"Servizio svolto da autonoleggiatore privato";"A Serravalle la corsa effettua la fermata "scaletta" anzichè "Pensilina"";;;;;"Servizio svolto da autonoleggiatore privato / A Serravalle la corsa effettua la fermata "scaletta" anzichè "Pensilina"";"A Serravalle la corsa effettua la fermata "scaletta" anzichè "Pensilina"";;;;;;;;;;;;;"L'autobus proviene da Trento";"L'autobus proviene da Trento";"A Serravalle la corsa effettua la fermata "scaletta" anzichè "Pensilina""
-Servizio:;;;;;;;;;;;;;;;;;;;;;;;;
-"ROVERETO (Via Manzoni) - Part.";;;;10.50;;10.50;;;;12.35;13.30;;16.45;;;17.30;;;17.32;;18.27;18.27;18.27
-"ROVERETO (Staz.F.S.)";;;;10.52;;10.52;;;;12.37;13.32;;16.47;;;17.32;;;17.34;;18.29;18.29;18.29
-"ROVERETO (Ospedale)";;;;10.58;;10.58;;;;12.43;13.38;;16.53;;;17.38;;;|;;|;|;|
-"Lizzanella";;;;11.01;;11.01;;;;12.46;13.41;;16.56;;;17.41;;;17.38;;18.33;18.33;18.33
-"Lizzana";;;;|;;|;;;;|;|;;|;;;17.44;;;|;;|;|;|
-"Marco";;;;|;;|;;;;|;|;;|;;;17.50;;;|;;|;|;|
-"Ravazzone di Mori";;;;11.10;;11.10;;;;12.55;13.50;;17.05;;;|;;;17.47;;18.42;18.42;18.42
-"Serravalle";;9.54;9.54;|;;|;;11.19;11.19;|;|;;|;;;17.55;;;|;;|;|;|;18.56
-"MORI (Bar Centrale)";8.07;|;|;11.12;;11.12;;|;|;12.57;|;;17.07;;;|;;;17.50;17.50;18.45;18.45;18.45;18.45
-"MORI (Terranera)";8.08;|;|;11.13;;11.13;;|;|;12.58;|;;17.08;;;|;;;;17.51;;;;18.46
-"S.Cecilia";8.13;|;|;11.18;;11.18;;|;|;13.03;13.55;;17.13;;;|;;;;17.56;;;;18.51
-"CHIZZOLA";8.17;|;|;11.22;;11.22;;|;|;13.07;13.59;;17.17;;;|;;;;18.00;;;;18.55
-"CHIZZOLA(V.De Gasperi)";|;9.55;9.55;|;;|;;11.20;11.20;|;|;;|;;;17.56;;;;|;;;;19.01
-"CORNE' - Arr.";|;|;|;|;;|;;|;|;|;|;;|;;;|;;;;18.13;;;;19.16
-"Loc. Cazzanelli di Corne' - Arr.";|;|;|;|;;|;;|;|;|;|;;|;;;|;;;;18.18;;;;19.21
-"Villetta";8.18;9.56;9.56;11.23;;11.23;;11.21;11.21;13.08;14.00;;17.18;;;17.57
-"S.Lucia di Ala";8.20;9.58;9.58;11.25;;11.25;;11.23;11.23;13.10;14.02;;17.20;;;17.59
-"Pilcante";8.25;10.03;10.03;11.30;;11.30;;11.28;11.28;13.15;14.07;;17.25;;;18.04
-"Pilcante Bivio";8.27;10.06;10.06;11.32;;11.32;;;;|;14.09;;17.27;;;18.07
-"ALA (Via Malfatti)";8.28;10.07;10.07;11.33;;11.33;;;;|;14.10;;17.28;;;18.08
-"ALA (Ospedale bivio)";8.30;10.09;10.09;11.35;;11.35;;;;|;14.12;;17.30;;;18.10
-"ALA (Staz. FS) - Arr.";8.31;;;11.36;;11.36;;;;|;14.13;;17.31;;;18.11
-"ALA (Staz. FS) - Part.";;;;;11.49;;11.49;;;|;;14.14;;17.39;17.39;;18.14;18.14
-"Campagnola";;;;;11.53;;11.53;;;13.17;;14.18;;17.43;17.43;;18.18;18.18
-"Sabbionara.";;;;;11.58;;11.58;;;13.22;;14.23;;17.48;17.48;;18.23;18.23
-"AVIO";;;;;12.01;;12.01;;;13.25;;14.26;;17.51;17.51;;18.26;18.26
-"AVIO (Via M.Baldo) - Arr.";;;;;12.03;;12.03;;;13.27;;14.28;;17.53;17.53;;18.28;18.28
+Frequenza:;"Feriale escluso sabato";"Solo nei gg. Feriali";"Solo nei gg. Feriali";"Solo nei gg. Feriali";"Feriale escluso sabato";"Feriale escluso sabato";"Solo nei gg. Feriali";"Feriale escluso sabato";"Solo al sabato feriale";"Solo nei gg. Feriali";"Feriale escluso sabato";"Feriale escluso sabato";"Solo al sabato feriale";"Solo nei gg. Feriali"
+Linea:;;;;;"La corsa è sospesa dal 10.8 al 14.8.2015 / Entfaellt ab 10.8 bis 14.8.2015";;;;;;"La corsa è sospesa dal 10.8 al 14.8.2015 / Entfaellt ab 10.8 bis 14.8.2015";;;"A Serravalle la corsa effettua la fermata "scaletta" anzichè "Pensilina""
+Servizio:;;;;;;;;;;;;;;
+"ROVERETO (Via Manzoni) - Part.";;10.50;;12.35;16.45;;17.30;;;17.32;;18.27;18.27
+"ROVERETO (Staz.F.S.)";;10.52;;12.37;16.47;;17.32;;;17.34;;18.29;18.29
+"ROVERETO (Ospedale)";;10.58;;12.43;16.53;;17.38;;;|;;|;|
+"Lizzanella";;11.01;;12.46;16.56;;17.41;;;17.38;;18.33;18.33
+"Lizzana";;|;;|;|;;17.44;;;|;;|;|
+"Marco";;|;;|;|;;17.50;;;|;;|;|
+"Ravazzone di Mori";;11.10;;12.55;17.05;;|;;;17.47;;18.42;18.42
+"Serravalle";9.54;|;;|;|;;17.55;;;|;;|;|;18.56
+"MORI (Bar Centrale)";|;11.12;;12.57;17.07;;|;;;17.50;17.50;18.45;18.45;18.45
+"MORI (Terranera)";|;11.13;;12.58;17.08;;|;;;;17.51;;;18.46
+"S.Cecilia";|;11.18;;13.03;17.13;;|;;;;17.56;;;18.51
+"CHIZZOLA";|;11.22;;13.07;17.17;;|;;;;18.00;;;18.55
+"CHIZZOLA(V.De Gasperi)";9.55;|;;|;|;;17.56;;;;|;;;19.01
+"CORNE' - Arr.";|;|;;|;|;;|;;;;18.13;;;19.16
+"Loc. Cazzanelli di Corne' - Arr.";|;|;;|;|;;|;;;;18.18;;;19.21
+"Villetta";9.56;11.23;;13.08;17.18;;17.57
+"S.Lucia di Ala";9.58;11.25;;13.10;17.20;;17.59
+"Pilcante";10.03;11.30;;13.15;17.25;;18.04
+"Pilcante Bivio";10.06;11.32;;|;17.27;;18.07
+"ALA (Via Malfatti)";10.07;11.33;;|;17.28;;18.08
+"ALA (Ospedale bivio)";10.09;11.35;;|;17.30;;18.10
+"ALA (Staz. FS) - Arr.";;11.36;;|;17.31;;18.11
+"ALA (Staz. FS) - Part.";;;11.54;|;;17.39;18.14;18.14;18.14
+"Campagnola";;;11.58;13.17;;17.43;|;18.18;18.18
+"Sabbionara.";;;12.03;13.22;;17.48;|;18.23;18.23
+"AVIO";;;12.06;13.25;;17.51;18.41;18.26;18.26
+"AVIO (Via M.Baldo) - Arr.";;;12.08;13.27;;17.53;;18.28;18.28

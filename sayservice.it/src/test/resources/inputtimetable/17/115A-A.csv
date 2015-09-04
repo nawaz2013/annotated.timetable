@@ -1,13 +1,13 @@
 Descr.breve:;"115"
 Descr.lunga:;"Pergine - Civezzano"
-Validità:;"Orario in vigore dal 10/09/2015 al 24/06/2016"
+Validità:;"Orario in vigore dal 27/06/2015 al 09/09/2015"
 Orario:;""
-Frequenza:;"Scolastico escluso sabato";"Solo al sabato scolastico";"Scolastico escluso sabato";"Solo al sabato scolastico";"Solo al sabato feriale";"Feriale escluso sabato"
-Linea:;;;"Servizio svolto da autonoleggiatore privato";"Servizio svolto da autonoleggiatore privato";"Servizio svolto da autonoleggiatore privato";"Servizio svolto da autonoleggiatore privato"
-Servizio:;;;;;;
-"PERGINE (C.Intermodale) - Part.";16.25;13.20;13.20;12.32;11.20;11.20
-"PERGINE V. (P.Gavazzi)";16.27;13.22;13.22;12.34;11.22;11.22
-"Cire' (ex statale)";16.31;13.29;13.29;12.41;11.27;11.29
-"Pine' bivio";|;|;|;|;|;|
-"Civezzano (Quadrivio)";16.34;13.34;13.34;12.46;11.30;11.34
-"CIVEZZANO - Arr.";16.35;13.35;13.35;12.47;11.31;11.35
+Frequenza:;"Solo nei giorni feriali"
+Linea:;
+Servizio:;
+"PERGINE (C.Intermodale) - Part.";11.20
+"PERGINE V. (P.Gavazzi)";11.22
+"Cire' (ex statale)";11.29
+"Pine' bivio";|
+"Civezzano (Quadrivio)";11.34
+"CIVEZZANO - Arr.";11.35

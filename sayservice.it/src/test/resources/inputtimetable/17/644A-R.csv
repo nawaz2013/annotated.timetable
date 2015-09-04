@@ -1,13 +1,13 @@
 Descr.breve:;"644"
 Descr.lunga:;"Pellizzano - Menas"
-Validità:;"Orario in vigore dal 10/09/2015 al 24/06/2016"
+Validità:;"Orario in vigore dal 27/06/2015 al 09/09/2015"
 Orario:;""
-Frequenza:;"Solo nei giorni scolastici";"Feriale non scolastico";"Solo nei giorni scolastici";;"Solo  nei giorni feriali"
-Linea:;"Servizio svolto da autonoleggiatore privato";;;"La corsa si effettua solo nei giorni feriali di giovedì";
-Servizio:;"Bus  TTE";"Bus  TTE";"Bus  TTE";"Bus  TTE";"Bus  TTE"
-"MENAS - Part.";6.23;6.58;7.15;;13.20
-"Ortise'";6.25;7.00;7.17;;13.22
-"Castello (Pellizzano)";6.30;7.05;7.22;11.35;13.27
-"Termenago";6.33;7.08;7.25;11.38;13.30
-"Claiano Bivio";6.39;7.14;7.31;11.44;13.36
-"PELLIZZANO - Arr.";6.43;7.18;7.35;11.48;13.40
+Frequenza:;"Feriale escluso Sab";;"Feriale escluso Sab"
+Linea:;"Servizio svolto da autonoleggiatore privato";"La corsa si effettua solo al giovedì feriale";"Servizio svolto da autonoleggiatore privato"
+Servizio:;"Servizio con Bus";"Servizio con Bus";"Servizio con Bus"
+"MENAS - Part.";8.25;11.40;13.05
+"Ortise'";8.27;11.42;13.07
+"Castello (Pellizzano)";8.32;11.47;13.12
+"Termenago";8.35;11.50;13.15
+"Claiano Bivio";8.41;11.56;13.21
+"PELLIZZANO - Arr.";8.45;12.00;13.25

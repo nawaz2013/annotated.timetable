@@ -1,11 +1,11 @@
 Descr.breve:;"633"
 Descr.lunga:;"Cles - Mostizzolo - Cis"
-Validità:;"Orario in vigore dal 10/09/2015 al 24/06/2016"
+Validità:;"Orario in vigore dal 27/06/2015 al 09/09/2015"
 Orario:;""
-Frequenza:;"Solo nei giorni scolastici";"Solo nei giorni scolastici";"Solo al sabato scolastico";"Scolastico escluso sabato"
-Linea:;"Servizio svolto da autonoleggiatore privato";;"Servizio svolto da autonoleggiatore privato";"Servizio svolto da autonoleggiatore privato"
-Servizio:;"Bus  TTE";"Bus  TTE";"Bus  TTE";"Bus  TTE"
-"CLES (Autostaz.) - Part.";17.10;13.05;7.02;7.02
-"Cles (Piazza Fiera)";17.12;13.07;7.04;7.04
-"Mostizzolo (Bivio)";17.18;13.13;7.10;7.10
-"CIS - Arr.";17.25;13.20;7.17;7.17
+Frequenza:;"Feriale escluso sabato";"Feriale escluso sabato";"Feriale escluso sabato"
+Linea:;"Servizio svolto da autonoleggiatore privato";;
+Servizio:;"Servizio con Bus";"Servizio con Bus";"Servizio con Bus"
+"CLES (Autostaz.) - Part.";17.05;11.40;7.10
+"Cles (Piazza Fiera)";17.07;11.42;7.12
+"Mostizzolo (Bivio)";17.13;11.48;7.18
+"CIS - Arr.";17.20;11.55;7.25

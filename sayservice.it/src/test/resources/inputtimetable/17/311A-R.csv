@@ -1,0 +1,22 @@
+Descr.breve:;"311"
+Descr.lunga:;"Rovereto - Villa Lagarina - Nomi - Aldeno"
+Validità:;"Orario in vigore dal 27/06/2015 al 09/09/2015"
+Orario:;""
+Frequenza:;"Solo nei giorni feriali";"Solo nei giorni feriali";"Feriale escluso sabato";"Solo al sabato feriale";"Solo nei giorni feriali";"Feriale escluso sabato";"Solo nei giorni feriali"
+Linea:;;;;;"La tratta Nomi-Rovereto si effettua con bus urbano (Servizio Piano d'Area)";;"La tratta Nomi-Rovereto si effettua con bus urbano (Servizio Piano d'Area)"
+Servizio:;;;;;;;
+"ALDENO - Part.";6.55;12.40;13.10;13.10;15.05;17.50
+"NOMI - Arr.";7.06;12.51;13.21;13.21;15.16;18.01
+"NOMI - Part.";7.06;12.51;13.21;13.21;15.28;18.01;18.28
+"Chiusole";7.10;12.55;13.25;13.25;15.31;18.05;18.31
+"Pomarolo (Chiesa)";7.12;12.57;13.27;13.27;15.33;18.07;18.33
+"Pomarolo - Arr.";7.13;12.58;13.28;13.28;15.34;18.08;18.34
+"Pomarolo - Part.";7.13;;13.28;13.28;15.34;;18.34
+"Piazzo di Villa Lagarina";7.15;;13.30;13.30;15.37;;18.37
+"Villa Lagarina";7.19;;13.34;13.34;15.40;;18.40
+"S.Ilario";7.20;;13.35;13.35;15.42;;18.42
+"S.Ilario";|;;|;|;|;;|
+"ROVERETO (Via Manzoni)";7.31;;13.42;13.42;|;;|
+"ROV. (C. Rosmini-Monu.)";;;;;|;;|
+"ROV. (C.Rosmini PT)";;;;;15.49;;18.49
+"ROVERETO (Staz.F.S.) - Arr.";;;13.44;13.44;15.51;;18.51

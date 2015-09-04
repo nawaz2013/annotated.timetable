@@ -1,14 +1,14 @@
 Descr.breve:;"407"
 Descr.lunga:;"Borgo Valsugana - Telve - Torcegno"
-Validità:;"Orario in vigore dal 10/09/2015 al 24/06/2016"
+Validità:;"Orario in vigore dal 27/06/2015 al 09/09/2015"
 Orario:;""
-Frequenza:;"Solo  nei giorni feriali";"Feriale escluso sabato";"Solo al sabato feriale";"Solo al mercoledì  feriale";"Solo al mercoledì  feriale";"Feriale escluso sabato";"Solo  nei giorni feriali";"Solo nei giorni scolastici";"Solo  nei giorni feriali";;"Feriale escl.sab non scol.";"Feriale escluso sabato"
-Linea:;;;;;;;;;;"La corsa si effettua solo nei giorni di scuola dal lunedì al giovedì";;"Servizio svolto da autonoleggiatore privato"
-Servizio:;"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE"
-"BORGO V.(C.Intermodale) - Part.";6.50;7.55;7.55;9.00;10.00;10.50;12.45;13.29;14.28;16.30;17.22;19.05
-"BORGO VALS.(Ospedale)";6.53;7.58;7.58;9.03;10.03;10.53;12.48;13.32;14.31;16.33;17.25;19.08
-"Telve";7.00;8.05;8.05;9.10;10.10;11.00;12.55;13.39;14.38;16.40;17.32;19.15
-"Ponte S.Giovanni";7.04;8.09;8.09;9.14;10.14;11.04;12.59;13.43;14.42;16.44;17.36;19.19
-"Telve di Sopra";7.05;8.10;8.10;9.15;10.15;11.05;13.00;13.44;14.43;16.45;17.37;19.20
-"Campestrini";|;|;|;|;|;11.12;13.07;|;|;16.52;17.44;|
-"TORCEGNO - Arr.";7.10;8.15;8.15;9.20;10.20;11.15;13.10;13.49;14.48;16.55;17.47;19.25
+Frequenza:;"Feriale escluso sabato";"Solo al sabato feriale";"Feriale escluso sabato";"Solo al sabato feriale";"Solo al mercoledì  feriale";"Solo al mercoledì  feriale";"Feriale escluso sabato";"Solo nei giorni feriali";"Solo nei giorni feriali";"Feriale escluso sabato";"Solo al sabato feriale";"Feriale escluso sabato"
+Linea:;;;;;;;;;;"Servizio svolto da autonoleggiatore privato";"Servizio svolto da autonoleggiatore privato";
+Servizio:;"Servizio con Bus";"Servizio con Bus";"Servizio con Bus";"Servizio con Bus";"Servizio con Bus";"Servizio con Bus";"Servizio con Bus";"Servizio con Bus";"Servizio con Bus";"Servizio con Bus";"Servizio con Bus";"Servizio con Bus"
+"BORGO V.(C.Intermodale) - Part.";6.50;6.50;7.55;7.55;9.00;10.00;10.50;12.35;14.25;17.20;17.20;19.05
+"BORGO VALS.(Ospedale)";6.53;6.53;7.58;7.58;9.03;10.03;10.53;12.38;14.28;17.23;17.23;19.08
+"Telve";7.00;7.00;8.05;8.05;9.10;10.10;11.00;12.45;14.35;17.30;17.30;19.15
+"Ponte S.Giovanni";7.04;7.04;8.09;8.09;9.14;10.14;11.04;12.49;14.39;17.34;17.34;19.19
+"Telve di Sopra";7.05;7.05;8.10;8.10;9.15;10.15;11.05;12.50;14.40;17.35;17.35;19.20
+"Campestrini";|;|;|;|;|;|;11.12;12.57;|;17.42;17.42;|
+"TORCEGNO - Arr.";7.10;7.10;8.15;8.15;9.20;10.20;11.15;13.00;14.45;17.45;17.45;19.25

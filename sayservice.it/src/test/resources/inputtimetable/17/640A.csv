@@ -1,16 +1,17 @@
 Descr.breve:;"640"
 Descr.lunga:;"Malè - Rabbi Bagni - Somrabbi"
-Validità:;"Orario in vigore dal 10/09/2015 al 24/06/2016"
+Validità:;"Orario in vigore dal 28/06/2015 al 09/09/2015"
 Orario:;""
-Frequenza:;;"Solo  nei giorni feriali";"Solo nei giorni scolastici";"Solo  nei giorni feriali";"Solo nei giorni festivi";"Solo nei giorni scolastici";"Scolastico escluso sabato";"Solo  nei giorni feriali";"Solo nei giorni festivi";"Solo  nei giorni feriali"
-Linea:;;;;;;;;;;
-Servizio:;"Bus  TTE";"Bus  TTE";"Bus  TTE";"Bus  TTE";"Bus  TTE";"Bus  TTE";"Bus  TTE";"Bus  TTE";"Bus  TTE";"Bus  TTE"
-"MALE' - Part.";6.35;9.55;11.55;12.52;12.52;13.10;15.45;17.45;18.07;19.10
-"Magras (Bivio)";6.40;10.00;12.00;12.57;12.57;13.15;15.50;17.50;18.12;19.15
-"Pracorno";6.44;10.04;12.04;13.01;13.01;13.19;15.54;17.54;18.16;19.19
-"Tasse'";6.49;10.09;12.09;13.06;13.06;13.24;15.59;17.59;18.21;19.24
-"S.BERNARDO";6.53;10.13;12.13;13.10;13.10;13.28;16.03;18.03;18.25;19.28
-"Piazzola Bivio";6.55;10.15;|;13.12;13.12;13.30;;|;|;19.30
-"Rabbi Bagni";6.58;10.18;|;13.15;13.15;13.33;;|;|;19.33
-"PIAZZOLA";7.07;10.27;12.20;13.24;13.24;13.42;;18.10;18.32;19.42
-"SOMRABBI - Arr.";7.10;10.30;;13.27;13.27;13.45;;18.13
+Frequenza:;;;"Solo nei gg. Feriali";"Solo nei gg. Festivi";"Solo nei gg. Festivi";"Solo nei gg. Feriali";"Solo nei gg. Feriali";"Solo nei gg. Festivi";;"Solo nei gg. Feriali";"Solo nei gg. Festivi";"Solo nei gg. Feriali"
+Linea:;;;;;;;;;;;;
+Servizio:;"Servizio con Bus";"Servizio con Bus";"Servizio con Bus";"Servizio con Bus";"Servizio con Bus";"Servizio con Bus";"Servizio con Bus";"Servizio con Bus";"Servizio con Bus";"Servizio con Bus";"Servizio con Bus";"Servizio con Bus"
+"MALE' - Part.";6.32;8.05;9.35;9.55;10.55;11.10;12.20;12.20;15.25;18.15;18.45;19.05
+"Magras (Bivio)";6.37;8.10;9.40;10.00;11.00;11.15;12.25;12.25;15.30;18.20;18.50;19.10
+"Pracorno";6.41;8.14;9.44;10.04;11.04;11.19;12.29;12.29;15.34;18.24;18.54;19.14
+"Tasse'";6.46;8.19;9.49;10.08;11.09;11.24;12.34;12.34;15.39;18.29;18.59;19.19
+"S.BERNARDO";6.50;8.23;9.53;10.13;11.13;11.28;12.38;12.38;15.43;18.33;19.03;19.23
+"Piazzola Bivio";6.52;8.25;9.55;10.15;11.15;11.30;12.40;12.40;15.45;18.35;19.05;|
+"Rabbi Bagni";6.55;8.28;9.58;10.18;11.18;11.33;12.43;12.43;15.48;18.38;19.08;|
+"Campeggio al Plan - Arr.";|;8.29;9.59;10.19;11.19;11.34;12.44;12.44;15.49;18.39;19.09;|
+"PIAZZOLA";7.04;;10.09;10.29;;;12.54;12.54;;18.49;19.19;19.30
+"SOMRABBI - Arr.";7.07;;;;;;12.58;12.58;;18.53;19.23

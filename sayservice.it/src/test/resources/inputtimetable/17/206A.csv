@@ -1,22 +1,23 @@
 Descr.breve:;"206"
-Descr.lunga:;"Trento-Cadine-Sopramonte-Terlago-M.Terlago"
-Validità:;"Orario in vigore dal 10/09/2015 al 24/06/2016"
+Descr.lunga:;"Trento - Sopramonte - Terlago - Monte Terlago - Laghi di Lamar"
+Validità:;"Orario in vigore dal 27/06/2015 al 09/09/2015"
 Orario:;""
-Frequenza:;"Solo nei giorni scolastici";"Solo  nei giorni feriali";"Solo  nei giorni feriali";"Solo nei giorni festivi";"Solo nei giorni festivi";"Feriale escluso sabato";"Solo  nei giorni feriali";"Feriale escluso sabato";"Solo  nei giorni feriali";"Feriale escluso sabato";"Solo nei giorni festivi";"Solo nei giorni festivi";"Solo  nei giorni feriali";"Solo  nei giorni feriali";"Solo nei giorni scolastici";"Solo nei giorni scolastici";"Solo  nei giorni feriali";"Feriale escluso sabato";"Feriale escluso sabato";"Feriale escluso sabato";"Solo al sabato feriale";"Feriale escluso sabato";"Feriale escluso sabato";"Solo nei giorni festivi";"Solo  nei giorni feriali";"Feriale escluso sabato";"Feriale escluso sabato";"Solo al sabato feriale";"Solo  nei giorni feriali";"Solo  nei giorni feriali"
-Linea:;;;;;"Servizio svolto da autonoleggiatore privato";"Servizio svolto da autonoleggiatore privato";"Servizio svolto da autonoleggiatore privato";"Servizio svolto da autonoleggiatore privato / La coincidenza da Trento indicata si effettua con il S.Urbano Linea 1";;"Servizio svolto da autonoleggiatore privato / La coincidenza da Trento indicata si effettua con il S.Urbano Linea 1";;"Servizio svolto da autonoleggiatore privato";;;"Servizio svolto da autonoleggiatore privato";;;"Servizio svolto da autonoleggiatore privato / La coincidenza da Trento indicata si effettua con il S.Urbano Linea 1";"Servizio svolto da autonoleggiatore privato / La coincidenza da Trento indicata si effettua con il S.Urbano Linea 1";"Servizio svolto da autonoleggiatore privato";;;"Servizio svolto da autonoleggiatore privato";"Servizio svolto da autonoleggiatore privato";"Servizio svolto da autonoleggiatore privato";"Servizio svolto da autonoleggiatore privato / La coincidenza da Trento indicata si effettua con il S.Urbano Linea 1";"Servizio svolto da autonoleggiatore privato";;"Servizio svolto da autonoleggiatore privato";"Servizio svolto da autonoleggiatore privato"
-Servizio:;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-"TRENTO   (Autostaz.) - Part.";7.15;8.00;;8.00;;;10.10;;11.00;;12.20;;12.30;12.55;;13.35;14.40;;;16.10;16.10;16.45;;17.00;17.15;;18.15;18.15;18.35;19.30
-"Cadine";|;8.13;8.13;8.13;8.13;;10.23;;11.13;;12.33;12.33;12.43;|;;13.48;14.53;;;16.23;16.23;16.58;;17.13;17.28;;18.28;18.28;18.48;19.43
-"Terlago bivio";|;;8.15;;|;;10.25;;11.15;;;|;12.45;13.08;13.10;13.50;14.55;;;|;16.25;17.00;;17.15;17.30;;|;18.30;18.50;19.45
-"Sopramonte - Part.";|;;|;;|;9.44;|;10.44;|;11.44;;|;|;;|;|;|;15.10;15.44;|;|;|;;|;|;17.44;|;|;|;|
-"Sopramonte (Via Belina)";|;;|;;|;9.45;|;10.45;|;11.45;;|;|;;|;|;|;15.11;15.45;|;|;|;;|;|;17.45;|;|;|;|
-"Maso Banal";|;;|;;|;9.47;|;10.47;|;11.47;;|;|;;|;|;|;15.13;15.47;|;|;|;;|;|;17.47;|;|;|;|
-"Sopramonte.";|;;|;;|;9.49;|;10.49;|;11.49;;|;|;;|;|;|;15.15;15.49;|;|;|;;|;|;17.49;|;|;|;|
-"Baselga del Bondone";|;;|;;|;9.52;|;10.52;|;;;|;|;;|;|;|;;15.52;|;|;|;;|;|;17.52;|;|;|;|
-"Vigolo Baselga (paese)";|;;|;;|;9.55;|;10.55;|;;;|;|;;|;|;|;;15.55;|;|;|;;|;|;17.55;|;|;|;|
-"Lago di Terlago (H. Lillà)";|;;|;;8.16;|;|;|;|;;;12.36;|;;13.11;|;|;;|;16.26;|;|;;|;|;|;18.31;|;|;|
-"TERLAGO";7.32;;8.20;;8.20;10.00;10.30;11.00;11.20;;;12.40;12.50;;13.15;13.55;15.00;;16.00;16.30;16.30;17.05;17.05;17.20;17.35;18.00;18.35;18.35;18.55;19.50
-"COVELO";7.46;;8.25;;8.25;10.05;10.35;11.05;11.38;;;12.45;12.55;;13.20;14.00;15.05;;16.05;16.40;16.40;;17.08;17.25;17.45;18.05;18.40;18.40;19.00;19.55
-"Maso Ariol";7.45;;8.27;;8.27;10.07;10.37;11.07;11.36;;;12.47;12.57;;13.22;14.02;15.07;;16.07;16.42;16.42;;17.10;17.27;17.47;18.07;18.42;18.42;19.02;19.57
-"MONTE TERLAGO (P.zza)";7.42;;8.33;;8.33;10.11;10.43;11.11;11.28;;;12.53;13.03;;13.28;14.08;15.13;;16.11;16.48;16.48;;17.12;17.33;17.53;18.11;18.48;18.48;19.08;20.03
-"M.TERLAGO (H. 2 Laghi) - Arr.";7.40;;8.35;;8.35;10.13;10.45;11.13;11.30;;;12.55;13.05;;13.30;14.10;15.15;;16.13;16.50;16.50;;17.15;17.35;17.55;18.13;18.50;18.50;19.10;20.05
+Frequenza:;"Solo nei giorni feriali";"Solo nei giorni festivi";"Solo nei giorni festivi";"Feriale escluso sabato";"Solo nei giorni feriali";"Feriale escluso sabato";"Solo nei giorni feriali";"Feriale escluso sabato";"Solo nei giorni festivi";"Solo nei giorni festivi";"Solo nei giorni feriali";"Solo nei giorni feriali";"Feriale escluso sabato";"Feriale escluso sabato";"Solo nei giorni feriali";"Feriale escluso sabato";"Feriale escluso sabato";"Solo nei giorni festivi";"Solo nei giorni feriali";"Feriale escluso sabato";"Solo nei giorni feriali";"Solo nei giorni feriali";"Feriale escluso sabato"
+Linea:;;;"Servizio svolto da autonoleggiatore privato";"Servizio svolto da autonoleggiatore privato";;"Servizio svolto da autonoleggiatore privato / La coincidenza da Trento indicata si effettua con il S.Urbano Linea 1";;"Servizio svolto da autonoleggiatore privato / La coincidenza da Trento indicata si effettua con il S.Urbano Linea 1";;"Servizio svolto da autonoleggiatore privato";;;"Servizio svolto da autonoleggiatore privato / La coincidenza da Trento indicata si effettua con il S.Urbano Linea 1";"Servizio svolto da autonoleggiatore privato / La coincidenza da Trento indicata si effettua con il S.Urbano Linea 1";;;"Servizio svolto da autonoleggiatore privato";"Servizio svolto da autonoleggiatore privato";;"Servizio svolto da autonoleggiatore privato / La coincidenza da Trento indicata si effettua con il S.Urbano Linea 1";"Servizio svolto da autonoleggiatore privato";"Servizio svolto da autonoleggiatore privato";
+Servizio:;;;;;;;;;;;;;;;;;;;;;;;
+"TRENTO   (Autostaz.) - Part.";8.00;8.00;;;10.10;;11.00;;12.20;;12.30;14.45;;;16.10;16.45;;17.00;17.15;;18.15;18.40;19.30
+"Cadine";8.13;8.13;8.13;;10.23;;11.13;;12.33;12.33;12.43;14.58;;;16.23;16.58;;17.13;17.28;;18.28;18.53;19.43
+"Terlago bivio";8.15;;|;;10.25;;11.15;;;|;12.45;15.00;;;16.25;17.00;;17.15;17.30;;18.30;18.55;19.45
+"Sopramonte - Part.";|;;|;9.45;|;10.45;|;11.45;;|;|;|;15.10;15.45;|;|;;|;|;17.45;|;|;|
+"Sopramonte (Via Belina)";|;;|;9.46;|;10.46;|;11.46;;|;|;|;15.11;15.46;|;|;;|;|;17.46;|;|;|
+"Maso Banal";|;;|;9.48;|;10.48;|;11.48;;|;|;|;15.13;15.48;|;|;;|;|;17.48;|;|;|
+"Sopramonte.";|;;|;9.50;|;10.50;|;11.50;;|;|;|;15.15;15.50;|;|;;|;|;17.50;|;|;|
+"Baselga del Bondone";|;;|;9.53;|;10.53;|;;;|;|;|;;15.53;|;|;;|;|;17.53;|;|;|
+"Vigolo Baselga (paese)";|;;|;9.56;|;10.56;|;;;|;|;|;;15.56;|;|;;|;|;17.56;|;|;|
+"Lago di Terlago (H. Lillà)";|;;8.16;|;|;|;|;;;12.36;|;|;;|;|;|;;|;|;17.58;|;|;|
+"TERLAGO";8.20;;8.20;10.01;10.30;11.01;11.20;;;12.40;12.50;15.05;;16.01;16.30;17.05;17.05;17.20;17.35;18.04;18.35;19.00;19.50
+"COVELO";8.25;;8.25;10.06;10.35;11.06;11.38;;;12.45;12.55;15.10;;16.06;16.40;;17.08;17.25;17.40;18.09;18.40;19.05;19.55
+"Maso Ariol";8.27;;8.27;10.08;10.37;11.08;11.36;;;12.47;12.57;15.12;;16.08;16.42;;17.10;17.27;17.42;18.11;18.42;19.07;19.57
+"MONTE TERLAGO (P.zza)";8.33;;8.33;10.12;10.43;11.12;11.28;;;12.53;13.03;15.18;;16.12;16.48;;17.12;17.33;17.48;18.15;18.48;19.13;20.03
+"M.TERLAGO (H. 2 Laghi) - Arr.";8.35;;8.35;10.14;10.45;11.14;11.30;;;12.55;13.05;15.20;;16.14;16.50;;17.15;17.35;17.50;18.17;18.50;19.15;20.05
+"Laghi di Lamar - Arr.";;;;;10.49;;;;;12.59;13.09
