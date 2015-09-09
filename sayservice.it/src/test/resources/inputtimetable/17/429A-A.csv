@@ -1,9 +1,10 @@
 Descr.breve:;"429"
 Descr.lunga:;"Centrale - Regnana"
-Validità:;"Orario in vigore dal 27/06/2015 al 09/09/2015"
+Validità:;"Orario in vigore dal 10/09/2015 al 24/06/2016"
 Orario:;""
-Frequenza:;"Feriale escluso sabato";"Solo nei giorni feriali"
-Linea:;;
-Servizio:;;
-"CENTRALE DI BEDOLLO - Part.";18.35;13.25
-"REGNANA - Arr.";18.40;13.30
+Frequenza:;"Feriale escluso sabato";"Solo nei giorni scolastici";"Feriale non scolastico";"Solo al sabato scolastico";"Scolastico escluso sabato"
+Linea:;;;;;"Servizio svolto da autonoleggiatore privato"
+Servizio:;;;;;
+"CENTRALE DI BEDOLLO - Part.";18.05;14.15;13.35;13.35;13.35
+"Regnana bv(dopo A.Costalta) - Part.";18.05;14.15;13.35;13.35;13.35
+"REGNANA - Arr.";18.10;14.20;13.40;13.40;13.40

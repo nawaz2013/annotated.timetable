@@ -1,16 +1,14 @@
 Descr.breve:;"111"
 Descr.lunga:;"Cavalese - Carano - Villaggio Veronza"
-Validità:;"Orario in vigore dal 27/06/2015 al 09/09/2015"
+Validità:;"Orario in vigore dal 10/09/2015 al 24/06/2016"
 Orario:;""
-Frequenza:;"Solo nei giorni feriali";"Solo nei giorni feriali";"Solo nei giorni feriali";"Solo nei giorni feriali";"Solo nei giorni feriali";"Solo nei giorni feriali"
-Linea:;;;;;;
-Servizio:;;;;;;
-"CAVALESE  (Autostaz.) - Part.";8.10;11.15;12.10;14.10;16.10;18.10
-"VARENA";|;11.25;|;|;|;|
-"Carano (Via Giovanelli 11)";8.15;|;12.15;14.15;16.15;18.15
-"CARANO (Municipio)";8.16;11.38;12.16;14.16;16.16;18.16
-"Carano (Garni' Belvedere)";8.19;|;12.19;14.19;16.19;18.19
-"V.VERONZA (biv.Pizzeria)";8.21;|;12.21;14.21;16.21;18.21
-"V.VERONZA ( Via Pale)";8.22;|;12.22;14.22;16.22;18.22
-"V.VERONZA (H.Veronza) - Arr.";8.24;|;12.24;14.24;16.24;18.24
-"Aguai - Arr.";8.36;11.47
+Frequenza:;"Solo  nei giorni feriali";"Solo  nei giorni feriali";"Solo  nei giorni feriali";"Solo  nei giorni feriali";"Scolastico escluso sabato";"Solo al sabato scolastico";"Solo nei giorni scolastici";"Solo nei giorni scolastici";"Solo  nei giorni feriali";"Solo  nei giorni feriali";"Solo  nei giorni feriali"
+Linea:;;"Transita Via Varena";;"Transita Via Varena";;;"Transita Via Varena-Daiano";;"Transita Via Varena";"Transita Via Varena-Daiano";"Servizio svolto da autonoleggiatore privato"
+Servizio:;;;;;;;;;;;
+"CAVALESE  (Autostaz.) - Part.";7.50;8.23;10.15;11.00;12.45;12.50;13.20;13.50;14.30;17.00;17.30
+"CARANO (Municipio)";7.58;8.46;10.21;11.23;12.51;12.56;13.43;13.56;14.53;17.23;17.53
+"Carano (Garni' Belvedere)";8.01;;10.24;;12.54;12.59;13.46;13.59;;17.26
+"V.VERONZA (biv.Pizzeria)";8.03;;10.26;;;;|;;;17.28
+"V.VERONZA ( Via Pale)";8.04;;10.27;;;;|;;;17.29
+"V.VERONZA (H.Veronza) - Arr.";8.06;;10.29;;;;|;;;17.31
+"Aguai - Arr.";;;10.41;;;;13.53

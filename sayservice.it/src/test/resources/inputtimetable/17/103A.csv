@@ -1,37 +1,40 @@
 Descr.breve:;"103"
 Descr.lunga:;"Trento - Civezzano - Sover - Cavalese"
-Validità:;"Orario in vigore dal 27/06/2015 al 09/09/2015"
+Validità:;"Orario in vigore dal 10/09/2015 al 24/06/2016"
 Orario:;""
-Frequenza:;"Solo nei giorni feriali";"Solo nei giorni feriali";"Solo nei giorni feriali";"Solo nei giorni feriali";"Feriale escluso sabato";"Solo al sabato feriale";"Solo nei giorni feriali";"Solo nei giorni feriali";"Solo nei giorni festivi";"Solo nei giorni feriali";"Solo nei giorni feriali";"Solo al sabato feriale";"Feriale escluso sabato";"Solo nei giorni feriali";"Solo nei giorni festivi";"Feriale escluso sabato";"Feriale escluso sabato";"Feriale escluso sabato";"Solo al sabato feriale";"Solo nei giorni feriali"
-Linea:;;;;"Servizio svolto da autonoleggiatore privato";;;;;"Servizio svolto da autonoleggiatore privato";;;;;;"Servizio svolto da autonoleggiatore privato";;"Servizio svolto da autonoleggiatore privato";;"Servizio svolto da autonoleggiatore privato";"Servizio svolto da autonoleggiatore privato"
-Servizio:;;;;;;;;;;;;;;;;;;;;
-"TRENTO   (Autostaz.) - Part.";;6.53;7.40;10.20;11.15;11.15;12.20;;12.20;14.15;;;16.40;17.40;17.40;17.40;18.35;;18.35;19.30
-"Trento (Port'Aquila)";;6.57;7.44;10.24;11.19;11.19;12.24;;12.24;14.19;;;16.44;17.44;17.44;17.44;18.39;;18.39;19.34
-"TRENTO (Via Valsugana)";;7.00;7.47;10.27;11.22;11.22;12.27;;12.27;14.22;;;16.47;17.47;17.47;17.47;18.42;;18.42;19.37
-"Ponte Alto";;7.03;7.50;10.30;11.25;11.25;12.30;;12.30;14.25;;;16.50;17.50;17.50;17.50;18.45;;18.45;19.40
-"Pine' bivio";;7.09;7.56;10.36;11.31;11.31;12.36;;12.36;14.31;14.31;;16.56;17.56;17.56;17.56;18.51;;18.51;19.46
-"CIVEZZANO";;7.13;8.00;10.40;11.35;11.35;12.40;12.40;12.40;;14.35;;17.00;18.00;18.00;18.00;18.55;;18.55;19.50
-"Valle Fornace";;7.22;;;11.44;;12.49;12.49;12.49;;;;17.09;18.09;18.09;18.09;19.04;19.04;19.04
-"FORNACE";;|;;;11.50;;|;12.55;|;;;;17.15;|;|;18.15;|;19.10;19.10
-"S.Stefano";;|;;;|;;|;13.00;|;;;;|;|;|;18.20;|;;|
-"Pian del Gac - Arr.";;|;;;|;;|;13.05;|;;;;|;|;|;|;|;;|
-"LASES";;7.28;;;12.00;;12.55;;12.55;;;;17.25;18.15;18.15;18.27;19.10;;19.20
-"Albiano (Via Roma)";;7.31;;;12.03;;12.58;;12.58;;;;17.28;18.18;18.18;|;19.13;;19.23
-"ALBIANO";;7.33;;;12.05;;13.00;;13.00;;;;17.30;18.20;18.20;|;19.15;;19.25
-"Lona";;7.45;;;12.17;;13.12;;13.12;;;;17.42;18.32;18.32;18.31;19.27;;19.37
-"Sevignano";;7.48;;;12.20;;13.15;;13.15;;;;17.45;18.35;18.35;18.34;19.30;;19.40
-"Piazzo di Segonzano Bivio";;7.51;;;12.23;;13.18;;13.18;;;;17.48;18.38;18.38;18.37;19.33;;19.43
-"Piazzo di Segonzano - Arr.";;|;;;|;;|;;|;;;;|;|;|;18.40;|;;|
-"SCANCIO SEGONZANO";;7.53;;;12.25;;13.20;;13.20;;;;17.50;18.40;18.40;;19.35;;19.45
-"Scancio S. (Snack Bar) - Part.";6.46;7.54;;;12.26;;13.21;;13.21;;;17.51;17.51;18.41;18.41;;19.36;;19.46
-"Gaggio/Gresta bivio";6.52;8.01;;;12.32;;13.27;;13.27;;;17.57;17.57;18.47;18.47;;19.42;;19.52
-"Valcava bivio";6.55;8.04;;;12.35;;13.30;;13.30;;;18.00;18.00;18.50;18.50;;19.45;;19.55
-"SOVER - Part.";7.00;8.09;;;12.40;;13.35;;13.35;;;18.05;18.05;18.55;18.55;;19.50;;20.00
-"Piscine";7.05;8.14;;;12.45;;13.40;;13.40;;;18.10;18.10;19.00;19.00
-"CASATTA di VALFL.";7.10;8.19;;;12.50;;13.45;;13.45;;;18.15;18.15;19.05;19.05
-"Pradel";7.13;8.22;;;;;13.48;;13.48;;;18.18;18.18;19.08;19.08
-"Stramentizzo (Bivio)";7.18;8.27;;;;;13.53;;13.53;;;18.23;18.23;19.13;19.13
-"Molina di Fiemme";7.21;8.30;;;;;13.56;;13.56;;;18.26;18.26;19.16;19.16
-"Castello di Fiemme";7.27;8.36;;;;;14.02;;14.02;;;18.32;18.32;19.22;19.22
-"Cavalese (Ospedale)";|;8.40;;;;;14.06;;14.06;;;|;|;|;|
-"CAVALESE  (Autostaz.) - Arr.";7.35;8.45;;;;;14.11;;14.11;;;18.40;18.40;19.30;19.30
+Frequenza:;"Solo  nei giorni feriali";"Solo  nei giorni feriali";"Solo  nei giorni feriali";"Solo  nei giorni feriali";"Solo al sabato feriale";"Feriale escluso sabato";"Solo  nei giorni feriali";"Solo  nei giorni feriali";"Scolastico escluso sabato";"Solo nei giorni festivi";"Scolastico escluso sabato";"Scolastico escluso sabato";"Scolastico escluso sabato";"Scolastico escluso sabato";"Solo al sabato scolastico";"Solo al sabato scolastico";"Solo al sabato scolastico";"Solo  nei giorni feriali";"Solo nei giorni festivi";"Solo  nei giorni feriali";"Solo  nei giorni feriali";"Solo  nei giorni feriali";"Solo nei giorni festivi";"Feriale escluso sabato";"Solo  nei giorni feriali";"Solo  nei giorni feriali";"Solo  nei giorni feriali"
+Linea:;;;;;;;;;;;;;"Servizio svolto da autonoleggiatore privato";"Al venerdì la corsa prosegue fino a Molina di Fiemme.";;;"Servizio svolto da autonoleggiatore privato";;;;;;;;"Servizio svolto da autonoleggiatore privato";;"Servizio svolto da autonoleggiatore privato"
+Servizio:;;;;;;;;;;;;;;;;;;;;;;;;;;;
+"TRENTO   (Autostaz.) - Part.";;6.53;7.40;10.20;11.15;11.15;12.20;12.20;;12.20;13.10;13.10;;13.15;13.15;;;14.15;14.15;;16.40;17.40;17.40;17.40;18.35;;19.30
+"Trento(V.Giusti-L.Da Vinci";;|;|;|;|;|;|;|;;|;13.13;13.13;;13.18;13.18;;;|;|;;|;|;|;|;|;;|
+"Trento (Via Piave 50)";;|;|;|;|;|;|;|;;|;13.18;13.18;;13.23;13.23;;;|;|;;|;|;|;|;|;;|
+"Trento (Port'Aquila)";;6.57;7.44;10.24;11.19;11.19;12.24;12.24;;12.24;13.24;|;;|;13.29;;;14.19;14.19;;16.44;17.44;17.44;17.44;18.39;;19.34
+"Trento (Via S.Francesco)";;|;|;|;|;|;|;|;;|;13.20;13.20;;13.25;13.25;;;|;|;;|;|;|;|;|;;|
+"TRENTO (Via Valsugana)";;7.00;7.47;10.27;11.22;11.22;12.27;12.27;;12.27;13.27;13.27;;13.32;13.32;;;14.23;14.23;;16.47;17.47;17.47;17.47;18.42;;19.37
+"Ponte Alto";;7.03;7.50;10.30;11.25;11.25;12.30;12.30;;12.30;13.30;13.30;;13.35;13.35;;;14.26;14.26;;16.50;17.50;17.50;17.50;18.45;;19.40
+"Pine' bivio";;7.09;7.56;10.36;11.31;11.31;12.36;12.36;;12.36;13.36;13.36;;13.41;13.41;;;14.31;14.31;14.31;16.56;17.56;17.56;17.56;18.51;;19.46
+"CIVEZZANO";;7.13;8.00;10.40;11.35;11.35;12.40;12.40;12.50;12.40;13.40;13.40;;13.45;13.45;13.45;;;;14.35;17.00;18.00;18.00;18.00;18.55;;19.50
+"Valle Fornace";;7.22;;;;11.44;12.49;12.49;12.59;12.49;13.49;13.49;;13.54;13.54;13.54;;;;;17.09;18.09;18.09;18.09;19.04;19.04
+"FORNACE";;|;;;;11.50;|;12.55;|;|;|;13.55;13.55;|;|;14.00;14.00;;;;17.15;|;|;18.15;|;19.10
+"S.Stefano";;|;;;;|;|;13.00;|;|;|;;14.00;|;|;|;14.05;;;;|;|;|;18.20;|
+"Pian del Gac - Arr.";;|;;;;|;|;;|;|;|;;14.05;|;|;|;14.10;;;;|;|;|;|;|
+"LASES";;7.28;;;;12.00;12.55;;13.05;12.55;13.55;;;14.00;14.00;14.10;;;;;17.25;18.15;18.15;18.27;19.10
+"Albiano (Via Roma)";;7.31;;;;12.03;12.58;;13.08;12.58;13.58;;;|;|;14.13;;;;;17.28;18.18;18.18;|;19.13
+"ALBIANO";;7.33;;;;12.05;13.00;;13.10;13.00;14.00;;;|;|;14.15;;;;;17.30;18.20;18.20;|;19.15
+"Lona";;7.45;;;;12.17;13.12;;13.22;13.12;14.12;;;14.04;14.04;14.27;;;;;17.42;18.32;18.32;18.31;19.27
+"Sevignano";;7.48;;;;12.20;13.15;;13.25;13.15;14.15;;;14.07;14.07;14.30;;;;;17.45;18.35;18.35;18.34;19.30
+"Piazzo di Segonzano Bivio";;7.51;;;;12.23;13.18;;13.28;13.18;14.18;;;14.10;14.10;14.33;;;;;17.48;18.38;18.38;18.37;19.33
+"Piazzo di Segonzano - Arr.";;|;;;;|;|;;13.31;|;14.21;;;|;|;14.36;;;;;|;|;|;18.40;|
+"SCANCIO SEGONZANO";;7.53;;;;12.25;13.20;;;13.20;;;;14.12;14.12;;;;;;17.50;18.40;18.40;;19.35
+"Scancio S. (Snack Bar) - Part.";6.41;7.54;;;;12.26;13.21;;;13.21;;;;14.13;14.13;;;;;;17.51;18.41;18.41;;19.36
+"Gaggio/Gresta bivio";6.47;8.01;;;;12.32;13.27;;;13.27;;;;14.19;14.19;;;;;;17.57;18.47;18.47;;19.42
+"Valcava bivio";6.50;8.04;;;;12.35;13.30;;;13.30;;;;14.22;14.22;;;;;;18.00;18.50;18.50;;19.45
+"SOVER - Part.";6.55;8.09;;;;12.40;13.35;;;13.35;;;;14.27;14.27;;;;;;18.05;18.55;18.55;;19.50
+"Piscine";7.00;8.14;;;;12.45;13.40;;;13.40;;;;14.32;14.32;;;;;;18.10;19.00;19.00
+"CASATTA di VALFL.";7.05;8.19;;;;12.50;13.45;;;13.45;;;;14.37;14.37;;;;;;18.15;19.05;19.05
+"Pradel";7.08;8.22;;;;;13.48;;;13.48;;;;;14.40;;;;;;18.18;19.08;19.08
+"Stramentizzo (Bivio)";7.13;8.27;;;;;13.53;;;13.53;;;;;14.45;;;;;;18.23;19.13;19.13
+"Molina di Fiemme";7.16;8.30;;;;;13.56;;;13.56;;;;;14.48;;;;;;18.26;19.16;19.16
+"Castello di Fiemme";7.22;8.36;;;;;14.02;;;14.02;;;;;;;;;;;18.32;19.22;19.22
+"Cavalese (Ospedale)";|;8.40;;;;;14.06;;;14.06;;;;;;;;;;;|;|;|
+"CAVALESE  (Autostaz.) - Arr.";7.30;8.45;;;;;14.11;;;14.11;;;;;;;;;;;18.40;19.30;19.30

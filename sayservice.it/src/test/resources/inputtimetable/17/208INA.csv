@@ -1,0 +1,21 @@
+Descr.breve:;"208"
+Descr.lunga:;"Ponte Arche-S.Lorenzo in B.-Molveno"
+Validità:;"Orario in vigore dal 10/09/2015 al 24/06/2016"
+Orario:;""
+Frequenza:;"Solo  nei giorni feriali";"Solo  nei giorni feriali";"Solo  nei giorni feriali";"Solo  nei giorni feriali";"Solo nei giorni scolastici";"Scolastico escluso sabato";"Scolastico escluso sabato";"Solo al sabato scolastico";"Scolastico escluso sabato";;"Scolastico escluso sabato";"Solo nei giorni scolastici";"Feriale non scolastico";"Feriale escluso sabato"
+Linea:;"Servizio svolto da autonoleggiatore privato";;"Servizio svolto da autonoleggiatore privato";;"Servizio svolto da autonoleggiatore privato";"Servizio svolto da autonoleggiatore privato";;;;"La corsa si effettua solo dal lunedì al giovedì scolastico ";"Servizio svolto da autonoleggiatore privato";"Servizio svolto da autonoleggiatore privato";;
+Servizio:;;;;;;;;;;;;;;
+"PONTE ARCHE (Autost.) - Part.";12.10;12.56;;12.56;;13.48;13.48;13.48;14.28;16.27;17.22;17.50;17.50;18.40
+"Villa Banale";12.17;13.03;;13.03;;13.55;13.55;13.55;14.35;16.34;17.29;17.57;17.57;18.47
+"Dos Doa";|;|;;13.05;;|;13.57;|;|;|;|;|;|;|
+"Premione";12.20;13.06;;|;;13.58;|;13.58;14.38;16.37;17.32;18.00;18.00;18.50
+"STENICO";12.25;13.11;;|;;14.03;|;14.03;14.43;16.42;17.37;18.05;18.05;18.55
+"Seo";12.29;13.15;;|;;14.07;|;14.07;14.47;16.46;17.41;18.09;18.09;18.59
+"Sclemo";12.33;13.19;;|;;14.11;|;14.11;14.51;16.50;17.45;18.13;18.13;19.03
+"Tavodo";12.37;;;|;;;|;14.15;14.55;16.54;17.49;18.17;18.17;19.07
+"Tavodo (SP)";12.38;;13.10;13.09;;;14.01;14.16;14.56;16.55;17.50;18.18;18.18;19.08
+"Andogno - Part.";|;;13.12;|;;;|;|;|;|;|;|;|;|
+"Dorsino";12.41;;13.18;13.12;;;14.04;14.19;14.59;16.58;17.53;18.21;18.21;19.11
+"S.LORENZO IN B. - Arr.";12.45;;13.22;13.16;13.17;;14.08;14.23;15.03;17.04;17.57;18.25;18.25;19.15
+"Lago Nembia";;;;;13.27;;14.18;;;17.08;;;18.35
+"MOLVENO - Arr.";;;;;13.37;;14.28;;;17.16;;;18.45

@@ -1,0 +1,19 @@
+Descr.breve:;"216"
+Descr.lunga:;"Tione-Bolbeno-Ragoli-Montagne"
+Validità:;"Orario in vigore dal 10/09/2015 al 24/06/2016"
+Orario:;""
+Frequenza:;"Solo al mercoledì  feriale";"Scolastico escluso sabato";"Scolastico escluso sabato";"Solo al sabato scolastico";"Feriale non scolastico";"Scolastico escluso sabato";"Scolastico escluso sabato";;"Feriale escluso sabato"
+Linea:;;;"Servizio svolto da autonoleggiatore privato";;;;;"La corsa si effettua nei giorni scolastici dal lunedì al giovedì";
+Servizio:;;;;;;;;;
+"TIONE (Autostazione) - Part.";11.30;12.32;;12.32;12.32;13.25;13.25;16.08;18.15
+"Zuclo";|;12.42;;12.42;12.37;13.35;|;16.13;18.20
+"Bolbeno";|;12.45;;12.45;12.40;13.38;|;16.16;18.23
+"Saone";|;12.50;;12.50;12.45;13.43;|;16.21;18.28
+"Ponte   Ragoli  SP 34";|;12.53;;12.53;12.48;13.46;|;16.24;18.31
+"Ragoli";|;12.55;;12.55;12.50;13.48;|;16.26;18.33
+"Coltura";|;13.03;;13.03;12.58;|;13.44;16.34;|
+"Preore - Arr.";|;13.08;;13.08;13.03;13.51;13.48;16.39;18.37
+"Preore - Part.";|;;13.08;13.08;13.03;;13.51;16.39;18.37
+"MONTAGNE (Cort)";11.43;;13.15;13.15;13.10;;13.58;16.46;18.44
+"MONTAGNE (Larzana)";11.47;;13.19;13.19;13.14;;14.02;16.50;18.48
+"MONTAGNE (Binio) - Arr.";11.50;;13.22;13.22;13.17;;14.05;16.53;18.51

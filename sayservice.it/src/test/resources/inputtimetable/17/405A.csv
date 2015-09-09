@@ -1,20 +1,20 @@
 Descr.breve:;"405"
-Descr.lunga:;"Borgo Valsugana - Strigno - Castello Tesino"
-Validità:;"Orario in vigore dal 27/06/2015 al 09/09/2015"
+Descr.lunga:;"Borgo V.- Strigno - Castello Tesino"
+Validità:;"Orario in vigore dal 10/09/2015 al 24/06/2016"
 Orario:;""
-Frequenza:;"Feriale escluso sabato";"Solo al sabato feriale";"Solo nei giorni festivi";"Solo nei giorni feriali";"Solo nei giorni festivi";"Solo nei giorni feriali";"Solo nei giorni feriali";"Solo nei giorni feriali";"Solo nei giorni festivi";"Feriale escluso sabato";"Solo al sabato feriale";"Solo nei giorni feriali";"Feriale escluso sabato";"Solo al sabato feriale";"Solo nei giorni festivi"
-Linea:;;;;;;;;;;;;;;;
+Frequenza:;"Feriale escluso sabato";"Solo al sabato feriale";"Solo  nei giorni feriali";;"Solo  nei giorni feriali";"Solo nei giorni scolastici";"Solo  nei giorni feriali";"Solo nei giorni scolastici";"Solo  nei giorni feriali";"Solo nei giorni festivi";;"Solo  nei giorni feriali";"Solo  nei giorni feriali";"Solo  nei giorni feriali";"Solo nei giorni festivi"
+Linea:;;;;;;;;;;;"La corsa si effettua solo nei giorni di scuola dal lunedì al giovedì";;;;
 Servizio:;"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE"
-"BORGO V.(C.Intermodale) - Part.";7.52;7.52;9.20;10.30;11.22;11.42;12.35;15.29;15.45;17.22;17.22;18.17;19.42;19.50;19.50
-"BORGO VALS.(Ospedale)";7.55;7.55;9.23;10.33;11.25;11.45;12.38;15.32;15.48;17.25;17.25;18.20;19.45;19.53;19.53
-"BORGO VALS. (Valli) - Arr.";7.57;7.57;9.25;10.35;11.27;11.47;12.40;15.34;15.50;17.27;17.27;18.22;19.47;19.55;19.55
-"Castelnuovo";7.59;7.59;9.27;10.37;11.29;11.49;12.42;15.36;15.52;17.29;17.29;18.24;19.49;19.57;19.57
-"Scurelle";8.02;8.02;9.30;10.40;11.32;11.52;12.45;15.39;15.55;17.32;17.32;18.27;19.52;20.00;20.00
-"Villa";8.05;8.05;9.33;10.43;11.35;11.55;12.48;15.42;15.58;17.35;17.35;18.30;19.55;20.03;20.03
-"STRIGNO - Arr.";8.10;8.10;9.38;10.48;11.40;12.00;12.53;15.47;16.03;17.40;17.40;18.35;20.00;20.08;20.08
-"STRIGNO - Part.";8.10;8.10;9.38;10.48;11.40;12.00;12.53;15.47;16.03;17.40;17.40;18.35;20.00;20.08;20.08
-"Tomaselli";8.14;8.14;9.42;10.52;11.44;12.04;12.57;15.51;16.07;17.44;17.44;18.39;20.04;20.12;20.12
-"Bieno";8.21;8.21;9.49;11.08;11.51;12.11;13.04;15.58;16.14;17.51;17.51;18.46;20.11;20.19;20.19
-"CINTE TESINO";8.32;8.32;10.00;11.19;12.02;12.22;13.15;16.09;16.25;18.02;18.02;18.57;20.22;20.30;20.30
-"PIEVE TESINO";8.36;8.36;10.04;11.23;12.06;12.26;13.19;16.13;16.29;18.06;18.06;19.01;20.26;20.34;20.34
-"CASTELLO TESINO - Arr.";8.42;8.42;10.10;11.29;12.12;12.32;13.25;16.19;16.35;18.12;18.12;19.07;20.32;20.40;20.40
+"BORGO V.(C.Intermodale) - Part.";7.52;7.52;10.30;11.42;12.45;13.31;14.28;;15.29;15.29;16.20;17.22;18.22;19.42;19.50
+"BORGO VALS.(Ospedale)";7.55;7.55;10.33;11.45;12.48;13.34;14.31;;15.32;15.32;16.23;17.25;18.25;19.45;19.53
+"BORGO VALS. (Valli) - Arr.";7.57;7.57;10.35;11.47;12.50;13.36;14.33;;15.34;15.34;16.25;17.27;18.27;19.47;19.55
+"Castelnuovo";7.59;7.59;10.37;11.49;12.52;13.38;14.35;;15.36;15.36;16.27;17.29;18.29;19.49;19.57
+"Scurelle";8.02;8.02;10.40;11.52;12.55;13.41;14.43;;15.39;15.39;16.35;17.32;18.32;19.52;20.00
+"Villa";8.05;8.05;10.43;11.55;12.58;13.44;14.46;;15.42;15.42;16.38;17.35;18.35;19.55;20.03
+"STRIGNO - Arr.";8.10;8.10;10.48;12.00;13.03;13.49;14.54;;15.47;15.47;16.42;17.40;18.40;20.00;20.08
+"STRIGNO - Part.";8.10;8.10;10.48;12.00;13.03;13.51;;14.54;15.47;15.47;16.42;17.40;18.40;20.00;20.08
+"Tomaselli";8.14;8.14;10.52;12.04;13.07;13.55;;14.58;15.51;15.51;16.56;17.44;18.44;20.04;20.12
+"Bieno";8.21;8.21;11.08;12.11;13.14;14.02;;15.05;15.58;15.58;17.12;17.51;18.51;20.11;20.19
+"CINTE TESINO";8.32;8.32;11.19;12.22;13.25;14.13;;15.16;16.09;16.09;17.23;18.02;19.02;20.22;20.30
+"PIEVE TESINO";8.36;8.36;11.23;12.26;13.29;14.17;;15.20;16.13;16.13;17.27;18.06;19.06;20.26;20.34
+"CASTELLO TESINO - Arr.";8.42;8.42;11.29;12.32;13.35;14.23;;15.26;16.19;16.19;17.33;18.12;19.12;20.32;20.40

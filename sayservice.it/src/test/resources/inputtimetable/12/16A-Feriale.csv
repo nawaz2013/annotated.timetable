@@ -1,30 +1,30 @@
 Descr.breve:;16
 Descr.lunga:;Centochiavi-Martignano-Cognola-Povo
-Validità:;ORARIO Trento Inverno 2015-16   Valido dal 10/09/2015 al 07/06/2016
+Validità:;ORARIO Trento Estate 2015   Valido dal 10/06/2015 al 09/09/2015
 Orario:;ORARIO FERIALE
-Frequenza:;Feriale da Lunedì a Venerdì;Feriale da Lunedì a Venerdì;Feriale da Lunedì a Venerdì;Feriale da Lunedì a Venerdì;Feriale da Lunedì a Venerdì;Feriale da Lunedì a Venerdì;Feriale da Lunedì a Venerdì;Feriale da Lunedì a Venerdì;Feriale da Lunedì a Venerdì
-Linea:;;;;;;;;;
+Frequenza:;Feriale da Lunedì a Venerdì;Feriale da Lunedì a Venerdì;Feriale da Lunedì a Venerdì;Feriale da Lunedì a Venerdì;Feriale da Lunedì a Venerdì;Feriale da Lunedì a Venerdì;Feriale da Lunedì a Venerdì;Feriale da Lunedì a Venerdì
+Linea:;;;;;;;;
 Servizio:
-Trener  "3 Torri PAT";;12.10;;;15.10;;17.10
-Guardini  "Centochiavi";07.50;12.10;13.13;14.10;15.10;16.10;17.10;18.10;19.10
-Guardini  Gilli;07.51;12.11;13.14;14.11;15.11;16.11;17.11;18.11;19.11
-Zambra  "Top Center";07.52;12.12;13.15;14.12;15.12;16.12;17.12;18.12;19.12
-Zambra  "Ist. d'Arte Vittoria";07.52;12.12;13.15;14.12;15.12;16.12;17.12;18.12;19.12
-MARTIGNANO  Capitel;07.57;12.17;13.20;14.17;15.17;16.17;17.17;18.17;19.17
-MARTIGNANO  Castori;07.58;12.18;13.21;14.18;15.18;16.18;17.18;18.18;19.18
-MARTIGNANO  Cesarini;07.59;12.19;13.22;14.19;15.19;16.19;17.19;18.19;19.19
-MARTIGNANO  "Chiesa";08.00;12.20;13.23;14.20;15.20;16.20;17.20;18.20;19.20
-MARTIGNANO  Formigheta;08.01;12.21;13.24;14.21;15.21;16.21;17.21;18.21;19.21
-SP 131  "Maso Pradiscola";08.02;12.22;13.25;14.22;15.22;16.22;17.22;18.22;19.22
-ZELL  Marnighe;08.03;12.23;13.26;14.23;15.23;16.23;17.23;18.23;19.23
-COGNOLA  "Chiesa";08.04;12.24;13.27;14.24;15.24;16.24;17.24;18.24;19.24
-COGNOLA  S.Vito;08.05;12.25;13.28;14.25;15.25;16.25;17.25;18.25;19.25
-SAN VITO;08.06;12.26;13.29;14.26;15.26;16.26;17.26;18.26;19.26
-SAN DONÀ;08.07;12.27;13.30;14.27;15.27;16.27;17.27;18.27;19.27
-MESIANO  "Fac. Ingegneria";08.09;12.29;13.32;14.29;15.29;16.29;17.29;18.29;19.29
-MESIANO  "Stazione FS";08.10;12.30;13.33;14.30;15.30;16.30;17.30;18.30;19.30
-POVO  Valoni;08.11;12.31;13.34;14.31;15.31;16.31;17.31;18.31;19.31
-POVO  Pantè;08.12;12.32;13.35;14.32;15.32;16.32;17.32;18.32;19.32
-POVO  Piazza Manci;08.13;12.33;13.36;14.33;15.33;16.33;17.33;18.33;19.33
-POVO  S.Agata;08.13;12.33;13.36;14.33;15.33;16.33;17.33;18.33;19.33
-POVO  "Polo sociale" cap.;08.14;12.34;13.37;14.34;15.34;16.34;17.34;18.34;19.34
+Trener  "3 Torri PAT";;12.10;;;;17.10
+Guardini  "Centochiavi";07.50;12.10;13.13;14.10;15.10;17.10;18.10;19.10
+Guardini  Gilli;07.51;12.11;13.14;14.11;15.11;17.11;18.11;19.11
+Zambra  "Top Center";07.52;12.12;13.15;14.12;15.12;17.12;18.12;19.12
+Zambra  "Ist. d'Arte Vittoria";07.52;12.12;13.15;14.12;15.12;17.12;18.12;19.12
+MARTIGNANO  Capitel;07.57;12.17;13.20;14.17;15.17;17.17;18.17;19.17
+MARTIGNANO  Castori;07.58;12.18;13.21;14.18;15.18;17.18;18.18;19.18
+MARTIGNANO  Cesarini;07.59;12.19;13.22;14.19;15.19;17.19;18.19;19.19
+MARTIGNANO  "Chiesa";08.00;12.20;13.23;14.20;15.20;17.20;18.20;19.20
+MARTIGNANO  Formigheta;08.01;12.21;13.24;14.21;15.21;17.21;18.21;19.21
+SP 131  "Maso Pradiscola";08.02;12.22;13.25;14.22;15.22;17.22;18.22;19.22
+ZELL  Marnighe;08.03;12.23;13.26;14.23;15.23;17.23;18.23;19.23
+COGNOLA  "Chiesa";08.04;12.24;13.27;14.24;15.24;17.24;18.24;19.24
+COGNOLA  S.Vito;08.05;12.25;13.28;14.25;15.25;17.25;18.25;19.25
+SAN VITO;08.06;12.26;13.29;14.26;15.26;17.26;18.26;19.26
+SAN DONÀ;08.07;12.27;13.30;14.27;15.27;17.27;18.27;19.27
+MESIANO  "Fac. Ingegneria";08.09;12.29;13.32;14.29;15.29;17.29;18.29;19.29
+MESIANO  "Stazione FS";08.10;12.30;13.33;14.30;15.30;17.30;18.30;19.30
+POVO  Valoni;08.11;12.31;13.34;14.31;15.31;17.31;18.31;19.31
+POVO  Pantè;08.12;12.32;13.35;14.32;15.32;17.32;18.32;19.32
+POVO  Piazza Manci;08.13;12.33;13.36;14.33;15.33;17.33;18.33;19.33
+POVO  S.Agata;08.13;12.33;13.36;14.33;15.33;17.33;18.33;19.33
+POVO  "Polo sociale" cap.;08.14;12.34;13.37;14.34;15.34;17.34;18.34;19.34

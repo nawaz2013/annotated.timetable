@@ -1,12 +1,12 @@
 Descr.breve:;"121"
 Descr.lunga:;"Montesover - Sover"
-Validità:;"Orario in vigore dal 27/06/2015 al 09/09/2015"
+Validità:;"Orario in vigore dal 10/09/2015 al 24/06/2016"
 Orario:;""
-Frequenza:;"Solo nei giorni feriali";"Solo nei giorni feriali"
-Linea:;;
-Servizio:;;
-"MONTESOVER - Part.";13.20;6.20
-"Sveseri  Bivio";13.23;6.23
-"Piazzoli";13.25;6.25
-"Facendi";13.27;6.27
-"SOVER - Arr.";13.30;6.30
+Frequenza:;"Scolastico escluso sabato";"Solo  nei giorni feriali";"Solo  nei giorni feriali";"Solo  nei giorni feriali"
+Linea:;"Servizio svolto da autonoleggiatore privato";"Servizio svolto da autonoleggiatore privato";"Servizio svolto da autonoleggiatore privato";"Servizio svolto da autonoleggiatore privato"
+Servizio:;;;;
+"MONTESOVER - Part.";;13.10;6.40;6.00
+"Sveseri  Bivio";18.21;13.13;6.43;6.03
+"Piazzoli";18.23;13.15;6.45;6.05
+"Facendi";18.25;13.17;6.47;6.07
+"SOVER - Arr.";;13.20;6.50;6.10

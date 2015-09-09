@@ -1,10 +1,10 @@
 Descr.breve:;"635"
 Descr.lunga:;"Livo - Baselga - Bresimo"
-Validità:;"Orario in vigore dal 27/06/2015 al 09/09/2015"
+Validità:;"Orario in vigore dal 10/09/2015 al 24/06/2016"
 Orario:;""
-Frequenza:;"Solo nei giorni feriali";"Solo nei giorni feriali";"Solo nei giorni feriali";"Solo nei giorni feriali";"Solo nei giorni festivi";"Solo nei giorni feriali"
-Linea:;;;;"Servizio svolto da autonoleggiatore privato";"Servizio svolto da autonoleggiatore privato";"Servizio svolto da autonoleggiatore privato"
-Servizio:;"Servizio con Bus";"Servizio con Bus";"Servizio con Bus";"Servizio con Bus";"Servizio con Bus";"Servizio con Bus"
-"BRESIMO - Part.";6.14;7.10;9.25;13.35;13.35;19.10
-"Baselga di Bresimo";6.17;7.13;9.28;13.38;13.38;19.13
-"LIVO - Arr.";6.24;7.20;9.35;13.45;13.45;19.20
+Frequenza:;"Solo  nei giorni feriali";"Solo  nei giorni feriali";"Solo nei giorni festivi";"Solo  nei giorni feriali";"Solo  nei giorni feriali"
+Linea:;"Servizio svolto da autonoleggiatore privato";;"Servizio svolto da autonoleggiatore privato";;"Servizio svolto da autonoleggiatore privato"
+Servizio:;"Bus  TTE";"Bus  TTE";"Bus  TTE";"Bus  TTE";"Bus  TTE"
+"BRESIMO - Part.";6.15;7.05;13.35;13.38;19.07
+"Baselga di Bresimo";6.18;7.08;13.38;13.41;19.10
+"LIVO - Arr.";6.25;7.15;13.45;13.48;19.17

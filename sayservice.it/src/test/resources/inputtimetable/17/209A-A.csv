@@ -1,12 +1,12 @@
 Descr.breve:;"209"
-Descr.lunga:;"Ponte Arche - Lundo"
-Validità:;"Orario in vigore dal 27/06/2015 al 09/09/2015"
+Descr.lunga:;"Ponte Arche-Lundo"
+Validità:;"Orario in vigore dal 10/09/2015 al 24/06/2016"
 Orario:;""
-Frequenza:;"Solo nei giorni feriali"
-Linea:;"Servizio svolto da autonoleggiatore privato"
-Servizio:;
-"PONTE ARCHE (Autost.) - Part.";18.40
-"Poia";18.45
-"Godenzo";18.48
-"Comano";18.51
-"LUNDO - Arr.";19.00
+Frequenza:;"Feriale escluso sabato";"Scolastico escluso sabato";"Solo nei giorni scolastici";"Solo nei giorni scolastici"
+Linea:;;"Servizio svolto da autonoleggiatore privato";;
+Servizio:;;;;
+"PONTE ARCHE (Autost.) - Part.";17.55;14.28;13.48;12.56
+"Poia";18.00;14.33;13.53;13.01
+"Godenzo";18.03;14.36;13.56;13.04
+"Comano";18.06;14.39;13.59;13.07
+"LUNDO - Arr.";18.15;14.48;14.08;13.16

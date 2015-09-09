@@ -156,7 +156,7 @@ public class AnnotatedTTGenerator {
 	private List<String> ignoreServiceIdPattern = new ArrayList<String>() {
 		{
 			// urban.
-			add("2015062620150909");
+			add("2015091020160607");
 			// ex-urban(ignore winter).
 //			add("20160624");
 //			add("20160329");
@@ -172,9 +172,9 @@ public class AnnotatedTTGenerator {
 	};
 	  
 	// urban.
-	private String outputPattern = "2015091020160607";
+	private String outputPattern = "2015062620150909";
 	// ex-urban.
-//	private String outputPattern = "2015062620150909";
+//	private String outputPattern = "2015091020160624"; //2015091020160624,2015062620150909
 	
 	private Map<String, boolean[]> calendarEntries = new HashMap<String, boolean[]>();
 	private Map<String, List<String>> serviceIdMapping = new HashMap<String, List<String>>();
@@ -192,7 +192,9 @@ public class AnnotatedTTGenerator {
 	{
 		pdfFreqStringServiceIdMap.put("solo nei giorni festivi", CALENDAR_FESTIVO);
 		pdfFreqStringServiceIdMap.put("feriale da lunedì a venerdì", CALENDAR_LUNVEN);
+		pdfFreqStringServiceIdMap.put("scolastica da lunedì a venerdì", CALENDAR_LUNVEN);
 		pdfFreqStringServiceIdMap.put("feriale solo il sabato", CALENDAR_SOLOSAB);
+		pdfFreqStringServiceIdMap.put("Scolastica solo il Sabato", CALENDAR_SOLOSAB);
 		pdfFreqStringServiceIdMap.put("solo nei giorni feriali", CALENDAR_LUNSAB);
 		pdfFreqStringServiceIdMap.put("solo nei giorni festivi", CALENDAR_FESTIVO);
 		pdfFreqStringServiceIdMap.put("feriale escluso sabato", CALENDAR_LUNVEN);
@@ -453,7 +455,7 @@ public class AnnotatedTTGenerator {
 					for (int i = 0; i < stops.size(); i++) {
 						
 						// logic for taking stopName of final List.
-						String stopName = stops.get(i);
+						String stopName = stops.get(i); //.replace("\"", "");
 						if (stops.get(i).contains(exUrbanDepartureSymbol)) {
 							String[] stopMatchPart = stops.get(i).split(exUrbanDepartureSymbol);
 							stopName = stopMatchPart[0]; 
@@ -2598,6 +2600,7 @@ public class AnnotatedTTGenerator {
 
 						List<String[]> stoptimeseq = tripStopsTimesMap.get(matchingTripId.get(0));
 
+						boolean[] stopEntered = new boolean[stopList.size()];
 						// RUN FIRST FOR DEPARTURE TIMES.
 						for (int gtfsSeq = 0; gtfsSeq < stoptimeseq.size(); gtfsSeq++) {
 
@@ -2644,8 +2647,22 @@ public class AnnotatedTTGenerator {
 
 								if (pdfStopName.equalsIgnoreCase(gtfsStopName)
 										&& stoptimeseq.get(gtfsSeq)[2].contains(pdfTime)) {
-
-									if (stopList.indexOf(stopsMap.get(stoptimeseq.get(gtfsSeq)[3])) == -1) {
+									
+									// approach to find stops(that can be cyclic in list) prior to logic before
+									int stopIndex = -1;
+									for (int s = 0; s < stopList.size(); s++) {
+										String stopNameInList = stopList.get(s).replace("\"", "");
+										stopNameInList = pdfStopList.get(i).replaceAll("\\s+", " ").toLowerCase();
+										if (stopNameInList.contains(exUrbanDepartureSymbol)) {
+											stopNameInList = stopNameInList.replace(exUrbanDepartureSymbol, "").trim();
+										}
+										if (stopNameInList.equalsIgnoreCase(gtfsStopName) && !stopEntered[i]) {
+											stopIndex = i;
+											stopEntered[i] = true;
+											break;
+										}
+									}
+									if (stopIndex != -1) {
 										String stopNameInList = stopsMap.get(stoptimeseq.get(gtfsSeq)[3]);
 										if (appendDepartureString) {
 											stopNameInList = stopNameInList + exUrbanDepartureSymbol;
@@ -2653,6 +2670,15 @@ public class AnnotatedTTGenerator {
 										}
 										stopList.set(i, stopNameInList);	
 									}
+
+//									if (stopList.indexOf(stopsMap.get(stoptimeseq.get(gtfsSeq)[3])) == -1) {
+//										String stopNameInList = stopsMap.get(stoptimeseq.get(gtfsSeq)[3]);
+//										if (appendDepartureString) {
+//											stopNameInList = stopNameInList + exUrbanDepartureSymbol;
+//											appendDepartureString = false;
+//										}
+//										stopList.set(i, stopNameInList);	
+//									}
 									
 									found = true;
 									// if (verbose) System.out.println( i + " - " + stopsMap.get(stoptimeseq.get(gtfsSeq)[3]) + " - " + stoptimeseq.get(gtfsSeq)[3] );
@@ -2715,11 +2741,32 @@ public class AnnotatedTTGenerator {
 									if (pdfStopName.equalsIgnoreCase(gtfsStopName)
 											&& stoptimeseq.get(gtfsSeq)[1].contains(pdfTime)) {
 
-										if (stopList.indexOf(stopsMap.get(stoptimeseq.get(gtfsSeq)[3])) == -1) {
+//										if (stopList.indexOf(stopsMap.get(stoptimeseq.get(gtfsSeq)[3])) == -1) {
+//											String stopNameInList = stopsMap.get(stoptimeseq.get(gtfsSeq)[3])
+//													+ exUrbanArrivalSymbol;
+//											stopList.set(i, stopNameInList);
+//										}
+										// approach to find stops(that can be cyclic in list) prior to logic before
+										int stopIndex = -1;
+										for (int s = 0; s < stopList.size(); s++) {
+											String stopNameInList = stopList.get(s).replace("\"", "");
+											stopNameInList = pdfStopList.get(i).replaceAll("\\s+", " ").toLowerCase();
+											if (stopNameInList.contains(exUrbanArrivalSymbol)) {
+												stopNameInList = stopNameInList.replace(exUrbanArrivalSymbol, "")
+														.trim();
+											}
+											if (stopNameInList.equalsIgnoreCase(gtfsStopName) && !stopEntered[i]) {
+												stopIndex = i;
+												stopEntered[i] = true;
+												break;
+											}
+										}
+										if (stopIndex != -1) {
 											String stopNameInList = stopsMap.get(stoptimeseq.get(gtfsSeq)[3])
 													+ exUrbanArrivalSymbol;
-											stopList.set(i, stopNameInList);
+											stopList.set(i, stopNameInList);	
 										}
+										
 										isArrival = false;
 										// if (verbose) System.out.println( i + " - " + stopsMap.get(stoptimeseq.get(gtfsSeq)[3]) + " - " + stoptimeseq.get(gtfsSeq)[3] );
 										break;
@@ -3405,9 +3452,9 @@ public class AnnotatedTTGenerator {
 			}
 		}
 
-//		timeTableGenerator.processFiles(pathToOutput, "12", pathToInput + "04_A-Feriale.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "12", pathToInput + "08R-Feriale.csv");
 //		timeTableGenerator.processFiles(pathToOutput, "12", pathToInput + "01_R-Festivo.csv");
-//		timeTableGenerator.processFiles(pathToOutput, "16", pathToInput + "E-01R-Feriale.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "16", pathToInput + "I-06A-Festivo.csv");
 //		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "104A.csv");
 //		timeTableGenerator.processFiles(pathToOutput, "12", pathToInput + "07A-Feriale.csv");
 		
@@ -3486,7 +3533,7 @@ public class AnnotatedTTGenerator {
 //		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "464A.csv");
 		
 		//fix stops.
-//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "204A.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "111R.csv");
 //		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "131ESR.csv");
 //		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "315A.csv");
 //		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "307A.csv");
@@ -3503,9 +3550,9 @@ public class AnnotatedTTGenerator {
 			timeTableGenerator.printStats();
 		}
 		
-//		for (String servizio: servizioString) {
-//			System.err.println(servizio);
-//		}
+		for (String servizio: servizioString) {
+			System.err.println(servizio);
+		}
 
 	}
 
