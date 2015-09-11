@@ -9,6 +9,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -50,7 +51,7 @@ public class AnnotatedTTGenerator {
 	// csv stats.
 	private static boolean csvStats = true;
 	// verbose.
-	private static boolean verbose = true;
+	private static boolean verbose = false;
 	// err.
 	private static boolean err = false;
 	// input GTFS.
@@ -150,13 +151,15 @@ public class AnnotatedTTGenerator {
 	private static List<String> deepMatchedTripIds = new ArrayList<String>();
 	private static List<String> gtfsTripIds = new ArrayList<String>();
 	private int totalCSVTrips;
+	private static int ignoredTrips;
 
 	String mismatchColIds = "";
 
 	private List<String> ignoreServiceIdPattern = new ArrayList<String>() {
 		{
 			// urban.
-			add("2015091020160607");
+			add("2015062620150909");
+			add("2015061020150909");
 			// ex-urban(ignore winter).
 //			add("20160624");
 //			add("20160329");
@@ -172,7 +175,7 @@ public class AnnotatedTTGenerator {
 	};
 	  
 	// urban.
-	private String outputPattern = "2015062620150909";
+	private String outputPattern = "2015091020160607";
 	// ex-urban.
 //	private String outputPattern = "2015091020160624"; //2015091020160624,2015062620150909
 	
@@ -186,15 +189,32 @@ public class AnnotatedTTGenerator {
 	private static final String CALENDAR_SOLOVEN = "SV";
 	private static final String CALENDAR_SOLMERCOLEDI = "SMERC";
 	private static final String CALENDAR_SOLGIOV = "SGIOV";
-			
-
+	private Map<String, List<String>> serviceIdExcepType1 = new HashMap<String, List<String>>();
+	private Map<String, List<String>> serviceIdExcepType2 = new HashMap<String, List<String>>();
+	
+	private static final Map<String, List<String>> serviceExceptionType1Dates = new HashMap<String, List<String>>();
+	{
+	}
+	
+	private static final Map<String, List<String>> serviceExceptionType2Dates = new HashMap<String, List<String>>();
+	{
+		serviceExceptionType2Dates.put("scolastica da lunedì a sabato", new ArrayList<>(Arrays.asList("20151223","20160101")));
+		serviceExceptionType2Dates.put("scolastica da lunedì a venerdì", new ArrayList<>(Arrays.asList("20151223","20160101")));
+		serviceExceptionType2Dates.put("scolastica solo il sabato", new ArrayList<>(Arrays.asList("20160102"))); //sabato di non-scolastic period.
+		serviceExceptionType2Dates.put("non scol. da lunedì a sabato", new ArrayList<>(Arrays.asList("20150911")));
+	}
+	
 	private static final Map<String, String> pdfFreqStringServiceIdMap = new HashMap<String, String>();
 	{
+		// scolastici services.
+		pdfFreqStringServiceIdMap.put("scolastica da lunedì a sabato", CALENDAR_LUNSAB);
+		pdfFreqStringServiceIdMap.put("scolastica da lunedì a venerdì", CALENDAR_LUNVEN);
+		pdfFreqStringServiceIdMap.put("Scolastica solo il Sabato", CALENDAR_SOLOSAB);
+		pdfFreqStringServiceIdMap.put("non scol. da lunedì a sabato", CALENDAR_LUNSAB);
+		// normal services.
 		pdfFreqStringServiceIdMap.put("solo nei giorni festivi", CALENDAR_FESTIVO);
 		pdfFreqStringServiceIdMap.put("feriale da lunedì a venerdì", CALENDAR_LUNVEN);
-		pdfFreqStringServiceIdMap.put("scolastica da lunedì a venerdì", CALENDAR_LUNVEN);
 		pdfFreqStringServiceIdMap.put("feriale solo il sabato", CALENDAR_SOLOSAB);
-		pdfFreqStringServiceIdMap.put("Scolastica solo il Sabato", CALENDAR_SOLOSAB);
 		pdfFreqStringServiceIdMap.put("solo nei giorni feriali", CALENDAR_LUNSAB);
 		pdfFreqStringServiceIdMap.put("solo nei giorni festivi", CALENDAR_FESTIVO);
 		pdfFreqStringServiceIdMap.put("feriale escluso sabato", CALENDAR_LUNVEN);
@@ -216,6 +236,8 @@ public class AnnotatedTTGenerator {
 	
 	List<String> deleteList = new ArrayList<String>();
 	
+	private static List<String> fixedOrderList = new ArrayList<String>();
+	
 	private static RouteModel routeModel;
 
 	private static String[] andataSuffix = new String[] { "A-annotated.csv", "a-annotated.csv",
@@ -235,6 +257,8 @@ public class AnnotatedTTGenerator {
 	private static  List<String> servizioString = new ArrayList<String>();
 	
 	private static FileRouteModel fileRouteModel;
+	
+	private static  List<String> frequencyString = new ArrayList<String>();
 
 	public AnnotatedTTGenerator() throws IOException {
 		try {
@@ -348,11 +372,6 @@ public class AnnotatedTTGenerator {
 				if (spId != null && !spId.isEmpty() && ignoreServiceList.contains(spId)) {
 					continue;
 				}
-//				if (spId.equalsIgnoreCase("IMG-dd911eede1c24553c75cd26555941fb8") | spId.equalsIgnoreCase("IMG-e300c0d85bcaad9ef44f653cc91f112c")
-//						| spId.equalsIgnoreCase("TRENTO   (Autostaz.) - Part.") | spId.equalsIgnoreCase("RONCOGNO - Part.")
-//						| spId.equalsIgnoreCase("MOLVENO - Part.") | spId.equalsIgnoreCase("PERGINE (C.Intermodale) - Part")) {
-//					System.err.println("break");
-//				}
 				if (!servizioString.contains(spId)) {
 					servizioString.add(spId);
 				}
@@ -393,6 +412,11 @@ public class AnnotatedTTGenerator {
 //		}
 		output = processMatrix(matrixFiltered, noOfOutputCols, outputFileName);
 
+		// consistency check.
+		String[][] checkOutput = consistencyCheck(output, noOfOutputCols, outputFileName);
+		
+		output = checkOutput;
+		
 		// simple print existing matrix.
 		for (int i = 0; i < output.length; i++) {
 			String line = "";
@@ -404,6 +428,132 @@ public class AnnotatedTTGenerator {
 		}
 
 		return converted;
+	}
+
+	
+	private String[][] consistencyCheck(String[][] output, int noOfOutputCols, String outputFileName) {
+		String[][] matrix = output;
+		boolean inconsistent = false;
+		int iRow = -1;
+		int iCol = -1;
+		//W
+		try {
+			for (int j = 1; j < noOfOutputCols - 1; j++) {
+				for (int i = 4; i < (output.length - 1); i++) {
+					String currTime = output[i][j];
+					if (!currTime.isEmpty()) {
+						Date curr = TIME_FORMAT.parse(currTime);
+						for (int iNext = i + 1; iNext < output.length; iNext++) {
+							String nextTime = output[iNext][j];
+							if (!nextTime.isEmpty() && !nextTime.startsWith("-")) {
+								Date next = TIME_FORMAT.parse(nextTime);
+								if (curr.after(next)) {
+									System.err.println(output[i][0]);
+									inconsistent = true;
+									iRow = i;
+									iCol = j;
+								}
+								break;
+							}
+
+						}
+						if (inconsistent) {
+							break;
+						}
+					}
+				}
+				if (inconsistent) {
+					break;
+				}
+			}
+			
+			int switchRow = -1;
+			if (inconsistent) {
+				// fix the order
+				if (!fixedOrderList.contains(outputFileName)) {
+					fixedOrderList.add(outputFileName);	
+				}
+				
+				if (output[iRow][0].startsWith("*")) { // unimportant stop fix
+					Date iTime = TIME_FORMAT.parse(output[iRow][iCol]);
+					for (int f = iRow + 1; f < output.length; f++) {
+						String next = output[f][iCol];
+						if (!next.isEmpty() && !next.startsWith("-")) {
+							Date nextTime = TIME_FORMAT.parse(next);
+							if (nextTime.after(iTime)) {
+								System.out.println(outputFileName + "time: " + iTime + " should be place before: " + nextTime + " (" + iRow + "," + iCol + ")");
+								switchRow = f - 1;
+								break;
+							}
+						}
+					}
+					
+					if (switchRow == -1) {
+						for (int f = iRow + 1; f < output.length; f++) {
+							String next = output[f][iCol];
+							if (!next.isEmpty() && !next.startsWith("-")) {
+								Date nextTime = TIME_FORMAT.parse(next);
+								if (nextTime.equals(iTime)) {
+									System.out.println(outputFileName + "time: " + iTime + " should be place before: " + nextTime + " (" + iRow + "," + iCol + ")");
+									switchRow = f - 1;
+									break;
+								}
+							}
+						}
+					}
+					
+					if (switchRow == -1) { // its the last stop,put it after the next one. (04A-Festivo).
+						switchRow = iRow + 1;
+					}
+
+					if (switchRow > -1) {
+						String[][] revisedOutput = new String[output.length][noOfOutputCols];
+						String[] temp = output[iRow];
+						// copy until switch row skipping anomaly row.
+						for (int a = 0; a < iRow; a++) {
+							revisedOutput[a] = output[a];
+						}
+						for (int a = iRow; a < switchRow; a++) {
+							revisedOutput[a] = output[a + 1];
+						}
+						// add anomaly row in correct(switch) position.
+						revisedOutput[switchRow] = temp;
+						// copy after switch position.
+						for (int a = switchRow + 1; a < output.length; a++) {
+							revisedOutput[a] = output[a];
+						}
+
+						matrix = consistencyCheck(revisedOutput, noOfOutputCols, outputFileName);
+						
+					}
+				}
+			}
+		} catch (Exception e) {
+			System.err.println(e.getMessage());
+		}
+
+		return matrix;
+	}
+
+	private boolean checkColumnTimes(String[][] output, int row, int col) {
+		boolean inconsistent = false;
+		try {
+			Date curr = TIME_FORMAT.parse(output[row][col]);
+			for (int i = row + 1; i < output.length; i++) {
+				String nextTime = output[i][col];
+				if (!nextTime.isEmpty()) {
+					Date next = TIME_FORMAT.parse(nextTime);
+					if (curr.after(next)) {
+						inconsistent = true;
+						break;
+					}
+				}
+			}
+
+		} catch (ParseException e) {
+			System.err.println(e.getMessage());
+		}
+		return inconsistent;
 	}
 
 	private String[][] processMatrix(String[][] matrix, int noOfOutputCols, String outputFileName) {
@@ -830,7 +980,6 @@ public class AnnotatedTTGenerator {
 						&& !matrix[i][j].contains("|")
 						&& !matrix[i][j].isEmpty()) {
 					String pdfTime = matrix[i][j].replace(".", ":");
-					System.err.println(pdfTime);
 					int startTimeHour = Integer.valueOf(pdfTime.substring(0, pdfTime.indexOf(":")));
 					String formattedTime = formatter.format(startTimeHour) + pdfTime.substring(pdfTime.indexOf(":")).trim();
 					temp.add(formattedTime);
@@ -1565,12 +1714,15 @@ public class AnnotatedTTGenerator {
 		String stopFile = pathToGTFS + "stops.txt";
 		String stoptimesTFile = pathToGTFS + "stop_times.txt";
 		String calendarFile = pathToGTFS + "calendar.txt";
+		String calendarDatesFile = pathToGTFS + "calendar_dates.txt";
 		//		HashMap<String, String> stopsMap = new HashMap<String, String>();
 
 		List<String[]> linesTrip = readFileGetLines(tripFile);
 		List<String[]> linesST = readFileGetLines(stoptimesTFile);
 		List<String[]> stops = readFileGetLines(stopFile);
 		List<String[]> calendar = readFileGetLines(calendarFile);
+		List<String[]> calendarDates = readFileGetLines(calendarDatesFile);
+		
 		routes = readFileGetLines(routeFile);
 
 		for (String[] words : routes) {
@@ -1587,6 +1739,34 @@ public class AnnotatedTTGenerator {
 					b[i - 1] = words[i].equals("1") ? true : false;
 				}
 				calendarEntries.put(serviceId, b);
+			}
+		}
+		
+		// create mapping for serviceId in calendar_dates.
+		for (String[] words : calendarDates) {
+			if (!words[0].equalsIgnoreCase("service_id")) {
+				String serviceId = words[0];
+				if (serviceId.equalsIgnoreCase("0000000592015091020160607")) {
+					System.out.println("");
+				}
+				// Exception Type 1(service added).
+				List<String> datesExType1 = serviceIdExcepType1.get(serviceId);
+				if (datesExType1 == null) {
+					datesExType1 = new ArrayList<String>();
+					serviceIdExcepType1.put(serviceId, datesExType1);
+				}
+				// Exception Type 2(service removed).
+				List<String> datesExType2 = serviceIdExcepType2.get(serviceId);
+				if (datesExType2 == null) {
+					datesExType2 = new ArrayList<String>();
+					serviceIdExcepType2.put(serviceId, datesExType2);
+				}
+
+				if (words[2].equalsIgnoreCase("1")) {
+					datesExType1.add(words[1]);
+				} else {
+					datesExType2.add(words[1]);
+				}
 			}
 		}
 		
@@ -1879,7 +2059,6 @@ public class AnnotatedTTGenerator {
 				List<String> tripsForRoute = routeTripsMap.get(routeId);
 
 				if (tripsForRoute.isEmpty()) {
-					//				partialTripId = "no route found";
 					return matchingTripId;
 				}
 
@@ -2040,6 +2219,24 @@ public class AnnotatedTTGenerator {
 
 		}
 		
+		// filter old dates.
+		if (matchingTripId.size() > 1) {
+			List<String> copyOfSWTripIds = new ArrayList<String>();
+			copyOfSWTripIds.addAll(matchingTripId);
+
+			for (String matchId : copyOfSWTripIds) {
+
+				String serviceId = tripServiceIdMap.get(matchId);
+
+				for (String ignoreServiceId : ignoreServiceIdPattern) {
+					if (serviceId.endsWith(ignoreServiceId)) {
+						matchingTripId.remove(matchId);
+					}
+				}
+			}
+		}
+		
+		// validate service calendar.
 		List<String> copyOfTripIds = new ArrayList<String>();
 		copyOfTripIds.addAll(matchingTripId);
 		
@@ -2053,8 +2250,29 @@ public class AnnotatedTTGenerator {
 					pdfFreqString = pdfFreqString.replace("\"","");
 					if (pdfFreqStringServiceIdMap.containsKey(pdfFreqString)) {
 						String servicIdMapIdentifier = pdfFreqStringServiceIdMap.get(pdfFreqString);
+						
+						String gtfsServiceId = tripServiceIdMap.get(matchId);
+						
+						//check if it is 'scolastici/non' service.
+						if (serviceExceptionType2Dates.containsKey(servicIdMapIdentifier)
+								| serviceExceptionType1Dates.containsKey(servicIdMapIdentifier)) {
+							
+							// match any exception type 1 day.
+							List<String> dayOn = serviceIdExcepType1.get(gtfsServiceId);
+							dayOn.retainAll(serviceExceptionType1Dates.get(servicIdMapIdentifier));
+							
+							// match any exception type 2 day.
+							List<String> dayOff = serviceIdExcepType2.get(gtfsServiceId);
+							dayOff.retainAll(serviceExceptionType2Dates.get(servicIdMapIdentifier));
+							
+							if (dayOff.size() < 0 && dayOn.size() < 0) {
+								matchingTripId.remove(matchId);
+								continue;
+							}
+						}
+						
 						List<String> serviceIds = serviceIdMapping.get(servicIdMapIdentifier);
-						if (!serviceIds.contains(tripServiceIdMap.get(matchId))) {
+						if (!serviceIds.contains(gtfsServiceId)) {
 							matchingTripId.remove(matchId);
 							continue;
 						}
@@ -2227,7 +2445,8 @@ public class AnnotatedTTGenerator {
 				System.out.println("total csv trips: " + totalCSVTrips);
 				System.out.println("csv trips covered by GTFS: " + successMatch);
 				System.out.println("csv trips not covered by GTFS: " + failedMatch);
-				System.out.println("csv coverage: " +  (successMatch / (totalCSVTrips)) * 100);
+				System.out.println("csv trips ignored (merged routes): " + ignoredTrips);
+				System.out.println("csv coverage: " +  (successMatch / (totalCSVTrips - ignoredTrips)) * 100);
 				System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
 				
 			}
@@ -2396,6 +2615,7 @@ public class AnnotatedTTGenerator {
 					}
 				}
 				if (!supportedRoute) {
+					ignoredTrips++;
 					continue;
 				}
 			}
@@ -2445,6 +2665,7 @@ public class AnnotatedTTGenerator {
 						mismatchColIds = mismatchColIds + (currentCol + 2) + ",";
 					}
 
+					/** MATCH STEP 1: first and last time matches. **/
 					List<String> matchingTripId = new ArrayList<String>();
 					String foundTripId = null;
 
@@ -2460,6 +2681,97 @@ public class AnnotatedTTGenerator {
 						}
 					}
 					
+					
+					/** MATCH STEP 2: remove old calendar dates. **/
+					if (matchingTripId.size() > 1) {
+						List<String> copyOfSWTripIds = new ArrayList<String>();
+						copyOfSWTripIds.addAll(matchingTripId);
+
+						for (String matchId : copyOfSWTripIds) {
+
+							String serviceId = tripServiceIdMap.get(matchId);
+
+							for (String ignoreServiceId : ignoreServiceIdPattern) {
+								if (serviceId.endsWith(ignoreServiceId)) {
+									matchingTripId.remove(matchId);
+								}
+							}
+						}
+					}
+					
+					
+					/** MATCH STEP 3: validate service calendar(scolastici/non/normal). **/
+					// validate service calendar.
+					List<String> tempTripIds2 = new ArrayList<String>();
+					tempTripIds2.addAll(matchingTripId);
+					
+					if (tempTripIds2 != null && !tempTripIds2.isEmpty()) {
+
+						for (String matchId : tempTripIds2) {
+
+							// read frequency info.
+							String pdfFreqString = "";
+							if (matrix[4][currentCol] != null && !matrix[4][currentCol].isEmpty()) {
+								pdfFreqString = matrix[4][currentCol].replaceAll("\\s+", " ").toLowerCase();
+							}
+							if (matrix[3][1] != null && !matrix[3][1].isEmpty()
+									&& (pdfFreqString == null | pdfFreqString.isEmpty())) { // read pdf orario type.
+								pdfFreqString = matrix[3][1].replaceAll("\\s+", " ").toLowerCase();
+							}
+
+							pdfFreqString = pdfFreqString.replace("\"", "");
+
+							if (!frequencyString.contains(pdfFreqString)) {
+								frequencyString.add(pdfFreqString);
+							}
+							
+							if (pdfFreqString != null && !pdfFreqString.isEmpty()
+									&& pdfFreqStringServiceIdMap.containsKey(pdfFreqString)) {
+								
+								String servicIdMapIdentifier = pdfFreqStringServiceIdMap.get(pdfFreqString);
+								
+								String gtfsServiceId = tripServiceIdMap.get(matchId);
+								
+								//check if it is 'scolastici/non' service.
+								if (serviceExceptionType2Dates.containsKey(pdfFreqString)
+										| serviceExceptionType1Dates.containsKey(pdfFreqString)) {
+									
+									// match any exception type 1 day.
+									List<String> dayOn = serviceIdExcepType1.get(gtfsServiceId);
+									List<String> tempET1 = new ArrayList<String>();
+									
+									if (serviceExceptionType1Dates.get(pdfFreqString) != null
+											&& dayOn != null && !dayOn.isEmpty()) {
+										tempET1.addAll(dayOn);
+										tempET1.retainAll(serviceExceptionType1Dates.get(pdfFreqString));
+									}
+									
+									// match any exception type 2 day.
+									List<String> dayOff = serviceIdExcepType2.get(gtfsServiceId);
+									List<String> tempET2 = new ArrayList<String>();
+									
+									if (serviceExceptionType2Dates.get(pdfFreqString) != null
+											&& dayOff != null && !dayOff.isEmpty()) {
+										tempET2.addAll(dayOff);
+										tempET2.retainAll(serviceExceptionType2Dates.get(pdfFreqString));	
+									}
+									
+									if (tempET1.size() < 1 && tempET2.size() < 1) {
+										matchingTripId.remove(matchId);
+										continue;
+									}
+								}
+								
+								List<String> serviceIds = serviceIdMapping.get(servicIdMapIdentifier);
+								if (!serviceIds.contains(gtfsServiceId)) {
+									matchingTripId.remove(matchId);
+									continue;
+								}
+							}
+						}
+					}
+					
+					/** MATCH STEP 4: search for each stop of pdf in gtfs.and validate service calendar(scolastici/non/normal). **/
 					if (matchingTripId == null || matchingTripId.isEmpty()) {
 						List<String> tripId = partialTripMatchAlgo(matrix, currentCol, startRow, routeId, isExUrbanUnalignedRoute);
 						if (tripId != null && !tripId.isEmpty()) {
@@ -2497,55 +2809,7 @@ public class AnnotatedTTGenerator {
 //							matchingTripId.add(tripId);
 //					}
 
-
-					List<String> copyOfTripIds = new ArrayList<String>();
-					copyOfTripIds.addAll(matchingTripId);
-					
-					if (copyOfTripIds != null && !copyOfTripIds.isEmpty()) {
-
-						for (String matchId : copyOfTripIds) {
-
-							// read frequency info.
-							String pdfFreqString = "";
-							if (matrix[4][currentCol] != null && !matrix[4][currentCol].isEmpty()) {
-								pdfFreqString = matrix[4][currentCol].replaceAll("\\s+", " ").toLowerCase();
-							}
-							if (matrix[3][1] != null && !matrix[3][1].isEmpty()
-									&& (pdfFreqString == null | pdfFreqString.isEmpty())) { // read pdf orario type.
-								pdfFreqString = matrix[3][1].replaceAll("\\s+", " ").toLowerCase();
-							}
-
-							pdfFreqString = pdfFreqString.replace("\"", "");
-
-							if (pdfFreqString != null && !pdfFreqString.isEmpty()
-									&& pdfFreqStringServiceIdMap.containsKey(pdfFreqString)) {
-								String servicIdMapIdentifier = pdfFreqStringServiceIdMap.get(pdfFreqString);
-								List<String> serviceIds = serviceIdMapping.get(servicIdMapIdentifier);
-								if (!serviceIds.contains(tripServiceIdMap.get(matchId))) {
-									matchingTripId.remove(matchId);
-									continue;
-								}
-							}
-						}
-					}
-					
-					// additional check for removal of wrong service id(if any).
-					if (matchingTripId.size() > 1) {
-						List<String> copyOfSWTripIds = new ArrayList<String>();
-						copyOfSWTripIds.addAll(matchingTripId);
-
-						for (String matchId : copyOfSWTripIds) {
-
-							String serviceId = tripServiceIdMap.get(matchId);
-
-							for (String ignoreServiceId : ignoreServiceIdPattern) {
-								if (serviceId.endsWith(ignoreServiceId)) {
-									matchingTripId.remove(matchId);
-								}
-							}
-						}
-					}
-					
+					/** MATCH STEP 5: filter by hit count of pdf (stop,time) with gtfs (stop,time). **/
 					if (matchingTripId.size() > 1) {
 
 						List<String> secondCopyTripIds = new ArrayList<String>();
@@ -2571,6 +2835,7 @@ public class AnnotatedTTGenerator {
 
 					}
 					
+					/** MATCH STEP 6: deep match. **/
 					for (String matchId : matchingTripId) {
 						List<String[]> stopTimes = tripStopsTimesMap.get(matchId);
 						// algorithm to check trip in other route.
@@ -2582,7 +2847,7 @@ public class AnnotatedTTGenerator {
 						}
 					}
 					
-					// prepare stops list.
+					/** POST MATCH STEP 1: prepare stops. **/
 					if (foundTripId != null && !foundTripId.isEmpty()) {
 
 						successMatch++;
@@ -3452,10 +3717,9 @@ public class AnnotatedTTGenerator {
 			}
 		}
 
-//		timeTableGenerator.processFiles(pathToOutput, "12", pathToInput + "08R-Feriale.csv");
-//		timeTableGenerator.processFiles(pathToOutput, "12", pathToInput + "01_R-Festivo.csv");
-//		timeTableGenerator.processFiles(pathToOutput, "16", pathToInput + "I-06A-Festivo.csv");
-//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "104A.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "12", pathToInput + "05A-Feriale.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "16", pathToInput + "I-01A-Feriale.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "16", pathToInput + "P-07R-Feriale.csv");
 //		timeTableGenerator.processFiles(pathToOutput, "12", pathToInput + "07A-Feriale.csv");
 		
 //		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "503ESR.csv");
@@ -3550,8 +3814,16 @@ public class AnnotatedTTGenerator {
 			timeTableGenerator.printStats();
 		}
 		
-		for (String servizio: servizioString) {
-			System.err.println(servizio);
+//		for (String servizio: servizioString) {
+//			System.err.println(servizio);
+//		}
+		
+//		for (String fixedFileName : fixedOrderList) {
+//			System.err.println(fixedFileName);
+//		}
+		
+		for (String freq: frequencyString) {
+			System.err.println(freq);
 		}
 
 	}
