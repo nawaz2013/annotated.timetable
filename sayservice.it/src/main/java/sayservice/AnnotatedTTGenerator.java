@@ -194,6 +194,10 @@ public class AnnotatedTTGenerator {
 	
 	private static final Map<String, List<String>> serviceExceptionType1Dates = new HashMap<String, List<String>>();
 	{
+		// ex-urban.
+		serviceExceptionType1Dates.put("feriale escl.sab non scol", new ArrayList<>(Arrays.asList("20151223","20151224"))); // mer,gio non scolastici.
+		serviceExceptionType1Dates.put("feriale non scol dal lun al ve", new ArrayList<>(Arrays.asList("20151223","20151224")));
+		serviceExceptionType1Dates.put("solo postfestivo scolastico", new ArrayList<>(Arrays.asList("20150914","20150921", "20150928"))); // lunedi scolastic
 	}
 	
 	private static final Map<String, List<String>> serviceExceptionType2Dates = new HashMap<String, List<String>>();
@@ -202,6 +206,10 @@ public class AnnotatedTTGenerator {
 		serviceExceptionType2Dates.put("scolastica da lunedì a venerdì", new ArrayList<>(Arrays.asList("20151223","20160101")));
 		serviceExceptionType2Dates.put("scolastica solo il sabato", new ArrayList<>(Arrays.asList("20160102"))); //sabato di non-scolastic period.
 		serviceExceptionType2Dates.put("non scol. da lunedì a sabato", new ArrayList<>(Arrays.asList("20150911")));
+		// ex-urban.
+		serviceExceptionType2Dates.put("feriale escl.sab non scol", new ArrayList<>(Arrays.asList("20151221","20151222"))); // lun,ven scolastici.
+		serviceExceptionType2Dates.put("feriale non scol dal lun al ve", new ArrayList<>(Arrays.asList("20151221","20151222")));
+		serviceExceptionType2Dates.put("solo nei giorni scolastici ", new ArrayList<>(Arrays.asList("20151223","20160101"))); 
 	}
 	
 	private static final Map<String, String> pdfFreqStringServiceIdMap = new HashMap<String, String>();
@@ -211,6 +219,11 @@ public class AnnotatedTTGenerator {
 		pdfFreqStringServiceIdMap.put("scolastica da lunedì a venerdì", CALENDAR_LUNVEN);
 		pdfFreqStringServiceIdMap.put("Scolastica solo il Sabato", CALENDAR_SOLOSAB);
 		pdfFreqStringServiceIdMap.put("non scol. da lunedì a sabato", CALENDAR_LUNSAB);
+		// ex-urban scolastici services.
+		pdfFreqStringServiceIdMap.put("feriale escl.sab non scol", CALENDAR_LUNVEN);
+		pdfFreqStringServiceIdMap.put("feriale non scol dal lun al ve", CALENDAR_LUNVEN);
+		pdfFreqStringServiceIdMap.put("solo nei giorni scolastici ", CALENDAR_LUNSAB);
+		
 		// normal services.
 		pdfFreqStringServiceIdMap.put("solo nei giorni festivi", CALENDAR_FESTIVO);
 		pdfFreqStringServiceIdMap.put("feriale da lunedì a venerdì", CALENDAR_LUNVEN);
@@ -231,6 +244,7 @@ public class AnnotatedTTGenerator {
 		pdfFreqStringServiceIdMap.put("orario festivo", CALENDAR_FESTIVO);
 		pdfFreqStringServiceIdMap.put("orario feriali", CALENDAR_LUNSAB);
 		pdfFreqStringServiceIdMap.put("orario feriale", CALENDAR_LUNSAB);
+		pdfFreqStringServiceIdMap.put("", CALENDAR_LUNSAB);
 //		"Postfestivo"
 	}
 	
@@ -2243,41 +2257,64 @@ public class AnnotatedTTGenerator {
 		if (copyOfTripIds != null && !copyOfTripIds.isEmpty()) {
 
 			for (String matchId : copyOfTripIds) {
-				
+
 				// read frequency info.
+				String pdfFreqString = "";
 				if (matrix[4][colInPdf] != null && !matrix[4][colInPdf].isEmpty()) {
-					String pdfFreqString = matrix[4][colInPdf].replaceAll("\\s+", " ").toLowerCase();
-					pdfFreqString = pdfFreqString.replace("\"","");
-					if (pdfFreqStringServiceIdMap.containsKey(pdfFreqString)) {
-						String servicIdMapIdentifier = pdfFreqStringServiceIdMap.get(pdfFreqString);
-						
-						String gtfsServiceId = tripServiceIdMap.get(matchId);
-						
-						//check if it is 'scolastici/non' service.
-						if (serviceExceptionType2Dates.containsKey(servicIdMapIdentifier)
-								| serviceExceptionType1Dates.containsKey(servicIdMapIdentifier)) {
-							
-							// match any exception type 1 day.
-							List<String> dayOn = serviceIdExcepType1.get(gtfsServiceId);
-							dayOn.retainAll(serviceExceptionType1Dates.get(servicIdMapIdentifier));
-							
-							// match any exception type 2 day.
-							List<String> dayOff = serviceIdExcepType2.get(gtfsServiceId);
-							dayOff.retainAll(serviceExceptionType2Dates.get(servicIdMapIdentifier));
-							
-							if (dayOff.size() < 0 && dayOn.size() < 0) {
-								matchingTripId.remove(matchId);
-								continue;
-							}
+					pdfFreqString = matrix[4][colInPdf].replaceAll("\\s+", " ").toLowerCase();
+				}
+				if (matrix[3][1] != null && !matrix[3][1].isEmpty()
+						&& (pdfFreqString == null | pdfFreqString.isEmpty())) { // read pdf orario type.
+					pdfFreqString = matrix[3][1].replaceAll("\\s+", " ").toLowerCase();
+				}
+
+				pdfFreqString = pdfFreqString.replace("\"", "");
+
+				if (!frequencyString.contains(pdfFreqString)) {
+					frequencyString.add(pdfFreqString);
+				}
+
+				if (pdfFreqString != null && pdfFreqStringServiceIdMap.containsKey(pdfFreqString)) {
+
+					String servicIdMapIdentifier = pdfFreqStringServiceIdMap.get(pdfFreqString);
+
+					String gtfsServiceId = tripServiceIdMap.get(matchId);
+
+					//check if it is 'scolastici/non' service.
+					if (serviceExceptionType2Dates.containsKey(pdfFreqString)
+							| serviceExceptionType1Dates.containsKey(pdfFreqString)) {
+
+						// match any exception type 1 day.
+						List<String> dayOn = serviceIdExcepType1.get(gtfsServiceId);
+						List<String> tempET1 = new ArrayList<String>();
+
+						if (serviceExceptionType1Dates.get(pdfFreqString) != null && dayOn != null && !dayOn.isEmpty()) {
+							tempET1.addAll(dayOn);
+							tempET1.retainAll(serviceExceptionType1Dates.get(pdfFreqString));
 						}
-						
-						List<String> serviceIds = serviceIdMapping.get(servicIdMapIdentifier);
-						if (!serviceIds.contains(gtfsServiceId)) {
+
+						// match any exception type 2 day.
+						List<String> dayOff = serviceIdExcepType2.get(gtfsServiceId);
+						List<String> tempET2 = new ArrayList<String>();
+
+						if (serviceExceptionType2Dates.get(pdfFreqString) != null && dayOff != null
+								&& !dayOff.isEmpty()) {
+							tempET2.addAll(dayOff);
+							tempET2.retainAll(serviceExceptionType2Dates.get(pdfFreqString));
+						}
+
+						if (tempET1.size() < 1 && tempET2.size() < 1) {
 							matchingTripId.remove(matchId);
 							continue;
 						}
 					}
-				} 
+
+					List<String> serviceIds = serviceIdMapping.get(servicIdMapIdentifier);
+					if (!serviceIds.contains(gtfsServiceId)) {
+						matchingTripId.remove(matchId);
+						continue;
+					}
+				}
 			}
 		}
 			
@@ -2725,8 +2762,7 @@ public class AnnotatedTTGenerator {
 								frequencyString.add(pdfFreqString);
 							}
 							
-							if (pdfFreqString != null && !pdfFreqString.isEmpty()
-									&& pdfFreqStringServiceIdMap.containsKey(pdfFreqString)) {
+							if (pdfFreqString != null && pdfFreqStringServiceIdMap.containsKey(pdfFreqString)) {
 								
 								String servicIdMapIdentifier = pdfFreqStringServiceIdMap.get(pdfFreqString);
 								
@@ -3721,86 +3757,7 @@ public class AnnotatedTTGenerator {
 //		timeTableGenerator.processFiles(pathToOutput, "16", pathToInput + "I-01A-Feriale.csv");
 //		timeTableGenerator.processFiles(pathToOutput, "16", pathToInput + "P-07R-Feriale.csv");
 //		timeTableGenerator.processFiles(pathToOutput, "12", pathToInput + "07A-Feriale.csv");
-		
-//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "503ESR.csv");
-//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "401INA.csv");
-//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "231A.csv");
-//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "406A-R.csv");
-//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "119ESR.csv");
-//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "646R.csv");
-//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "122ESA.csv");
-//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "461R.csv");
-//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "503ESR.csv");
-//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "646A.csv");
-//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "332A.csv");
-//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "511ESA.csv");
-//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "203A-R.csv");
-//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "131ESR.csv");
-//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "104A.csv");
-//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "206R.csv");
-//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "511ESR.csv");
-//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "111A.csv");
-//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "630R.csv");
-//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "461A.csv");
-//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "403R.csv");
-//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "120ESA.csv");
-//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "231R.csv");
-//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "111R.csv");
-//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "503ESA.csv");
-//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "463A-A.csv");
-//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "307R.csv");
-//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "501R.csv");
-//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "205A.csv");
-//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "321A-R.csv");
-//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "645R.csv");
-//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "204A.csv");
-//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "332A.csv");
-//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "403A.csv");
-//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "204R.csv");
-//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "301R.csv");
-//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "306R.csv");
-//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "462R.csv");
-//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "335A.csv");
-//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "206A.csv");
-//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "307A.csv");
-//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "630A.csv");
-//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "120ESR.csv");
-//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "506ESA.csv");
-//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "467A.csv");
-//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "332R.csv");
-//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "501A.csv");
-//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "642R.csv");
-//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "405R.csv");
-//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "321A-A.csv");
-//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "643A-R.csv");
-//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "405A.csv");
-//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "122ESR.csv");
-//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "306A.csv");
-//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "101ESA.csv");
-//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "201R.csv");
-//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "406A-A.csv");
-//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "401INR.csv");
-//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "464R.csv");
-//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "642A.csv");
-//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "201A.csv");
-//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "463A-R.csv");
-//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "104R.csv");
-//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "103A.csv");
-//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "462A.csv");
-//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "645A.csv");
-//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "620R.csv");
-//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "303A.csv");
-//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "310ESA-A.csv");
-//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "467R.csv");
-//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "312A.csv");
-//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "620A.csv");
-//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "464A.csv");
-		
-		//fix stops.
-//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "111R.csv");
-//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "131ESR.csv");
-//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "315A.csv");
-//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "307A.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "334A.csv");
 
 		timeTableGenerator.printStats();
 
@@ -3822,9 +3779,9 @@ public class AnnotatedTTGenerator {
 //			System.err.println(fixedFileName);
 //		}
 		
-		for (String freq: frequencyString) {
-			System.err.println(freq);
-		}
+//		for (String freq: frequencyString) {
+//			System.err.println(freq);
+//		}
 
 	}
 
