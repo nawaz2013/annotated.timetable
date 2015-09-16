@@ -427,9 +427,7 @@ public class AnnotatedTTGenerator {
 		output = processMatrix(matrixFiltered, noOfOutputCols, outputFileName);
 
 		// consistency check.
-		String[][] checkOutput = consistencyCheck(output, noOfOutputCols, outputFileName);
-		
-		output = checkOutput;
+		output = consistencyCheck(output, noOfOutputCols, outputFileName);
 		
 		// simple print existing matrix.
 		for (int i = 0; i < output.length; i++) {
@@ -2869,6 +2867,10 @@ public class AnnotatedTTGenerator {
 							}
 						}
 
+					}
+					
+					if (matchingTripId.size() > 1) {
+						System.err.println("BREAK...");
 					}
 					
 					/** MATCH STEP 6: deep match. **/
