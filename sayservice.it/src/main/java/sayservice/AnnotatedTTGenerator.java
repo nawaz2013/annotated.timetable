@@ -205,7 +205,7 @@ public class AnnotatedTTGenerator {
 		serviceExceptionType2Dates.put("scolastica da lunedì a sabato", new ArrayList<>(Arrays.asList("20151223","20160101")));
 		serviceExceptionType2Dates.put("scolastica da lunedì a venerdì", new ArrayList<>(Arrays.asList("20151223","20160101")));
 		serviceExceptionType2Dates.put("scolastica solo il sabato", new ArrayList<>(Arrays.asList("20160102"))); //sabato di non-scolastic period.
-		serviceExceptionType2Dates.put("non scol. da lunedì a sabato", new ArrayList<>(Arrays.asList("20150911")));
+		serviceExceptionType2Dates.put("non scol. da lunedì a sabato", new ArrayList<>(Arrays.asList("20150911","20151009")));
 		// ex-urban.
 		serviceExceptionType2Dates.put("feriale escl.sab non scol", new ArrayList<>(Arrays.asList("20151221","20151222"))); // lun,ven scolastici.
 		serviceExceptionType2Dates.put("feriale non scol dal lun al ve", new ArrayList<>(Arrays.asList("20151221","20151222")));
@@ -312,7 +312,6 @@ public class AnnotatedTTGenerator {
 			if (agencyId.equalsIgnoreCase("16")) {
 				outputName = outputName.substring(outputName.indexOf("-") + 1);
 			}
-			
 			
 			File annotatedCSV = new File(outputDirFile, outputName);
 			Files.asCharSink(annotatedCSV, Charsets.UTF_8).writeLines(annotated);
@@ -459,7 +458,7 @@ public class AnnotatedTTGenerator {
 							String nextTime = output[iNext][j];
 							if (!nextTime.isEmpty() && !nextTime.startsWith("-")) {
 								Date next = TIME_FORMAT.parse(nextTime);
-								if (curr.after(next)) {
+								if (curr.after(next) && output[i][0].startsWith("*")) {
 									System.err.println(output[i][0]);
 									inconsistent = true;
 									iRow = i;
@@ -493,7 +492,7 @@ public class AnnotatedTTGenerator {
 						if (!next.isEmpty() && !next.startsWith("-")) {
 							Date nextTime = TIME_FORMAT.parse(next);
 							if (nextTime.after(iTime)) {
-								System.out.println(outputFileName + "time: " + iTime + " should be place before: " + nextTime + " (" + iRow + "," + iCol + ")");
+								System.out.println(outputFileName + " time: " + iTime + " should be place before: " + nextTime + " (" + iRow + "," + iCol + ")");
 								switchRow = f - 1;
 								break;
 							}
@@ -506,7 +505,7 @@ public class AnnotatedTTGenerator {
 							if (!next.isEmpty() && !next.startsWith("-")) {
 								Date nextTime = TIME_FORMAT.parse(next);
 								if (nextTime.equals(iTime)) {
-									System.out.println(outputFileName + "time: " + iTime + " should be place before: " + nextTime + " (" + iRow + "," + iCol + ")");
+									System.out.println(outputFileName + " time: " + iTime + " should be place before: " + nextTime + " (" + iRow + "," + iCol + ")");
 									switchRow = f - 1;
 									break;
 								}
@@ -2954,8 +2953,9 @@ public class AnnotatedTTGenerator {
 									// approach to find stops(that can be cyclic in list) prior to logic before
 									int stopIndex = -1;
 									for (int s = 0; s < stopList.size(); s++) {
-										String stopNameInList = stopList.get(s).replace("\"", "");
-										stopNameInList = pdfStopList.get(i).replaceAll("\\s+", " ").toLowerCase();
+										String stopNameInList = pdfStopList.get(i).replaceAll("\\s+", " ").toLowerCase();
+										stopNameInList = stopNameInList.replaceAll("\"", "");
+										
 										if (stopNameInList.contains(exUrbanDepartureSymbol)) {
 											stopNameInList = stopNameInList.replace(exUrbanDepartureSymbol, "").trim();
 										}
@@ -3052,8 +3052,8 @@ public class AnnotatedTTGenerator {
 										// approach to find stops(that can be cyclic in list) prior to logic before
 										int stopIndex = -1;
 										for (int s = 0; s < stopList.size(); s++) {
-											String stopNameInList = stopList.get(s).replace("\"", "");
-											stopNameInList = pdfStopList.get(i).replaceAll("\\s+", " ").toLowerCase();
+											String stopNameInList = pdfStopList.get(i).replaceAll("\\s+", " ").toLowerCase();
+											stopNameInList = stopNameInList.replaceAll("\"", "");
 											if (stopNameInList.contains(exUrbanArrivalSymbol)) {
 												stopNameInList = stopNameInList.replace(exUrbanArrivalSymbol, "")
 														.trim();
@@ -3755,9 +3755,9 @@ public class AnnotatedTTGenerator {
 			}
 		}
 
-//		timeTableGenerator.processFiles(pathToOutput, "12", pathToInput + "05A-Feriale.csv");
-//		timeTableGenerator.processFiles(pathToOutput, "16", pathToInput + "I-01A-Feriale.csv");
-//		timeTableGenerator.processFiles(pathToOutput, "16", pathToInput + "P-07R-Feriale.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "12", pathToInput + "03A-Feriale.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "16", pathToInput + "I-03A-Feriale.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "16", pathToInput + "P-07A-Feriale.csv");
 //		timeTableGenerator.processFiles(pathToOutput, "12", pathToInput + "07A-Feriale.csv");
 //		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "334A.csv");
 
