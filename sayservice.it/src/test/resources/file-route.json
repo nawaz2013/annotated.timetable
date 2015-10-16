@@ -62,7 +62,8 @@
 		"NP_C-Feriale": "460",
 		"_Ca-Feriale": "533",
 		"_Cr-Feriale": "533"
-		}
+		},
+		"ignoreConsistencyCheckRoutes" : []
 	},
 	{
 		"agencyId": "16",
@@ -70,10 +71,10 @@
 		    "E-01A-Feriale": "488,506",
 			"E-01R-Feriale": "488,506",
 			"E-01R-Festivo": "488,506",
-			"E-03A-Feriale": "519,507",
-			"E-03R-Feriale": "519,507",
-			"E-04A-Feriale": "517",
-			"E-04R-Feriale": "517",
+			"E-03A-Feriale": "527,507",
+			"E-03R-Feriale": "527,507",
+			"E-04A-Feriale": "529",
+			"E-04R-Feriale": "529",
 			"E-06A-Feriale": "496,511",
 			"E-06R-Feriale": "496,511",
 			"P-02A-Feriale": "490,504",
@@ -89,10 +90,10 @@
 			"I-01A-Feriale": "488,506",
 			"I-01R-Feriale": "488,506",
 			"I-01R-Festivo": "488,506",
-			"I-03A-Feriale": "519,507",
-			"I-03R-Feriale": "519,507",
-			"I-04A-Feriale": "517",
-			"I-04R-Feriale": "517",
+			"I-03A-Feriale": "527,507",
+			"I-03R-Feriale": "527,507",
+			"I-04A-Feriale": "529",
+			"I-04R-Feriale": "529",
 			"I-06A-Feriale": "496,511",
 			"I-06R-Feriale": "496,511",
 			"P-02A-Feriale": "490,504",
@@ -106,7 +107,8 @@
 			"P-A_A-Festivo": "486",
 			"P-A_R-Feriale": "486",
 			"P-A_R-Festivo": "486"
-		}
+		},
+		"ignoreConsistencyCheckRoutes" : []
 	},
 		{
 		"agencyId": "17",
@@ -150,7 +152,8 @@
 			"P-A_A-Festivo": "486,504,506,507,510,511",
 			"P-A_R-Feriale": "486,504,506,507,510,511",
 			"P-A_R-Festivo": "486,504,506,507,510,511"
-		}
+		},
+		"ignoreConsistencyCheckRoutes" : []
 	}
 	]
 }

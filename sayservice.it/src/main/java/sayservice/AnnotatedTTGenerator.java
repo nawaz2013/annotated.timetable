@@ -294,8 +294,8 @@ public class AnnotatedTTGenerator {
 	public void processFiles(String outputDir, String agency, String... files) throws Exception {
 		List<String> annotated = new ArrayList<String>();
 		for (String filename : files) {
-			String outputName = filename.substring(filename.lastIndexOf("/") + 1, filename.lastIndexOf("."));
-			
+			String pdfName = filename.substring(filename.lastIndexOf("/") + 1, filename.lastIndexOf("."));
+			String outputName = pdfName;
 			//ex-urban.
 			if (agencyId.equalsIgnoreCase("17")) {
 				outputName = outputName.replace("-", "_");
@@ -303,7 +303,7 @@ public class AnnotatedTTGenerator {
 			outputName = outputName + "-" + outputPattern + "-annotated.csv";
 			File file = new File(filename);
 			List<String> lines = Files.asCharSource(file, Charsets.UTF_8).readLines();
-			annotated.addAll(convertLines(lines, outputName));
+			annotated.addAll(convertLines(lines, outputName, pdfName));
 			File outputDirFile = new File(outputDir);
 			if (!outputDirFile.exists()) {
 				outputDirFile.mkdir();
@@ -335,38 +335,48 @@ public class AnnotatedTTGenerator {
 
 	}
 
-	private List<String> convertLines(List<String> lines, String outputFileName) throws Exception {
+	private List<String> convertLines(List<String> lines, String outputFileName, String pdfName) throws Exception {
 
 		List<String> converted = new ArrayList<String>();
 		/** read as table. **/
 		String[][] table = new String[lines.size()][];
 		int maxNumberOfCols = 0;
-		for (int i = 0; i < lines.size(); i++) {
-			table[i] = StringUtils.commaDelimitedListToStringArray(lines.get(i));
-			if (table[i][0].split(";").length > maxNumberOfCols) {
+		for (int i = 0, j = 0; i < lines.size(); i++) {
+			/** here we can ignore any stop from pdf. **/
+			/*if (lines.get(i).startsWith("VILLA LAGARINA  via Magrè")) {
+				continue;
+			}*/
+			table[j] = StringUtils.commaDelimitedListToStringArray(lines.get(i));
+			if (table[j][0].split(";").length > maxNumberOfCols) {
 				/** max number of possible columns. **/
-				maxNumberOfCols = table[i][0].split(";").length;
+				maxNumberOfCols = table[j][0].split(";").length;
 			}
+			j++;
 		}
 
 		/** create local copy of table as string[][] matrix. **/
 		String[][] matrix = new String[lines.size()][maxNumberOfCols + 1];
-		for (int i = 0; i < lines.size(); i++) {
+		for (int i = 0, k = 0; i < lines.size(); i++) {
 			String tableString = "";
-			if (table[i].length > 1) {
-				for (int j = 0; j < table[i].length; j++) {
-					tableString = tableString + table[i][j];
+			/** here we can ignore any stop from pdf. **/
+			/*if (lines.get(i).startsWith("VILLA LAGARINA  via Magrè")) {
+				continue;
+			}*/
+			if (table[k].length > 1) {
+				for (int j = 0; j < table[k].length; j++) {
+					tableString = tableString + table[k][j];
 				}
 			} else {
-				tableString = table[i][0];
+				tableString = table[k][0];
 			}
 
 			//String[] colValues = table[i][0].split(";");
 			String[] colValues = tableString.split(";");
 			for (int j = 0; j < colValues.length; j++) {
-				matrix[i][j] = colValues[j];
+				matrix[k][j] = colValues[j];
 				// if (verbose) System.out.println(matrix[i][j]);
 			}
+			k++;
 		}
 
 		// filter matrix, removing ignore services.
@@ -426,7 +436,16 @@ public class AnnotatedTTGenerator {
 		output = processMatrix(matrixFiltered, noOfOutputCols, outputFileName);
 
 		// consistency check.
-		output = consistencyCheck(output, noOfOutputCols, outputFileName);
+		if (fileRouteModel.getAgencyData(agencyId) != null) {
+
+			List<String> ignoreRouteFileNames = fileRouteModel.getAgencyData(agencyId)
+					.getIgnoreConsistencyCheckRoutes();
+
+			if (!ignoreRouteFileNames.contains(pdfName)) {
+				output = consistencyCheck(output, noOfOutputCols, outputFileName);
+			}
+
+		}
 		
 		// simple print existing matrix.
 		for (int i = 0; i < output.length; i++) {
@@ -499,11 +518,13 @@ public class AnnotatedTTGenerator {
 						}
 					}
 					
+					int nonEmptyNextIndex = -1;
 					if (switchRow == -1) {
 						for (int f = iRow + 1; f < output.length; f++) {
 							String next = output[f][iCol];
 							if (!next.isEmpty() && !next.startsWith("-")) {
 								Date nextTime = TIME_FORMAT.parse(next);
+								nonEmptyNextIndex = f;
 								if (nextTime.equals(iTime)) {
 									System.out.println(outputFileName + " time: " + iTime + " should be place before: " + nextTime + " (" + iRow + "," + iCol + ")");
 									switchRow = f - 1;
@@ -513,7 +534,11 @@ public class AnnotatedTTGenerator {
 						}
 					}
 					
-					if (switchRow == -1) { // its the last stop,put it after the next one. (04A-Festivo).
+					if (switchRow == -1 && nonEmptyNextIndex > -1) {
+						switchRow = nonEmptyNextIndex + 1;
+					}
+
+					if (switchRow == -1 && nonEmptyNextIndex == 1) { // its the last stop,put it after the next one. (04A-Festivo).
 						switchRow = iRow + 1;
 					}
 
@@ -2519,19 +2544,22 @@ public class AnnotatedTTGenerator {
 		List<Integer> anamolies = null;
 
 		for (int i = 0; i < (matrix.length - numOfHeaders); i++) {
-			String pdfStopName = matrix[i + numOfHeaders][0].trim();
-//			pdfStopName = pdfStopName.replaceAll("\\s+", " ");
-//			pdfStopName = pdfStopName.replace(" )", ")");
-//			pdfStopName = pdfStopName.replace(" (", "(");
-//			pdfStopName = pdfStopName.replace(". ", ".");
-			if (agencyId.equalsIgnoreCase("17")) {
-				pdfStopName = pdfStopName.replaceAll("\\s+", " ");
-				pdfStopName = pdfStopName.replace(" )", ")");
-				pdfStopName = pdfStopName.replace(" (", "(");
-				pdfStopName = pdfStopName.replace(". ", ".");
-				pdfStopName = pdfStopName.replaceAll("\"", "");	
+			if (matrix[i + numOfHeaders][0] != null) {
+				String pdfStopName = matrix[i + numOfHeaders][0].trim();
+//				pdfStopName = pdfStopName.replaceAll("\\s+", " ");
+//				pdfStopName = pdfStopName.replace(" )", ")");
+//				pdfStopName = pdfStopName.replace(" (", "(");
+//				pdfStopName = pdfStopName.replace(". ", ".");
+				if (agencyId.equalsIgnoreCase("17")) {
+					pdfStopName = pdfStopName.replaceAll("\\s+", " ");
+					pdfStopName = pdfStopName.replace(" )", ")");
+					pdfStopName = pdfStopName.replace(" (", "(");
+					pdfStopName = pdfStopName.replace(". ", ".");
+					pdfStopName = pdfStopName.replaceAll("\"", "");	
+				}
+				pdfStopList.add(pdfStopName);	
 			}
-			pdfStopList.add(pdfStopName);
+			
 		}
 
 		// add all pdf stop first to final list.
@@ -3750,13 +3778,13 @@ public class AnnotatedTTGenerator {
 			if (fileEntry.isDirectory() | fileEntry.getName().contains(".json") | fileEntry.getName().contains(".zip")) {
 				continue;
 			} else {
-				if (verbose) System.out.println("Annotation in process for ->  " + fileEntry.getName());
+				if (verbose)
+					System.out.println("Annotation in process for ->  " + fileEntry.getName());
 				timeTableGenerator.processFiles(pathToOutput, agencyId, pathToInput + fileEntry.getName());
 			}
 		}
 
-//		timeTableGenerator.processFiles(pathToOutput, "12", pathToInput + "03A-Feriale.csv");
-//		timeTableGenerator.processFiles(pathToOutput, "16", pathToInput + "I-03A-Feriale.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "16", pathToInput + "I-04A-Feriale.csv"); //No CC.
 //		timeTableGenerator.processFiles(pathToOutput, "16", pathToInput + "P-07A-Feriale.csv");
 //		timeTableGenerator.processFiles(pathToOutput, "12", pathToInput + "07A-Feriale.csv");
 //		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "334A.csv");

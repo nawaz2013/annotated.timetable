@@ -12,8 +12,8 @@ public class Tester {
 	private static FileRouteModel fileRouteModel;
 	
 	public static void main(String args[]) throws JsonParseException, JsonMappingException, IOException {
-//		fileRouteModel = readFileRouteConfigurationModel();
-//		System.out.println(fileRouteModel.getAgencies().get(0).getFileRouteMappings().size());
+		fileRouteModel = readFileRouteConfigurationModel();
+		System.out.println(fileRouteModel.getAgencies().get(0).getFileRouteMappings().size());
 		
 		int[][] ar = new int[][]
 	            {
