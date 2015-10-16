@@ -811,7 +811,8 @@ public class AnnotatedTTGenerator {
 //				}
 				int stopIndex = -1;
 				for (int i = 0; i < stops.size(); i++) {
-					if (stops.get(i).equalsIgnoreCase(name) && !italicEntered[i]) {
+					if (stops.get(i).equalsIgnoreCase(name) && (output[i + 4][j] == null)
+							&& !italicEntered[i]) {
 						stopIndex = i;
 						italicEntered[i] = true;
 						break;
@@ -3786,7 +3787,7 @@ public class AnnotatedTTGenerator {
 
 //		timeTableGenerator.processFiles(pathToOutput, "16", pathToInput + "I-04A-Feriale.csv"); //No CC.
 //		timeTableGenerator.processFiles(pathToOutput, "16", pathToInput + "P-07A-Feriale.csv");
-//		timeTableGenerator.processFiles(pathToOutput, "12", pathToInput + "07A-Feriale.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "12", pathToInput + "11R-Feriale.csv");
 //		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "334A.csv");
 
 		timeTableGenerator.printStats();

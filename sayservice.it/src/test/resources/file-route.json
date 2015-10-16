@@ -108,7 +108,7 @@
 			"P-A_R-Feriale": "486",
 			"P-A_R-Festivo": "486"
 		},
-		"ignoreConsistencyCheckRoutes" : []
+		"ignoreConsistencyCheckRoutes" : ["I-04A-Feriale"]
 	},
 		{
 		"agencyId": "17",
