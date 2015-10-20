@@ -205,7 +205,7 @@ public class AnnotatedTTGenerator {
 		serviceExceptionType2Dates.put("scolastica da lunedì a sabato", new ArrayList<>(Arrays.asList("20151223","20160101")));
 		serviceExceptionType2Dates.put("scolastica da lunedì a venerdì", new ArrayList<>(Arrays.asList("20151223","20160101")));
 		serviceExceptionType2Dates.put("scolastica solo il sabato", new ArrayList<>(Arrays.asList("20160102"))); //sabato di non-scolastic period.
-		serviceExceptionType2Dates.put("non scol. da lunedì a sabato", new ArrayList<>(Arrays.asList("20150911","20151009")));
+		serviceExceptionType2Dates.put("non scol. da lunedì a sabato", new ArrayList<>(Arrays.asList("20150911","20151016")));
 		// ex-urban.
 		serviceExceptionType2Dates.put("feriale escl.sab non scol", new ArrayList<>(Arrays.asList("20151221","20151222"))); // lun,ven scolastici.
 		serviceExceptionType2Dates.put("feriale non scol dal lun al ve", new ArrayList<>(Arrays.asList("20151221","20151222")));
@@ -343,9 +343,9 @@ public class AnnotatedTTGenerator {
 		int maxNumberOfCols = 0;
 		for (int i = 0, j = 0; i < lines.size(); i++) {
 			/** here we can ignore any stop from pdf. **/
-			/*if (lines.get(i).startsWith("VILLA LAGARINA  via Magrè")) {
+			if (lines.get(i).startsWith("VILLA LAGARINA  via Magrè")) {
 				continue;
-			}*/
+			}
 			table[j] = StringUtils.commaDelimitedListToStringArray(lines.get(i));
 			if (table[j][0].split(";").length > maxNumberOfCols) {
 				/** max number of possible columns. **/
@@ -359,9 +359,9 @@ public class AnnotatedTTGenerator {
 		for (int i = 0, k = 0; i < lines.size(); i++) {
 			String tableString = "";
 			/** here we can ignore any stop from pdf. **/
-			/*if (lines.get(i).startsWith("VILLA LAGARINA  via Magrè")) {
+			if (lines.get(i).startsWith("VILLA LAGARINA  via Magrè")) {
 				continue;
-			}*/
+			}
 			if (table[k].length > 1) {
 				for (int j = 0; j < table[k].length; j++) {
 					tableString = tableString + table[k][j];
@@ -669,9 +669,9 @@ public class AnnotatedTTGenerator {
 								inputPdfTime = inputCsvTimeList.get(j - 1);
 								if (inputPdfTime != null && !inputPdfTime.isEmpty() && inputPdfTime.indexOf(":") != -1) {
 									int pdfHour = Integer.valueOf(inputPdfTime.substring(0, inputPdfTime.indexOf(":")));
-									if (pdfHour > 24) {
-										pdfHour = pdfHour - 24;
-									}
+//									if (pdfHour > 24) {
+//										pdfHour = pdfHour - 24;
+//									}
 
 									inputPdfTime = formatter.format(pdfHour)
 											+ inputPdfTime.substring(inputPdfTime.indexOf(":")).trim();
@@ -758,9 +758,9 @@ public class AnnotatedTTGenerator {
 								inputPdfTime = inputCsvTimeList.get(j - 1);
 								if (inputPdfTime != null && !inputPdfTime.isEmpty() && inputPdfTime.indexOf(":") != -1) {
 									int pdfHour = Integer.valueOf(inputPdfTime.substring(0, inputPdfTime.indexOf(":")));
-									if (pdfHour > 24) {
-										pdfHour = pdfHour - 24;
-									}
+//									if (pdfHour > 24) {
+//										pdfHour = pdfHour - 24;
+//									}
 
 									inputPdfTime = formatter.format(pdfHour)
 											+ inputPdfTime.substring(inputPdfTime.indexOf(":")).trim();
@@ -1679,9 +1679,9 @@ public class AnnotatedTTGenerator {
 
 			int timeToCheckHour = Integer.valueOf(timeToCheck.substring(0, timeToCheck.indexOf(":")));
 
-			if (timeToCheckHour > 24) {
-				timeToCheckHour = timeToCheckHour - 24;
-			}
+//			if (timeToCheckHour > 24) {
+//				timeToCheckHour = timeToCheckHour - 24;
+//			}
 			timeToCheck = formatter.format(timeToCheckHour) + timeToCheck.substring(timeToCheck.indexOf(":"));
 			
 			boolean found = false;
@@ -2119,10 +2119,10 @@ public class AnnotatedTTGenerator {
 							String timeToCheck = matrix[t][colInPdf].replace(".", ":");
 							int timeToCheckHour = Integer.valueOf(timeToCheck.substring(0, timeToCheck.indexOf(":")));
 
-							if (timeToCheckHour > 24) {
-								timeToCheckHour = timeToCheckHour - 24;
-
-							}
+//							if (timeToCheckHour > 24) {
+//								timeToCheckHour = timeToCheckHour - 24;
+//
+//							}
 							timeToCheck = formatter.format(timeToCheckHour)
 									+ timeToCheck.substring(timeToCheck.indexOf(":")).trim();
 							if (verbose)
@@ -2208,10 +2208,10 @@ public class AnnotatedTTGenerator {
 							String timeToCheck = matrix[t][colInPdf].replace(".", ":");
 							int timeToCheckHour = Integer.valueOf(timeToCheck.substring(0, timeToCheck.indexOf(":")));
 
-							if (timeToCheckHour > 24) {
-								timeToCheckHour = timeToCheckHour - 24;
-
-							}
+//							if (timeToCheckHour > 24) {
+//								timeToCheckHour = timeToCheckHour - 24;
+//
+//							}
 							timeToCheck = formatter.format(timeToCheckHour)
 									+ timeToCheck.substring(timeToCheck.indexOf(":")).trim();
 							if (verbose)
@@ -2699,9 +2699,9 @@ public class AnnotatedTTGenerator {
 
 					int startTimeHour = Integer.valueOf(startTime.substring(0, startTime.indexOf(":")));
 
-					if (startTimeHour > 24) {
-						startTimeHour = startTimeHour - 24;
-					}
+//					if (startTimeHour > 24) {
+//						startTimeHour = startTimeHour - 24;
+//					}
 
 					startTime = formatter.format(startTimeHour) + startTime.substring(startTime.indexOf(":")).trim();
 
@@ -2709,10 +2709,10 @@ public class AnnotatedTTGenerator {
 
 					int endTimeHour = Integer.valueOf(endTime.substring(0, endTime.indexOf(":")));
 
-					if (endTimeHour > 24) {
-						endTimeHour = endTimeHour - 24;
-
-					}
+//					if (endTimeHour > 24) {
+//						endTimeHour = endTimeHour - 24;
+//
+//					}
 
 					endTime = formatter.format(endTimeHour) + endTime.substring(endTime.indexOf(":")).trim();
 
@@ -2966,9 +2966,9 @@ public class AnnotatedTTGenerator {
 
 									int pdfTimeHour = Integer.valueOf(pdfTime.substring(0, pdfTime.indexOf(":")));
 
-									if (pdfTimeHour > 24) {
-										pdfTimeHour = pdfTimeHour - 24;
-									}
+//									if (pdfTimeHour > 24) {
+//										pdfTimeHour = pdfTimeHour - 24;
+//									}
 
 									pdfTime = formatter.format(pdfTimeHour)
 											+ pdfTime.substring(pdfTime.indexOf(":")).trim();
@@ -3060,9 +3060,9 @@ public class AnnotatedTTGenerator {
 
 									int pdfTimeHour = Integer.valueOf(pdfTime.substring(0, pdfTime.indexOf(":")));
 
-									if (pdfTimeHour > 24) {
-										pdfTimeHour = pdfTimeHour - 24;
-									}
+//									if (pdfTimeHour > 24) {
+//										pdfTimeHour = pdfTimeHour - 24;
+//									}
 									pdfTime = formatter.format(pdfTimeHour)
 											+ pdfTime.substring(pdfTime.indexOf(":")).trim();
 								}
@@ -3391,9 +3391,9 @@ public class AnnotatedTTGenerator {
 
 					int pdfTimeHour = Integer.valueOf(pdfTime.substring(0, pdfTime.indexOf(":")));
 
-					if (pdfTimeHour > 24) {
-						pdfTimeHour = pdfTimeHour - 24;
-					}
+//					if (pdfTimeHour > 24) {
+//						pdfTimeHour = pdfTimeHour - 24;
+//					}
 
 					pdfTime = formatter.format(pdfTimeHour) + pdfTime.substring(pdfTime.indexOf(":")).trim();
 				}
@@ -3434,9 +3434,9 @@ public class AnnotatedTTGenerator {
 
 					int pdfTimeHour = Integer.valueOf(pdfTime.substring(0, pdfTime.indexOf(":")));
 
-					if (pdfTimeHour > 24) {
-						pdfTimeHour = pdfTimeHour - 24;
-					}
+//					if (pdfTimeHour > 24) {
+//						pdfTimeHour = pdfTimeHour - 24;
+//					}
 					pdfTime = formatter.format(pdfTimeHour) + pdfTime.substring(pdfTime.indexOf(":")).trim();
 				}
 				stopIdsMap.put(stopsMap.get(stoptimeseq.get(gtfsSeq)[3]).toLowerCase(), stoptimeseq.get(gtfsSeq)[3]);
@@ -3504,10 +3504,10 @@ public class AnnotatedTTGenerator {
 							String timeToCheck = matrix[t][colInPdf].replace(".", ":");
 							int timeToCheckHour = Integer.valueOf(timeToCheck.substring(0, timeToCheck.indexOf(":")));
 
-							if (timeToCheckHour > 24) {
-								timeToCheckHour = timeToCheckHour - 24;
-
-							}
+//							if (timeToCheckHour > 24) {
+//								timeToCheckHour = timeToCheckHour - 24;
+//
+//							}
 
 							timeToCheck = formatter.format(timeToCheckHour)
 									+ timeToCheck.substring(timeToCheck.indexOf(":")).trim();
@@ -3620,10 +3620,10 @@ public class AnnotatedTTGenerator {
 						String timeToCheck = matrix[t][colInPdf].replace(".", ":");
 						int timeToCheckHour = Integer.valueOf(timeToCheck.substring(0, timeToCheck.indexOf(":")));
 
-						if (timeToCheckHour > 24) {
-							timeToCheckHour = timeToCheckHour - 24;
-
-						}
+//						if (timeToCheckHour > 24) {
+//							timeToCheckHour = timeToCheckHour - 24;
+//
+//						}
 
 						timeToCheck = formatter.format(timeToCheckHour)
 								+ timeToCheck.substring(timeToCheck.indexOf(":")).trim();
@@ -3719,9 +3719,9 @@ public class AnnotatedTTGenerator {
 
 				int timeToCheckHour = Integer.valueOf(timeToCheck.substring(0, timeToCheck.indexOf(":")));
 
-				if (timeToCheckHour > 24) {
-					timeToCheckHour = timeToCheckHour - 24;
-				}
+//				if (timeToCheckHour > 24) {
+//					timeToCheckHour = timeToCheckHour - 24;
+//				}
 
 				timeToCheck = formatter.format(timeToCheckHour)
 						+ timeToCheck.substring(timeToCheck.indexOf(":")).trim();
@@ -3787,7 +3787,7 @@ public class AnnotatedTTGenerator {
 
 //		timeTableGenerator.processFiles(pathToOutput, "16", pathToInput + "I-04A-Feriale.csv"); //No CC.
 //		timeTableGenerator.processFiles(pathToOutput, "16", pathToInput + "P-07A-Feriale.csv");
-//		timeTableGenerator.processFiles(pathToOutput, "12", pathToInput + "11R-Feriale.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "12", pathToInput + "04_A-Festivo.csv");
 //		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "334A.csv");
 
 		timeTableGenerator.printStats();
