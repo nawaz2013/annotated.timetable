@@ -54,6 +54,8 @@ public class AnnotatedTTGenerator {
 	private static boolean verbose = false;
 	// err.
 	private static boolean err = false;
+	private static int maxR;
+	private static int maxC;
 	// input GTFS.
 	private static final String pathToGTFS = "src/test/resources/gtfs/12/";
 //	private static final String pathToGTFS = "src/test/resources/gtfs/16/";
@@ -316,6 +318,9 @@ public class AnnotatedTTGenerator {
 			File annotatedCSV = new File(outputDirFile, outputName);
 			Files.asCharSink(annotatedCSV, Charsets.UTF_8).writeLines(annotated);
 
+			
+//			System.err.println(maxR + ", " + maxC);
+			
 			fileColumnMismatchMap.put(outputName, mismatchColIds);
 			destroy();
 		}
@@ -379,6 +384,7 @@ public class AnnotatedTTGenerator {
 			k++;
 		}
 
+		
 		// filter matrix, removing ignore services.
 		String[][] matrixFiltered = new String[lines.size()][maxNumberOfCols + 1];
 
@@ -456,6 +462,10 @@ public class AnnotatedTTGenerator {
 			// if (verbose) System.out.println(line);
 			converted.add(line);
 		}
+		
+//		maxC = Math.max(maxNumberOfCols, maxC);
+//		maxR = Math.max(lines.size(), maxR);
+		
 
 		return converted;
 	}
@@ -919,20 +929,20 @@ public class AnnotatedTTGenerator {
 					String directionId = tripInfoGTFS.get(3);
 					String routeId = tripInfoGTFS.get(0);
 					// if file name ends with A-annoated.csv. (ANDATA)
-					for (String aSuffix : andataSuffix) {
-						if (fileName.endsWith(aSuffix)) {
-							directionId = "0";
-						}
-					}
-					for (String rSuffix : ritornoSuffix) {
-						if (fileName.endsWith(rSuffix)) {
-							directionId = "1";
-						}
-					}
-					if (Integer.valueOf(directionId) != Integer.valueOf(tripInfoGTFS.get(3))) {
-						System.err.println("directionId different from GTFS for: " + fileName + " tripId: "
-								+ gtfsTripId + "(gtfsDirectionId -> " + tripInfoGTFS.get(3) + ")");
-					}
+//					for (String aSuffix : andataSuffix) {
+//						if (fileName.endsWith(aSuffix)) {
+//							directionId = "0";
+//						}
+//					}
+//					for (String rSuffix : ritornoSuffix) {
+//						if (fileName.endsWith(rSuffix)) {
+//							directionId = "1";
+//						}
+//					}
+//					if (Integer.valueOf(directionId) != Integer.valueOf(tripInfoGTFS.get(3))) {
+//						System.err.println("directionId different from GTFS for: " + fileName + " tripId: "
+//								+ gtfsTripId + "(gtfsDirectionId -> " + tripInfoGTFS.get(3) + ")");
+//					}
 					// identify new routeId
 					String key = routeId + "_" + agencyId + "_" + directionId;
 					sayservice.RouteModel.AgencyModel am = routeModel.agency(agencyId);

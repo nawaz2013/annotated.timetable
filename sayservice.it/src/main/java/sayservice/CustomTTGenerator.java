@@ -264,7 +264,7 @@ public class CustomTTGenerator {
 			boolean isRitorno = false;
 			String outputName = filename.substring(filename.lastIndexOf("/") + 1, filename.lastIndexOf("."));
 			
-			if (outputName.endsWith("R.csv")) {
+			if (outputName.endsWith("R")) {
 				isRitorno = true;
 			}
 			//ex-urban.
@@ -2489,7 +2489,7 @@ public class CustomTTGenerator {
 //					}
 //
 					List<String> matchingTripId = new ArrayList<String>();
-					String foundTripId = routeId + "_" + agencyId + "_" + (isRitorno?1:0) + "-" + routeShortName + "_" + (isRitorno?"andata":"ritorno") + "_" + currentCol;
+					String foundTripId = routeId + "_" + agencyId + "_" + (isRitorno?1:0) + "-" + routeShortName + "_" + (isRitorno?"ritorno":"andata") + "_" + currentCol;
 					matchingTripId.add(foundTripId);
 
 //					for (String tripId : tripsForRoute) {
@@ -3481,7 +3481,7 @@ public class CustomTTGenerator {
 			}
 		}
 
-//		timeTableGenerator.processFiles(pathToOutput, "12", pathToInput + "08R-Feriale.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "301R.csv");
 		timeTableGenerator.printStats();
 
 		// hard fix mode.

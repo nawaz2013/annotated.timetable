@@ -96,7 +96,7 @@ public class ConsistencyChecker {
 								if (curr.after(next)) {
 									System.out.println(output[i][0]);
 									inconsistent = true;
-									System.err.println(fileName + "time: " + currTime + " is before: " + nextTime
+									System.err.println(fileName + " time: " + currTime + " is before: " + nextTime
 											+ " (" + i + "," + j + ")");
 								}
 								break;

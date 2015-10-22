@@ -25,12 +25,12 @@ import com.google.gdata.util.io.base.UnicodeReader;
 
 public class CustomCacheGenerator {
 	
-	private static String pathToAnnotatedCSVs = "C:/projects/marco/annotated.timetable/sayservice.it/src/test/resources/annotatedtimetable/17'";
-//	private static String pathToAnnotatedCSVs = "C:/projects/marco/annotated.timetable/sayservice.it/src/test/resources/annotatedtimetable/16";
-//	private static String pathToAnnotatedCSVs = "C:/projects/marco/annotated.timetable/sayservice.it/src/test/resources/annotatedtimetable/17";
-	private static final String pathToGTFS = "C:/projects/marco/annotated.timetable/sayservice.it/src/test/resources/gtfs/17/";
-//	private static final String pathToGTFS = "C:/projects/marco/annotated.timetable/sayservice.it/src/test/resources/gtfs/16/";
-//	private static final String pathToGTFS = "C:/projects/marco/annotated.timetable/sayservice.it/src/test/resources/gtfs/17/";
+	private static String pathToAnnotatedCSVs = "src/test/resources/annotatedtimetable/17'";
+//	private static String pathToAnnotatedCSVs = "src/test/resources/annotatedtimetable/16";
+//	private static String pathToAnnotatedCSVs = "src/test/resources/annotatedtimetable/17";
+	private static final String pathToGTFS = "src/test/resources/gtfs/17/";
+//	private static final String pathToGTFS = "src/test/resources/gtfs/16/";
+//	private static final String pathToGTFS = "src/test/resources/gtfs/17/";
 //	private static String pathToOutput = "C:/tmp/annotated-cache/12";
 //	private static String pathToOutput = "C:/tmp/annotated-cache/16";
 	private static String pathToOutput = "C:/tmp/annotated-cache/17";
