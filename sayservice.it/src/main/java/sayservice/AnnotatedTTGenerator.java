@@ -177,7 +177,7 @@ public class AnnotatedTTGenerator {
 	};
 	  
 	// urban.
-	private String outputPattern = "2015091020160607";
+	private static String outputPattern = "2015091020160607";
 	// ex-urban.
 //	private String outputPattern = "2015091020160624"; //2015091020160624,2015062620150909
 	
@@ -256,11 +256,20 @@ public class AnnotatedTTGenerator {
 	
 	private static RouteModel routeModel;
 
-	private static String[] andataSuffix = new String[] { "A-annotated.csv", "a-annotated.csv",
-			"A-Feriale-annotated.csv", "a-Feriale-annotated.csv", "A-Festivo-annotated", "a-Festivo-annotated" };
+	private static String[] andataSuffix = new String[] {
+		"A-" + outputPattern + "-annotated.csv", "a-annotated.csv",
+		"A-Feriale-" + outputPattern + "-annotated.csv",
+		"a-Feriale-" + outputPattern + "-annotated.csv",
+		"A-Festivo-" + outputPattern + "-annotated.csv",
+		"a-Festivo-" + outputPattern + "-annotated.csv" };
 
-	private static String[] ritornoSuffix = new String[] { "R-annotated.csv", "r-annotated.csv",
-			"R-Feriale-annotated.csv", "r-Feriale-annotated.csv", "R-Festivo-annotated", "r-Festivo-annotated" };
+	private static String[] ritornoSuffix = new String[] { 
+		"R-" + outputPattern + "-annotated.csv",
+		"r-" + outputPattern + "-annotated.csv",
+		"R-Feriale-" + outputPattern + "-annotated.csv",
+		"r-Feriale-" + outputPattern + "-annotated.csv",
+		"R-Festivo-" + outputPattern + "-annotated.csv",
+		"r-Festivo-" + outputPattern + "-annotated.csv" };
 
 	private static List<String> ignoreServiceList = new ArrayList<String>() {
 		{
@@ -284,8 +293,8 @@ public class AnnotatedTTGenerator {
 			mapper.configure(Feature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 			init(agencyId);
 			// route model read from configuration (remove)
-			this.fileRouteModel = readFileRouteConfigurationModel();
-			this.routeModel = readRouteModel();
+			AnnotatedTTGenerator.fileRouteModel = readFileRouteConfigurationModel();
+			AnnotatedTTGenerator.routeModel = readRouteModel();
 
 		} catch (UnknownHostException e) {
 			// TODO Auto-generated catch block
@@ -926,25 +935,27 @@ public class AnnotatedTTGenerator {
 				gtfsTripId = tripIds.get(0);
 				if (tripRouteServiceHeadsignIdMap.containsKey(gtfsTripId)) {
 					List<String> tripInfoGTFS = tripRouteServiceHeadsignIdMap.get(gtfsTripId);
-					String directionId = tripInfoGTFS.get(3);
+					String gtfsDirectionId = tripInfoGTFS.get(3);
 					String routeId = tripInfoGTFS.get(0);
 					// if file name ends with A-annoated.csv. (ANDATA)
-//					for (String aSuffix : andataSuffix) {
-//						if (fileName.endsWith(aSuffix)) {
-//							directionId = "0";
-//						}
-//					}
-//					for (String rSuffix : ritornoSuffix) {
-//						if (fileName.endsWith(rSuffix)) {
-//							directionId = "1";
-//						}
-//					}
-//					if (Integer.valueOf(directionId) != Integer.valueOf(tripInfoGTFS.get(3))) {
-//						System.err.println("directionId different from GTFS for: " + fileName + " tripId: "
-//								+ gtfsTripId + "(gtfsDirectionId -> " + tripInfoGTFS.get(3) + ")");
-//					}
+					String directionId = "";
+					for (String aSuffix : andataSuffix) {
+						if (fileName.endsWith(aSuffix)) {
+							directionId = "0";
+						}
+					}
+					for (String rSuffix : ritornoSuffix) {
+						if (fileName.endsWith(rSuffix)) {
+							directionId = "1";
+						}
+					}
+					if (!directionId.isEmpty()
+							&& Integer.valueOf(directionId) != Integer.valueOf(gtfsDirectionId)) {
+						System.err.println("directionId different from GTFS for: " + fileName + " tripId: "
+								+ gtfsTripId + "(gtfsDirectionId -> " + tripInfoGTFS.get(3) + ")");
+					}
 					// identify new routeId
-					String key = routeId + "_" + agencyId + "_" + directionId;
+					String key = routeId + "_" + agencyId + "_" + gtfsDirectionId;
 					sayservice.RouteModel.AgencyModel am = routeModel.agency(agencyId);
 					if (am.getRouteMappings() != null && am.getRouteMappings().containsKey(key)) {
 						cacheRouteId = am.getRouteMappings().get(key);
@@ -957,9 +968,10 @@ public class AnnotatedTTGenerator {
 				for (String tripId : tripIds) {
 					if (tripRouteServiceHeadsignIdMap.containsKey(tripId)) {
 						List<String> tripInfoGTFS = tripRouteServiceHeadsignIdMap.get(tripId);
-						String directionId = tripInfoGTFS.get(3);
+						String gtfsDirectionId = tripInfoGTFS.get(3);
 						String routeId = tripInfoGTFS.get(0);
 						// if file name ends with A-annoated.csv. (ANDATA)
+						String directionId = "";
 						for (String aSuffix : andataSuffix) {
 							if (fileName.endsWith(aSuffix)) {
 								directionId = "0";
@@ -970,12 +982,13 @@ public class AnnotatedTTGenerator {
 								directionId = "1";
 							}
 						}
-						if (Integer.valueOf(directionId) != Integer.valueOf(tripInfoGTFS.get(3))) {
+						if (!directionId.isEmpty()
+								&& Integer.valueOf(directionId) != Integer.valueOf(gtfsDirectionId)) {
 							System.err.println("directionId different from GTFS for: " + fileName + " tripId: "
 									+ gtfsTripId + "(gtfsDirectionId -> " + tripInfoGTFS.get(3) + ")");
 						}
 						// identify new routeId
-						String key = routeId + "_" + agencyId + "_" + directionId;
+						String key = routeId + "_" + agencyId + "_" + gtfsDirectionId;
 						sayservice.RouteModel.AgencyModel am = routeModel.agency(agencyId);
 						if (am.getRouteMappings() != null && am.getRouteMappings().containsKey(key)) {
 							cacheRouteId = cacheRouteId + am.getRouteMappings().get(key) + "$";
@@ -3797,7 +3810,7 @@ public class AnnotatedTTGenerator {
 
 //		timeTableGenerator.processFiles(pathToOutput, "16", pathToInput + "I-04A-Feriale.csv"); //No CC.
 //		timeTableGenerator.processFiles(pathToOutput, "16", pathToInput + "P-07A-Feriale.csv");
-//		timeTableGenerator.processFiles(pathToOutput, "12", pathToInput + "04_A-Festivo.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "12", pathToInput + "01_A-Feriale.csv");
 //		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "334A.csv");
 
 		timeTableGenerator.printStats();
