@@ -50,12 +50,13 @@ public class AnnotatedTTGenerator {
 	private static boolean gtfsStats = false;
 	// csv stats.
 	private static boolean csvStats = true;
+	// pdf columns rows.
+	private static int maxR;
+	private static int maxC;
 	// verbose.
 	private static boolean verbose = false;
 	// err.
 	private static boolean err = false;
-	private static int maxR;
-	private static int maxC;
 	// input GTFS.
 	private static final String pathToGTFS = "src/test/resources/gtfs/12/";
 //	private static final String pathToGTFS = "src/test/resources/gtfs/16/";
