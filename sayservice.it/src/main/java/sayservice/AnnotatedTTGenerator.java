@@ -69,6 +69,8 @@ public class AnnotatedTTGenerator {
 	private static final String pathToInput = "src/test/resources/inputtimetable/12/";
 //	private static final String pathToInput = "src/test/resources/inputtimetable/16/";
 //	private static final String pathToInput = "src/test/resources/inputtimetable/17/";
+	// reorder stop with consistency check.
+	private boolean reorderStops = true;
 	// agencyIds (12,16,17)
 	private static final String agencyId = "12";
 	private static final List<String> roveretoNBuses = Arrays.asList("N1", "N2", "N3", "N5", "N6");
@@ -180,7 +182,7 @@ public class AnnotatedTTGenerator {
 	// urban.
 	private static String outputPattern = "2015091020160607";
 	// ex-urban.
-//	private String outputPattern = "2015091020160624"; //2015091020160624,2015062620150909
+//	private static String outputPattern = "2015091020160624"; //2015091020160624,2015062620150909
 	
 	private Map<String, boolean[]> calendarEntries = new HashMap<String, boolean[]>();
 	private Map<String, List<String>> serviceIdMapping = new HashMap<String, List<String>>();
@@ -452,17 +454,19 @@ public class AnnotatedTTGenerator {
 		output = processMatrix(matrixFiltered, noOfOutputCols, outputFileName);
 
 		// consistency check.
-		if (fileRouteModel.getAgencyData(agencyId) != null) {
+		if (reorderStops ) {
+			if (fileRouteModel.getAgencyData(agencyId) != null) {
 
-			List<String> ignoreRouteFileNames = fileRouteModel.getAgencyData(agencyId)
-					.getIgnoreConsistencyCheckRoutes();
+				List<String> ignoreRouteFileNames = fileRouteModel.getAgencyData(agencyId)
+						.getIgnoreConsistencyCheckRoutes();
 
-			if (!ignoreRouteFileNames.contains(pdfName)) {
-				output = consistencyCheck(output, noOfOutputCols, outputFileName);
+				if (!ignoreRouteFileNames.contains(pdfName)) {
+					output = consistencyCheck(output, noOfOutputCols, outputFileName);
+				}
+
 			}
-
 		}
-		
+				
 		// simple print existing matrix.
 		for (int i = 0; i < output.length; i++) {
 			String line = "";
