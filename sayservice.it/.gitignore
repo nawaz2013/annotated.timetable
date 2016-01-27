@@ -1,0 +1,9 @@
+*.class
+*.war
+*.jar
+*.classpath
+*.project
+*.settings/*
+*target/*
+*src/test/resources/gtfs/*
+*bin*
