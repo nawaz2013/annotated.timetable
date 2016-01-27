@@ -1,0 +1,15 @@
+Descr.breve:;;318;
+Descr.lunga:;;Nomesino-Manzano-Valle S.Felice;
+Validità:;;Orario in vigore dal 10/09/2015 al 24/06/2016;
+Orario:;;;
+Frequenza:;;Solo nei giorni scolastici;Feriale non scolastico;Scolastico escluso sabato;Scolastico escluso sabato;Solo al sabato scolastico;Solo nei giorni scolastici;Feriale non scolastico;Scolastico escluso sabato;Feriale non scol dal lun al ve;
+Linea:;;
+Servizio:;;
+gtfs trip_id;;235_17_1-318_ritorno_1;235_17_1-318_ritorno_2;235_17_1-318_ritorno_3;235_17_1-318_ritorno_4;235_17_1-318_ritorno_5;235_17_1-318_ritorno_6;235_17_1-318_ritorno_7;235_17_1-318_ritorno_8;235_17_1-318_ritorno_9;
+smartplanner route_id;;235_17_1;235_17_1;235_17_1;235_17_1;235_17_1;235_17_1;235_17_1;235_17_1;235_17_1;
+service_id;;solo_nei_giorni_scolastici;feriale_non_scolastico;scolastico_escluso_sabato;scolastico_escluso_sabato;solo_al_sabato_scolastico;solo_nei_giorni_scolastici;feriale_non_scolastico;scolastico_escluso_sabato;feriale_non_scol_dal_lun_al_ve;
+stops;stop_id;235_17_1-318_ritorno_1;235_17_1-318_ritorno_2;235_17_1-318_ritorno_3;235_17_1-318_ritorno_4;235_17_1-318_ritorno_5;235_17_1-318_ritorno_6;235_17_1-318_ritorno_7;235_17_1-318_ritorno_8;235_17_1-318_ritorno_9;
+NOMESINO - Part.;nomesino;06:25;06:37;06:46;07:22;07:22;13:52;14:04;17:31;17:59;
+Manzano.;manzano.;06:28;06:40;06:49;07:25;07:25;13:55;14:07;17:34;18:02;
+VALLE S.FELICE - Arr.;valle_s.felice;06:32;06:45;06:53;07:30;07:30;14:00;14:12;17:39;18:07;
+;;;;;;;;;;

@@ -1,0 +1,17 @@
+Descr.breve:;;245;
+Descr.lunga:;;Ponte Caffaro-Anfo-Idro-Vestone;
+Validità:;;Orario in vigore dal 10/09/2015 al 24/06/2016;
+Orario:;;;
+Frequenza:;;Solo  nei giorni feriali;Solo  nei giorni feriali;Solo nei giorni festivi;Solo nei giorni festivi;
+Linea:;;A Vestone coincidenze per Brescia con corse SIA;A Vestone coincidenze per Brescia con corse SIA;A Vestone coincidenze per Brescia con corse SIA;
+Servizio:;;
+gtfs trip_id;;0001929042015091020160624;0001929062015091020160624;0001929092015091020160624;0001929102015091020160624;
+smartplanner route_id;;157_17_0;157_17_0;157_17_0;157_17_0;
+service_id;;0000000022015091020160624;0000000022015091020160624;0000000072015091020160624;0000000072015091020160624;
+stops;stop_id;*0001929042015091020160624;*0001929062015091020160624;*0001929092015091020160624;*0001929102015091020160624;
+ponte caffaro(v.caduti) - part.;;;;;;
+Anfo;4783;08:14;16:04;16:04;19:31;
+Idro;4782;08:20;16:10;16:10;19:37;
+Lavenone;4781;08:24;16:14;16:14;19:41;
+Vestone- arr.;4780;08:29;16:20;16:20;19:47;
+;;;;;

@@ -1,4 +1,4 @@
-package sayservice;
+ package sayservice;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -54,25 +54,25 @@ public class AnnotatedTTGenerator {
 	private static int maxR;
 	private static int maxC;
 	// verbose.
-	private static boolean verbose = false;
+	private static boolean verbose = true;
 	// err.
 	private static boolean err = false;
 	// input GTFS.
-	private static final String pathToGTFS = "src/test/resources/gtfs/12/";
-//	private static final String pathToGTFS = "src/test/resources/gtfs/16/";
+//	private static final String pathToGTFS = "src/test/resources/gtfs/12/";
+	private static final String pathToGTFS = "src/test/resources/gtfs/16/";
 //	private static final String pathToGTFS = "src/test/resources/gtfs/17/";
 //	 output folder.
-	private static final String pathToOutput = "src/test/resources/annotatedtimetable/12/";
-//	private static final String pathToOutput = "src/test/resources/annotatedtimetable/16/";
+//	private static final String pathToOutput = "src/test/resources/annotatedtimetable/12/";
+	private static final String pathToOutput = "src/test/resources/annotatedtimetable/16/";
 //	private static final String pathToOutput = "src/test/resources/annotatedtimetable/17/";
 	// input folder.
-	private static final String pathToInput = "src/test/resources/inputtimetable/12/";
-//	private static final String pathToInput = "src/test/resources/inputtimetable/16/";
+//	private static final String pathToInput = "src/test/resources/inputtimetable/12/";
+	private static final String pathToInput = "src/test/resources/inputtimetable/16/";
 //	private static final String pathToInput = "src/test/resources/inputtimetable/17/";
 	// reorder stop with consistency check.
 	private boolean reorderStops = true;
 	// agencyIds (12,16,17)
-	private static final String agencyId = "12";
+	private static final String agencyId = "16";
 	private static final List<String> roveretoNBuses = Arrays.asList("N1", "N2", "N3", "N5", "N6");
 	private static final List<String> exUrbTrenoRoutes = Arrays.asList("578", "518", "352");
 	private static final Map<String, List<String>> unalignedRoutesMap = new HashMap<String, List<String>>();
@@ -205,12 +205,14 @@ public class AnnotatedTTGenerator {
 		serviceExceptionType1Dates.put("solo postfestivo scolastico", new ArrayList<>(Arrays.asList("20150914","20150921", "20150928"))); // lunedi scolastic
 	}
 	
+	/** this exception dates are needed to be aligned with GTFS from FTP.**/
 	private static final Map<String, List<String>> serviceExceptionType2Dates = new HashMap<String, List<String>>();
 	{
-		serviceExceptionType2Dates.put("scolastica da lunedì a sabato", new ArrayList<>(Arrays.asList("20151223","20160101")));
-		serviceExceptionType2Dates.put("scolastica da lunedì a venerdì", new ArrayList<>(Arrays.asList("20151223","20160101")));
+		serviceExceptionType2Dates.put("scolastica da lunedì a sabato", new ArrayList<>(Arrays.asList("20160325","20160101")));
+		serviceExceptionType2Dates.put("scolastica da lunedì a venerdì", new ArrayList<>(Arrays.asList("20160325","20160101")));
+		serviceExceptionType2Dates.put("scolastica da lunedì a giovedì", new ArrayList<>(Arrays.asList("20160325")));
 		serviceExceptionType2Dates.put("scolastica solo il sabato", new ArrayList<>(Arrays.asList("20160102"))); //sabato di non-scolastic period.
-		serviceExceptionType2Dates.put("non scol. da lunedì a sabato", new ArrayList<>(Arrays.asList("20150911","20151016")));
+		serviceExceptionType2Dates.put("non scol. da lunedì a sabato", new ArrayList<>(Arrays.asList("20150911","20151016", "20151120", "20160118", "20160122")));
 		// ex-urban.
 		serviceExceptionType2Dates.put("feriale escl.sab non scol", new ArrayList<>(Arrays.asList("20151221","20151222"))); // lun,ven scolastici.
 		serviceExceptionType2Dates.put("feriale non scol dal lun al ve", new ArrayList<>(Arrays.asList("20151221","20151222")));
@@ -3813,9 +3815,9 @@ public class AnnotatedTTGenerator {
 			}
 		}
 
-//		timeTableGenerator.processFiles(pathToOutput, "16", pathToInput + "I-04A-Feriale.csv"); //No CC.
+//		timeTableGenerator.processFiles(pathToOutput, "16", pathToInput + "I-06R-Feriale.csv"); //No CC.
 //		timeTableGenerator.processFiles(pathToOutput, "16", pathToInput + "P-07A-Feriale.csv");
-//		timeTableGenerator.processFiles(pathToOutput, "12", pathToInput + "01_A-Feriale.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "12", pathToInput + "16R-Feriale.csv");
 //		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "334A.csv");
 
 		timeTableGenerator.printStats();

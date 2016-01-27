@@ -1,0 +1,18 @@
+Descr.breve:;;425;
+Descr.lunga:;;Pergine Vals.-Masetti-Assizzi-Vignola-Falesina;
+Validità:;;Orario in vigore dal 10/09/2015 al 24/06/2016;
+Orario:;;;
+Frequenza:;;
+Linea:;;Servizio svolto da autonoleggiatore privato;Servizio svolto da autonoleggiatore privato / La corsa si effettua solo nei giorni feriali di giovedì;
+Servizio:;;Bus TTE;Bus TTE;
+gtfs trip_id;;0001860522015091020160624;0001860512015091020160624;
+smartplanner route_id;;309_17_0;309_17_0;
+service_id;;0000000022015091020160624;0000000022015091020160624;
+stops;stop_id;0001860522015091020160624;0001860512015091020160624;
+pergine(c.intermodale) - part.;;;;
+pergine vals.;;;;
+masetti(strada provinciale);;;;
+Assizzi;2871;11:53;09:43;
+Vignola;2798;12:02;09:52;
+Falesina- arr.;2211;12:07;09:57;
+;;;

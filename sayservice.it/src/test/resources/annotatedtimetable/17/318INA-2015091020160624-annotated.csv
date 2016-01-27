@@ -1,0 +1,17 @@
+Descr.breve:;;318;
+Descr.lunga:;;Valle S.Felice-Manzano-Nomesino;
+Validità:;;Orario in vigore dal 10/09/2015 al 24/06/2016;
+Orario:;;;
+Frequenza:;;Solo  nei giorni feriali;Solo nei giorni scolastici;Feriale non scolastico;Solo nei giorni scolastici;Scolastico escluso sabato;Scolastico escluso sabato;Solo  nei giorni feriali;
+Linea:;;
+Servizio:;;
+gtfs trip_id;;;0001885252015091020160624;0001885252015091020160624;0001859222015091020160624;0001893792015091020160624;0001937302015091020160624;;
+smartplanner route_id;;;235_17_0;235_17_0;235_17_0;235_17_0;235_17_0;;
+service_id;;;0000000052015091020160624;0000000052015091020160624;0000000052015091020160624;0000000062015091020160624;0000000062015091020160624;;
+stops;stop_id;$trip not found;0001885252015091020160624;0001885252015091020160624;0001859222015091020160624;0001893792015091020160624;0001937302015091020160624;$trip not found;
+Valle S.Felice- part.;2107;;13:10;13:10;14:00;17:20;18:25;;
+*Valle S.Felice-Cimitero;2334;;13:11;;14:01;17:21;18:26;;
+*Manzano-Bivio;5385;;13:14;;;;;;
+Manzano;2106;;13:15;13:15;14:05;17:25;18:30;;
+Nomesino- arr.;2105;;13:18;13:18;14:08;17:28;18:33;;
+;;;;;;;;

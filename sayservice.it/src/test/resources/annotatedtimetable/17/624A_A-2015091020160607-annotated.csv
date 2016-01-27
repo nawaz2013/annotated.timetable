@@ -1,0 +1,16 @@
+Descr.breve:;;624;
+Descr.lunga:;;Cles - Mechel;
+Validità:;;Orario in vigore dal 10/09/2015 al 24/06/2016;
+Orario:;;;
+Frequenza:;;Solo  nei giorni feriali;Feriale non scolastico;Solo nei giorni scolastici;Solo  nei giorni feriali;
+Linea:;;Servizio svolto da autonoleggiatore privato;
+Servizio:;;Bus  TTE;Bus  TTE;Bus  TTE;Bus  TTE;
+gtfs trip_id;;0001935012015091020160624;0001871392015091020160624;0001913612015091020160624;0001871372015091020160624;
+smartplanner route_id;;354_17_0;354_17_0;354_17_0;354_17_0;
+service_id;;0000000022015091020160624;0000000092015091020160624;0000000052015091020160624;0000000022015091020160624;
+stops;stop_id;0001935012015091020160624;0001871392015091020160624;0001913612015091020160624;0001871372015091020160624;
+cles(autostaz.) - part.;;;;;;
+cles(piazza fiera);;;;;;
+cles(ospedale);;;;;;
+Mechel- arr.;2613;18:28;13:14;13:16;07:28;
+;;;;;

@@ -1,0 +1,18 @@
+Descr.breve:;;429;
+Descr.lunga:;;Centrale - Regnana;
+Validità:;;Orario in vigore dal 10/09/2015 al 24/06/2016;
+Orario:;;;
+Frequenza:;;Solo  nei giorni feriali;Solo nei giorni scolastici;Scolastico escluso sabato;Solo al sabato scolastico;Feriale non scolastico;
+Linea:;;;Servizio svolto da autonoleggiatore privato;Servizio svolto da autonoleggiatore privato;
+Servizio:;;
+gtfs trip_id;;0001856102015091020160624;0001896402015091020160624;0001910192015091020160624;0001910192015091020160624;0001910192015091020160624;
+smartplanner route_id;;84_17_0;84_17_0;84_17_0;84_17_0;84_17_0;
+service_id;;0000000022015091020160624;0000000052015091020160624;0000000092015091020160624;0000000092015091020160624;0000000092015091020160624;
+stops;stop_id;0001856102015091020160624;0001896402015091020160624;0001910192015091020160624;0001910192015091020160624;0001910192015091020160624;
+Regnana- part.;945;06:40;07:00;13:15;13:15;13:15;
+*Regnana-Via Redebus 9;944;06:41;07:01;13:16;;;
+*Regnana Via Dei Tamagi;2358;06:44;;;;;
+*Regnana Biv.-Dopo A.Costalta;943;06:45;;;;;
+regnana bv(dopo a.costalta) - arr.;;;;;;;
+Centrale di Bedollo- arr.;597;06:45;07:05;13:20;13:20;13:20;
+;;;;;;

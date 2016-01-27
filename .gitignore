@@ -1,7 +1,6 @@
-*.class
-sayservice.it/bin/*
-sayservice.it/src/test/resources/annotatedtimetable/*
-
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
-hs_err_pid*
 sayservice.it/src/test/resources/gtfs/*
+sayservice.it/.classpath
+sayservice.it/target/*
+sayservice.it/.project
+sayservice.it/.settings/*
+sayservice.it/.classpath
