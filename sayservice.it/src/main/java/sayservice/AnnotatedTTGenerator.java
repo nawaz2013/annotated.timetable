@@ -58,21 +58,21 @@ public class AnnotatedTTGenerator {
 	// err.
 	private static boolean err = false;
 	// input GTFS.
-//	private static final String pathToGTFS = "src/test/resources/gtfs/12/";
-	private static final String pathToGTFS = "src/test/resources/gtfs/16/";
+	private static final String pathToGTFS = "src/test/resources/gtfs/12/";
+//	private static final String pathToGTFS = "src/test/resources/gtfs/16/";
 //	private static final String pathToGTFS = "src/test/resources/gtfs/17/";
 //	 output folder.
-//	private static final String pathToOutput = "src/test/resources/annotatedtimetable/12/";
-	private static final String pathToOutput = "src/test/resources/annotatedtimetable/16/";
+	private static final String pathToOutput = "src/test/resources/annotatedtimetable/12/";
+//	private static final String pathToOutput = "src/test/resources/annotatedtimetable/16/";
 //	private static final String pathToOutput = "src/test/resources/annotatedtimetable/17/";
 	// input folder.
-//	private static final String pathToInput = "src/test/resources/inputtimetable/12/";
-	private static final String pathToInput = "src/test/resources/inputtimetable/16/";
+	private static final String pathToInput = "src/test/resources/inputtimetable/12/";
+//	private static final String pathToInput = "src/test/resources/inputtimetable/16/";
 //	private static final String pathToInput = "src/test/resources/inputtimetable/17/";
 	// reorder stop with consistency check.
 	private boolean reorderStops = true;
 	// agencyIds (12,16,17)
-	private static final String agencyId = "16";
+	private static final String agencyId = "12";
 	private static final List<String> roveretoNBuses = Arrays.asList("N1", "N2", "N3", "N5", "N6");
 	private static final List<String> exUrbTrenoRoutes = Arrays.asList("578", "518", "352");
 	private static final Map<String, List<String>> unalignedRoutesMap = new HashMap<String, List<String>>();
@@ -3817,7 +3817,7 @@ public class AnnotatedTTGenerator {
 
 //		timeTableGenerator.processFiles(pathToOutput, "16", pathToInput + "I-06R-Feriale.csv"); //No CC.
 //		timeTableGenerator.processFiles(pathToOutput, "16", pathToInput + "P-07A-Feriale.csv");
-//		timeTableGenerator.processFiles(pathToOutput, "12", pathToInput + "16R-Feriale.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "12", pathToInput + "15R-Feriale.csv");
 //		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "334A.csv");
 
 		timeTableGenerator.printStats();
