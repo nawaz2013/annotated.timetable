@@ -58,21 +58,21 @@ public class AnnotatedTTGenerator {
 	// err.
 	private static boolean err = false;
 	// input GTFS.
-	private static final String pathToGTFS = "src/test/resources/gtfs/12/";
-//	private static final String pathToGTFS = "src/test/resources/gtfs/16/";
+//	private static final String pathToGTFS = "src/test/resources/gtfs/12/";
+	private static final String pathToGTFS = "src/test/resources/gtfs/16/";
 //	private static final String pathToGTFS = "src/test/resources/gtfs/17/";
 //	 output folder.
-	private static final String pathToOutput = "src/test/resources/annotatedtimetable/12/";
-//	private static final String pathToOutput = "src/test/resources/annotatedtimetable/16/";
+//	private static final String pathToOutput = "src/test/resources/annotatedtimetable/12/";
+	private static final String pathToOutput = "src/test/resources/annotatedtimetable/16/";
 //	private static final String pathToOutput = "src/test/resources/annotatedtimetable/17/";
 	// input folder.
-	private static final String pathToInput = "src/test/resources/inputtimetable/12/";
-//	private static final String pathToInput = "src/test/resources/inputtimetable/16/";
+//	private static final String pathToInput = "src/test/resources/inputtimetable/12/";
+	private static final String pathToInput = "src/test/resources/inputtimetable/16/";
 //	private static final String pathToInput = "src/test/resources/inputtimetable/17/";
 	// reorder stop with consistency check.
 	private boolean reorderStops = true;
 	// agencyIds (12,16,17)
-	private static final String agencyId = "12";
+	private static final String agencyId = "16";
 	private static final List<String> roveretoNBuses = Arrays.asList("N1", "N2", "N3", "N5", "N6");
 	private static final List<String> exUrbTrenoRoutes = Arrays.asList("578", "518", "352");
 	private static final Map<String, List<String>> unalignedRoutesMap = new HashMap<String, List<String>>();
@@ -163,8 +163,8 @@ public class AnnotatedTTGenerator {
 	private List<String> ignoreServiceIdPattern = new ArrayList<String>() {
 		{
 			// urban.
-			add("2015062620150909");
-			add("2015061020150909");
+			add("2015091020160607");
+//			add("2015061020150909");
 			// ex-urban(ignore winter).
 //			add("20160624");
 //			add("20160329");
@@ -180,7 +180,7 @@ public class AnnotatedTTGenerator {
 	};
 	  
 	// urban.
-	private static String outputPattern = "2015091020160607";
+	private static String outputPattern = "2016060820160911";
 	// ex-urban.
 //	private static String outputPattern = "2015091020160624"; //2015091020160624,2015062620150909
 	
@@ -196,27 +196,27 @@ public class AnnotatedTTGenerator {
 	private static final String CALENDAR_SOLGIOV = "SGIOV";
 	private Map<String, List<String>> serviceIdExcepType1 = new HashMap<String, List<String>>();
 	private Map<String, List<String>> serviceIdExcepType2 = new HashMap<String, List<String>>();
-	
+	// type1 means service will be active.
 	private static final Map<String, List<String>> serviceExceptionType1Dates = new HashMap<String, List<String>>();
 	{
 		// ex-urban.
-		serviceExceptionType1Dates.put("feriale escl.sab non scol", new ArrayList<>(Arrays.asList("20151223","20151224"))); // mer,gio non scolastici.
-		serviceExceptionType1Dates.put("feriale non scol dal lun al ve", new ArrayList<>(Arrays.asList("20151223","20151224")));
-		serviceExceptionType1Dates.put("solo postfestivo scolastico", new ArrayList<>(Arrays.asList("20150914","20150921", "20150928"))); // lunedi scolastic
+		serviceExceptionType1Dates.put("feriale escl.sab non scol", new ArrayList<>(Arrays.asList("20161223"))); // ven non scolastici.
+		serviceExceptionType1Dates.put("feriale non scol dal lun al ve", new ArrayList<>(Arrays.asList("20161223")));
+		serviceExceptionType1Dates.put("solo postfestivo scolastico", new ArrayList<>(Arrays.asList("20160912","20160919", "20160926"))); // lunedi scolastic
 	}
-	
+	// type2 means service will be inactive.
 	/** this exception dates are needed to be aligned with GTFS from FTP.**/
 	private static final Map<String, List<String>> serviceExceptionType2Dates = new HashMap<String, List<String>>();
 	{
-		serviceExceptionType2Dates.put("scolastica da lunedì a sabato", new ArrayList<>(Arrays.asList("20160325","20160101")));
-		serviceExceptionType2Dates.put("scolastica da lunedì a venerdì", new ArrayList<>(Arrays.asList("20160325","20160101")));
-		serviceExceptionType2Dates.put("scolastica da lunedì a giovedì", new ArrayList<>(Arrays.asList("20160325")));
-		serviceExceptionType2Dates.put("scolastica solo il sabato", new ArrayList<>(Arrays.asList("20160102"))); //sabato di non-scolastic period.
-		serviceExceptionType2Dates.put("non scol. da lunedì a sabato", new ArrayList<>(Arrays.asList("20150911","20151016", "20151120", "20160118", "20160122")));
+		serviceExceptionType2Dates.put("scolastica da lunedì a sabato", new ArrayList<>(Arrays.asList("20161222")));
+		serviceExceptionType2Dates.put("scolastica da lunedì a venerdì", new ArrayList<>(Arrays.asList("20161222")));
+		serviceExceptionType2Dates.put("scolastica da lunedì a giovedì", new ArrayList<>(Arrays.asList("20161222")));
+		serviceExceptionType2Dates.put("scolastica solo il sabato", new ArrayList<>(Arrays.asList("20161224"))); //sabato di non-scolastic period.
+		serviceExceptionType2Dates.put("non scol. da lunedì a sabato", new ArrayList<>(Arrays.asList("20160912","20151016", "20151120", "20160118", "20160122")));
 		// ex-urban.
-		serviceExceptionType2Dates.put("feriale escl.sab non scol", new ArrayList<>(Arrays.asList("20151221","20151222"))); // lun,ven scolastici.
-		serviceExceptionType2Dates.put("feriale non scol dal lun al ve", new ArrayList<>(Arrays.asList("20151221","20151222")));
-		serviceExceptionType2Dates.put("solo nei giorni scolastici ", new ArrayList<>(Arrays.asList("20151223","20160101"))); 
+		serviceExceptionType2Dates.put("feriale escl.sab non scol", new ArrayList<>(Arrays.asList("20161224"))); // lun,ven scolastici.
+		serviceExceptionType2Dates.put("feriale non scol dal lun al ve", new ArrayList<>(Arrays.asList("20161224")));
+		serviceExceptionType2Dates.put("solo nei giorni scolastici ", new ArrayList<>(Arrays.asList("20161223","20170102"))); 
 	}
 	
 	private static final Map<String, String> pdfFreqStringServiceIdMap = new HashMap<String, String>();
