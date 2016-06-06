@@ -1,11 +1,11 @@
 Descr.breve:;16
 Descr.lunga:;Centochiavi-Martignano-Cognola-Povo
-Validità:;ORARIO Trento Inverno 2015-16   Valido dal 10/09/2015 al 07/06/2016
+Validità:;ORARIO Trento Estate 2016   Valido dal 08/06/2016 al 11/09/2016
 Orario:;ORARIO FERIALE
 Frequenza:;Feriale da Lunedì a Venerdì;Feriale da Lunedì a Venerdì;Feriale da Lunedì a Venerdì;Feriale da Lunedì a Venerdì;Feriale da Lunedì a Venerdì;Feriale da Lunedì a Venerdì;Feriale da Lunedì a Venerdì;Feriale da Lunedì a Venerdì;Feriale da Lunedì a Venerdì
 Linea:;;;;;;;;;
 Servizio:
-Trener  "3 Torri PAT";;12.10;;;15.10;;17.10
+Trener  "3 Torri PAT";;12.10;;;15.10
 Guardini  "Centochiavi";07.50;12.10;13.13;14.10;15.10;16.10;17.10;18.10;19.10
 Guardini  Gilli;07.51;12.11;13.14;14.11;15.11;16.11;17.11;18.11;19.11
 Zambra  "Top Center";07.52;12.12;13.15;14.12;15.12;16.12;17.12;18.12;19.12
