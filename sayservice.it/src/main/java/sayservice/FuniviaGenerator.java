@@ -47,8 +47,8 @@ public class FuniviaGenerator {
 			// String rowStopStartName = "Funivia-Staz. di Valle-Trento;2939;";
 			// String rowStopEndName = "Funivia-Staz. di Monte-Sardagna;2940;";
 			// RITORNO.
-			String rowStopStartName = "Funivia-Staz. di Monte-Sardagna;2940,";
-			String rowStopEndName = "Funivia-Staz. di Valle-Trento;2939,";
+			String rowStopStartName = "Funivia-Staz. di Monte-Sardagna;2940;";
+			String rowStopEndName = "Funivia-Staz. di Valle-Trento;2939;";
 			int numTrips = 0;
 			// read trip one by and write csv based on stopTimes.txt(stops, stopId, tripId).
 			for (String tripIdElements : trips) {
