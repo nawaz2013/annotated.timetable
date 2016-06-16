@@ -4,3 +4,5 @@ sayservice.it/target/*
 sayservice.it/.project
 sayservice.it/.settings/*
 sayservice.it/.classpath
+*.project
+sayservice.it/.classpath
