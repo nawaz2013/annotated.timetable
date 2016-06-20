@@ -1,39 +1,38 @@
 Descr.breve:;"303"
 Descr.lunga:;"Trento-V.Vattaro-Carbonare-Lavarone-Luserna"
-Validità:;"Orario in vigore dal 10/09/2015 al 24/06/2016"
+Validità:;"Orario in vigore dal 25/06/2016 al 10/09/2016"
 Orario:;""
-Frequenza:;"Solo  nei giorni feriali";"Solo  nei giorni feriali";"Solo  nei giorni feriali";"Solo nei giorni scolastici";"Solo nei giorni scolastici";"Feriale non scolastico";"Solo nei giorni scolastici";"Scolastico escluso sabato";"Scolastico escluso sabato";"Solo al sabato scolastico";"Feriale escluso sabato";"Feriale escluso sabato";"Feriale escluso sabato";"Feriale escluso sabato";"Feriale escluso sabato";"Solo al sabato feriale";"Feriale escluso sabato";"Solo al sabato feriale"
-Linea:;;;;;;;"Servizio svolto da autonoleggiatore privato - Al giovedì e venerdì la corsa effettua il seguente  percorso: Pergine - Levico Terme - Bosentino - Centa";;"A Carbonare coinc.per Folgaria.  ";"A Carbonare coinc.per Folgaria.  ";;;;;;;"Servizio svolto da autonoleggiatore privato";
-Servizio:;;;;;;;;;;;;;;;;;;
-"TRENTO   (Autostaz.) - Part.";9.00;;11.20;12.30;12.30;12.30;;;13.10;13.10;14.50;16.40;17.30;18.15;;18.15;19.15;19.15
-"Trento(V.Giusti-L.D.Vinci)";|;;|;|;12.33;|;;;13.13;13.13;|;|;|;|;;|;|;|
-"Trento (Via Piave 50)";|;;|;|;|;|;;;13.18;13.18;|;|;|;|;;|;|;|
-"TRENTO (V. S.Francesco)";9.05;;11.25;12.35;|;12.35;;13.18;|;|;14.55;16.45;17.35;18.20;;18.20;19.20;19.20
-"TRENTO (P.za Vicenza)";9.10;;11.30;12.40;12.40;12.40;;13.23;13.23;13.23;15.00;16.50;17.40;18.25;;18.25;19.25;19.25
-"Cernidor";9.14;;11.34;12.44;12.44;12.44;;13.27;13.27;13.27;15.04;16.54;17.44;18.29;;18.29;19.29;19.29
-"S.Rocco";9.17;;11.37;12.47;12.47;12.47;;13.30;13.30;13.30;15.07;16.57;17.47;18.32;;18.32;19.32;19.32
-"Pianizza";9.19;;11.39;12.49;12.49;12.49;;13.32;13.32;13.32;15.09;16.59;17.49;18.34;;18.34;19.34;19.34
-"Valsorda";9.23;;11.43;12.53;12.53;12.53;;13.35;13.35;13.35;15.13;17.03;17.53;18.38;;18.38;19.38;19.38
-"PERGINE (C.Intermodale)";|;11.35;|;|;|;|;13.23;|;|;|;|;|;|;|;;|;|;|
-"VIGOLO VATTARO";9.30;11.58;11.50;13.00;13.00;13.00;13.48;13.41;13.41;13.41;15.20;17.10;18.00;18.45;;18.45;19.45;19.45
-"Bosentino";9.35;11.55;11.55;13.05;|;13.05;13.43;13.46;|;13.46;15.25;17.15;18.05;18.50;;18.50;19.50;19.50
-"VATTARO";9.40;;12.00;13.10;13.05;13.10;;13.50;13.45;13.50;15.30;17.20;18.10;18.55;18.55;18.55;19.55;19.55
-"Campregheri bivio";9.44;;12.04;13.14;13.09;13.14;;13.54;13.49;13.54;15.34;17.24;18.14;18.59;18.59;18.59;19.59;19.59
-"Pian dei Pradi";9.46;;12.06;13.16;13.11;13.16;;13.56;13.51;13.56;15.36;17.26;18.16;19.01;19.01;19.01;20.01;20.01
-"CENTA - Arr.";9.50;;12.10;13.20;|;13.20;;14.00;|;|;15.40;|;18.20;19.05;|;|;20.05;20.05
-"Fricca";;;;;13.21;13.34;;;14.01;14.06;;17.36;;;19.11;19.11
-"CARBONARE - Arr.";;;;;13.27;13.40;;;14.07;14.12;;17.42;;;19.17;19.17
-"CARBONARE - Part.";;;;;13.27;13.40;;;14.07;14.12;;17.42;;;19.17;19.17
-"Nosellari";;;;;13.32;13.45;;;14.10;14.15;;17.47;;;19.22;19.22
-"LAVARONE CHIESA";;;;;13.39;13.52;;;14.16;14.21;;17.54;;;19.29;19.29
-"Lanzino";;;;;13.41;13.54;;;14.18;14.23;;17.56;;;19.31;19.31
-"Stengheli";;;;;13.43;13.56;;;14.19;14.24;;17.58;;;19.33;19.33
-"Bertoldi";;;;;13.44;13.57;;;14.20;14.25;;17.59;;;19.34;19.34
-"Azzolini";;;;;13.46;13.59;;;14.22;14.27;;18.01;;;19.36;19.36
-"Gionghi";;;;;13.47;14.00;;;14.23;14.28;;18.02;;;19.37;19.37
-"LAVARONE CAPPELLA - Arr.";;;;;13.50;14.03;;;14.25;14.30;;18.05;;;19.40;19.40
-"LAVARONE CAPPELLA - Part.";;;;;13.51;14.03;;;;14.56;;;;;19.41;19.41
-"Gasperi";;;;;13.52;14.04;;;;14.57;;;;;19.42;19.42
-"Casanova";;;;;13.54;14.06;;;;14.59;;;;;19.44;19.44
-"Monterovere";;;;;14.02;14.14;;;;15.07;;;;;19.52;19.52
-"LUSERNA - Arr.";;;;;14.11;14.21;;;;15.16;;;;;20.01;20.01
+Frequenza:;"Solo  nei giorni feriali";"Solo  nei giorni feriali";"Solo  nei giorni feriali";"Solo nei giorni festivi";"Solo nei giorni festivi";"Solo  nei giorni feriali";"Solo  nei giorni feriali";"Feriale escluso sabato";"Feriale escluso sabato";"Solo al sabato feriale";"Solo al sabato feriale";"Solo  nei giorni feriali";"Solo nei giorni festivi";"Feriale escluso sabato";"Feriale escluso sabato";"Feriale escluso sabato";;"Solo  nei giorni feriali"
+Linea:;;;;;;;;;;;;;;;;;"Dal lunedì al venerdì la corsa transita da Centa solo per scarico passeggeri.";
+Servizio:;"Bus TTE";"Bus TTE";"Bus TTE";"Bus Privato";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE"
+"TRENTO   (Autostaz.) - Part.";7.45;8.15;;8.55;;9.00;;;11.20;11.20;;12.30;;14.50;16.40;17.30;18.15;19.15
+"TRENTO (V. S.Francesco)";7.50;8.20;;9.00;;9.05;;;11.25;11.25;;12.35;;14.55;16.45;17.35;18.20;19.20
+"TRENTO (P.za Vicenza)";7.55;8.25;;9.05;;9.10;;;11.30;11.30;;12.40;;15.00;16.50;17.40;18.25;19.25
+"Cernidor";7.59;8.29;;9.09;;9.14;;;11.34;11.34;;12.44;;15.04;16.54;17.44;18.29;19.29
+"S.Rocco";8.02;8.32;;9.12;;9.17;;;11.37;11.37;;12.47;;15.07;16.57;17.47;18.32;19.32
+"Pianizza";8.04;8.34;;9.14;;9.19;;;11.39;11.39;;12.49;;15.09;16.59;17.49;18.34;19.34
+"Valsorda";8.08;8.38;;9.18;;9.23;;;11.43;11.43;;12.53;;15.13;17.03;17.53;18.38;19.38
+"PERGINE (C.Intermodale)";|;|;;|;;|;;11.35;|;|;11.35;|;;|;|;|;|;|
+"VIGOLO VATTARO";8.15;8.45;;9.25;;9.30;;11.58;11.50;11.50;11.58;13.00;;15.20;17.10;18.00;18.45;19.45
+"Bosentino";|;8.50;;9.30;;9.35;;11.55;11.55;11.55;11.55;13.05;;15.25;17.15;18.05;18.50;19.50
+"VATTARO";8.20;8.55;;9.35;;9.40;;;12.00;;12.00;13.10;;15.30;17.20;18.10;18.55;19.55
+"Campregheri bivio";8.24;8.59;;9.39;;9.44;;;12.04;;12.04;13.14;;15.34;17.24;18.14;18.59;19.59
+"Pian dei Pradi";8.26;9.01;;9.41;;9.46;;;12.06;;12.06;13.16;;15.36;17.26;18.16;19.01;20.01
+"CENTA - Arr.";8.30;|;;|;;9.50;;;12.10;;12.10;13.20;;15.40;|;18.20;|;20.05
+"Fricca";;9.11;;9.51;;;;;;;;13.31;;;17.36;;19.11
+"CARBONARE - Arr.";;9.17;;9.57;;;;;;;;13.37;;;17.42;;19.17
+"CARBONARE - Part.";;9.20;9.20;10.00;10.00;;11.49;;;;;13.37;13.45;;17.42;;19.17
+"Nosellari";;|;9.25;|;10.05;;11.54;;;;;13.42;13.50;;17.47;;19.22
+"Virti";;9.24;|;10.04;|;;|;;;;;|;|;;|;;|
+"LAVARONE CHIESA";;9.28;9.32;10.08;10.12;;12.01;;;;;13.49;13.57;;17.54;;19.29
+"Lanzino";;|;9.34;|;10.14;;12.03;;;;;13.51;13.59;;17.56;;19.31
+"Stengheli";;|;9.36;|;10.16;;12.05;;;;;13.53;14.01;;17.58;;19.33
+"Bertoldi";;|;9.37;|;10.17;;12.06;;;;;13.54;14.02;;17.59;;19.34
+"Azzolini";;|;9.39;|;10.19;;12.08;;;;;13.56;14.04;;18.01;;19.36
+"Gionghi";;9.30;9.40;10.10;10.20;;12.09;;;;;13.57;14.05;;18.02;;19.37
+"LAVARONE CAPPELLA - Arr.";;9.33;9.43;10.13;10.23;;12.12;;;;;14.00;14.08;;18.05;;19.40
+"LAVARONE CAPPELLA - Part.";;;;;;;12.13;;;;;14.01;14.09;;;;19.41
+"Gasperi";;;;;;;12.14;;;;;14.02;14.10;;;;19.42
+"Casanova";;;;;;;12.16;;;;;14.04;14.12;;;;19.44
+"Monterovere";;;;;;;12.24;;;;;14.12;14.20;;;;19.52
+"LUSERNA - Arr.";;;;;;;12.33;;;;;14.21;14.29;;;;20.01

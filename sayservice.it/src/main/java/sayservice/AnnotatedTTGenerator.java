@@ -50,11 +50,13 @@ public class AnnotatedTTGenerator {
 	private static boolean gtfsStats = false;
 	// csv stats.
 	private static boolean csvStats = true;
+	// number of stops per pdf.
+	private static int totalStops = 0;
 	// pdf columns rows.
 	private static int maxR;
 	private static int maxC;
 	// verbose.
-	private static boolean verbose = true;
+	private static boolean verbose = false;
 	// err.
 	private static boolean err = false;
 	// input GTFS.
@@ -468,7 +470,10 @@ public class AnnotatedTTGenerator {
 
 			}
 		}
-				
+		
+		// post process the files for merged route time fillings
+		output = fillInMergedRouteStopTimes(output, noOfOutputCols, outputFileName);
+		
 		// simple print existing matrix.
 		for (int i = 0; i < output.length; i++) {
 			String line = "";
@@ -481,12 +486,50 @@ public class AnnotatedTTGenerator {
 		
 //		maxC = Math.max(maxNumberOfCols, maxC);
 //		maxR = Math.max(lines.size(), maxR);
+		totalStops = output.length - 4;
+		
+		
+		
 		
 
 		return converted;
 	}
 
 	
+	private String[][] fillInMergedRouteStopTimes(String[][] output, int noOfOutputCols, String outputFileName) {
+		String[][] matrix = output;
+		
+		try {
+			for (int j = 1; j < noOfOutputCols - 1; j++) {
+				if (output[3][j].indexOf("$GTFS_RS_Name=") > 0) {
+					String gtfsTripId = output[0][j];
+					
+					for (int i = 4; i < (output.length - 1); i++) {
+						// check if time is empty.
+						String time = output[i][j];
+						if (time.isEmpty() && tripStopsTimesMap.containsKey(gtfsTripId)) { //0002744112016060820160911
+							String pdfStopId = output[i][0].substring(output[i][0].indexOf(";") + 1);
+							List<String[]> stoptimeseq = tripStopsTimesMap.get(gtfsTripId);
+							for (int gtfsSeq = 0; gtfsSeq < stoptimeseq.size(); gtfsSeq++) {
+								String gtfsStopId = stoptimeseq.get(gtfsSeq)[3];
+								if (pdfStopId.equalsIgnoreCase(gtfsStopId)) {
+									String gtfsTime = stoptimeseq.get(gtfsSeq)[2];
+									String gtfs2pdfMappedTime = gtfsTime.substring(0, gtfsTime.lastIndexOf(":")).trim();
+									output[i][j] = gtfs2pdfMappedTime;
+								}
+							}
+						}
+					}	
+				}
+				
+			}
+		}	catch (Exception e) {
+					System.err.println(e.getMessage());
+				}
+
+		return matrix;
+	}
+
 	private String[][] consistencyCheck(String[][] output, int noOfOutputCols, String outputFileName) {
 		String[][] matrix = output;
 		boolean inconsistent = false;
@@ -504,6 +547,7 @@ public class AnnotatedTTGenerator {
 							if (!nextTime.isEmpty() && !nextTime.startsWith("-")) {
 								Date next = TIME_FORMAT.parse(nextTime);
 								if (curr.after(next) && output[i][0].startsWith("*")) {
+									if (verbose)
 									System.err.println(output[i][0]);
 									inconsistent = true;
 									iRow = i;
@@ -537,6 +581,7 @@ public class AnnotatedTTGenerator {
 						if (!next.isEmpty() && !next.startsWith("-")) {
 							Date nextTime = TIME_FORMAT.parse(next);
 							if (nextTime.after(iTime)) {
+								if (verbose)
 								System.out.println(outputFileName + " time: " + iTime + " should be place before: " + nextTime + " (" + iRow + "," + iCol + ")");
 								switchRow = f - 1;
 								break;
@@ -552,6 +597,7 @@ public class AnnotatedTTGenerator {
 								Date nextTime = TIME_FORMAT.parse(next);
 								nonEmptyNextIndex = f;
 								if (nextTime.equals(iTime)) {
+									if (verbose)
 									System.out.println(outputFileName + " time: " + iTime + " should be place before: " + nextTime + " (" + iRow + "," + iCol + ")");
 									switchRow = f - 1;
 									break;
@@ -958,6 +1004,7 @@ public class AnnotatedTTGenerator {
 					}
 					if (!directionId.isEmpty()
 							&& Integer.valueOf(directionId) != Integer.valueOf(gtfsDirectionId)) {
+						if (verbose)
 						System.err.println("directionId different from GTFS for: " + fileName + " tripId: "
 								+ gtfsTripId + "(gtfsDirectionId -> " + tripInfoGTFS.get(3) + ")");
 					}
@@ -991,6 +1038,7 @@ public class AnnotatedTTGenerator {
 						}
 						if (!directionId.isEmpty()
 								&& Integer.valueOf(directionId) != Integer.valueOf(gtfsDirectionId)) {
+							if (verbose)
 							System.err.println("directionId different from GTFS for: " + fileName + " tripId: "
 									+ gtfsTripId + "(gtfsDirectionId -> " + tripInfoGTFS.get(3) + ")");
 						}
@@ -1024,6 +1072,7 @@ public class AnnotatedTTGenerator {
 				for (String tripId : tripIds) {
 					gtfsTripId = gtfsTripId + tripId + "$";
 					if (gtfsTripId.equalsIgnoreCase("0002695852015061020150909")) {
+						if (verbose)
 						System.err.println("arrived at breakpoint.");
 					}
 				}
@@ -2928,6 +2977,7 @@ public class AnnotatedTTGenerator {
 					}
 					
 					if (matchingTripId.size() > 1) {
+						if (verbose)
 						System.err.println("BREAK...");
 					}
 					
@@ -3806,16 +3856,16 @@ public class AnnotatedTTGenerator {
 		File folder = new File(pathToInput);
 
 		for (final File fileEntry : folder.listFiles()) {
+			totalStops = 0;
 			if (fileEntry.isDirectory() | fileEntry.getName().contains(".json") | fileEntry.getName().contains(".zip")) {
 				continue;
 			} else {
-				if (verbose)
-					System.out.println("Annotation in process for ->  " + fileEntry.getName());
 				timeTableGenerator.processFiles(pathToOutput, agencyId, pathToInput + fileEntry.getName());
+				System.out.println(fileEntry.getName() + " -> " + totalStops);
 			}
 		}
 
-//		timeTableGenerator.processFiles(pathToOutput, "16", pathToInput + "I-06R-Feriale.csv"); //No CC.
+//		timeTableGenerator.processFiles(pathToOutput, "12", pathToInput + "08A-Feriale.csv"); //No CC.
 //		timeTableGenerator.processFiles(pathToOutput, "16", pathToInput + "P-07A-Feriale.csv");
 //		timeTableGenerator.processFiles(pathToOutput, "12", pathToInput + "15R-Feriale.csv");
 //		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "334A.csv");

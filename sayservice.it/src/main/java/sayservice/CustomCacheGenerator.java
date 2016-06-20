@@ -129,7 +129,7 @@ public class CustomCacheGenerator {
 
 //		System.out.println(routeShortName);
 
-		for (int j = 2; j < maxNumberOfCols - 1; j++) {
+		for (int j = 2; j < maxNumberOfCols; j++) {
 
 			String gtfsTripId = matrix[numOfHeaders - 4][j];
 			String serviceId = matrix[numOfHeaders - 2][j];

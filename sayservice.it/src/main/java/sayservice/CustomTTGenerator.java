@@ -173,7 +173,7 @@ public class CustomTTGenerator {
 	};
 	  
 	// urban.
-	private String outputPattern = "2015091020160607";
+	private String outputPattern = "2016062520160910";
 	// ex-urban.
 //	private String outputPattern = "2015091020160624"; //2015091020160624,2015062620150909
 	
@@ -736,6 +736,7 @@ public class CustomTTGenerator {
 		if (columnServiceStringMap.get(col) != null && !columnServiceStringMap.get(col).isEmpty()) {
 			serviceId  = columnServiceStringMap.get(col).replace(" ", "_");
 			serviceId = serviceId.replace("ì", "i");
+			serviceId = serviceId + "_summer";
 			
 		}
 		
@@ -849,6 +850,8 @@ public class CustomTTGenerator {
 				}
 			}
 		}
+		
+		gtfsTripId = gtfsTripId + "_summer";
 
 		return gtfsTripId;
 	
@@ -3481,7 +3484,7 @@ public class CustomTTGenerator {
 			}
 		}
 
-//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "301R.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "307A-2016062520160910-annotated.csv");
 		timeTableGenerator.printStats();
 
 		// hard fix mode.
