@@ -736,7 +736,7 @@ public class CustomTTGenerator {
 		if (columnServiceStringMap.get(col) != null && !columnServiceStringMap.get(col).isEmpty()) {
 			serviceId  = columnServiceStringMap.get(col).replace(" ", "_");
 			serviceId = serviceId.replace("ì", "i");
-			serviceId = serviceId + "_summer";
+			serviceId = serviceId + "_summer"; //??
 			
 		}
 		
@@ -849,9 +849,10 @@ public class CustomTTGenerator {
 					}
 				}
 			}
+			gtfsTripId = gtfsTripId + "_summer"; //?? use for summer trip ids.
 		}
 		
-		gtfsTripId = gtfsTripId + "_summer";
+		
 
 		return gtfsTripId;
 	
@@ -3484,7 +3485,7 @@ public class CustomTTGenerator {
 			}
 		}
 
-//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "307A-2016062520160910-annotated.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "321A-A.csv");
 		timeTableGenerator.printStats();
 
 		// hard fix mode.
