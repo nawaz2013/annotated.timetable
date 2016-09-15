@@ -1,37 +1,37 @@
 Descr.breve:;7
 Descr.lunga:;CAMPANA DEI CADUTI - ROSMINI - NORIGLIO
-Validità:;ORARIO Rovereto Estate 2016   Valido dal 08/06/2016 al 11/09/2016
+Validità:;ORARIO Rovereto Inv. 2016-17   Valido dal 12/09/2016 al 09/06/2017
 Orario:;ORARIO FERIALE
-Frequenza:;;;;;;;;;;Feriale da Lunedì a Venerdì;Feriale solo il Sabato
-Linea:;;;;Linea 2;;;;;;;
+Frequenza:;Scolastica da Lunedì a Sabato;Scolastica da Lunedì a Sabato;Scolastica da Lunedì a Sabato;Non scol. da Lunedì a Sabato;;;;;Scolastica da Lunedì a Sabato;;Scolastica da Lunedì a Sabato;;;;Feriale da Lunedì a Venerdì;Feriale solo il Sabato
+Linea:;Servizio effettuato con mezzo extraurbano.;Servizio effettuato da autonoleggiatore privato.;Servizio effettuato da autonoleggiatore privato.;Servizio effettuato da autonoleggiatore privato.;Servizio effettuato da autonoleggiatore privato.;Servizio effettuato da autonoleggiatore privato.;Linea 2;Servizio effettuato da autonoleggiatore privato.;Linea 2;Servizio effettuato da autonoleggiatore privato.;Linea 2;Servizio effettuato da autonoleggiatore privato.;Servizio effettuato da autonoleggiatore privato.;Servizio effettuato da autonoleggiatore privato.;Servizio effettuato da autonoleggiatore privato.;Servizio effettuato da autonoleggiatore privato.
 Servizio:
-CAMPANA DEI CADUTI;;08.42;10.25;;12.25;;;15.42;17.25
-PORTE  via al Brentegam;;08.45;10.28;;12.28;;;15.45;17.28
-DOSSO;;08.46;10.29;;12.29;;;15.46;17.29
-PORTE di TRAMBILENO;;08.48;10.31;;12.31;;;15.48;17.31
-piazza Podestà;;08.53;10.36;;12.36;;;15.53;17.36
-piazza S.Marco;;08.54;10.37;;12.37;;;15.54;17.37
-piazza Battisti;;08.56;10.39;;12.39;;;15.56;17.39
-corso Rosmini  Posta;;08.57;10.40;;;13.30;;;17.40;19.15;19.15
-corso Rosmini  monumento;;  |  ;  |  ;12.09;;  |  ;14.15;;  |  ;  |  ;  |  
-viale dei Colli  sc. alberghiera;;  |  ;  |  ;12.12;;  |  ;14.18;;  |  ;  |  ;  |  
-SP.2  fr. CAMPOLONGO;;  |  ;  |  ;12.17;;  |  ;14.23;;  |  ;  |  ;  |  
-NORIGLIO  mon. ai Caduti;;  |  ;  |  ;12.19;;  |  ;  |  ;;  |  ;  |  ;  |  
-via Dante  borgo S.Caterina;07.25;08.58;10.41;  |  ;;13.31;  |  ;;17.41;19.16;19.16
-via Dante  mon. all'Alpino;07.27;09.00;10.43;  |  ;;13.33;  |  ;;17.43;19.18;19.18
-via Vicenza  via Asiago;07.31;09.04;10.47;  |  ;;13.37;  |  ;;17.47;19.22;19.22
-GENOVESA;07.32;09.05;10.48;  |  ;;13.38;  |  ;;17.48;19.23;19.23
-NORIGLIO  via Jacob;07.36;09.09;10.52;  |  ;;13.42;  |  ;;17.52;19.27;19.27
-NORIGLIO  cassa rurale;07.37;09.10;10.53;  |  ;;13.43;  |  ;;17.53;19.28;19.28
-SP.2  NORIGLIO;  |  ;09.11;10.54;12.20;;13.44;  |  ;;17.54;19.29;19.29
-MONTE GHELLO;  |  ;09.12;10.55;12.21;;13.45;  |  ;;17.55;19.30;19.30
-ZAFFONI;  |  ;09.14;10.57;12.23;;13.47;  |  ;;17.57;19.32;19.32
-SALTARIA;  |  ;09.15;10.58;12.24;;13.48;  |  ;;17.58;19.33;19.33
-TOLDI;  |  ;09.16;10.59;12.25;;13.49;  |  ;;17.59;19.34;19.34
-TOLDI;  |  ;;10.59;12.25;;;  |  ;;17.59;19.34
-NORIGLIO  mon. ai Caduti;  |  ;;11.04;  |  ;;;14.25;;18.04;19.39
-SP.2  loc. BECCACHE';07.39;;11.06;12.31;;;14.27;;18.06;19.41
-COSTA  capolinea;07.40;;11.07;12.32;;;14.28;;18.07;19.42
-SENTER;  |  ;;11.14;;;;14.35;;18.14;19.49
-CISTERNA;07.49;;11.22;;;;14.43;;18.22;19.57
-MOIETTO;;;11.27;;;;;;18.27
+CAMPANA DEI CADUTI;;;;;08.43;10.26;;12.25;;;;;15.42;17.26
+PORTE  via al Brentegam;;06.54;;;08.46;10.29;;12.28;;;;;15.45;17.29
+DOSSO;;06.55;;;08.47;10.30;;12.29;;;;;15.46;17.30
+PORTE di TRAMBILENO;;06.57;;;08.49;10.32;;12.31;;;;;15.48;17.32
+piazza Podestà;;07.02;;;08.54;10.37;;12.36;;;;;15.53;17.37
+corso Bettini  liceo;;  |  ;;;  |  ;  |  ;;  |  ;;;;;  |  ;  |  ;19.12;19.12
+corso Rosmini  Posta;06.58;07.05;;;08.57;10.40;;12.39;;13.30;;;15.56;17.40;19.15;19.15
+"stazione FS";  |  ;07.07;;;  |  ;  |  ;;;;  |  ;;;;  |  ;  |  ;  |  
+corso Rosmini  monumento;  |  ;;;;  |  ;  |  ;12.09;;12.58;  |  ;;14.15;;  |  ;  |  ;  |  
+viale dei Colli  sc. alberghiera;  |  ;;;;  |  ;  |  ;12.12;;13.07;  |  ;;14.18;;  |  ;  |  ;  |  
+NORIGLIO  mon. ai Caduti;  |  ;;;;  |  ;  |  ;12.19;;  |  ;  |  ;;  |  ;;  |  ;  |  ;  |  
+via Dante  borgo S.Caterina;06.59;;07.15;07.25;08.58;10.41;  |  ;;  |  ;13.31;;  |  ;;17.41;19.16;19.16
+via S.Maria;07.02;;07.18;07.28;09.01;10.44;  |  ;;  |  ;13.34;;  |  ;;17.44;19.19;19.19
+via Vicenza  via Asiago;07.05;;07.21;07.31;09.04;10.47;  |  ;;  |  ;13.37;;  |  ;;17.47;19.22;19.22
+GENOVESA;07.06;;07.22;07.32;09.05;10.48;  |  ;;  |  ;13.38;;  |  ;;17.48;19.23;19.23
+NORIGLIO  via Jacob;07.10;;07.26;07.36;09.09;10.52;  |  ;;  |  ;13.42;;  |  ;;17.52;19.27;19.27
+NORIGLIO  cassa rurale;07.11;;07.27;07.37;09.10;10.53;  |  ;;  |  ;13.43;;  |  ;;17.53;19.28;19.28
+NORIGLIO  scuole elementari;07.13;;  |  ;  |  ;  |  ;  |  ;  |  ;;  |  ;  |  ;;  |  ;;  |  ;  |  ;  |  
+SP.2  NORIGLIO;;;  |  ;  |  ;09.11;10.54;12.20;;  |  ;13.44;;  |  ;;17.54;19.29;19.29
+MONTE GHELLO;;;  |  ;  |  ;09.12;10.55;12.21;;  |  ;13.45;;  |  ;;17.55;19.30;19.30
+ZAFFONI;;;  |  ;  |  ;09.14;10.57;12.23;;  |  ;13.47;;  |  ;;17.57;19.32;19.32
+SALTARIA;;;  |  ;  |  ;09.15;10.58;12.24;;  |  ;13.48;;  |  ;;17.58;19.33;19.33
+TOLDI;;;  |  ;  |  ;09.16;10.59;12.25;;  |  ;13.49;;  |  ;;17.59;19.34;19.34
+TOLDI;;;  |  ;  |  ;;10.59;12.25;;13.13;;14.03;  |  ;;17.59;19.34
+NORIGLIO  mon. ai Caduti;;;  |  ;  |  ;;11.04;  |  ;;  |  ;;  |  ;14.25;;18.04;19.39
+SP.2  loc. BECCACHE';;;07.29;07.39;;11.06;12.31;;13.19;;14.09;14.27;;18.06;19.41
+COSTA  capolinea;;;07.30;07.40;;11.07;12.32;;13.20;;14.10;14.28;;18.07;19.42
+SENTER;;;  |  ;  |  ;;11.14;;;13.27;;14.17;14.35;;18.14;19.49
+CISTERNA;;;07.39;07.49;;11.22;;;13.35;;14.25;14.43;;18.22;19.57
+MOIETTO;;;;;;11.27;;;13.40;;;;;18.27

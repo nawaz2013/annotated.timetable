@@ -134,7 +134,7 @@ public class CustomCacheGenerator {
 			String gtfsTripId = matrix[numOfHeaders - 4][j];
 			String serviceId = matrix[numOfHeaders - 2][j];
 			
-			if (gtfsTripId != null) {
+			if (gtfsTripId != null && !gtfsTripId.isEmpty()) {
 			
 				if (gtfsTripId.indexOf(",") != -1) {
 					String[] tripIds = gtfsTripId.split(",");
@@ -151,7 +151,7 @@ public class CustomCacheGenerator {
 				
 				gtfsTripId = gtfsTripId.replaceAll("\\s+", "");
 
-			}
+//			}
 			
 			String annotation = "";
 
@@ -235,7 +235,7 @@ public class CustomCacheGenerator {
 					//								+ (isImportant ? 1 : 0) 
 				}
 			}
-			//			}
+						}
 		}
 
 		cacheStoptimes.addAll(stoptimes);

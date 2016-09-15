@@ -19,7 +19,7 @@ public class FuniviaGenerator {
 	private static final String UTF8_BOM = "\uFEFF";
 	private static String routeId = "531";
 	private static List<String[]> routes;
-	private static String pathToGTFS = "C:/tmp/otp/ftp/google_transit_urbano/";
+	private static String pathToGTFS = "C:/tmp/otp/ftp/12.09.16/google_transit_urbano/";
 
 	private static HashMap<String, List<String[]>> tripStopsTimesMap = new HashMap<String, List<String[]>>();
 	private static HashMap<String, List<String>> routeTripsMap = new HashMap<String, List<String>>();
@@ -27,12 +27,12 @@ public class FuniviaGenerator {
 	private static HashMap<String, String> stopsMap = new HashMap<String, String>();
 	private static List<String> agencyRoutesList = new ArrayList<String>();
 	// direction.	
-	//	private static String directionIdentifier = "Funivia-Staz. di Monte-Sardagna"; //ANDATA.
-	//	private static String smartplannerRouteID = "FUTSA";
+//	private static String directionIdentifier = "Funivia-Staz. di Monte-Sardagna"; //ANDATA.
+//	private static String smartplannerRouteID = "FUTSA";
 	private static String directionIdentifier = "Funivia-Staz. di Valle-Trento"; //RITORNO.
 	private static String smartplannerRouteID = "FUTSR";
 	// service id.
-	private static String serviceId = "0000001402016060820160911";
+	private static String serviceId = "0000000012016091220170609";
 
 	public static void main(String args[]) {
 		try {
@@ -44,8 +44,8 @@ public class FuniviaGenerator {
 			String rowServiceId = "service_id;;";
 			String rowStops = "stops;stop_id;";
 			// ANDATA.
-			// String rowStopStartName = "Funivia-Staz. di Valle-Trento;2939;";
-			// String rowStopEndName = "Funivia-Staz. di Monte-Sardagna;2940;";
+//			String rowStopStartName = "Funivia-Staz. di Valle-Trento;2939;";
+//			String rowStopEndName = "Funivia-Staz. di Monte-Sardagna;2940;";
 			// RITORNO.
 			String rowStopStartName = "Funivia-Staz. di Monte-Sardagna;2940;";
 			String rowStopEndName = "Funivia-Staz. di Valle-Trento;2939;";

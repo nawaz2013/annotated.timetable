@@ -56,7 +56,7 @@ public class AnnotatedTTGenerator {
 	private static int maxR;
 	private static int maxC;
 	// verbose.
-	private static boolean verbose = false;
+	private static boolean verbose = true;
 	// err.
 	private static boolean err = false;
 	// input GTFS.
@@ -165,7 +165,7 @@ public class AnnotatedTTGenerator {
 	private List<String> ignoreServiceIdPattern = new ArrayList<String>() {
 		{
 			// urban.
-			add("2015091020160607");
+			add("2016060820160911");
 //			add("2015061020150909");
 			// ex-urban(ignore winter).
 //			add("20160624");
@@ -182,7 +182,7 @@ public class AnnotatedTTGenerator {
 	};
 	  
 	// urban.
-	private static String outputPattern = "2016060820160911";
+	private static String outputPattern = "2016091220170609";
 	// ex-urban.
 //	private static String outputPattern = "2015091020160624"; //2015091020160624,2015062620150909
 	
@@ -210,9 +210,9 @@ public class AnnotatedTTGenerator {
 	/** this exception dates are needed to be aligned with GTFS from FTP.**/
 	private static final Map<String, List<String>> serviceExceptionType2Dates = new HashMap<String, List<String>>();
 	{
-		serviceExceptionType2Dates.put("scolastica da lunedì a sabato", new ArrayList<>(Arrays.asList("20161222")));
-		serviceExceptionType2Dates.put("scolastica da lunedì a venerdì", new ArrayList<>(Arrays.asList("20161222")));
-		serviceExceptionType2Dates.put("scolastica da lunedì a giovedì", new ArrayList<>(Arrays.asList("20161222")));
+		serviceExceptionType2Dates.put("scolastica da lunedì a sabato", new ArrayList<>(Arrays.asList("20161101")));
+		serviceExceptionType2Dates.put("scolastica da lunedì a venerdì", new ArrayList<>(Arrays.asList("20161101","20161208")));
+		serviceExceptionType2Dates.put("scolastica da lunedì a giovedì", new ArrayList<>(Arrays.asList("20161101")));
 		serviceExceptionType2Dates.put("scolastica solo il sabato", new ArrayList<>(Arrays.asList("20161224"))); //sabato di non-scolastic period.
 		serviceExceptionType2Dates.put("non scol. da lunedì a sabato", new ArrayList<>(Arrays.asList("20160912","20151016", "20151120", "20160118", "20160122")));
 		// ex-urban.
@@ -3865,7 +3865,7 @@ public class AnnotatedTTGenerator {
 			}
 		}
 
-//		timeTableGenerator.processFiles(pathToOutput, "12", pathToInput + "08A-Feriale.csv"); //No CC.
+//		timeTableGenerator.processFiles(pathToOutput, "12", pathToInput + "05R-Feriale.csv"); //No CC.
 //		timeTableGenerator.processFiles(pathToOutput, "16", pathToInput + "P-07A-Feriale.csv");
 //		timeTableGenerator.processFiles(pathToOutput, "12", pathToInput + "15R-Feriale.csv");
 //		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "334A.csv");

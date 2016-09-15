@@ -1,24 +1,28 @@
 Descr.breve:;"305"
 Descr.lunga:;"Saccone-Brentonico-Mori-Rovereto"
-Validità:;"Orario in vigore dal 25/06/2016 al 10/09/2016"
+Validità:;"Orario in vigore dal 11/09/2016 al 23/06/2017"
 Orario:;""
-Frequenza:;"Solo  nei giorni feriali";"Feriale escluso sabato";"Feriale escluso sabato";"Feriale escluso sabato";"Solo al sabato feriale";"Feriale escluso sabato";"Feriale escluso sabato";"Solo  nei giorni feriali";"Feriale escluso sabato";"Feriale escluso sabato"
-Linea:;;"La corsa è sospesa dal 16.8 al 19.8.2016 / Entfaellt ab 16.8 bis 19.8.2016";;;;;;;"La corsa parte da Cornè (ore 14.30)";
-Servizio:;"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE"
-"SACCONE - Part.";6.15;;8.00;;;;11.15;13.35;14.40;18.55
-"Prada";6.20;;8.05;;;;11.20;13.40;14.45;19.00
-"Fontechel";6.27;;8.12;;;;11.27;13.47;14.52;19.07
-"BRENTONICO";6.29;7.10;8.14;8.30;8.30;10.20;11.29;13.49;14.54;19.09
-"Crosano bivio";|;|;;8.36;8.36;|;11.41;|;15.06;19.15
-"Castione";6.36;7.17;;|;|;10.27;|;13.56;|;|
-"BESAGNO";6.42;7.23;;8.42;8.42;;11.47;14.02;15.12;19.21
-"Tierno";6.48;7.29;;8.48;8.48;;11.53;14.08;15.18;19.27
-"MORI (Bar  Centrale)";6.51;7.32;;8.51;8.51;;11.56;14.11;15.21;19.30
-"Ravazzone di Mori";6.54;7.35;;8.54;8.54;;11.59;14.14;15.24;19.33
-"Mori (Stazione F.S.)";6.57;7.38;;8.57;8.57;;12.02;14.17;15.27;19.36
-"Centro Comm.le Millenium";|;7.40;;8.59;8.59;;12.04;14.19;15.29;19.38
-"Rov.Z.Ind."Luxottica"";6.59;7.45;;|;|;;|;|;|;|
-"Lizzanella";7.03;7.53;;9.03;9.03;;12.08;14.23;15.33;19.42
-"ROVERETO (Ospedale).";7.06;7.56;;9.06;9.06;;12.11;14.26;15.36;19.45
-"ROVERETO (Staz.F.S.)";7.10;8.00;;9.10;9.10;;12.15;14.30;15.40;19.49
-"ROVERETO (Via Paoli) - Arr.";7.12;8.02;;9.12;9.12;;12.17;14.32;15.42;19.51
+Frequenza:;"Solo  nei giorni feriali";"Solo nei giorni scolastici";"Scolastico escluso sabato";"Scolastico escluso sabato";"Solo al sabato scolastico";"Solo al sabato scolastico";"Feriale non scolastico";"Solo nei giorni feriali non scolastici dal lunedì al venerdì";"Solo nei giorni feriali non scolastici dal lunedì al venerdì";"Solo nei giorni feriali non scolastici dal lunedì al venerdì";"Solo nei giorni scolastici";"La corsa si effettua nei giorni feriali non scolastici dal lunedì al venerdì dal 27 dicembre 2016  fino al 28 febbraio 2017";"Solo  nei giorni feriali";"Solo  nei giorni feriali";"Solo nei giorni scolastici";"Solo  nei giorni feriali";"La corsa si effettua nei giorni feriali non scolastici dal lunedì al venerdì dal 27 dicembre 2016  fino al 28 febbraio 2017";"Solo  nei giorni feriali";"Feriale escluso sabato";"Solo al sabato feriale";"Solo  nei giorni feriali";"Feriale escluso sabato"
+Linea:;;;;;;;;;;;;;;;;;;;"La corsa parte da Cornè (ore 14.30)";;;
+Servizio:;"Bus TTE";"Bus Privato";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE"
+"Polsa - Part.";;;;;;;;;;;;8.00;;;;;11.30
+"SACCONE - Part.";6.15;;6.40;;6.40;;;;7.50;;8.00;|;;;11.20;;|;13.30;14.40;17.45;;18.53
+"Prada";6.20;;6.45;;6.45;;;;7.55;;8.05;8.11;;;11.25;;11.41;13.35;14.45;17.50;;18.58
+"Passo S.Valentino - Part.";|;6.34;|;;|;;;;|;;|;|;;;|;;|;|;|;|;;|
+"S.Giacomo di Brentonico";|;6.39;|;;|;;;;|;;|;|;;;|;;|;|;|;|;;|
+"Fontechel";6.27;6.52;6.52;;6.52;;;;8.02;;8.12;8.18;;;11.32;;11.48;13.42;14.52;17.57;;19.05
+"BRENTONICO";6.29;6.54;6.54;6.54;6.54;6.54;6.54;6.59;8.04;8.05;8.14;8.20;8.30;10.45;11.34;;11.50;13.44;14.54;17.59;;19.07
+"Crosano bivio";|;;|;7.00;|;7.00;7.06;|;;8.15;;;8.36;10.51;11.46;;;|;15.06;18.05;;19.13
+"Castione";6.36;;7.01;|;7.01;|;|;7.06;;8.12;;;|;;|;;;13.51;|;|;;|
+"BESAGNO";6.42;;7.07;7.07;7.07;7.07;7.12;7.12;;;;;8.42;;11.52;;;13.57;15.12;18.11;;19.19
+"Tierno";6.48;;7.13;7.13;7.13;7.13;7.18;;;;;;8.48;;11.58;;;14.03;15.18;18.17;;19.25
+"MORI (Bar  Centrale)";6.51;;7.16;7.16;7.16;7.16;7.21;;;;;;8.51;;12.01;12.11;;14.06;15.21;18.20;18.41;19.28
+"Ravazzone di Mori";6.54;;7.19;7.19;7.19;7.19;7.24;;;;;;8.54;;;12.14;;14.09;15.24;;18.44;19.31
+"Mori (Stazione F.S.)";6.57;;7.22;7.22;7.22;7.22;7.27;;;;;;8.57;;;12.17;;14.12;15.27;;18.47;19.34
+"Centro Comm.le Millenium";|;;|;7.24;7.24;|;|;;;;;;8.59;;;12.19;;14.14;15.29;;18.49;19.36
+"Rov.Z.Ind."Luxottica"";6.59;;7.24;|;|;7.24;7.29;;;;;;|;;;|;;|;|;;|;|
+"Lizzanella";7.03;;7.28;7.28;7.28;7.28;7.33;;;;;;9.03;;;12.23;;14.18;15.33;;18.53;19.40
+"ROVERETO (Ospedale).";7.06;;|;7.30;|;7.31;7.36;;;;;;9.06;;;|;;14.21;15.36;;|;19.43
+"ROVERETO (Staz.F.S.)";7.10;;7.32;7.34;7.32;7.35;7.40;;;;;;9.10;;;12.27;;14.25;15.40;;18.57;19.47
+"ROVERETO (Via Paoli) - Arr.";7.12;;|;7.36;7.34;7.36;7.42;;;;;;9.12;;;12.29;;14.27;15.42;;18.59;19.49
+"ROV. (C. Rosmini-Monu.) - Arr.";;;7.34

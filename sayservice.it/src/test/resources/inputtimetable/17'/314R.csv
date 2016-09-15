@@ -1,22 +1,24 @@
 Descr.breve:;"314"
 Descr.lunga:;"Ometto-Obra di Vallarsa-Riva-Rovereto"
-Validità:;"Orario in vigore dal 25/06/2016 al 10/09/2016"
+Validità:;"Orario in vigore dal 11/09/2016 al 23/06/2017"
 Orario:;""
-Frequenza:;"Solo  nei giorni feriali";;;"Feriale escluso sabato";;;"Solo  nei giorni feriali";"Feriale escluso sabato"
-Linea:;;"La corsa si effettua solo nei giorni feriali di martedì e venerdì";"La corsa si effettua solo nei giorni feriali di martedì e venerdì";;"La corsa si effettua solo nei giorni feriali di martedì e venerdì";"La corsa si effettua solo nei giorni feriali di martedì e venerdì";;"La corsa è sospesa dal 16.8 al 19.8.2016 / Entfaellt ab 16.8 bis 19.8.2016"
-Servizio:;"Bus TTE";"Bus Privato";"Bus Privato";"Bus TTE";"Bus Privato";"Bus Privato";"Bus TTE";"Bus TTE"
-"OMETTO - Part.";6.35;9.02;;;10.52;;13.35;18.12
-"OBRA DI VALLARSA";6.37;9.05;;;10.55;;13.37;18.13
-"Bruni";6.43;9.10;;;11.00;;13.43;18.19
-"Riva di Vallarsa";6.44;9.11;;;11.01;;13.44;18.20
-"Cumerlotti";6.46;9.12;;;11.02;;13.46;18.22
-"S.Anna di Vallarsa";|;9.15;9.33;;11.05;11.38;|;|
-"RAOSSI";|;9.23;9.25;;11.13;11.30;|;|
-"Aste";6.48;9.13;9.35;;11.03;11.40;13.48;18.24
-"Matassone";6.54;;9.41;;;11.46;13.54;18.29
-"Zanolli";6.55;;9.43;;;11.48;13.55;18.30
-"Foppiano";6.59;;9.47;;;11.52;13.59;18.33
-"Albaredo";7.01;;9.49;9.54;;11.54;14.01;18.35
-"Bivio Porte di Trambileno";7.09;;;10.02;;;14.09;18.43
-"ROVERETO (Staz.F.S.)";7.18;;;10.11;;;14.18;18.52
-"ROVERETO (Via Paoli) - Arr.";7.20;;;10.13;;;14.20;18.54
+Frequenza:;"Solo nei giorni scolastici";"Feriale non scolastico";"Solo nei giorni scolastici";"La corsa si effettua solo nei giorni feriali di martedì e venerdì";"La corsa si effettua solo nei giorni feriali di martedì e venerdì";"Feriale escluso sabato";"La corsa si effettua solo nei giorni feriali di martedì e venerdì";"La corsa si effettua solo nei giorni feriali di martedì e venerdì";"Scolastico escluso sabato";"Solo  nei giorni feriali";"Scolastico escluso sabato";"Scolastico escluso sabato";"Scolastico escluso sabato"
+Linea:;;;;;;;;;;;;;
+Servizio:;"Bus TTE";"Bus Privato";"Bus TTE";"Bus Privato";"Bus Privato";"Bus TTE";"Bus Privato";"Bus Privato";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE"
+"OMETTO - Part.";6.30;6.30;;9.02;;;10.52;;;13.45;14.25;;18.12
+"OBRA DI VALLARSA";6.31;6.31;;9.05;;;10.55;;;13.47;14.27;;18.13
+"Bruni";6.36;6.36;;9.10;;;11.00;;;13.53;14.33;;18.19
+"Riva di Vallarsa";6.38;6.38;;9.11;;;11.01;;;13.54;14.34;;18.20
+"Cumerlotti";6.40;6.40;;9.12;;;11.02;;;13.56;14.36;;18.22
+"Aste Basse (dir. S.Anna)";6.41;6.41;;9.13;;;11.03;;;|;|;;|
+"S.Anna di Vallarsa";6.46;6.46;;9.15;9.33;;11.05;11.38;12.35;|;|;;|
+"RAOSSI";|;|;;9.23;9.25;;11.13;11.30;12.25;|;|;;|
+"Aste";6.49;6.49;;;9.35;;;11.40;12.36;13.58;14.38;;18.24
+"Matassone";6.55;6.55;;;9.41;;;11.46;12.42;14.04;14.44;;18.29
+"Zanolli";6.57;6.57;;;9.43;;;11.48;12.43;14.05;14.45;;18.30
+"Foppiano";7.00;7.00;7.12;;9.47;;;11.52;12.47;14.09;14.49;16.40;18.33
+"Albaredo";7.03;7.03;7.14;;9.49;9.54;;11.54;12.49;14.11;14.51;16.43;18.35
+"Bivio Porte di Trambileno";7.10;7.10;7.25;;;10.02;;;12.57;14.19;14.59;16.50;18.43
+"ROVERETO (Staz.F.S.)";7.22;7.22;7.34;;;10.11;;;13.06;14.28;15.08;17.03;18.52
+"ROVERETO (Via Savioli) - Arr.";|;|;|;;;|;;;|;|;|;|;18.54
+"ROVERETO (Via Paoli) - Arr.";7.24;7.24;7.36;;;10.13;;;13.08;14.30;15.10;17.05

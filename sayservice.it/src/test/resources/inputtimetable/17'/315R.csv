@@ -1,28 +1,29 @@
 Descr.breve:;"315"
 Descr.lunga:;"Folgaria-Serrada-Terragnolo-Rovereto"
-Validità:;"Orario in vigore dal 25/06/2016 al 10/09/2016"
+Validità:;"Orario in vigore dal 11/09/2016 al 23/06/2017"
 Orario:;""
-Frequenza:;"Solo  nei giorni feriali";"Solo  nei giorni feriali";"Solo nei giorni festivi";"Solo  nei giorni feriali";"Solo  nei giorni feriali";"Solo  nei giorni feriali";"Solo nei giorni festivi";"Solo  nei giorni feriali";"Solo  nei giorni feriali";"Solo nei giorni festivi";"Solo  nei giorni feriali";"Feriale escluso sabato";"Solo nei giorni festivi"
-Linea:;;;;;;;;;;;;;
-Servizio:;"Bus TTE";"Bus TTE";"Bus Privato";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE"
-"Folgaria (Via Battisti)";;;;;11.05;;13.22;13.33;17.37;17.45;18.41;19.37;19.45
-"Folgaria - P.le N.Unite - Arr.";;;;;11.07;;13.24;13.35;17.39;17.47;18.43;19.39;19.47
-"Folgaria - P.le N.Unite - Part.";;;;;11.13;;13.35;13.35;17.45;17.47;18.49;19.40;19.47
-"Mezzaselva";;;;;11.18;;13.40;13.40;17.50;17.52;18.54;19.45;19.52
-"SERRADA - Arr.";;6.35;6.35;;11.23;;13.45;13.45;17.55;17.57;18.59;19.50;19.57
-"Scottini";;6.40;6.40;;;;;13.50;18.00;18.02
-"Costa di Terragnolo";;6.47;6.47;;;;;13.57;18.07;18.09
-"Geroli - Part.";;|;|;;;;;|;|;|
-"Zoreri-Soldati";6.35;|;|;6.55;;13.15;;|;|;|
-"Baisi";6.38;|;|;6.58;;13.18;;|;|;|
-"Camperi";6.42;|;|;7.02;;13.22;;|;|;|
-"PIAZZA DI TERRAGNOLO - Arr.";6.45;6.50;6.50;7.05;;13.25;;14.00;18.10;18.12
-"PIAZZA DI TERRAGNOLO - Part.";;6.50;6.50;7.05;;13.25;;14.00;18.10;18.12
-"Peltreri";;6.52;6.52;7.07;;13.27;;14.02;18.12;18.14
-"Pedrazzi";;6.53;6.53;7.08;;13.28;;14.03;18.13;18.15
-"Valduga";;6.54;6.54;7.09;;13.29;;14.04;18.14;18.16
-"Valgrande";;6.59;6.59;7.14;;13.34;;14.09;18.19;18.21
-"NORIGLIO";;7.07;7.07;7.22;;13.42;;14.17;18.27;18.29
-"Campolongo (Noriglio)";;7.08;7.08;7.23;;13.43;;14.18;18.28;18.30
-"ROVERETO (Via Manzoni)";;7.16;7.16;7.31;;13.51;;14.26;18.36;18.38
-"ROVERETO (Staz.F.S.) - Arr.";;7.18;7.18;7.33;;13.53;;14.28;18.38;18.40
+Frequenza:;"Solo  nei giorni feriali";"Solo nei giorni scolastici";"Solo  nei giorni feriali";"Scolastico escluso sabato";"Solo al sabato scolastico";"Feriale non scolastico";"Solo  nei giorni feriali";"La corsa si effettua nei giorni feriali di martedì e giovedì";"La corsa si effettua solo nei giorni festivi dal 26/12/2016 al 18/04/2017";"Solo  nei giorni feriali";"Solo  nei giorni feriali";"Solo  nei giorni feriali";"Feriale escluso sabato";"Solo  nei giorni feriali";"La corsa si effettua solo nei giorni festivi dal 26/12/2016 al 18/04/2017";"Solo  nei giorni feriali"
+Linea:;;;;;;;;;;;;;;;;
+Servizio:;"Bus TTE";"Bus Privato";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus Privato";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus Privato";"Bus TTE";"Bus TTE";"Bus TTE"
+"Folgaria (Via Battisti)";;;;;;;7.27;;9.17;10.32;12.38;;;16.55;;19.37
+"Folgaria - P.le N.Unite - Arr.";;;;;;;7.29;;9.19;10.34;12.40;;;16.57;;19.39
+"Folgaria - P.le N.Unite - Part.";;;;;;;7.29;;9.20;10.34;12.40;;;16.57;17.02;19.39
+"Mezzaselva";;;;;;;7.34;;9.25;10.39;12.45;;;17.02;17.07;19.44
+"SERRADA - Arr.";;;6.35;;;;7.39;;9.30;10.44;12.50;;;17.07;17.12;19.49
+"Scottini";;;6.40;;;;;;;;;;;17.12
+"Costa di Terragnolo";;;6.47;;;;;;;;;;;17.19
+"Geroli - Part.";;6.45;|;;;;;;;;;;;|
+"Zoreri-Soldati";6.35;|;|;6.55;6.55;6.55;;9.00;;;;13.38;15.45;|
+"Baisi";6.38;|;|;6.58;6.58;6.58;;9.03;;;;13.41;15.48;|
+"Camperi";6.42;|;|;7.02;7.02;7.02;;9.07;;;;13.45;15.52;|
+"PIAZZA DI TERRAGNOLO - Arr.";6.45;6.50;6.50;7.05;7.05;7.05;;9.10;;;;13.48;15.55;17.22
+"PIAZZA DI TERRAGNOLO - Part.";;;6.50;7.05;7.05;7.05;;9.10;;;;13.48;15.55;17.22
+"Peltreri";;;6.52;7.07;7.07;7.07;;9.12;;;;13.50;15.57;17.24
+"Pedrazzi";;;6.53;7.08;7.08;7.08;;9.13;;;;13.51;15.58;17.25
+"Valduga";;;6.54;7.09;7.09;7.09;;9.14;;;;13.52;15.59;17.26
+"Valgrande";;;6.59;7.14;7.14;7.14;;9.19;;;;13.57;16.04;17.31
+"NORIGLIO";;;7.07;7.22;7.22;7.22;;9.27;;;;14.05;16.12;17.39
+"Campolongo (Noriglio)";;;7.08;7.23;7.23;7.23;;9.28;;;;14.06;16.13;17.40
+"ROVERETO (Via Paoli)";;;7.16;|;|;7.31;;9.36;;;;14.14;16.21;17.48
+"ROVERETO - Ist. Veronesi";;;|;|;7.34;|;;|;;;;|;|;|
+"ROVERETO (Staz.F.S.) - Arr.";;;7.18;7.33;;7.33;;9.38;;;;14.16;16.23;17.50

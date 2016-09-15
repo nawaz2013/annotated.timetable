@@ -1,32 +1,32 @@
 Descr.breve:;"332"
 Descr.lunga:;"Bolognano-Arco-Riva-Mori-Rovereto"
-Validità:;"Orario in vigore dal 25/06/2016 al 10/09/2016"
+Validità:;"Orario in vigore dal 11/09/2016 al 23/06/2017"
 Orario:;""
-Frequenza:;"Solo  nei giorni feriali";"Solo  nei giorni feriali";"Solo  nei giorni feriali";"Solo  nei giorni feriali";"Solo  nei giorni feriali";"Solo nei giorni festivi";"Solo  nei giorni feriali";"Solo nei giorni festivi";"Solo  nei giorni feriali";"Solo  nei giorni feriali";"Solo nei giorni festivi";"Solo nei giorni festivi";"Solo  nei giorni feriali";"Solo  nei giorni feriali";"Solo nei giorni festivi";"Solo nei giorni festivi";"Feriale escluso sabato";"Solo al sabato feriale";"Solo  nei giorni feriali";"Solo nei giorni festivi";"Solo  nei giorni feriali";"Solo  nei giorni feriali";"Feriale escluso sabato";"Solo al sabato feriale";"Solo nei giorni festivi";"Solo  nei giorni feriali";"Solo nei giorni festivi";
-Linea:;;"A Rovereto l'autobus prosegue per Trento";;"A Rovereto l'autobus prosegue per Trento";;;"A Rovereto l'autobus prosegue per Trento";;;"A Rovereto l'autobus prosegue per Trento";"A Rovereto l'autobus prosegue per Trento";;"A Rovereto l'autobus prosegue per Trento";;;;;;"A Rovereto l'autobus prosegue per Trento";"A Rovereto l'autobus prosegue per Trento";;"A Rovereto l'autobus prosegue per Trento";"A Rovereto l'autobus prosegue per Trento";"A Rovereto l'autobus prosegue per Trento";"A Rovereto l'autobus prosegue per Trento";;;
-Servizio:;"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE"
-"BOLOGNANO - Part.";;;;7.18;8.05;8.05;8.55;8.55;10.13;11.18;11.18;;;13.20;13.20;14.25;14.25;14.25;;;;17.05;17.48;17.48;17.48;18.45;18.45;21.57
-"Bolognano Via Asilo";;;;7.19;8.06;8.06;8.56;8.56;10.14;11.19;11.19;;;13.21;13.21;14.26;14.26;14.26;;;;17.06;17.49;17.49;17.49;18.46;18.46;21.58
-"Massone";;;;7.22;8.09;8.09;8.59;8.59;10.17;11.22;11.22;;;13.24;13.24;14.29;14.29;14.29;;;;17.09;17.52;17.52;17.52;18.49;18.49;22.01
-"Bolognano Bivio";6.06;7.03;;|;|;|;|;|;|;|;|;;12.14;|;|;|;|;|;;;;|;|;|;|;|;|;|
-"ARCO  (Autostaz.)";6.00;6.55;;7.29;8.17;8.17;9.07;9.07;10.25;11.30;11.30;;12.22;13.32;13.32;14.37;14.37;14.37;15.23;15.23;16.15;17.17;18.00;18.00;18.00;18.57;18.57;22.09
-"Vignole";6.07;7.04;;|;|;|;|;|;|;|;|;;|;|;|;|;|;|;|;|;|;|;|;|;|;|;|;|
-"S.Tomaso (direz.Riva)";|;|;;7.37;8.25;8.25;9.15;9.15;10.33;11.38;11.38;;12.30;13.40;13.40;14.45;14.45;14.45;15.31;15.31;16.23;17.25;18.08;18.08;18.08;19.05;19.05;22.17
-"S.Tomaso (direz. Arco)";5.55;6.49;;|;|;|;|;|;|;|;|;;|;|;|;|;|;|;|;|;|;|;|;|;|;|;|;|
-"Rione Degasperi (dir.Riva)";|;|;;7.39;8.27;8.27;9.17;9.17;10.35;11.40;11.40;;12.32;13.42;13.42;14.47;14.47;14.47;15.33;15.33;16.25;17.27;18.10;18.10;18.10;19.07;19.07;22.19
-"Rione Degasperi (dir.Arco)";5.53;6.46;;|;|;|;|;|;|;|;|;;|;|;|;|;|;|;|;|;|;|;|;|;|;|;|;|
-"RIVA DEL G. (Autostaz.) - Arr.";|;|;;7.42;8.30;8.30;9.20;9.20;10.38;11.43;11.43;;12.35;13.45;13.45;14.50;14.50;14.50;15.36;15.36;16.28;17.30;18.13;18.13;18.13;19.10;19.10;22.29
-"RIVA DEL G. (Autostaz.) - Part.";5.45;6.39;6.50;7.43;8.31;8.31;9.21;9.21;10.40;11.44;11.44;12.15;12.36;13.46;13.46;;14.51;14.51;15.37;15.37;16.29;17.31;18.14;18.14;18.14;19.11;19.11;|
-"Riva del G. Viale Martiri";5.47;6.41;6.52;7.45;8.33;8.33;9.23;9.23;10.42;11.46;11.46;12.17;12.38;13.48;13.48;;14.53;14.53;15.39;15.39;16.31;17.33;18.16;18.16;18.16;19.13;19.13;22.24
-"TORBOLE";|;|;7.00;7.53;8.41;8.41;9.31;9.31;10.50;11.54;11.54;12.25;12.46;13.56;13.56;;15.01;15.01;15.47;15.47;16.39;17.41;18.24;18.24;18.24;19.21;19.21
-"NAGO";6.12;7.09;7.04;7.57;8.45;8.45;9.35;9.35;10.54;11.58;11.58;12.29;12.50;14.00;14.00;;15.05;15.05;15.51;15.51;16.43;17.45;18.28;18.28;18.28;19.25;19.25
-"Passo S.Giovanni";6.15;7.11;;7.59;8.47;8.47;9.37;9.37;10.56;12.00;12.00;12.31;12.52;14.02;14.02;;15.07;15.07;15.53;15.53;16.45;17.47;18.30;18.30;18.30;19.27;19.27
-"Loppio";6.19;7.15;;8.03;8.51;8.51;9.41;9.41;11.00;12.04;12.04;12.35;12.56;14.06;14.06;;15.11;15.11;15.57;15.57;16.49;17.51;18.34;18.34;18.34;19.31;19.31
-"MORI (Bar  Centrale)";6.25;7.22;;8.10;8.58;8.58;9.48;9.48;11.07;12.11;12.11;12.42;13.03;14.13;14.13;;15.18;15.18;16.04;16.04;16.56;17.58;18.41;18.41;18.41;19.38;19.38
-"Molina di Mori";6.28;7.24;;8.12;|;|;|;|;|;12.13;12.13;|;13.05;14.15;14.15;;|;|;|;|;|;18.00;18.43;18.43;18.43;|;|
-"Ravazzone di Mori";6.29;7.25;;8.13;9.01;9.01;9.51;9.51;11.10;12.14;12.14;12.45;13.06;14.16;14.16;;15.21;15.21;16.07;16.07;16.59;18.01;18.44;18.44;18.44;19.41;19.41
-"Mori (Stazione F.S.)";6.31;7.28;;8.16;9.04;9.04;9.54;9.54;11.13;12.17;12.17;12.48;13.09;14.19;14.19;;15.24;15.24;16.10;16.10;17.02;18.04;18.47;18.47;18.47;19.44;19.44
-"Centro Comm.le Millenium";6.33;7.30;;8.18;9.06;9.06;9.56;9.56;11.15;12.19;12.19;12.50;13.11;14.21;14.21;;15.26;15.26;16.12;16.12;17.04;18.06;18.49;18.49;18.49;19.46;19.46
-"Lizzanella";6.37;7.34;;8.22;9.10;9.10;10.00;10.00;11.19;12.23;12.23;12.54;13.15;14.25;14.25;;15.30;15.30;16.16;16.16;17.08;18.10;18.53;18.53;18.53;19.50;19.50
-"ROVERETO (Staz.F.S.)";6.43;7.38;;8.26;9.14;9.14;10.04;10.04;11.23;12.27;12.27;12.58;13.19;14.29;14.29;;15.34;15.34;16.20;16.20;17.12;18.14;18.57;18.57;18.57;19.54;19.54
-"ROVERETO (Via Paoli) - Arr.";6.45;7.40;;8.28;9.16;9.16;10.06;10.06;11.25;12.29;12.29;13.00;13.21;14.31;14.31;;15.36;15.36;16.22;16.22;17.14;18.16;18.59;18.59;18.59;19.56;19.56
+Frequenza:;"Solo  nei giorni feriali";"Solo  nei giorni feriali";"Solo nei giorni scolastici";"Feriale non scolastico";"Solo  nei giorni feriali";"Solo  nei giorni feriali";"Solo  nei giorni feriali";"Solo nei giorni festivi";"Solo  nei giorni feriali";"Solo  nei giorni feriali";"Solo  nei giorni feriali";"Solo nei giorni festivi";"Solo  nei giorni feriali";"Solo nei giorni festivi";"Solo  nei giorni feriali";"Solo nei giorni festivi";"Scolastico escluso sabato";"Solo nei giorni feriali non scolastici dal lunedì al venerdì";"Solo  nei giorni feriali";"Solo nei giorni festivi";"Feriale escluso sabato";;"Solo  nei giorni feriali";"Solo  nei giorni feriali";"Solo nei giorni festivi";
+Linea:;"A Rovereto l'autobus prosegue per Trento";"A Rovereto l'autobus prosegue per Trento / Transita via Oltresarca";;;"A Rovereto l'autobus prosegue per Trento";;"A Rovereto l'autobus prosegue per Trento";;;"A Rovereto l'autobus prosegue per Trento";"A Rovereto l'autobus prosegue per Trento";;;;;;"A Rovereto l'autobus prosegue per Trento";;"A Rovereto l'autobus prosegue per Trento";"A Rovereto l'autobus prosegue per Trento";;"A Rovereto l'autobus prosegue per Trento";"A Rovereto l'autobus prosegue per Trento";;;
+Servizio:;"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE"
+"BOLOGNANO - Part.";;;;;7.12;8.05;8.55;8.55;10.13;11.18;;12.15;13.20;13.20;14.32;14.32;14.32;14.32;;;;17.05;17.48;18.45;18.45;21.56
+"Bolognano Via Asilo";;;;;7.13;8.06;8.56;8.56;10.14;11.19;;12.16;13.21;13.21;14.33;14.33;14.33;14.33;;;;17.06;17.49;18.46;18.46;21.57
+"Massone";;;;;7.16;8.09;8.59;8.59;10.17;11.22;;12.19;13.24;13.24;14.36;14.36;14.36;14.36;;;;17.09;17.52;18.49;18.49;22.00
+"Bolognano Bivio";6.06;7.01;;;|;|;|;|;|;|;12.19;|;|;|;|;|;|;|;;;;|;|;|;|;|
+"ARCO  (Autostaz.)";6.00;6.53;;;7.24;8.17;9.07;9.07;10.25;11.30;12.27;12.27;13.32;13.32;14.44;14.44;14.44;14.44;15.15;15.15;16.15;17.17;18.00;18.57;18.57;22.09
+"Vignole";6.07;7.02;;;|;|;|;|;|;|;|;|;|;|;|;|;|;|;|;|;|;|;|;|;|;|
+"S.Tomaso (direz.Riva)";|;|;;;7.32;8.25;9.15;9.15;10.33;11.38;12.35;12.35;13.40;13.40;14.52;14.52;14.52;14.52;15.23;15.23;16.23;17.25;18.08;19.05;19.05;22.17
+"S.Tomaso (direz. Arco)";5.55;6.47;;;|;|;|;|;|;|;|;|;|;|;|;|;|;|;|;|;|;|;|;|;|;|
+"Rione Degasperi (dir.Riva)";|;|;;;7.34;8.27;9.17;9.17;10.35;11.40;12.37;12.37;13.42;13.42;14.54;14.54;14.54;14.54;15.25;15.25;16.25;17.27;18.10;19.07;19.07;22.19
+"Rione Degasperi (dir.Arco)";5.53;6.44;;;|;|;|;|;|;|;|;|;|;|;|;|;|;|;|;|;|;|;|;|;|;|
+"RIVA DEL G. (Autostaz.) - Arr.";|;|;;;7.37;8.30;9.20;9.20;10.38;11.43;12.40;12.40;13.45;13.45;14.57;14.57;14.57;14.57;15.28;15.28;16.28;17.30;18.13;19.10;19.10;22.28
+"RIVA DEL G. (Autostaz.) - Part.";5.45;6.37;6.53;6.53;7.40;8.31;9.21;9.21;10.40;11.44;12.41;12.41;13.46;13.46;;;14.58;14.58;15.29;15.29;16.29;17.31;18.14;19.11;19.11;|
+"Riva del G. Viale Martiri";5.47;6.39;6.55;6.55;7.42;8.33;9.23;9.23;10.42;11.46;12.43;12.43;13.48;13.48;;;15.00;15.00;15.31;15.31;16.31;17.33;18.16;19.13;19.13;22.24
+"TORBOLE";|;|;7.03;7.03;7.50;8.41;9.31;9.31;10.50;11.54;12.51;12.51;13.56;13.56;;;15.08;15.08;15.39;15.39;16.39;17.41;18.24;19.21;19.21
+"NAGO";6.12;7.07;7.07;7.07;7.54;8.45;9.35;9.35;10.54;11.58;12.55;12.55;14.00;14.00;;;15.12;15.12;15.43;15.43;16.43;17.45;18.28;19.25;19.25
+"Passo S.Giovanni";6.15;7.09;7.09;;7.56;8.47;9.37;9.37;10.56;12.00;12.57;12.57;14.02;14.02;;;15.14;15.14;15.45;15.45;16.45;17.47;18.30;19.27;19.27
+"Loppio";6.19;7.13;7.13;;8.00;8.51;9.41;9.41;11.00;12.04;13.01;13.01;14.06;14.06;;;15.18;15.18;15.49;15.49;16.49;17.51;18.34;19.31;19.31
+"MORI (Bar  Centrale)";6.25;7.20;|;;8.07;8.58;9.48;9.48;11.07;12.11;13.08;13.08;14.13;14.13;;;15.25;15.25;15.56;15.56;16.56;17.58;18.41;19.38;19.38
+"Molina di Mori";6.28;7.22;|;;8.09;|;|;|;|;12.13;13.10;13.10;14.15;14.15;;;|;|;|;|;|;18.00;18.43;|;|
+"Ravazzone di Mori";6.29;7.23;|;;8.10;9.01;9.51;9.51;11.10;12.14;13.11;13.11;14.16;14.16;;;15.28;15.28;15.59;15.59;16.59;18.01;18.44;19.41;19.41
+"Mori (Stazione F.S.)";6.31;7.26;|;;8.13;9.04;9.54;9.54;11.13;12.17;13.14;13.14;14.19;14.19;;;15.31;15.31;16.02;16.02;17.02;18.04;18.47;19.44;19.44
+"Centro Comm.le Millenium";6.33;7.28;7.28;;8.15;9.06;9.56;9.56;11.15;12.19;13.16;13.16;14.21;14.21;;;15.33;15.33;16.04;16.04;17.04;18.06;18.49;19.46;19.46
+"Lizzanella";6.37;7.32;7.32;;8.19;9.10;10.00;10.00;11.19;12.23;13.20;13.20;14.25;14.25;;;15.37;15.37;16.08;16.08;17.08;18.10;18.53;19.50;19.50
+"ROVERETO (Staz.F.S.)";6.43;7.36;7.36;;8.23;9.14;10.04;10.04;11.23;12.27;13.24;13.24;14.29;14.29;;;15.41;15.41;16.12;16.12;17.12;18.14;18.57;19.54;19.54
+"ROVERETO (Via Paoli) - Arr.";6.45;7.38;;;8.25;9.16;10.06;10.06;11.25;12.29;13.26;13.26;14.31;14.31;;;15.43;15.43;16.14;16.14;17.14;18.16;18.59;19.56;19.56
