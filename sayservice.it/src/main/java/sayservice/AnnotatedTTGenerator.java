@@ -3855,18 +3855,18 @@ public class AnnotatedTTGenerator {
 		AnnotatedTTGenerator timeTableGenerator = new AnnotatedTTGenerator();
 		File folder = new File(pathToInput);
 
-		for (final File fileEntry : folder.listFiles()) {
-			totalStops = 0;
-			if (fileEntry.isDirectory() | fileEntry.getName().contains(".json") | fileEntry.getName().contains(".zip")) {
-				continue;
-			} else {
-				timeTableGenerator.processFiles(pathToOutput, agencyId, pathToInput + fileEntry.getName());
-				System.out.println(fileEntry.getName() + " -> " + totalStops);
-			}
-		}
+//		for (final File fileEntry : folder.listFiles()) {
+//			totalStops = 0;
+//			if (fileEntry.isDirectory() | fileEntry.getName().contains(".json") | fileEntry.getName().contains(".zip")) {
+//				continue;
+//			} else {
+//				timeTableGenerator.processFiles(pathToOutput, agencyId, pathToInput + fileEntry.getName());
+//				System.out.println(fileEntry.getName() + " -> " + totalStops);
+//			}
+//		}
 
 //		timeTableGenerator.processFiles(pathToOutput, "12", pathToInput + "05R-Feriale.csv"); //No CC.
-//		timeTableGenerator.processFiles(pathToOutput, "16", pathToInput + "P-07A-Feriale.csv");
+		timeTableGenerator.processFiles(pathToOutput, "16", pathToInput + "I-03R-Feriale.csv");
 //		timeTableGenerator.processFiles(pathToOutput, "12", pathToInput + "15R-Feriale.csv");
 //		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "334A.csv");
 
