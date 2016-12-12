@@ -6,3 +6,5 @@ sayservice.it/.settings/*
 sayservice.it/.classpath
 sayservice.it/bin
 sayservice.it/.*
+.metadata/*
+RemoteSystemsTempFiles/*
