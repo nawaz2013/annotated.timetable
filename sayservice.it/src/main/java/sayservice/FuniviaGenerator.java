@@ -19,7 +19,7 @@ public class FuniviaGenerator {
 	private static final String UTF8_BOM = "\uFEFF";
 	private static String routeId = "531";
 	private static List<String[]> routes;
-	private static String pathToGTFS = "C:/tmp/otp/ftp/12.09.16/google_transit_urbano/";
+	private static String pathToGTFS = "src/test/resources/gtfs/12/";//"C:/tmp/otp/ftp/25.06.17/google_transit_urbano/";
 
 	private static HashMap<String, List<String[]>> tripStopsTimesMap = new HashMap<String, List<String[]>>();
 	private static HashMap<String, List<String>> routeTripsMap = new HashMap<String, List<String>>();
@@ -32,7 +32,7 @@ public class FuniviaGenerator {
 	private static String directionIdentifier = "Funivia-Staz. di Valle-Trento"; //RITORNO.
 	private static String smartplannerRouteID = "FUTSR";
 	// service id.
-	private static String serviceId = "0000000012016091220170609";
+	private static String serviceId = "0000001402017061020170910";
 
 	public static void main(String args[]) {
 		try {

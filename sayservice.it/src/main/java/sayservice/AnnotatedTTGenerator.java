@@ -165,7 +165,7 @@ public class AnnotatedTTGenerator {
 	private List<String> ignoreServiceIdPattern = new ArrayList<String>() {
 		{
 			// urban.
-			add("2016060820160911");
+			add("2016091220170609");
 //			add("2015061020150909");
 			// ex-urban(ignore winter).
 //			add("20160624");
@@ -182,7 +182,7 @@ public class AnnotatedTTGenerator {
 	};
 	  
 	// urban.
-	private static String outputPattern = "2016091220170609";
+	private static String outputPattern = "2017061020170910";
 	// ex-urban.
 //	private static String outputPattern = "2015091020160624"; //2015091020160624,2015062620150909
 	
@@ -2825,7 +2825,7 @@ public class AnnotatedTTGenerator {
 					
 					
 					/** MATCH STEP 2: remove old calendar dates. **/
-					if (matchingTripId.size() > 1) {
+					if (matchingTripId.size() > 0) { // check even for one trip.
 						List<String> copyOfSWTripIds = new ArrayList<String>();
 						copyOfSWTripIds.addAll(matchingTripId);
 
@@ -3865,8 +3865,8 @@ public class AnnotatedTTGenerator {
 //			}
 //		}
 
-//		timeTableGenerator.processFiles(pathToOutput, "12", pathToInput + "05R-Feriale.csv"); //No CC.
-		timeTableGenerator.processFiles(pathToOutput, "16", pathToInput + "I-03R-Feriale.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "12", pathToInput + "08_A-Feriale.csv"); //No CC.
+		timeTableGenerator.processFiles(pathToOutput, "16", pathToInput + "E-06A-Festivo.csv");
 //		timeTableGenerator.processFiles(pathToOutput, "12", pathToInput + "15R-Feriale.csv");
 //		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "334A.csv");
 
