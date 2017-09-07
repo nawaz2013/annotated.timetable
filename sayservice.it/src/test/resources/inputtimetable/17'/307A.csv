@@ -1,34 +1,34 @@
 Descr.breve:;"307"
 Descr.lunga:;"Rovereto-Mori-Chizzola-Cornè-Ala-Avio"
-Validità:;"Orario in vigore dal 11/09/2016 al 23/06/2017"
+Validità:;"Orario in vigore dal 10/09/2017 al 22/06/2018"
 Orario:;""
-Frequenza:;"Solo  nei giorni feriali";"Scolastico escluso sabato";"Scolastico escluso sabato";"Solo nei giorni feriali non scolastici dal lunedì al venerdì";"Feriale escluso sabato";"Feriale escluso sabato";"Solo al sabato feriale";"Solo al sabato feriale";"Scolastico escluso sabato";"Solo nei giorni feriali non scolastici dal lunedì al venerdì";"Solo  nei giorni feriali";"Solo nei giorni scolastici";"Solo nei giorni scolastici";"Feriale escluso sabato";"Scolastico escluso sabato";"Solo nei giorni feriali non scolastici dal lunedì al venerdì";"Solo  nei giorni feriali";"Solo nei giorni scolastici";"Feriale non scolastico";"Solo  nei giorni feriali";"Feriale escluso sabato";"Scolastico escluso sabato";"Solo al sabato scolastico";"Feriale non scolastico";"Solo  nei giorni feriali"
+Frequenza:;"Solo  nei giorni feriali ";"Scolastico escluso sabato ";"Scolastico escluso sabato ";"Feriale non scolastico dal lunedì al venerdì ";"Feriale escluso sabato ";"Feriale escluso sabato ";"Solo al sabato feriale ";"Solo al sabato feriale ";"Scolastico escluso sabato ";"Feriale non scolastico dal lunedì al venerdì ";"Solo  nei giorni feriali ";"Solo nei giorni scolastici ";"Solo nei giorni scolastici ";"Feriale escluso sabato ";"Scolastico escluso sabato ";"Feriale non scolastico dal lunedì al venerdì ";"Solo  nei giorni feriali ";"Solo nei giorni scolastici ";"Feriale non scolastico ";"Solo  nei giorni feriali ";"Feriale escluso sabato ";"Scolastico escluso sabato ";"Solo al sabato scolastico ";"Feriale non scolastico ";"Solo  nei giorni feriali "
 Linea:;"L'autobus proviene da Trento";;"A Serravalle la corsa effettua la fermata "scaletta" anzichè "Pensilina"";"A Serravalle la corsa effettua la fermata "scaletta" anzichè "Pensilina"";;;;;"A Serravalle la corsa effettua la fermata "scaletta" anzichè "Pensilina"";"A Serravalle la corsa effettua la fermata "scaletta" anzichè "Pensilina"";;;;;;;;;;;;;"L'autobus proviene da Trento";"L'autobus proviene da Trento";"A Serravalle la corsa effettua la fermata "scaletta" anzichè "Pensilina""
 Servizio:;"Bus TTE";"Bus TTE";"Bus Privato";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus Privato";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE"
-"ROVERETO (Via Manzoni) - Part.";7.39;;;;10.50;;10.50;;;;12.35;13.28;;16.45;;;17.30;;;17.32;;18.27;18.27;18.27
-"ROVERETO (Staz.F.S.)";7.41;;;;10.52;;10.52;;;;12.37;13.30;;16.47;;;17.32;;;17.34;;18.29;18.29;18.29
-"ROVERETO (Ospedale)";|;;;;10.58;;10.58;;;;12.43;13.36;;16.53;;;17.38;;;|;;|;|;|
-"Lizzanella";7.45;;;;11.01;;11.01;;;;12.46;13.39;;16.56;;;17.41;;;17.38;;18.33;18.33;18.33
-"Lizzana";|;;;;|;;|;;;;|;|;;|;;;17.44;;;|;;|;|;|
-"Marco";|;;;;|;;|;;;;|;|;;|;;;17.50;;;|;;|;|;|
-"Ravazzone di Mori";7.54;;;;11.10;;11.10;;;;12.55;13.48;;17.05;;;|;;;17.47;;18.42;18.42;18.42
+"ROVERETO (Via Manzoni) - Part.";7.36;;;;10.50;;10.50;;;;12.35;13.28;;16.45;;;17.30;;;17.32;;18.27;18.27;18.27;
+"ROVERETO (Staz.F.S.)";7.38;;;;10.52;;10.52;;;;12.37;13.30;;16.47;;;17.32;;;17.34;;18.29;18.29;18.29;
+"ROVERETO (Ospedale)";|;;;;10.58;;10.58;;;;12.43;13.36;;16.53;;;17.38;;;|;;|;|;|;
+"Lizzanella";7.42;;;;11.01;;11.01;;;;12.46;13.39;;16.56;;;17.41;;;17.38;;18.33;18.33;18.33;
+"Lizzana";|;;;;|;;|;;;;|;|;;|;;;17.44;;;|;;|;|;|;
+"Marco";|;;;;|;;|;;;;|;|;;|;;;17.50;;;|;;|;|;|;
+"Ravazzone di Mori";7.51;;;;11.10;;11.10;;;;12.55;13.48;;17.05;;;|;;;17.47;;18.42;18.42;18.42;
 "Serravalle";|;;9.54;9.54;|;;|;;11.19;11.19;|;|;;|;;;17.55;;;|;;|;|;|;18.56
-"MORI (Bar Centrale)";7.57;8.07;|;|;11.12;;11.12;;|;|;12.57;13.50;;17.07;;;|;;;17.50;17.50;18.45;18.45;18.45;18.45
+"MORI (Bar Centrale)";7.54;8.07;|;|;11.12;;11.12;;|;|;12.57;13.50;;17.07;;;|;;;17.50;17.50;18.45;18.45;18.45;18.45
 "MORI (Terranera)";;8.08;|;|;11.13;;11.13;;|;|;12.58;13.51;;17.08;;;|;;;;17.51;;;;18.46
 "S.Cecilia";;8.12;|;|;11.17;;11.17;;|;|;13.02;13.55;;17.12;;;|;;;;17.56;;;;18.51
 "CHIZZOLA";;8.16;|;|;11.21;;11.21;;|;|;13.06;13.59;;17.16;;;|;;;;18.00;;;;18.55
 "CHIZZOLA(V.De Gasperi)";;|;9.55;9.55;|;;|;;11.20;11.20;|;|;;|;;;17.56;;;;|;;;;19.01
 "CORNE' - Arr.";;|;|;|;|;;|;;|;|;|;|;;|;;;|;;;;18.13;;;;19.16
 "Loc. Cazzanelli di Corne' - Arr.";;|;|;|;|;;|;;|;|;|;|;;|;;;|;;;;18.18;;;;19.21
-"Villetta";;8.17;9.56;9.56;11.22;;11.22;;11.21;11.21;13.07;14.00;;17.17;;;17.57
-"S.Lucia di Ala";;8.19;9.58;9.58;11.24;;11.24;;11.23;11.23;13.09;14.01;;17.19;;;17.59
-"Pilcante";;8.24;10.03;10.03;11.29;;11.29;;11.28;11.28;13.14;14.06;;17.24;;;18.04
-"Pilcante Bivio";;8.26;10.06;10.06;11.31;;11.31;;;;|;14.08;;17.26;;;18.07
-"ALA (Via Malfatti)";;8.27;10.07;10.07;11.32;;11.32;;;;|;14.09;;17.27;;;18.08
-"ALA (Ospedale bivio)";;8.29;10.09;10.09;11.34;;11.34;;;;|;14.11;;17.29;;;18.10
-"ALA (Staz. FS) - Arr.";;8.30;;;11.35;;11.35;;;;|;14.12;;17.30;;;18.11
-"ALA (Staz. FS) - Part.";;;;;;11.48;;12.20;;;|;;14.13;;17.38;17.38;;18.13;18.13
-"Campagnola";;;;;;11.52;;12.24;;;13.16;;14.17;;17.42;17.42;;18.17;18.17
-"Sabbionara.";;;;;;11.58;;12.30;;;13.21;;14.23;;17.48;17.48;;18.23;18.23
-"AVIO";;;;;;12.01;;12.33;;;13.24;;14.26;;17.51;17.51;;18.26;18.26
-"AVIO (Via M.Baldo) - Arr.";;;;;;12.03;;12.35;;;13.26;;14.28;;17.53;17.53;;18.28;18.28
+"Villetta";;8.17;9.56;9.56;11.22;;11.22;;11.21;11.21;13.07;14.00;;17.17;;;17.57;;;;;;;;
+"S.Lucia di Ala";;8.19;9.58;9.58;11.24;;11.24;;11.23;11.23;13.09;14.01;;17.19;;;17.59;;;;;;;;
+"Pilcante";;8.24;10.03;10.03;11.29;;11.29;;11.28;11.28;13.14;14.06;;17.24;;;18.04;;;;;;;;
+"Pilcante Bivio";;8.26;10.06;10.06;11.31;;11.31;;;;|;14.08;;17.26;;;18.07;;;;;;;;
+"ALA (Via Malfatti)";;8.27;10.07;10.07;11.32;;11.32;;;;|;14.09;;17.27;;;18.08;;;;;;;;
+"ALA (Ospedale bivio)";;8.29;10.09;10.09;11.34;;11.34;;;;|;14.11;;17.29;;;18.10;;;;;;;;
+"ALA (Staz. FS) - Arr.";;8.30;;;11.35;;11.35;;;;|;14.12;;17.30;;;18.11;;;;;;;;
+"ALA (Staz. FS) - Part.";;;;;;11.48;;12.20;;;|;;14.13;;17.38;17.38;;18.13;18.13;;;;;;
+"Campagnola";;;;;;11.52;;12.24;;;13.16;;14.17;;17.42;17.42;;18.17;18.17;;;;;;
+"Sabbionara.";;;;;;11.58;;12.30;;;13.21;;14.23;;17.48;17.48;;18.23;18.23;;;;;;
+"AVIO";;;;;;12.01;;12.33;;;13.24;;14.26;;17.51;17.51;;18.26;18.26;;;;;;
+"AVIO (Via M.Baldo) - Arr.";;;;;;12.03;;12.35;;;13.26;;14.28;;17.53;17.53;;18.28;18.28;;;;;;

@@ -1,36 +1,36 @@
 Descr.breve:;"312"
 Descr.lunga:;"Pian delle Fugazze-Parrocchia di V.-Rovereto"
-Validità:;"Orario in vigore dal 11/09/2016 al 23/06/2017"
+Validità:;"Orario in vigore dal 10/09/2017 al 22/06/2018"
 Orario:;""
-Frequenza:;"Solo  nei giorni feriali";"Solo  nei giorni feriali";"Solo nei giorni scolastici";"Solo nei giorni scolastici";"La corsa si effettua solo nei giorni feriali di lunedì e giovedì";"Solo  nei giorni feriali";"La corsa si effettua solo nei giorni feriali di lunedì e giovedì";"La corsa si effettua solo nei giorni feriali di lunedì e giovedì";"La corsa si effettua solo nei giorni feriali di lunedì e giovedì";"Solo  nei giorni feriali";"Solo  nei giorni feriali";"Scolastico escluso sabato";"Feriale non scolastico";"Solo al sabato feriale";"Scolastico escluso sabato";"Scolastico escluso sabato"
+Frequenza:;"Solo  nei giorni feriali ";"Solo  nei giorni feriali ";"Solo nei giorni scolastici ";"Solo nei giorni scolastici ";"La corsa si effettua solo nei giorni feriali di lunedì e giovedì";"Solo  nei giorni feriali ";"La corsa si effettua solo nei giorni feriali di lunedì e giovedì";"La corsa si effettua solo nei giorni feriali di lunedì e giovedì";"La corsa si effettua solo nei giorni feriali di lunedì e giovedì";"Solo  nei giorni feriali ";"Solo  nei giorni feriali ";"Scolastico escluso sabato ";"Feriale non scol dal lun al ve ";"Solo al sabato feriale ";"Scolastico escluso sabato ";"Scolastico escluso sabato "
 Linea:;;"A Speccheri Bivio cambio autobus";;;;;;;;"Ad Anghebeni cambio autobus";;;;;;
 Servizio:;"Bus TTE";"Bus TTE";"Bus Privato";"Bus TTE";"Bus Privato";"Bus TTE";"Bus Privato";"Bus Privato";"Bus Privato";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE"
-"PIAN DELLE FUGAZZE - Part.";;;6.20;;;8.41;;;12.00
-"Streva";;;|;;;8.44;;;12.02
-"PIANO DI VALLARSA - Part.";;6.17;|;6.40;;8.52;9.50;;12.09;;13.53;16.18;17.20;17.20
-"Parrocchia di Vallarsa";;6.20;|;6.43;;8.55;9.52;;12.11;;13.56;16.20;17.23;17.23
-"CAMPOSILVANO - Part.";6.07;|;6.28;|;;|;9.34;;11.51;13.45;|;|;|;|;17.45
-"Speccheri";6.17;|;6.41;|;;|;9.43;;11.44;13.52;|;|;|;|;17.54
-"Bastianello";|;|;6.39;|;;|;9.42;;11.43;|;|;|;|;|;|
-"Speccheri Bivio";6.22;6.22;6.45;6.45;;8.57;9.53;;12.12;13.58;13.58;16.21;17.25;17.25;17.58
-"RAOSSI";6.25;6.25;6.47;6.47;8.40;8.59;9.55;10.30;12.14;14.00;14.00;16.22;17.27;17.27;18.00
-"Foxi";6.27;6.27;;6.50;8.42;9.02;;10.32;;14.03;14.03;16.24;17.30;17.30;18.02
-"Anghebeni";6.30;6.30;;6.52;8.44;9.04;;10.34;;14.05;14.05;16.27;17.32;17.32;18.04
-"S.Anna di Vallarsa";|;|;;|;|;|;;|;;|;|;|;|;|;18.09
+"PIAN DELLE FUGAZZE - Part.";;;6.20;;;8.40;;;12.00;;;;;;;
+"Streva";;;|;;;8.43;;;12.02;;;;;;;
+"PIANO DI VALLARSA - Part.";;6.17;|;6.40;;8.51;9.50;;12.09;;13.53;16.15;17.20;17.20;;
+"Parrocchia di Vallarsa";;6.20;|;6.43;;8.54;9.52;;12.11;;13.56;16.18;17.23;17.23;;
+"CAMPOSILVANO - Part.";6.07;|;6.28;|;;|;9.34;;11.51;13.45;|;|;|;|;17.45;
+"Speccheri";6.17;|;6.41;|;;|;9.43;;11.44;13.52;|;|;|;|;17.54;
+"Bastianello";|;|;6.39;|;;|;9.42;;11.43;|;|;|;|;|;|;
+"Speccheri Bivio";6.22;6.22;6.45;6.45;;8.56;9.53;;12.12;13.58;13.58;16.20;17.25;17.25;17.58;
+"RAOSSI";6.25;6.25;6.47;6.47;8.40;8.58;9.55;10.30;12.14;14.00;14.00;16.22;17.27;17.27;18.00;
+"Foxi";6.27;6.27;;6.50;8.42;9.01;;10.32;;14.03;14.03;16.24;17.30;17.30;18.02;
+"Anghebeni";6.30;6.30;;6.52;8.44;9.03;;10.34;;14.05;14.05;16.27;17.32;17.32;18.04;
+"S.Anna di Vallarsa";|;|;;|;|;|;;|;;|;|;|;|;|;18.09;
 "Cumerlotti - Arr.";|;|;;|;|;|;;|;;|;|;|;|;|;18.11;18.22
-"Zocchio";6.33;6.33;;6.56;8.47;9.08;;10.37;;14.09;14.09;16.30;17.36;17.36;;|
+"Zocchio";6.33;6.33;;6.56;8.47;9.07;;10.37;;14.09;14.09;16.30;17.36;17.36;;|
 "Dosso (Vallarsa)";|;|;;|;8.49;|;;10.40;;|;|;|;|;|;;|
-"Valmorbia";6.35;6.35;;6.59;8.50;9.11;;10.41;;14.12;14.12;16.33;17.39;17.39;;|
-"Pozzacchio bivio";6.42;6.42;;7.07;;9.19;;10.47;;14.20;14.20;16.41;17.47;17.47;;|
-"Vanza bivio";6.44;6.44;;7.09;;9.21;;10.49;;14.22;14.22;16.42;17.49;17.49;;|
-"Vanza SP50 - Arr.";6.47;6.47;;|;;9.24;;10.51;;|;|;16.44;|;|;;|
-"Spino";|;|;;7.12;;|;;;;14.25;14.25;|;17.52;17.52;;|
-"Boccaldo";6.48;6.48;;|;;9.25;;;;|;|;16.46;|;|;;|
-"Vignala";6.51;6.51;;|;;9.28;;;;|;|;16.48;|;|;;|
-"Clocchi";6.53;6.53;;|;;9.30;;;;|;|;16.50;|;|;;|
-"Moscheri";6.54;6.54;;|;;9.31;;;;|;|;16.50;|;|;;|
-"Toldo";6.58;6.58;;|;;9.35;;;;|;|;16.54;|;|;;|
-"Trattoria Genovesa";7.03;7.03;;7.19;;9.40;;;;14.32;14.32;16.59;17.59;17.59;;|
-"ROVERETO (Staz.F.S.)";7.12;7.12;;7.28;;9.49;;;;14.41;14.41;17.11;18.08;18.08;;18.52
-"ROVERETO (Via Paoli) - Arr.";7.14;7.14;;7.30;;9.51;;;;14.43;14.43;|;18.10;18.10;;|
-"ROVERETO (Via Savioli) - Arr.";;;;;;;;;;;;17.16;;;;18.54
+"Valmorbia";6.35;6.35;;6.59;8.50;9.10;;10.41;;14.12;14.12;16.33;17.39;17.39;;|
+"Pozzacchio bivio";6.42;6.42;;7.07;;9.18;;10.47;;14.20;14.20;16.41;17.47;17.47;;|
+"Vanza bivio";6.44;6.44;;7.09;;9.20;;10.49;;14.22;14.22;16.42;17.49;17.49;;|
+"Vanza SP50 - Arr.";6.47;6.47;;|;;9.21;;10.51;;|;|;16.44;|;|;;|
+"Spino";|;|;;7.11;;|;;;;14.24;14.24;|;17.51;17.51;;|
+"Boccaldo";6.48;6.48;;|;;9.23;;;;|;|;16.46;|;|;;|
+"Vignala";6.51;6.51;;|;;9.25;;;;|;|;16.48;|;|;;|
+"Clocchi";6.53;6.53;;|;;9.27;;;;|;|;16.50;|;|;;|
+"Moscheri";6.54;6.54;;|;;9.28;;;;|;|;16.50;|;|;;|
+"Toldo";6.58;6.58;;|;;9.32;;;;|;|;16.54;|;|;;|
+"Trattoria Genovesa";7.03;7.03;;7.17;;9.36;;;;14.30;14.30;16.59;17.57;17.57;;|
+"ROVERETO (Staz.F.S.)";7.12;7.12;;7.28;;9.48;;;;14.41;14.41;17.11;18.08;18.08;;18.52
+"ROVERETO (Via Savioli) - Arr.";|;|;;|;;|;;;;|;|;17.16;|;|;;18.54
+"ROVERETO (Via Manzoni)";7.14;7.14;;7.30;;9.50;;;;14.43;14.43;;18.10;18.10;;

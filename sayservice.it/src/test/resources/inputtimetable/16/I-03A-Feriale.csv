@@ -1,0 +1,38 @@
+Descr.breve:;3
+Descr.lunga:;PEDERSANO - BRIONE - STAZIONE FS - LENZIMA
+Validità:;ORARIO Rovereto Inv. 2017-18   Valido dal 11/09/2017 al 07/06/2018
+Orario:;ORARIO FERIALE
+Frequenza:;;Scolastica da Lunedì a Sabato;;Feriale da Lunedì a Venerdì;Scolastica da Lunedì a Sabato;Scolastica da Lunedì a Venerdì;Scolastica solo il Sabato;Scolastica da Lunedì a Sabato;;Feriale solo il Sabato;;Feriale solo il Sabato;Feriale da Lunedì a Venerdì;Feriale da Lunedì a Venerdì;Feriale solo il Sabato;Feriale da Lunedì a Venerdì;Feriale solo il Sabato;Feriale da Lunedì a Venerdì;Scolastica da Lunedì a Sabato;Feriale solo il Sabato;;Feriale da Lunedì a Venerdì;Scolastica da Lunedì a Sabato;Scolastica da Lunedì a Venerdì;Scolastica da Lunedì a Venerdì;Feriale solo il Sabato;;Scolastica da Lunedì a Venerdì;;;Scolastica da Lunedì a Venerdì;;Scolastica da Lunedì a Giovedì;;;;Feriale da Lunedì a Venerdì;;Feriale solo il Sabato;Feriale solo il Sabato
+Linea:;;Servizio effettuato con mezzo extraurbano.;Linea 8;;Servizio effettuato con mezzo extraurbano.;;Servizio effettuato con mezzo extraurbano.;Linea 2;Linea 4;;;;;;;Servizio effettuato da autonoleggiatore privato.;;;Linea 2;Servizio effettuato da autonoleggiatore privato.;;Servizio effettuato da autonoleggiatore privato.;Linea 2;Linea 2;Servizio effettuato con mezzo extraurbano.;Servizio effettuato da autonoleggiatore privato.;;Servizio effettuato con mezzo extraurbano.;;Servizio effettuato da autonoleggiatore privato.;;;Linea 2;;Servizio effettuato da autonoleggiatore privato.;;Servizio effettuato da autonoleggiatore privato.;;Linea N3;Linea N3
+Servizio:
+LAGO DI CEI  Bellaria;;;;;06.45;;;;;;;;;;;;;;;;;;;;;13.10;;14.20;;;;;;17.33
+CASTELLANO  centro;;;;;06.59;;;;;;;;;;;;;;;;;;;;;13.19;;14.29;;;;;;17.42
+CASTELLANO  centro;;;06.32;;  |  ;;;;;;;08.12;08.22;09.42;;10.42;11.12;;;12.08;;13.01;;;;  |  ;;;;15.11;;;;  |  ;17.56;19.02;19.17;20.13;23.34;25.24
+PEDERSANO  capolinea;;;  |  ;;07.09;;;;;;07.32;  |  ;  |  ;  |  ;09.52;  |  ;  |  ;11.22;;  |  ;12.17;  |  ;;;;  |  ;13.52;;14.57;  |  ;;16.22;;  |  ;  |  ;  |  ;  |  ;  |  ;  |  ;  |  
+PEDERSANO  centro;;;06.43;;  |  ;07.10;07.10;;;;07.33;08.23;08.33;09.53;09.53;10.53;11.23;11.23;;12.19;12.18;13.12;;;;13.30;13.53;;14.58;15.22;;16.23;;17.53;18.07;19.13;19.28;20.24;23.45;25.35
+MOLINI;;;  |  ;;07.14;  |  ;  |  ;;;;  |  ;  |  ;  |  ;  |  ;  |  ;10.57;  |  ;  |  ;;12.23;  |  ;13.16;;;;13.34;  |  ;;  |  ;15.26;;  |  ;;  |  ;18.11;  |  ;19.32;20.28;23.49;25.39
+NOARNA;;;06.46;;  |  ;07.13;07.13;;;;07.36;08.26;08.36;09.56;09.56;  |  ;11.26;11.26;;  |  ;12.21;  |  ;;;;  |  ;13.56;;15.01;  |  ;;16.26;;17.56;  |  ;19.16;  |  ;  |  ;  |  ;  |  
+SASSO;;;06.48;;  |  ;07.15;07.15;;;;07.38;08.28;08.38;09.58;09.58;  |  ;11.28;11.28;;  |  ;12.23;  |  ;;;;  |  ;13.58;;15.03;  |  ;;16.28;;17.58;  |  ;19.18;  |  ;  |  ;  |  ;  |  
+NOGAREDO  via Zuccate;;;06.51;;  |  ;07.18;07.18;;;;07.41;08.31;08.41;10.01;10.01;  |  ;11.31;11.31;;  |  ;12.26;  |  ;;;;  |  ;14.01;;15.06;  |  ;;16.31;;18.01;  |  ;19.21;  |  ;  |  ;  |  ;  |  
+VILLA LAGARINA  via Magrè;;;06.54;;  |  ;07.21;07.21;;07.29;;07.44;08.34;08.44;10.04;10.04;11.00;11.34;11.34;;12.26;12.29;13.19;;;;13.37;14.04;;15.09;15.29;;16.34;;18.04;18.14;19.24;19.35;20.31;23.52;25.42
+VILLA LAGARINA  v. Zandonai;;;;;07.18;  |  ;  |  ;;  |  ;;  |  ;  |  ;  |  ;  |  ;  |  ;  |  ;  |  ;  |  ;;  |  ;  |  ;  |  ;;;;  |  ;  |  ;;  |  ;  |  ;;  |  ;;  |  ;  |  ;  |  ;;  |  ;  |  ;  |  
+VILLA LAGARINA  via Alpini;;;;;07.19;07.23;07.23;;07.31;;07.46;08.36;08.46;10.06;10.06;11.02;11.36;11.36;;12.28;12.31;13.21;;;;13.39;14.06;;15.11;15.31;;16.36;;18.06;18.16;19.26;;20.33;23.54;25.44
+S.ILARIO  via Monti;;;;;  |  ;  |  ;  |  ;07.24;  |  ;;  |  ;  |  ;  |  ;  |  ;  |  ;;  |  ;  |  ;;;  |  ;;;13.18;13.21;;  |  ;;  |  ;;;  |  ;16.35;  |  ;;  |  ;;  |  ;  |  ;  |  
+S.ILARIO  sav;;;;;07.21;07.25;07.25;07.25;07.33;;07.48;08.38;08.48;10.08;10.08;;11.38;11.38;;;12.33;;;13.19;  |  ;;14.08;;15.13;;;16.38;16.36;18.08;;19.28;;20.35;23.56;25.46
+viale Trento  via Magazol;;;;;07.24;07.28;07.28;  |  ;07.36;;07.51;  |  ;  |  ;  |  ;  |  ;;  |  ;  |  ;;;  |  ;;;13.22;  |  ;;  |  ;;  |  ;;;  |  ;16.39;  |  ;;  |  ;;20.38;23.59;25.49
+via Comel;;;;;  |  ;  |  ;  |  ;07.32;  |  ;;  |  ;08.40;08.50;10.10;10.10;;11.40;11.40;;;12.35;;;  |  ;  |  ;;14.10;;15.15;;;16.40;  |  ;18.10;;19.30;;  |  ;  |  ;  |  
+corso Bettini  liceo;;;;;07.25;07.29;07.29;07.38;07.37;;07.52;08.45;08.55;10.15;10.15;;11.45;11.45;12.28;;12.40;;13.18;13.23;13.25;;14.15;;15.20;;15.46;16.45;16.40;18.15;;19.35;;20.39;24.00;25.50
+corso Rosmini  Posta;06.05;;;;07.28;07.32;07.32;07.41;07.40;07.51;07.55;08.48;08.58;10.18;10.18;;11.48;11.48;12.31;;12.43;;13.21;13.26;13.28;;14.18;;15.23;;15.49;16.48;16.43;18.18;;19.38;;20.42;24.03;25.53
+via Balista;  |  ;;;;07.31;  |  ;  |  ;07.44;07.43;  |  ;  |  ;  |  ;  |  ;  |  ;  |  ;;  |  ;  |  ;12.34;;  |  ;;13.24;13.29;  |  ;;  |  ;;  |  ;;  |  ;  |  ;16.46;  |  ;;  |  ;;  |  ;  |  ;  |  
+"Stazione FS";06.07;06.46;;07.21;;07.34;07.34;;;07.53;07.57;08.50;09.00;10.20;10.20;;11.50;11.50;  |  ;;12.45;;  |  ;  |  ;13.30;;14.20;;15.25;;15.51;16.50;  |  ;18.20;;19.40;;20.44;24.05;25.55
+viale Vittoria  scuole Degasperi;06.11;06.50;;07.25;;;;;;07.57;;08.54;09.04;10.24;10.24;;11.54;11.54;  |  ;;12.49;;  |  ;  |  ;13.34;;14.24;;15.29;;15.55;16.54;  |  ;18.24;;19.44
+piazza Manifattura;06.12;06.51;;07.26;;;;;;07.58;;08.55;09.05;10.25;10.25;;11.55;11.55;12.41;;12.50;;13.31;13.36;13.35;;14.25;;15.30;;15.56;16.55;16.53;18.25;;19.45
+via della Libertà;06.14;  |  ;;07.28;;;;;;08.00;;08.57;09.07;10.27;10.27;;11.57;11.57;;;12.52;;;;  |  ;;14.27;;15.32;;15.58;16.57;;18.27;;19.47
+via Zandonai;  |  ;06.52;;  |  ;;;;;;  |  ;;  |  ;  |  ;  |  ;  |  ;;  |  ;  |  ;;;  |  ;;;;13.36;;  |  ;;  |  ;;  |  ;  |  ;;  |  ;;  |  
+CORNALE';06.17;06.55;;07.31;;;;;;08.03;;09.00;09.10;10.30;10.30;;12.00;12.00;;;12.55;;;;13.39;;14.30;;15.35;;16.01;17.00;;18.30;;19.50
+ISERA  p.zza S.Vincenzo (n.);06.20;  |  ;;07.34;;;;;;08.06;;09.03;09.13;10.33;10.33;;  |  ;  |  ;;;12.58;;;;  |  ;;14.33;;15.38;;16.04;17.03;;18.33;;19.53
+ISERA  p.zza S.Vincenzo (o.);  |  ;  |  ;;  |  ;;;;;;  |  ;;  |  ;  |  ;  |  ;  |  ;;12.06;12.06;;;  |  ;;;;  |  ;;  |  ;;  |  ;;  |  ;  |  ;;  |  ;;  |  
+ISERA  scuole elementari;  |  ;06.58;;  |  ;;;;;;  |  ;;  |  ;  |  ;  |  ;  |  ;;12.08;12.08;;;  |  ;;;;13.42;;  |  ;;  |  ;;  |  ;  |  ;;  |  ;;  |  
+FOLASO;06.28;07.05;;07.42;;;;;;08.14;;09.11;09.21;10.41;10.41;;12.15;12.15;;;13.06;;;;13.49;;14.41;;15.46;;16.12;17.11;;18.41;;20.01
+PATONE;  |  ;  |  ;;  |  ;;;;;;  |  ;;  |  ;  |  ;  |  ;  |  ;;12.21;12.21;;;13.12;;;;13.55;;  |  ;;  |  ;;16.18;17.17;;18.47;;20.07
+LENZIMA;06.33;07.10;;07.47;;;;;;08.19;;09.16;09.26;10.46;10.46;;12.30;12.30;;;13.21;;;;14.04;;14.46;;15.51;;16.27;17.26;;18.56;;20.16

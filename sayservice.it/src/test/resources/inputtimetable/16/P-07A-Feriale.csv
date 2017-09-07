@@ -1,37 +1,37 @@
 Descr.breve:;7
 Descr.lunga:;NORIGLIO - ROSMINI - CAMPANA DEI CADUTI
-Validità:;ORARIO Rovereto Estate 2017   Valido dal 10/06/2017 al 10/09/2017
+Validità:;ORARIO Rovereto Inv. 2017-18   Valido dal 11/09/2017 al 07/06/2018
 Orario:;ORARIO FERIALE
-Frequenza:;;;;;;;;;;;Feriale solo il Sabato;Feriale da Lunedì a Venerdì
-Linea:;;Linea 2;;;;;;;;;;
+Frequenza:;Non scol. da Lunedì a Sabato;Scolastica da Lunedì a Sabato;Non scol. da Lunedì a Sabato;Scolastica da Lunedì a Sabato;;Scolastica da Lunedì a Venerdì;;;;Scolastica da Lunedì a Sabato;;;Scolastica da Lunedì a Venerdì
+Linea:;Servizio effettuato da autonoleggiatore privato.;Linea 2;Linea 2;Linea 2;Servizio effettuato da autonoleggiatore privato.;Linea 2;Servizio effettuato da autonoleggiatore privato.;Servizio effettuato da autonoleggiatore privato.;Servizio effettuato da autonoleggiatore privato.;Linea 2;Servizio effettuato da autonoleggiatore privato.;Servizio effettuato da autonoleggiatore privato.;Linea 2;Servizio effettuato da autonoleggiatore privato.;Servizio effettuato da autonoleggiatore privato.
 Servizio:
-MOIETTO;;06.54;;;;11.31;;;;18.36
-CISTERNA;;06.59;07.50;;;11.36;;14.44;;18.41;;20.01
-SENTER;;07.06;07.57;;;  |  ;;  |  ;;  |  ;;  |  
-COSTA;;07.12;08.03;;;11.44;;14.52;;18.49;;20.09
-SP.2  loc. BECCACHE';;07.13;08.04;;;11.45;;14.53;;18.50;;20.10
-NORIGLIO  mon. ai Caduti;;07.15;08.06;;;11.47;;  |  ;;18.52;;20.12
-SP.2  NORIGLIO;;  |  ;  |  ;;;  |  ;;14.55;;  |  ;;  |  
-MONTE GHELLO;;  |  ;  |  ;;;  |  ;;14.56;;  |  ;;  |  
-ZAFFONI;;  |  ;  |  ;;;  |  ;;14.58;;  |  ;;  |  
-SALTARIA;;  |  ;  |  ;;;  |  ;;14.59;;  |  ;;  |  
-TOLDI;;  |  ;  |  ;;;  |  ;;15.00;;  |  ;;  |  
-via Vallunga  bivio M. Pipel;07.05;  |  ;  |  ;;;  |  ;;  |  ;;  |  ;;  |  
-TOLDI;07.09;  |  ;  |  ;09.20;;  |  ;13.55;15.00;;  |  ;19.36;  |  
-SALTARIA;07.10;  |  ;  |  ;09.21;;  |  ;13.56;15.01;;  |  ;19.37;  |  
-ZAFFONI;07.11;  |  ;  |  ;09.22;;  |  ;13.57;15.02;;  |  ;19.38;  |  
-viale dei Colli  sc. alberghiera;07.19;07.22;  |  ;  |  ;;  |  ;  |  ;  |  ;;  |  ;  |  ;  |  
-NORIGLIO  mon. ai Caduti;  |  ;  |  ;  |  ;09.25;;  |  ;14.00;15.05;;  |  ;19.41;  |  
-NORIGLIO  via Jacob;  |  ;  |  ;08.07;09.26;;11.48;14.01;15.06;;18.53;19.42;20.13
-GENOVESA;  |  ;  |  ;08.11;09.30;;11.52;14.05;15.10;;18.57;19.46;20.17
-via Vicenza  via Asiago;  |  ;  |  ;08.12;09.31;;11.53;14.06;15.11;;18.58;19.47;20.18
-piazza Podestà;  |  ;  |  ;08.15;09.34;;11.56;14.09;15.14;;19.01;19.50;20.21
-corso Rosmini  Posta;07.22;07.25;08.18;09.37;10.02;11.59;14.12;15.17;17.00;  |  ;19.53;20.24
-corso Bettini  liceo;  |  ;;  |  ;;  |  ;  |  ;;  |  ;  |  ;19.05
-via Dante  borgo S.Caterina;07.23;;08.19;;10.03;12.00;;15.18;17.01
-via S.Maria;;;08.22;;10.06;12.03;;15.21;17.04
-viale Zugna;;;08.23;;10.07;12.04;;15.22;17.05
-PORTE di TRAMBILENO;;;08.26;;10.10;12.07;;15.25;17.08
-DOSSO;;;08.27;;10.11;12.08;;15.26;17.09
-PORTE  via al Brentegam;;;08.28;;10.12;12.09;;15.27;17.10
-CAMPANA DEI CADUTI;;;08.32;;10.16;12.13;;15.31;17.14
+MOIETTO;;06.52;06.54;;;;;;11.31;13.41;;;;;18.36
+CISTERNA;;06.57;06.59;;07.50;;;;11.36;13.46;;14.44;14.59;;18.41
+SENTER;;07.04;07.06;;07.57;;;;  |  ;  |  ;;  |  ;  |  ;;  |  
+COSTA;;07.10;07.12;;08.03;;;;11.44;13.54;;14.52;15.07;;18.49
+SP.2  loc. BECCACHE';;07.11;07.13;;08.04;;;;11.45;13.55;;14.53;15.08;;18.50
+NORIGLIO  scuole elementari;;07.13;  |  ;07.13;  |  ;;;;  |  ;  |  ;;  |  ;  |  ;;  |  
+NORIGLIO  mon. ai Caduti;;07.15;07.15;  |  ;08.06;;;;11.47;  |  ;;  |  ;15.10;;18.52
+SP.2  NORIGLIO;;  |  ;  |  ;07.14;  |  ;08.45;;;  |  ;13.57;;14.55;;;  |  
+MONTE GHELLO;07.08;  |  ;  |  ;07.15;  |  ;08.46;;;  |  ;13.58;;14.56;;;  |  
+ZAFFONI;07.10;  |  ;  |  ;07.17;  |  ;08.48;;;  |  ;14.00;;14.58;;;  |  
+SALTARIA;07.11;  |  ;  |  ;07.18;  |  ;08.49;;;  |  ;14.01;;14.59;;;  |  
+TOLDI;07.12;  |  ;  |  ;07.19;  |  ;08.50;;;  |  ;14.02;;15.00;;;  |  
+TOLDI;  |  ;  |  ;  |  ;  |  ;  |  ;  |  ;09.20;;  |  ;;13.55;15.00;;;  |  
+SALTARIA;  |  ;  |  ;  |  ;  |  ;  |  ;  |  ;09.21;;  |  ;;13.56;15.01;;;  |  
+ZAFFONI;  |  ;  |  ;  |  ;  |  ;  |  ;  |  ;09.22;;  |  ;;13.57;15.02;;;  |  
+viale dei Colli  sc. alberghiera;07.18;07.22;07.22;07.33;  |  ;08.56;  |  ;;  |  ;;  |  ;  |  ;;;  |  
+NORIGLIO  mon. ai Caduti;  |  ;  |  ;  |  ;  |  ;  |  ;  |  ;09.25;;  |  ;;14.00;15.05;;;  |  
+NORIGLIO  via Jacob;  |  ;  |  ;  |  ;  |  ;08.07;  |  ;09.26;;11.48;;14.01;15.06;;;18.53
+GENOVESA;  |  ;  |  ;  |  ;  |  ;08.11;  |  ;09.30;;11.52;;14.05;15.10;;;18.57
+via Vicenza  via Asiago;  |  ;  |  ;  |  ;  |  ;08.12;  |  ;09.31;;11.53;;14.06;15.11;;;18.58
+piazza Podestà;  |  ;  |  ;  |  ;  |  ;08.15;  |  ;09.34;;11.56;;14.09;15.14;;;19.01
+corso Rosmini  Posta;07.21;07.25;07.25;07.36;08.18;08.59;09.37;10.02;11.59;;14.12;15.17;;17.00;  |  
+corso Bettini  liceo;;;;;  |  ;;;  |  ;  |  ;;;  |  ;;  |  ;19.05
+via Dante  borgo S.Caterina;;;;;  |  ;;;  |  ;  |  ;;;  |  ;;  |  
+via S.Maria;;;;;08.25;;;10.09;12.06;;;15.24;;17.07
+viale Zugna;;;;;08.26;;;10.10;12.07;;;15.25;;17.08
+PORTE di TRAMBILENO;;;;;08.29;;;10.13;12.10;;;15.28;;17.11
+DOSSO;;;;;08.30;;;10.14;12.11;;;15.29;;17.12
+PORTE  via al Brentegam;;;;;08.31;;;10.15;12.12;;;15.30;;17.13
+CAMPANA DEI CADUTI;;;;;08.35;;;10.19;12.16;;;15.34;;17.17

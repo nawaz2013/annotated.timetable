@@ -1,40 +1,41 @@
 Descr.breve:;"303"
 Descr.lunga:;"Luserna-Lavarone-Carbonare-V.Vattaro-Trento"
-Validità:;"Orario in vigore dal 11/09/2016 al 23/06/2017"
+Validità:;"Orario in vigore dal 10/09/2017 al 22/06/2018"
 Orario:;""
-Frequenza:;"Solo  nei giorni feriali";"Solo nei giorni scolastici";"Solo  nei giorni feriali";"Solo nei giorni scolastici";"Solo nei giorni scolastici";"Solo  nei giorni feriali";"Solo nei giorni scolastici";"Feriale non scolastico";"Solo nei giorni scolastici";"Scolastico escluso sabato";"Solo  nei giorni feriali";"Solo  nei giorni feriali";"Feriale escluso sabato";"Solo  nei giorni feriali";"Solo  nei giorni feriali";"Solo  nei giorni feriali";"Scolastico escluso sabato";"Solo  nei giorni feriali";"Solo  nei giorni feriali"
+Frequenza:;"Solo  nei giorni feriali ";"Solo nei giorni scolastici ";"Solo  nei giorni feriali ";"Solo nei giorni scolastici ";"Solo nei giorni scolastici ";"Solo  nei giorni feriali ";"Solo nei giorni scolastici ";"Feriale non scolastico ";"Solo nei giorni scolastici ";"Scolastico escluso sabato ";"Solo  nei giorni feriali ";"Feriale escluso sabato ";"Solo  nei giorni feriali ";"Solo  nei giorni feriali ";"Solo  nei giorni feriali ";"Solo  nei giorni feriali ";"Scolastico escluso sabato ";"Solo  nei giorni feriali ";"Solo  nei giorni feriali "
 Linea:;;"La corsa transita via S.p. 133 del Menador";;;"Coincidenza a Calceranica per Levico";;;;;;;;;;;;;;
 Servizio:;"Bus TTE";"Bus Privato";"Bus TTE";"Bus TTE";"Bus Privato";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus Privato";"Bus TTE"
-"LUSERNA - Part.";;6.30;;;;;6.00;6.00;;7.20;;;;;;12.30
-"Monterovere";;6.38;;;;;6.09;6.09;;7.29;;;;;;12.39
-"Casanova";;|;;;;;6.17;6.17;;7.37;;;;;;12.47
-"Gasperi";;|;;;;;6.19;6.19;;7.39;;;;;;12.49
-"LAVARONE CAPPELLA - Arr.";;|;;;;;6.20;6.20;;7.40;;;;;;12.50
-"LAVARONE CAPPELLA - Part.";;|;;;;;6.21;6.21;;7.41;;;;;;12.51;14.25
-"Gionghi";;|;;;;;6.24;6.24;;7.44;;;;;;12.54;14.28
-"Azzolini";;|;;;;;6.25;6.25;;7.47;;;;;;12.55;|
-"Bertoldi";;|;;;;;6.27;6.27;;7.49;;;;;;12.57;|
-"Stengheli";;|;;;;;6.28;6.28;;7.50;;;;;;12.58;|
-"Lanzino";;|;;;;;6.30;6.30;;7.52;;;;;;13.00;|
-"LAVARONE CHIESA";;|;;;;;6.32;6.32;;7.54;;;;;;13.02;14.30
-"Nosellari";;|;;;;;6.38;6.38;;;;;;;;13.08;|
-"CARBONARE - Arr.";;|;;;;;6.43;6.43;;;;;;;;13.13;14.37
-"CARBONARE - Part.";;|;;;;;6.44;6.44;;;;;;;;13.14;14.37
-"Fricca";;|;;;;;6.50;6.50;;;;;;;;13.20;14.42
-"Menegoi";;|;;;;;6.52;6.52;;;;;;;;13.22;14.44
-"CENTA - Part.";6.30;|;;6.50;6.55;;|;|;;;7.25;8.35;;10.26;13.20;|;|;14.45;16.40
-"Pian dei Pradi (Rotatoria)";6.34;|;;6.54;6.58;;|;|;;;7.29;8.39;;10.30;13.24;|;|;14.49;16.44
-"Pian dei Pradi";6.34;|;;6.54;7.00;;7.00;7.00;;;7.29;8.39;;10.30;13.24;13.30;14.51;14.49;16.44
-"Campregheri bivio";6.37;|;;6.57;7.02;;7.03;7.03;;;7.32;8.42;;10.33;;13.33;14.53;14.52;16.47
-"VATTARO";6.40;|;;7.00;7.05;;7.06;7.06;;;7.35;8.45;;10.36;;13.36;14.56;14.55;16.50
-"Bosentino";6.45;|;;|;7.12;;|;7.11;7.05;;7.40;8.55;8.47;10.41;;13.41;|;15.00;16.55
-"VIGOLO VATTARO";6.50;|;;7.05;7.08;;7.11;7.15;7.10;;7.45;8.50;8.52;10.46;;13.46;15.00;15.05;17.00
+"LUSERNA - Part.";;6.30;;;;;6.00;6.00;;7.20;;;;;;12.30;;;
+"Monterovere";;6.38;;;;;6.09;6.09;;7.29;;;;;;12.39;;;
+"Casanova";;|;;;;;6.17;6.17;;7.37;;;;;;12.47;;;
+"Gasperi";;|;;;;;6.19;6.19;;7.39;;;;;;12.49;;;
+"LAVARONE CAPPELLA - Arr.";;|;;;;;6.20;6.20;;7.40;;;;;;12.50;;;
+"LAVARONE CAPPELLA - Part.";;|;;;;;6.21;6.21;;7.41;;;;;;12.51;14.25;;
+"Gionghi";;|;;;;;6.24;6.24;;7.44;;;;;;12.54;14.28;;
+"Azzolini";;|;;;;;6.25;6.25;;7.47;;;;;;12.55;|;;
+"Bertoldi";;|;;;;;6.27;6.27;;7.49;;;;;;12.57;|;;
+"Stengheli";;|;;;;;6.28;6.28;;7.50;;;;;;12.58;|;;
+"Lanzino";;|;;;;;6.30;6.30;;7.52;;;;;;13.00;|;;
+"LAVARONE CHIESA";;|;;;;;6.32;6.32;;7.54;;;;;;13.02;14.30;;
+"Nosellari";;|;;;;;6.38;6.38;;;;;;;;13.08;|;;
+"CARBONARE - Arr.";;|;;;;;6.43;6.43;;;;;;;;13.13;14.37;;
+"CARBONARE - Part.";;|;;;;;6.44;6.44;;;;;;;;13.14;14.37;;
+"Fricca";;|;;;;;6.50;6.50;;;;;;;;13.20;14.42;;
+"Menegoi";;|;;;;;6.52;6.52;;;;;;;;13.22;14.44;;
+"CENTA - Part.";6.30;|;;6.50;6.55;;|;|;;;7.25;;8.35;10.26;13.20;|;|;14.45;16.40
+"Pian dei Pradi (Rotatoria)";6.34;|;;6.54;6.58;;|;|;;;7.29;;8.39;10.30;13.24;|;|;14.49;16.44
+"Pian dei Pradi";6.34;|;;6.54;7.00;;7.00;7.00;;;7.29;;8.39;10.30;13.24;13.30;14.51;14.49;16.44
+"Campregheri bivio";6.37;|;;6.57;7.02;;7.03;7.03;;;7.32;;8.42;10.33;;13.33;14.53;14.52;16.47
+"VATTARO";6.40;|;;7.00;7.05;;7.06;7.06;;;7.35;;8.45;10.36;;13.36;14.56;14.55;16.50
+"Bosentino";6.45;|;;|;7.12;;|;7.11;7.05;;7.40;8.47;8.55;10.41;;13.41;|;15.00;16.55
+"VIGOLO VATTARO";6.50;|;;7.05;7.08;;7.11;7.15;7.10;;7.45;8.52;8.50;10.46;;13.46;15.00;15.05;17.00
 "Caldonazzo";|;6.53;;|;|;;|;|;|;;|;|;|;|;;|;;|;|
+"Caldonazzo (Staz. FS)";|;|;;|;|;;|;|;|;;|;|;|;|;;|;;|;|
 "Calceranica al Lago";|;|;;|;7.16;7.28;|;|;|;;|;|;|;|;;|;;|;|
-"PERGINE (C.Intermodale) - Arr.";|;7.05;7.09;|;;7.42;|;|;|;;|;9.15;|;|;;|;;|;|
-"Valsorda";6.57;;|;7.12;;;7.18;7.22;7.16;;7.52;;8.59;10.53;;13.53;;15.12;17.07
-"Pianizza";7.01;;|;7.16;;;7.22;7.26;7.20;;7.56;;9.03;10.57;;13.57;;15.16;17.11
-"S.Rocco";7.03;;|;7.18;;;7.24;7.28;7.22;;7.58;;9.05;10.59;;13.59;;15.18;17.13
-"Cernidor";7.06;;|;7.21;;;7.27;7.31;7.24;;8.01;;9.08;11.02;;14.02;;15.21;17.16
-"TRENTO (P.za Vicenza)";7.10;;|;7.25;;;7.31;7.35;7.29;;8.07;;9.12;11.06;;14.06;;15.25;17.20
-"TRENTO   (Autostaz.) - Arr.";7.20;;7.30;7.35;;;7.41;7.45;7.41;;8.20;;9.22;11.16;;14.16;;15.35;17.30
+"PERGINE (C.Intermodale) - Arr.";|;7.05;7.09;|;;7.42;|;|;|;;|;|;9.15;|;;|;;|;|
+"Valsorda";6.57;;|;7.12;;;7.18;7.22;7.16;;7.52;8.59;;10.53;;13.53;;15.12;17.07
+"Pianizza";7.01;;|;7.16;;;7.22;7.26;7.20;;7.56;9.03;;10.57;;13.57;;15.16;17.11
+"S.Rocco";7.03;;|;7.18;;;7.24;7.28;7.22;;7.58;9.05;;10.59;;13.59;;15.18;17.13
+"Cernidor";7.06;;|;7.21;;;7.27;7.31;7.24;;8.01;9.08;;11.02;;14.02;;15.21;17.16
+"TRENTO (P.za Vicenza)";7.10;;|;7.25;;;7.31;7.35;7.29;;8.07;9.12;;11.06;;14.06;;15.25;17.20
+"TRENTO   (Autostaz.) - Arr.";7.20;;7.30;7.35;;;7.41;7.45;7.41;;8.20;9.22;;11.16;;14.16;;15.35;17.30

@@ -1,8 +1,8 @@
 Descr.breve:;"306"
 Descr.lunga:;"Lavarone-Folgaria-Calliano-Rovereto"
-Validità:;"Orario in vigore dal 11/09/2016 al 23/06/2017"
+Validità:;"Orario in vigore dal 10/09/2017 al 22/06/2018"
 Orario:;""
-Frequenza:;"Solo postfestivo scolastico";"Solo nei giorni scolastici";"Solo nei giorni scolastici";"Solo nei giorni scolastici";"Feriale non scolastico";"Solo nei giorni scolastici";"Feriale non scolastico";"Solo nei giorni scolastici";"Solo nei giorni scolastici";"Solo nei giorni scolastici";"Scolastico escluso sabato";"Solo al sabato scolastico";"La corsa si effettua solo al martedì feriale";"Solo  nei giorni feriali";"Solo  nei giorni feriali";"La corsa si effettua solo al martedì feriale";"Solo nei giorni scolastici";"Solo  nei giorni feriali";"Solo nei giorni scolastici";"Scolastico escluso sabato";"Solo  nei giorni feriali";"La corsa si effettua solo nei giorni festivi dal 26/12/2016 al 18/04/2017"
+Frequenza:;"Solo postfestivo scolastico ";"Solo nei giorni scolastici ";"Solo nei giorni scolastici ";"Solo nei giorni scolastici ";"Feriale non scolastico ";"Solo nei giorni scolastici ";"Feriale non scolastico ";"Solo nei giorni scolastici ";"Solo nei giorni scolastici ";"Solo nei giorni scolastici ";"Scolastico escluso sabato ";"Solo al sabato scolastico ";"La corsa si effettua solo al martedì feriale";"Solo  nei giorni feriali ";"Solo  nei giorni feriali ";"La corsa si effettua solo al martedì feriale";"Solo nei giorni scolastici ";"Solo  nei giorni feriali ";"Solo nei giorni scolastici ";"Scolastico escluso sabato ";"Solo  nei giorni feriali ";"La corsa si effettua solo nei giorni festivi dal 26/12/2017 al 2/04/2018"
 Linea:;;;;;;;;;;;;;;;;;;;;;;
 Servizio:;"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus Privato";"Bus TTE";"Bus TTE";"Bus Privato";"Bus TTE";"Bus Privato";"Bus TTE";"Bus TTE";"Bus Privato";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE"
 "LAVARONE CAPPELLA - Part.";5.45;;;;;6.21;6.21;;;6.30;;;;;9.48;;;13.18;;;16.03;16.20
@@ -34,4 +34,4 @@ Servizio:;"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";
 "ROVERETO (Via Manzoni)";;;;7.15;7.14;;;;|;;7.37;7.37;;8.39;;;12.52;14.48;;16.54;17.35;18.09
 "ROV. (C. Rosmini-Monu.) - Arr.";;;;|;|;;;;7.46;;|;|;;|;;;|;|;;|;|;|
 "ROVERETO (Staz.F.S.) - Arr.";;;;|;7.16;;;;;;7.39;7.39;;8.41;;;12.54;14.50;;16.56;17.37;18.11
-"ROVERETO - Ist. Veronesi - Arr.";;;;7.16
+"ROVERETO - Ist. Veronesi - Arr.";;;;7.16;;;;;;;;;;;;;;;;;;

@@ -23,6 +23,12 @@ import com.google.common.io.Files;
 import com.google.gdata.util.common.html.HtmlToText;
 import com.google.gdata.util.io.base.UnicodeReader;
 
+
+/**
+ * Generates GTFS from annoted timetable.
+ * @author nawazk
+ *
+ */
 public class CustomCacheGenerator {
 	
 	private static String pathToAnnotatedCSVs = "src/test/resources/annotatedtimetable/17'";
@@ -33,7 +39,7 @@ public class CustomCacheGenerator {
 //	private static final String pathToGTFS = "src/test/resources/gtfs/17/";
 //	private static String pathToOutput = "C:/tmp/annotated-cache/12";
 //	private static String pathToOutput = "C:/tmp/annotated-cache/16";
-	private static String pathToOutput = "C:/tmp/annotated-cache/17";
+	private static String pathToOutput = "C:/tmp/annotated-cache/17/05.09.17";
 	// agencyIds (12,16,17).
 	private static String agencyId = "17";
 	private static final String UTF8_BOM = "\uFEFF";
@@ -265,7 +271,13 @@ public class CustomCacheGenerator {
 		String tripFile = pathToGTFS + "trips.txt";
 
 		List<String[]> linesTrip = readFileGetLines(tripFile);
-
+		
+		cachTrips.add(linesTrip.get(0)[0] + "," + linesTrip.get(0)[1] + "," + linesTrip.get(0)[2] + "," + linesTrip.get(0)[3]
+				+ "," + linesTrip.get(0)[4] + "," + linesTrip.get(0)[5]);
+		cacheStoptimes.add("trip_id,arrival_time,departure_time,stop_id,stop_sequence");
+		stopEntries.add("stop_id,stop_name,stop_desc,stop_lat,stop_lon");
+		
+		
 		for (int i = 0; i < linesTrip.size(); i++) {
 			List<String> list = tripRouteServiceHeadsignIdMap.get(linesTrip.get(i)[0]);
 			if (list == null) {

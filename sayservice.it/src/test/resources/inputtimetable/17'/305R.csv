@@ -1,11 +1,11 @@
 Descr.breve:;"305"
 Descr.lunga:;"Saccone-Brentonico-Mori-Rovereto"
-Validità:;"Orario in vigore dal 11/09/2016 al 23/06/2017"
+Validità:;"Orario in vigore dal 10/09/2017 al 22/06/2018"
 Orario:;""
-Frequenza:;"Solo  nei giorni feriali";"Solo nei giorni scolastici";"Scolastico escluso sabato";"Scolastico escluso sabato";"Solo al sabato scolastico";"Solo al sabato scolastico";"Feriale non scolastico";"Solo nei giorni feriali non scolastici dal lunedì al venerdì";"Solo nei giorni feriali non scolastici dal lunedì al venerdì";"Solo nei giorni feriali non scolastici dal lunedì al venerdì";"Solo nei giorni scolastici";"La corsa si effettua nei giorni feriali non scolastici dal lunedì al venerdì dal 27 dicembre 2016  fino al 28 febbraio 2017";"Solo  nei giorni feriali";"Solo  nei giorni feriali";"Solo nei giorni scolastici";"Solo  nei giorni feriali";"La corsa si effettua nei giorni feriali non scolastici dal lunedì al venerdì dal 27 dicembre 2016  fino al 28 febbraio 2017";"Solo  nei giorni feriali";"Feriale escluso sabato";"Solo al sabato feriale";"Solo  nei giorni feriali";"Feriale escluso sabato"
+Frequenza:;"Solo  nei giorni feriali ";"Solo nei giorni scolastici ";"Scolastico escluso sabato ";"Scolastico escluso sabato ";"Solo al sabato scolastico ";"Solo al sabato scolastico ";"Feriale non scolastico ";"Feriale non scolastico dal lunedì al venerdì ";"Feriale non scolastico dal lunedì al venerdì ";"Feriale non scolastico dal lunedì al venerdì ";"Solo nei giorni scolastici ";"La corsa si effettua nei giorni feriali non scolastici dal lunedì al venerdì dal 27 dicembre 2017  fino al 28 febbraio 2018";"Solo  nei giorni feriali ";"Solo  nei giorni feriali ";"Solo nei giorni scolastici ";"Solo  nei giorni feriali ";"La corsa si effettua nei giorni feriali non scolastici dal lunedì al venerdì dal 27 dicembre 2017  fino al 28 febbraio 2018";"Solo  nei giorni feriali ";"Feriale escluso sabato ";"Solo al sabato feriale ";"Solo  nei giorni feriali ";"Feriale escluso sabato "
 Linea:;;;;;;;;;;;;;;;;;;;"La corsa parte da Cornè (ore 14.30)";;;
 Servizio:;"Bus TTE";"Bus Privato";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE"
-"Polsa - Part.";;;;;;;;;;;;8.00;;;;;11.30
+"Polsa - Part.";;;;;;;;;;;;8.00;;;;;11.30;;;;;
 "SACCONE - Part.";6.15;;6.40;;6.40;;;;7.50;;8.00;|;;;11.20;;|;13.30;14.40;17.45;;18.53
 "Prada";6.20;;6.45;;6.45;;;;7.55;;8.05;8.11;;;11.25;;11.41;13.35;14.45;17.50;;18.58
 "Passo S.Valentino - Part.";|;6.34;|;;|;;;;|;;|;|;;;|;;|;|;|;|;;|
@@ -24,5 +24,6 @@ Servizio:;"Bus TTE";"Bus Privato";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus T
 "Lizzanella";7.03;;7.28;7.28;7.28;7.28;7.33;;;;;;9.03;;;12.23;;14.18;15.33;;18.53;19.40
 "ROVERETO (Ospedale).";7.06;;|;7.30;|;7.31;7.36;;;;;;9.06;;;|;;14.21;15.36;;|;19.43
 "ROVERETO (Staz.F.S.)";7.10;;7.32;7.34;7.32;7.35;7.40;;;;;;9.10;;;12.27;;14.25;15.40;;18.57;19.47
-"ROVERETO (Via Paoli) - Arr.";7.12;;|;7.36;7.34;7.36;7.42;;;;;;9.12;;;12.29;;14.27;15.42;;18.59;19.49
-"ROV. (C. Rosmini-Monu.) - Arr.";;;7.34
+"ROVERETO (Via Paoli) - Arr.";|;;|;7.36;|;7.36;|;;;;;;|;;;12.29;;|;|;;18.59;19.49
+"ROVERETO (Via Manzoni) - Arr.";7.12;;|;;7.34;;7.42;;;;;;9.12;;;;;14.27;15.42;;;
+"ROV. (C. Rosmini-Monu.) - Arr.";;;7.34;;;;;;;;;;;;;;;;;;;

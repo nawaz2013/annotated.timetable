@@ -1,17 +1,17 @@
 Descr.breve:;"305"
 Descr.lunga:;"Rovereto-Mori-Brentonico-Saccone"
-Validità:;"Orario in vigore dal 11/09/2016 al 23/06/2017"
+Validità:;"Orario in vigore dal 10/09/2017 al 22/06/2018"
 Orario:;""
-Frequenza:;"Solo nei giorni scolastici";"Solo nei giorni feriali non scolastici dal lunedì al venerdì";"La corsa si effettua nei giorni feriali non scolastici dal lunedì al venerdì dal 27 dicembre 2016  fino al 28  febbraio 2017";"Solo nei giorni scolastici";"Solo nei giorni feriali non scolastici dal lunedì al venerdì";"Solo  nei giorni feriali";"La corsa si effettua nei giorni feriali non scolastici dal lunedì al venerdì dal 27 dicembre 2016  fino al 28  febbraio 2017";"Solo nei giorni scolastici";"Feriale non scolastico";"Solo nei giorni scolastici";"Scolastico escluso sabato";"Solo al sabato scolastico";"Scolastico escluso sabato";"Solo al sabato feriale";"Feriale escluso sabato";"Feriale escluso sabato";"Feriale escluso sabato";"Solo  nei giorni feriali";"Solo  nei giorni feriali"
+Frequenza:;"Solo nei giorni scolastici ";"Feriale non scolastico dal lunedì al venerdì ";"La corsa si effettua nei giorni feriali non scolastici dal lunedì al venerdì dal 27 dicembre 2017  fino al 28  febbraio 2018";"Solo nei giorni scolastici ";"Feriale non scolastico dal lunedì al venerdì ";"Solo  nei giorni feriali ";"La corsa si effettua nei giorni feriali non scolastici dal lunedì al venerdì dal 27 dicembre 2017  fino al 28  febbraio 2018";"Solo nei giorni scolastici ";"Feriale non scolastico ";"Solo nei giorni scolastici ";"Scolastico escluso sabato ";"Solo al sabato scolastico ";"Scolastico escluso sabato ";"Solo al sabato feriale ";"Feriale escluso sabato ";"Feriale escluso sabato ";"Feriale escluso sabato ";"Solo  nei giorni feriali ";"Solo  nei giorni feriali "
 Linea:;;;;;;;;;;;;;;;;;;;
 Servizio:;"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus Privato";"Bus Privato";"Bus Privato";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE"
-"ROVERETO (Via Savioli) - Part.";6.10;6.10;;;;10.07;;12.25;12.25;13.25;;;;16.30;16.37;17.45;;18.45
-"ROVERETO (Staz.FS)";6.12;6.12;;;;10.09;;12.27;12.27;13.27;;;;16.32;16.39;17.47;;18.47
-"ROVERETO (Ospedale)";|;|;;;;10.15;;12.33;12.33;|;;;;16.38;16.45;17.53;;|
-"Lizzanella";6.16;6.16;;;;10.18;;12.36;12.36;13.31;;;;16.41;16.48;17.56;;18.51
-"Centro Comm.le Millenium";6.20;6.20;;;;10.22;;12.40;12.40;13.35;;;;16.45;16.52;18.00;;18.55
-"Mori (Stazione F.S.)";6.22;6.22;;;;10.24;;12.42;12.42;13.37;13.55;13.55;14.18;16.47;16.54;18.02;;18.57
-"Ravazzone di Mori";6.25;6.25;;;;10.27;;12.45;12.45;13.40;13.58;13.58;14.21;16.50;16.57;18.05;;19.00
+"ROVERETO (Via Savioli) - Part.";6.10;6.10;;;;10.07;;12.25;12.25;13.25;;;;16.30;16.37;17.45;;18.45;
+"ROVERETO (Staz.FS)";6.12;6.12;;;;10.09;;12.27;12.27;13.27;;;;16.32;16.39;17.47;;18.47;
+"ROVERETO (Ospedale)";|;|;;;;10.15;;12.33;12.33;|;;;;16.38;16.45;17.53;;|;
+"Lizzanella";6.16;6.16;;;;10.18;;12.36;12.36;13.31;;;;16.41;16.48;17.56;;18.51;
+"Centro Comm.le Millenium";6.20;6.20;;;;10.22;;12.40;12.40;13.35;;;;16.45;16.52;18.00;;18.55;
+"Mori (Stazione F.S.)";6.22;6.22;;;;10.24;;12.42;12.42;13.37;13.55;13.55;14.18;16.47;16.54;18.02;;18.57;
+"Ravazzone di Mori";6.25;6.25;;;;10.27;;12.45;12.45;13.40;13.58;13.58;14.21;16.50;16.57;18.05;;19.00;
 "MORI (Bar Centrale)";6.28;6.28;;;;10.30;;12.48;12.48;13.43;14.01;14.01;14.24;16.52;16.59;18.08;;19.03;19.03
 "Tierno";6.31;6.31;;;;10.33;;12.51;12.51;13.46;;14.04;14.27;16.55;17.02;18.11;;;19.06
 "BESAGNO";6.37;6.37;;;;10.39;;12.57;12.57;13.52;;14.10;14.33;17.02;17.09;18.17;18.17;;19.12
@@ -21,4 +21,4 @@ Servizio:;"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";"Bus TTE";
 "Fontechel";;;7.37;;;10.54;;13.12;13.12;14.07;;;;|;17.24;18.37;;;19.37
 "Prada";;;|;;;11.01;;13.19;13.19;14.14;;;;|;17.31;18.44;;;19.44
 "SACCONE - Arr.";;;|;;;11.06;11.06;13.24;13.24;14.19;;;;17.45;17.36;18.49;;;19.49
-"Polsa - Arr.";;;7.55;;;;11.23
+"Polsa - Arr.";;;7.55;;;;11.23;;;;;;;;;;;;
