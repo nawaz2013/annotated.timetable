@@ -8,3 +8,4 @@ sayservice.it/bin
 sayservice.it/.*
 .metadata/*
 RemoteSystemsTempFiles/*
+.recommenders
