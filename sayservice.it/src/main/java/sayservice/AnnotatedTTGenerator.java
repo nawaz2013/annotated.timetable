@@ -165,8 +165,8 @@ public class AnnotatedTTGenerator {
 	private List<String> ignoreServiceIdPattern = new ArrayList<String>() {
 		{
 			// urban.
-			add("2016091220170609");
-			add("2017061020170910");
+			add("2017091120180607");
+			add("2017070320170910");
 			// ex-urban(ignore winter).
 //			add("20160624");
 //			add("20160329");
@@ -182,7 +182,7 @@ public class AnnotatedTTGenerator {
 	};
 	  
 	// urban.
-	private static String outputPattern = "2017091020180607"; //2017061020170910
+	private static String outputPattern = "2018060820180911"; //2017091020180607
 	// ex-urban.
 //	private static String outputPattern = "2015091020160624"; //2015091020160624,2015062620150909
 	
@@ -3855,18 +3855,18 @@ public class AnnotatedTTGenerator {
 		AnnotatedTTGenerator timeTableGenerator = new AnnotatedTTGenerator();
 		File folder = new File(pathToInput);
 
-		for (final File fileEntry : folder.listFiles()) {
-			totalStops = 0;
-			if (fileEntry.isDirectory() | fileEntry.getName().contains(".json") | fileEntry.getName().contains(".zip")) {
-				continue;
-			} else {
-				timeTableGenerator.processFiles(pathToOutput, agencyId, pathToInput + fileEntry.getName());
-				System.out.println(fileEntry.getName() + " -> " + totalStops);
-			}
-		}
+//		for (final File fileEntry : folder.listFiles()) {
+//			totalStops = 0;
+//			if (fileEntry.isDirectory() | fileEntry.getName().contains(".json") | fileEntry.getName().contains(".zip")) {
+//				continue;
+//			} else {
+//				timeTableGenerator.processFiles(pathToOutput, agencyId, pathToInput + fileEntry.getName());
+//				System.out.println(fileEntry.getName() + " -> " + totalStops);
+//			}
+//		}
 
-//		timeTableGenerator.processFiles(pathToOutput, "12", pathToInput + "08_A-Feriale.csv"); //No CC.
-//		timeTableGenerator.processFiles(pathToOutput, "16", pathToInput + "I-04R-Feriale.csv");
+		timeTableGenerator.processFiles(pathToOutput, "12", pathToInput + "E-01A-Feriale.csv"); //No CC.
+//		timeTableGenerator.processFiles(pathToOutput, "16", pathToInput + "E-N2-R-Feriale.csv");
 //		timeTableGenerator.processFiles(pathToOutput, "12", pathToInput + "15R-Feriale.csv");
 //		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput + "334A.csv");
 
