@@ -5,3 +5,6 @@
 bin
 target
 RemoteSystemsTempFiles/.project
+*.csv
+*.txt
+*.zip
