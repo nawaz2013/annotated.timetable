@@ -1,11 +1,7 @@
-sayservice.it/src/test/resources/gtfs/*
-sayservice.it/.classpath
-sayservice.it/target/*
-sayservice.it/.project
-sayservice.it/.settings/*
-sayservice.it/.classpath
-sayservice.it/bin
-sayservice.it/.*
-.metadata/*
-RemoteSystemsTempFiles/*
+.metadata
 .recommenders
+.settings
+.classpath
+bin
+target
+RemoteSystemsTempFiles/.project

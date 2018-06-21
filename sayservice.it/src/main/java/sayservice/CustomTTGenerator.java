@@ -76,6 +76,7 @@ public class CustomTTGenerator {
 		unalignedRoutesMap.put("231", new ArrayList<>(Arrays.asList("201", "215")));
 		unalignedRoutesMap.put("245", new ArrayList<>(Arrays.asList("215")));
 		unalignedRoutesMap.put("321", new ArrayList<>(Arrays.asList("306")));
+		unalignedRoutesMap.put("B321", new ArrayList<>(Arrays.asList("B306")));
 		unalignedRoutesMap.put("301", new ArrayList<>(Arrays.asList("332", "335")));
 		unalignedRoutesMap.put("303", new ArrayList<>(Arrays.asList("306")));
 		unalignedRoutesMap.put("306", new ArrayList<>(Arrays.asList("303")));
@@ -164,7 +165,7 @@ public class CustomTTGenerator {
 	};
 
 	// urban.
-	private String outputPattern = "2017091020180622"; // "2017062420170909"
+	private String outputPattern = "2018062320180911"; // "2017062420170909"
 	// ex-urban.
 	// private String outputPattern = "2015091020160624";
 	// //2015091020160624,2015062620150909
@@ -510,13 +511,13 @@ public class CustomTTGenerator {
 	}
 
 	private String fillServiceId(int col) {
-		String serviceId = "AD_winter"; // switch between summer (24-06.2017 to 09-09-2017) and winter(10-09-2017 - 230602017)
+		String serviceId = "AD_summer"; // switch between summer (24-06.2017 to 09-09-2017) and winter(10-09-2017 - 230602017)
 
 		if (columnServiceStringMap.get(col) != null && !columnServiceStringMap.get(col).isEmpty()) {
 			serviceId = columnServiceStringMap.get(col).replace(" ", "_");
 			serviceId = serviceId.replace("Ã¬", "i");
 			serviceId = serviceId.replace("?", "i");
-			serviceId = serviceId + "_winter"; //switch between summer (24-06.2017 to 09-09-2017) and winter(10-09-2017 - 230602017)
+			serviceId = serviceId + "_summer"; //switch between summer (24-06.2017 to 09-09-2017) and winter(10-09-2017 - 230602017)
 			serviceId = serviceId.replace("__", "_");
 			serviceId = serviceId.replace("�", "i");
 			serviceId = serviceId.replace("ì", "i");
@@ -1873,7 +1874,7 @@ public class CustomTTGenerator {
 			}
 		}
 
-//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput +  "336A-R.csv");
+//		timeTableGenerator.processFiles(pathToOutput, "17", pathToInput +  "321A-A.csv");
 		timeTableGenerator.printStats();
 
 		// hard fix mode.

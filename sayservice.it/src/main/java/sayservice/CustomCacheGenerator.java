@@ -39,7 +39,7 @@ public class CustomCacheGenerator {
 //	private static final String pathToGTFS = "src/test/resources/gtfs/17/";
 //	private static String pathToOutput = "C:/tmp/annotated-cache/12";
 //	private static String pathToOutput = "C:/tmp/annotated-cache/16";
-	private static String pathToOutput = "C:/tmp/annotated-cache/17/05.09.17";
+	private static String pathToOutput = "C:/tmp/annotated-cache/17/19.06.18";
 	// agencyIds (12,16,17).
 	private static String agencyId = "17";
 	private static final String UTF8_BOM = "\uFEFF";
